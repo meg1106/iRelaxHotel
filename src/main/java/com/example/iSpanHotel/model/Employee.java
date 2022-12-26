@@ -59,10 +59,19 @@ public class Employee {
 		this.realName = realName;
 	}
 
+	public Short getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(Short permissions) {
+		this.permissions = permissions;
+	}
+
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", account=" + account + ", passwd=" + passwd + ", realName=" + realName + "]";
+		return "Employee [id=" + id + ", account=" + account + ", passwd=" + passwd + ", realName=" + realName
+				+ ", permissions=" + permissions + "]";
 	}
-	
+
 	
 }

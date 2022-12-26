@@ -5,6 +5,7 @@ public class EmployeeDto {
 	private String account;
 	private String passwd;
 	private String realName;
+	private Short permissions;
 	
 	public Long getId() {
 		return id;
@@ -31,9 +32,16 @@ public class EmployeeDto {
 		this.realName = realName;
 	}
 	
+	public Short getPermissions() {
+		return permissions;
+	}
+	public void setPermissions(Short permissions) {
+		this.permissions = permissions;
+	}
 	@Override
 	public String toString() {
-		return "EmployeeController [account=" + account + ", passwd=" + passwd + ", realName=" + realName + "]";
+		return "EmployeeDto [id=" + id + ", account=" + account + ", passwd=" + passwd + ", realName=" + realName
+				+ ", permissions=" + permissions + "]";
 	}
 
 }
