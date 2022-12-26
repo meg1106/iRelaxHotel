@@ -1,6 +1,5 @@
 package com.example.iSpanHotel.model;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,5 +28,5 @@ public class RoomService {
 	
 	@ManyToOne
 	@JoinColumn(name = "roomtype_id", nullable = false, unique = false)
-	private Roomtype roomtype;
+	private RoomType roomtype;
 }
