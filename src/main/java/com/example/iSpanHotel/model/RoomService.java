@@ -28,5 +28,51 @@ public class RoomService {
 	
 	@ManyToOne
 	@JoinColumn(name = "roomtype_id", nullable = false, unique = false)
-	private RoomType roomtype;
+	private RoomType roomType;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getRoomNum() {
+		return roomNum;
+	}
+
+	public void setRoomNum(String roomNum) {
+		this.roomNum = roomNum;
+	}
+
+	public short getRoomStatus() {
+		return roomStatus;
+	}
+
+	public void setRoomStatus(short roomStatus) {
+		this.roomStatus = roomStatus;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public RoomType getRoomType() {
+		return roomType;
+	}
+
+	public void setRoomType(RoomType roomType) {
+		this.roomType = roomType;
+	}
+
+	@Override
+	public String toString() {
+		return "RoomService [id=" + id + ", roomNum=" + roomNum + ", roomStatus=" + roomStatus + ", note=" + note
+				+ ", roomType=" + roomType + "]";
+	}
 }
