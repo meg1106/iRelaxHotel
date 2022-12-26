@@ -14,13 +14,15 @@ import jakarta.servlet.http.HttpSession;
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
+	
 	@Autowired
 	private EmployeeService employeeService;
 	
 	@PostMapping("/create")
 	private String create(@RequestBody EmployeeDto employeeDto) {
-
-		return "成功";
+		String message = employeeService.create(employeeDto);
+		
+		return message;
 	}
 	
 	@PostMapping("/login")
