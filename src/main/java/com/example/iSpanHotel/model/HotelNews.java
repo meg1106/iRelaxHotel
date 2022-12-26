@@ -32,6 +32,68 @@ public class HotelNews {
 	
 	@Column(name = "content", nullable = true, unique = false)
 	private String content;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Short getNewsType() {
+		return newsType;
+	}
+
+	public void setNewsType(Short newsType) {
+		this.newsType = newsType;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	@Override
+	public String toString() {
+		return "HotelNews [id=" + id + ", newsType=" + newsType + ", title=" + title + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", pic=" + pic + ", content=" + content + "]";
+	}
 	
 	
 }
