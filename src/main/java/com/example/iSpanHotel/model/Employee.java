@@ -1,34 +1,37 @@
 package com.example.iSpanHotel.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Employee")
+@Table(name = "employee")
 public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@Column(name = "account", nullable = false, unique = true)
 	private String account;
 	
-	@Column(name = "passwd", nullable = false, unique = true)
+	@Column(name = "passwd", nullable = false, unique = false)
 	private String passwd;
 	
-	@Column(name = "realname", nullable = false, unique = true)
+	@Column(name = "realname", nullable = false, unique = false)
 	private String realName;
+	
+	@Column(name = "permissions", nullable = false, unique = false)
+	private short permissions;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

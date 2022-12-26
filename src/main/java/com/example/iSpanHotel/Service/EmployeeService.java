@@ -1,8 +1,8 @@
 package com.example.iSpanHotel.Service;
 
-import javax.servlet.http.HttpSession;
-
 import com.example.iSpanHotel.Dto.EmployeeDto;
+
+import jakarta.servlet.http.HttpSession;
 
 
 public interface EmployeeService {
@@ -18,9 +18,6 @@ public interface EmployeeService {
 	
 	// 查詢所有員工帳號
 	String findAll(EmployeeDto employeeDto);
-	
-	// 根據id查詢員工帳號
-	String findById(EmployeeDto employeeDto);
 	
 	// 員工帳號登入 
 	String login(HttpSession session,String username,String password);
