@@ -13,7 +13,7 @@ public class Member {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@Column(name = "account", nullable = false, unique = true)
 	private String account;
@@ -30,11 +30,11 @@ public class Member {
 	@Column(name = "tel", nullable = false, unique = true)
 	private String tel;
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

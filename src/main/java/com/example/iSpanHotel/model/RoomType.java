@@ -17,7 +17,7 @@ public class RoomType {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@Column(name = "roomtype", nullable = false, unique = false)
 	private String roomType;
@@ -37,36 +37,36 @@ public class RoomType {
 	@OneToMany(mappedBy = "roomType", cascade = CascadeType.ALL)
 	private List<RoomOrder> roomOrders;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
 	public String getRoomtype() {
-		return roomtype;
+		return roomType;
 	}
 
 	public void setRoomtype(String roomtype) {
-		this.roomtype = roomtype;
+		this.roomType = roomtype;
 	}
 
 	public Integer getRoomprice() {
-		return roomprice;
+		return roomPrice;
 	}
 
 	public void setRoomprice(Integer roomprice) {
-		this.roomprice = roomprice;
+		this.roomPrice = roomprice;
 	}
 
 	public String getRoompic() {
-		return roompic;
+		return roomPic;
 	}
 
 	public void setRoompic(String roompic) {
-		this.roompic = roompic;
+		this.roomPic = roompic;
 	}
 
 	public String getContent() {
@@ -95,7 +95,7 @@ public class RoomType {
 
 	@Override
 	public String toString() {
-		return "RoomType [id=" + id + ", roomtype=" + roomtype + ", roomprice=" + roomprice + ", roompic=" + roompic
+		return "RoomType [id=" + id + ", roomtype=" + roomType + ", roomprice=" + roomPrice + ", roompic=" + roomPic
 				+ ", content=" + content + ", roomServices=" + roomServices + "]";
 	}
 }

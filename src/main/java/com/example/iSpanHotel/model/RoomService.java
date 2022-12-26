@@ -15,7 +15,7 @@ public class RoomService {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@Column(name = "room_number", nullable = false, unique = true)
 	private String roomNum;
@@ -29,4 +29,52 @@ public class RoomService {
 	@ManyToOne
 	@JoinColumn(name = "roomtype_id", nullable = false, unique = false)
 	private RoomType roomType;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getRoomNum() {
+		return roomNum;
+	}
+
+	public void setRoomNum(String roomNum) {
+		this.roomNum = roomNum;
+	}
+
+	public Short getRoomStatus() {
+		return roomStatus;
+	}
+
+	public void setRoomStatus(Short roomStatus) {
+		this.roomStatus = roomStatus;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public RoomType getRoomType() {
+		return roomType;
+	}
+
+	public void setRoomType(RoomType roomType) {
+		this.roomType = roomType;
+	}
+
+	@Override
+	public String toString() {
+		return "RoomService [id=" + id + ", roomNum=" + roomNum + ", roomStatus=" + roomStatus + ", note=" + note
+				+ ", roomType=" + roomType + "]";
+	}
+	
+	
 }
