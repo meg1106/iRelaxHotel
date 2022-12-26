@@ -16,13 +16,13 @@ public class RoomType {
 	private Integer id;
 	
 	@Column(name = "roomtype", nullable = false, unique = false)
-	private String roomtype;
+	private String roomType;
 	
 	@Column(name = "roomprice", nullable = false, unique = false)
-	private Integer roomprice;
+	private Integer roomPrice;
 	
 	@Column(name = "roompic", nullable = true, unique = false)
-	private String roompic;
+	private String roomPic;
 	
 	@Column(name = "content", nullable = true, unique = false)
 	private String content;

@@ -15,18 +15,18 @@ public class RoomService {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	
 	@Column(name = "room_number", nullable = false, unique = true)
 	private String roomNum;
 	
 	@Column(name = "room_status", nullable = false, unique = false)
-	private short roomStatus;
+	private Short roomStatus;
 	
 	@Column(name = "note", nullable = true, unique = false)
 	private String note;
 	
 	@ManyToOne
 	@JoinColumn(name = "roomtype_id", nullable = false, unique = false)
-	private RoomType roomtype;
+	private RoomType roomType;
 }

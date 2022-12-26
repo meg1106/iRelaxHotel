@@ -13,7 +13,7 @@ public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
 	@Column(name = "account", nullable = false, unique = true)
 	private String account;
@@ -25,13 +25,13 @@ public class Employee {
 	private String realName;
 	
 	@Column(name = "permissions", nullable = false, unique = false)
-	private short permissions;
+	private Short permissions;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

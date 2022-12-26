@@ -15,16 +15,16 @@ public class RoomOrder {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	
 	@Column(name = "order_id", nullable = false, unique = false)
-	private Integer orderId;
+	private String orderId;
 	
 	@Column(name = "date", nullable = false, unique = false)
 	private String date;
 	
 	@Column(name = "status", nullable = false, unique = false)
-	private int status;
+	private Integer status;
 	
 	@ManyToOne
 	@JoinColumn(name = "roomtype_id", nullable = false, unique = false)
