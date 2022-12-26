@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Dao.EmployeeDao;
 import com.example.iSpanHotel.Dto.EmployeeDto;
@@ -12,7 +14,7 @@ import com.example.iSpanHotel.model.Employee;
 import jakarta.servlet.http.HttpSession;
 
 
-
+@Service
 public class EmployeeServiceImpl implements EmployeeService{
 	
 	@Autowired
@@ -28,6 +30,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 				employee.setAccount(employeeDto.getAccount());
 				employee.setPasswd(employeeDto.getPasswd());
 				employee.setRealName(employeeDto.getRealName());
+				employee.setPermissions(employeeDto.getPermissions());
 				employeeDao.save(employee);
 				return "註冊成功";
 			} catch (Exception e) {
