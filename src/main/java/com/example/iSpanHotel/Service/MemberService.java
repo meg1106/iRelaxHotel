@@ -1,12 +1,9 @@
 package com.example.iSpanHotel.Service;
 
-import org.springframework.stereotype.Service;
-
 import com.example.iSpanHotel.Dto.MemberDto;
 
 import jakarta.servlet.http.HttpSession;
 
-@Service
 public interface MemberService {
 
 	// 創建會員帳號
