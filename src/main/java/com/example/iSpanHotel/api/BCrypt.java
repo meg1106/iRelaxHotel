@@ -1,4 +1,4 @@
-package com.example.iSpanHotel.Service;
+package com.example.iSpanHotel.api;
 
 // Copyright (c) 2006 Damien Miller <djm@mindrot.org>
 //
