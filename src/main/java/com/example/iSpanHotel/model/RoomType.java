@@ -1,14 +1,10 @@
 package com.example.iSpanHotel.model;
 
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,23 +15,20 @@ public class RoomType {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "roomtype", nullable = false, unique = false)
+	@Column(name = "roomtype", nullable = false)
 	private String roomType;
 	
-	@Column(name = "roomprice", nullable = false, unique = false)
+	@Column(name = "roomprice", nullable = false)
 	private Integer roomPrice;
 	
-	@Column(name = "roompic", nullable = true, unique = false)
+	@Column(name = "roomperson", nullable = false)
+	private Integer roomPerson;
+	
+	@Column(name = "roompic")
 	private String roomPic;
 	
-	@Column(name = "content", nullable = true, unique = false)
+	@Column(name = "content")
 	private String content;
-	
-	@OneToMany(mappedBy = "roomType", cascade = CascadeType.ALL)
-	private List<RoomService> roomServices;
-	
-	@OneToMany(mappedBy = "roomType", cascade = CascadeType.ALL)
-	private List<RoomOrder> roomOrders;
 
 	public Long getId() {
 		return id;
@@ -45,28 +38,36 @@ public class RoomType {
 		this.id = id;
 	}
 
-	public String getRoomtype() {
+	public String getRoomType() {
 		return roomType;
 	}
 
-	public void setRoomtype(String roomtype) {
-		this.roomType = roomtype;
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
 	}
 
-	public Integer getRoomprice() {
+	public Integer getRoomPrice() {
 		return roomPrice;
 	}
 
-	public void setRoomprice(Integer roomprice) {
-		this.roomPrice = roomprice;
+	public void setRoomPrice(Integer roomPrice) {
+		this.roomPrice = roomPrice;
 	}
 
-	public String getRoompic() {
+	public Integer getRoomPerson() {
+		return roomPerson;
+	}
+
+	public void setRoomPerson(Integer roomPerson) {
+		this.roomPerson = roomPerson;
+	}
+
+	public String getRoomPic() {
 		return roomPic;
 	}
 
-	public void setRoompic(String roompic) {
-		this.roomPic = roompic;
+	public void setRoomPic(String roomPic) {
+		this.roomPic = roomPic;
 	}
 
 	public String getContent() {
@@ -77,25 +78,4 @@ public class RoomType {
 		this.content = content;
 	}
 
-	public List<RoomService> getRoomServices() {
-		return roomServices;
-	}
-
-	public void setRoomServices(List<RoomService> roomServices) {
-		this.roomServices = roomServices;
-	}
-
-	public List<RoomOrder> getRoomOrders() {
-		return roomOrders;
-	}
-
-	public void setRoomOrders(List<RoomOrder> roomOrders) {
-		this.roomOrders = roomOrders;
-	}
-
-	@Override
-	public String toString() {
-		return "RoomType [id=" + id + ", roomtype=" + roomType + ", roomprice=" + roomPrice + ", roompic=" + roomPic
-				+ ", content=" + content + ", roomServices=" + roomServices + "]";
-	}
 }

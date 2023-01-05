@@ -18,16 +18,16 @@ public class Member {
 	@Column(name = "account", nullable = false, unique = true)
 	private String account;
 	
-	@Column(name = "passwd", nullable = false, unique = false)
+	@Column(name = "passwd", nullable = false)
 	private String passwd;
 	
-	@Column(name = "realname", nullable = false, unique = false)
+	@Column(name = "realname", nullable = false)
 	private String realName;
 	
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 	
-	@Column(name = "tel", nullable = false, unique = true)
+	@Column(name = "tel", nullable = false)
 	private String tel;
 	
 	public Long getId() {
@@ -79,9 +79,4 @@ public class Member {
 		this.tel = tel;
 	}
 
-	@Override
-	public String toString() {
-		return "Member [id=" + id + ", account=" + account + ", passwd=" + passwd + 
-					", realName=" + realName + ", email=" + email + ", tel=" + tel +"]";
-	}
 }

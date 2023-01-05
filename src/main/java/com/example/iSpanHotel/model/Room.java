@@ -6,28 +6,29 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "roomservice")
-public class RoomService {
+@Table(name = "room")
+public class Room {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "room_number", nullable = false, unique = true)
+	@Column(name = "room_num", nullable = false, unique = true)
 	private String roomNum;
 	
-	@Column(name = "room_status", nullable = false, unique = false)
+	@Column(name = "room_floor", nullable = false)
+	private Integer roomFloor;
+	
+	@Column(name = "room_status", nullable = false)
 	private Short roomStatus;
 	
-	@Column(name = "note", nullable = true, unique = false)
+	@Column(name = "note")
 	private String note;
 	
-	@ManyToOne
-	@JoinColumn(name = "roomtype_id", nullable = false, unique = false)
+	@JoinColumn(name = "roomtype_id", nullable = false)
 	private RoomType roomType;
 
 	public Long getId() {
@@ -44,6 +45,14 @@ public class RoomService {
 
 	public void setRoomNum(String roomNum) {
 		this.roomNum = roomNum;
+	}
+
+	public Integer getRoomFloor() {
+		return roomFloor;
+	}
+
+	public void setRoomFloor(Integer roomFloor) {
+		this.roomFloor = roomFloor;
 	}
 
 	public Short getRoomStatus() {
@@ -69,12 +78,5 @@ public class RoomService {
 	public void setRoomType(RoomType roomType) {
 		this.roomType = roomType;
 	}
-
-	@Override
-	public String toString() {
-		return "RoomService [id=" + id + ", roomNum=" + roomNum + ", roomStatus=" + roomStatus + ", note=" + note
-				+ ", roomType=" + roomType + "]";
-	}
-	
 	
 }

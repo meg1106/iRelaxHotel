@@ -18,14 +18,11 @@ public class Employee {
 	@Column(name = "account", nullable = false, unique = true)
 	private String account;
 	
-	@Column(name = "passwd", nullable = false, unique = false)
+	@Column(name = "passwd", nullable = false)
 	private String passwd;
 	
-	@Column(name = "realname", nullable = false, unique = false)
+	@Column(name = "realname", nullable = false)
 	private String realName;
-	
-	@Column(name = "permissions", nullable = false, unique = false)
-	private Short permissions;
 
 	public Long getId() {
 		return id;
@@ -58,20 +55,5 @@ public class Employee {
 	public void setRealName(String realName) {
 		this.realName = realName;
 	}
-
-	public Short getPermissions() {
-		return permissions;
-	}
-
-	public void setPermissions(Short permissions) {
-		this.permissions = permissions;
-	}
-
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", account=" + account + ", passwd=" + passwd + ", realName=" + realName
-				+ ", permissions=" + permissions + "]";
-	}
-
 	
 }

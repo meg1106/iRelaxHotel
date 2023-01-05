@@ -15,22 +15,22 @@ public class HotelNews {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "newsType", nullable = false, unique = false)
+	@Column(name = "newsType", nullable = false)
 	private Short newsType;
 	
-	@Column(name = "title", nullable = false, unique = false)
+	@Column(name = "title", nullable = false)
 	private String title;
 	
-	@Column(name = "start_date", nullable = false, unique = false)
+	@Column(name = "start_date")
 	private String startDate;
 	
-	@Column(name = "end_date", nullable = false, unique = false)
+	@Column(name = "end_date")
 	private String endDate;
 	
-	@Column(name = "pic", nullable = true, unique = false)
+	@Column(name = "pic")
 	private String pic;
 	
-	@Column(name = "content", nullable = true, unique = false)
+	@Column(name = "content")
 	private String content;
 
 	public Long getId() {
@@ -88,12 +88,5 @@ public class HotelNews {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
-	@Override
-	public String toString() {
-		return "HotelNews [id=" + id + ", newsType=" + newsType + ", title=" + title + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", pic=" + pic + ", content=" + content + "]";
-	}
-	
 	
 }
