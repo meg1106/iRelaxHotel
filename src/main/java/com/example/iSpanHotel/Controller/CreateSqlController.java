@@ -1,141 +1,162 @@
 package com.example.iSpanHotel.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.iSpanHotel.Dto.HotelNewsDto;
-import com.example.iSpanHotel.Dto.MemberDto;
-import com.example.iSpanHotel.Dto.RoomTypeDto;
-import com.example.iSpanHotel.Service.HotelNewsService;
-import com.example.iSpanHotel.Service.MemberService;
-import com.example.iSpanHotel.Service.RoomTypeService;
+import com.example.iSpanHotel.Dao.HotelNewsDao;
+import com.example.iSpanHotel.Dao.MemberDao;
+import com.example.iSpanHotel.Dao.PermissionsDao;
+import com.example.iSpanHotel.Dao.RoomDao;
+import com.example.iSpanHotel.Dao.RoomTypeDao;
+import com.example.iSpanHotel.api.BCrypt;
+import com.example.iSpanHotel.model.HotelNews;
+import com.example.iSpanHotel.model.Member;
+import com.example.iSpanHotel.model.Permissions;
+import com.example.iSpanHotel.model.Room;
+import com.example.iSpanHotel.model.RoomType;
 
 @RestController
 @RequestMapping("/createSql")
 public class CreateSqlController {
-
-	@Autowired
-	private RoomTypeService roomTypeService;
-	@Autowired
-	private MemberService memberService;
-	@Autowired
-	private HotelNewsService hotelNewsService;
+	List<RoomType> roomTypes = new ArrayList<>();
+	RoomType roomType1 = new RoomType();
+	RoomType roomType2 = new RoomType();
+	RoomType roomType3 = new RoomType();
+	RoomType roomType4 = new RoomType();
+	RoomType roomType5 = new RoomType();
+	RoomType roomType6 = new RoomType();
+	RoomType roomType7 = new RoomType();
+	RoomType roomType8 = new RoomType();
+	RoomType roomType9 = new RoomType();
 	
-	
+	@Autowired
+	private PermissionsDao permissionsDao;
+	@Autowired
+	private MemberDao memberDao;
+	@Autowired
+	private RoomTypeDao roomTypeDao;
+	@Autowired
+	private HotelNewsDao hotelNewsDao;
+	@Autowired
+	private RoomDao roomDao;
 	
 	@PostMapping("/member")
 	private void member() {
-		MemberDto member1 = new MemberDto();
+		Member member1 = new Member();
 		member1.setAccount("Twithe");
-		member1.setPasswd("Eibaiyexoh9I");
+		member1.setPasswd(BCrypt.hashpw("Eibaiyexoh9I", BCrypt.gensalt()) );
 		member1.setRealName("周杰倫");
 		member1.setEmail("KarenRJennings@dayrep.com");
 		member1.setTel("0962275261");
-		memberService.create(member1);
+		memberDao.save(member1);
 		
-		MemberDto member2 = new MemberDto();
+		Member member2 = new Member();
 		member2.setAccount("Antouch");
-		member2.setPasswd("aaqu6IMoh");
+		member2.setPasswd(BCrypt.hashpw("aaqu6IMoh", BCrypt.gensalt()));
 		member2.setRealName("周興哲");
 		member2.setEmail("DamionCCraig@rhyta.com");
 		member2.setTel("0912439724");
-		memberService.create(member2);
+		memberDao.save(member2);
 		
-		MemberDto member3 = new MemberDto();
+		Member member3 = new Member();
 		member3.setAccount("Clace1979");
-		member3.setPasswd("ahP6XahMoh");
+		member3.setPasswd(BCrypt.hashpw("ahP6XahMoh", BCrypt.gensalt()));
 		member3.setRealName("鄧紫棋");
 		member3.setEmail("LatashaFHanley@armyspy.com");
 		member3.setTel("0939416211");
-		memberService.create(member3);
+		memberDao.save(member3);
 		
-		MemberDto member4 = new MemberDto();
+		Member member4 = new Member();
 		member4.setAccount("Vised1943");
-		member4.setPasswd("aeyieloo2Ae");
+		member4.setPasswd(BCrypt.hashpw("aeyieloo2Ae", BCrypt.gensalt()));
 		member4.setRealName("韋禮安");
 		member4.setEmail("AldenJPark@armyspy.com");
 		member4.setTel("0939503316");
-		memberService.create(member4);
+		memberDao.save(member4);
 		
-		MemberDto member5 = new MemberDto();
+		Member member5 = new Member();
 		member5.setAccount("Fraleve");
-		member5.setPasswd("iekohRah5oo");
+		member5.setPasswd(BCrypt.hashpw("iekohRah5oo", BCrypt.gensalt()));
 		member5.setRealName("張惠妹");
 		member5.setEmail("StephenLChong@armyspy.com");
 		member5.setTel("0953115883");
-		memberService.create(member5);
+		memberDao.save(member5);
 		
-		MemberDto member6 = new MemberDto();
+		Member member6 = new Member();
 		member6.setAccount("Boyaceing");
-		member6.setPasswd("Ieh8Ojein");
+		member6.setPasswd(BCrypt.hashpw("Ieh8Ojein", BCrypt.gensalt()));
 		member6.setRealName("梁靜茹");
 		member6.setEmail("DudleyMNordin@armyspy.com");
 		member6.setTel("0928269591");
-		memberService.create(member6);
+		memberDao.save(member6);
 		
-		MemberDto member7 = new MemberDto();
+		Member member7 = new Member();
 		member7.setAccount("Raidearan79");
-		member7.setPasswd("nee9esiuJ5e");
+		member7.setPasswd(BCrypt.hashpw("nee9esiuJ5e", BCrypt.gensalt()));
 		member7.setRealName("蔡依林");
 		member7.setEmail("RicardoJGilliam@armyspy.com");
 		member7.setTel("0921383622");
-		memberService.create(member7);
+		memberDao.save(member7);
 		
-		MemberDto member8 = new MemberDto();
+		Member member8 = new Member();
 		member8.setAccount("Jecome");
-		member8.setPasswd("ohDa3Vogho");
+		member8.setPasswd(BCrypt.hashpw("ohDa3Vogho", BCrypt.gensalt()));
 		member8.setRealName("徐佳瑩");
 		member8.setEmail("HaroldJBilger@rhyta.com");
 		member8.setTel("0913852136");
-		memberService.create(member8);
+		memberDao.save(member8);
 		
-		MemberDto member9 = new MemberDto();
+		Member member9 = new Member();
 		member9.setAccount("Lovid1942");
-		member9.setPasswd("pu0aiG5nei");
+		member9.setPasswd(BCrypt.hashpw("pu0aiG5nei", BCrypt.gensalt()));
 		member9.setRealName("林俊傑");
 		member9.setEmail("PatriciaSCooke@armyspy.com");
 		member9.setTel("0912345678");
-		memberService.create(member9);
+		memberDao.save(member9);
 		
-		MemberDto member10 = new MemberDto();
+		Member member10 = new Member();
 		member10.setAccount("Priect");
-		member10.setPasswd("uo2ieThaena");
+		member10.setPasswd(BCrypt.hashpw("uo2ieThaena", BCrypt.gensalt()));
 		member10.setRealName("陳奕迅");
 		member10.setEmail("HaroldEGibbs@armyspy.com");
 		member10.setTel("0953243243");
-		memberService.create(member10);
-		
+		memberDao.save(member10);
 	}
 	
 	@PostMapping("/roomType")
 	private void roomType() {
-		RoomTypeDto roomType1 = new RoomTypeDto();
 		roomType1.setRoomType("經濟雙人房");
 		roomType1.setRoomPrice(2500);
+		roomType1.setRoomPerson(2);
 		roomType1.setRoomPic("https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType1.setContent("房間面積為36平方米/383平方英尺。\r\n"
 				+ "\r\n"
 				+ "調高設計和超大窗戶使得房間充滿柔和的自然光線。\r\n"
 				+ "\r\n"
 				+ "大理石浴室配備純平電視、浴缸及獨立的玻璃淋浴間。");
-		roomTypeService.create(roomType1);
+		roomTypes.add(roomType1);
+		roomTypeDao.save(roomType1);
 		
-		RoomTypeDto roomType2 = new RoomTypeDto();
 		roomType2.setRoomType("經濟四人房");
 		roomType2.setRoomPrice(4500);
+		roomType2.setRoomPerson(4);
 		roomType2.setRoomPic("https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType2.setContent("房間面積為60平方米/646平方英尺。\r\n"
 				+ "\r\n"
 				+ "調高設計和超大窗戶使得房間充滿柔和的自然光線。\r\n"
 				+ "\r\n"
 				+ "大理石浴室配備純平電視、浴缸及獨立的玻璃淋浴間。");
-		roomTypeService.create(roomType2);
+		roomTypes.add(roomType2);
+		roomTypeDao.save(roomType2);
 		
-		RoomTypeDto roomType3 = new RoomTypeDto();
 		roomType3.setRoomType("景觀雙人房");
 		roomType3.setRoomPrice(3000);
+		roomType3.setRoomPerson(2);
 		roomType3.setRoomPic("https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType3.setContent("房間面積為40平方米/349平方英尺。\r\n"
 				+ "\r\n"
@@ -146,11 +167,12 @@ public class CreateSqlController {
 				+ "大理石浴室配備純平電視、浴缸及獨立的玻璃淋浴間。\r\n"
 				+ "\r\n"
 				+ "獨立的玻璃淋浴間");
-		roomTypeService.create(roomType3);
+		roomTypes.add(roomType3);
+		roomTypeDao.save(roomType3);
 		
-		RoomTypeDto roomType4 = new RoomTypeDto();
 		roomType4.setRoomType("景觀四人房");
 		roomType4.setRoomPrice(5500);
+		roomType4.setRoomPerson(4);
 		roomType4.setRoomPic("https://images.pexels.com/photos/279746/pexels-photo-279746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType4.setContent("房間面積為60平方米/646平方英尺。\r\n"
 				+ "\r\n"
@@ -161,11 +183,12 @@ public class CreateSqlController {
 				+ "大理石浴室配備純平電視、浴缸及獨立的玻璃淋浴間。\r\n"
 				+ "\r\n"
 				+ "獨立的玻璃淋浴間");
-		roomTypeService.create(roomType4);
+		roomTypes.add(roomType4);
+		roomTypeDao.save(roomType4);
 		
-		RoomTypeDto roomType5 = new RoomTypeDto();
 		roomType5.setRoomType("豪華雙人房");
 		roomType5.setRoomPrice(3500);
+		roomType5.setRoomPerson(2);
 		roomType5.setRoomPic("https://images.pexels.com/photos/1743229/pexels-photo-1743229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType5.setContent("飽覽迷人的城市景觀。\r\n"
 				+ "\r\n"
@@ -182,11 +205,12 @@ public class CreateSqlController {
 				+ "調高設計和超大窗戶使得房間充滿柔和的自然光線。\r\n"
 				+ "\r\n"
 				+ "大理石浴室配備純平電視、浴缸及獨立的玻璃淋浴間。");
-		roomTypeService.create(roomType5);
+		roomTypes.add(roomType5);
+		roomTypeDao.save(roomType5);
 		
-		RoomTypeDto roomType6 = new RoomTypeDto();
 		roomType6.setRoomType("豪華四人房");
 		roomType6.setRoomPrice(6500);
+		roomType6.setRoomPerson(4);
 		roomType6.setRoomPic("https://images.pexels.com/photos/172872/pexels-photo-172872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType6.setContent("飽覽迷人的城市景觀。\r\n"
 				+ "\r\n"
@@ -203,11 +227,12 @@ public class CreateSqlController {
 				+ "調高設計和超大窗戶使得房間充滿柔和的自然光線。\r\n"
 				+ "\r\n"
 				+ "大理石浴室配備純平電視、浴缸及獨立的玻璃淋浴間。");
-		roomTypeService.create(roomType6);
+		roomTypes.add(roomType6);
+		roomTypeDao.save(roomType6);
 		
-		RoomTypeDto roomType7 = new RoomTypeDto();
 		roomType7.setRoomType("尊榮雙人房");
 		roomType7.setRoomPrice(6000);
+		roomType7.setRoomPerson(2);
 		roomType7.setRoomPic("https://images.pexels.com/photos/97083/pexels-photo-97083.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType7.setContent("房間面積為72平方米/802平方英尺。\r\n"
 				+ "\r\n"
@@ -220,11 +245,12 @@ public class CreateSqlController {
 				+ "可享受豪華閣貴賓廊專屬服務及禮遇。\r\n"
 				+ "\r\n"
 				+ "享受無線上網服務。");
-		roomTypeService.create(roomType7);
+		roomTypes.add(roomType7);
+		roomTypeDao.save(roomType7);
 		
-		RoomTypeDto roomType8 = new RoomTypeDto();
 		roomType8.setRoomType("尊榮四人房");
 		roomType8.setRoomPrice(11000);
+		roomType8.setRoomPerson(4);
 		roomType8.setRoomPic("https://images.pexels.com/photos/271672/pexels-photo-271672.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType8.setContent("房間面積為136平方米/1,463平方英尺。\r\n"
 				+ "\r\n"
@@ -237,11 +263,12 @@ public class CreateSqlController {
 				+ "可享受豪華閣貴賓廊專屬服務及禮遇。\r\n"
 				+ "\r\n"
 				+ "享受無線上網服務。");
-		roomTypeService.create(roomType8);
+		roomTypes.add(roomType8);
+		roomTypeDao.save(roomType8);
 		
-		RoomTypeDto roomType9 = new RoomTypeDto();
 		roomType9.setRoomType("總統套房");
 		roomType9.setRoomPrice(20000);
+		roomType9.setRoomPerson(4);
 		roomType9.setRoomPic("https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType9.setContent("房間面積為226平方米/2,432平方英尺。\r\n"
 				+ "\r\n"
@@ -256,13 +283,13 @@ public class CreateSqlController {
 				+ "享受無線上網服務。\r\n"
 				+ "\r\n"
 				+ "可享受豪華閣貴賓廊專屬服務及禮遇。");
-		roomTypeService.create(roomType9);
-		
+		roomTypes.add(roomType9);
+		roomTypeDao.save(roomType9);
 	}
 	
 	@PostMapping("/hotelNews")
 	private void hotelNews() {
-		HotelNewsDto hotelNew1 = new HotelNewsDto();
+		HotelNews hotelNew1 = new HotelNews();
 		hotelNew1.setNewsType((short) 1);
 		hotelNew1.setTitle("溫馨聖誕嘉年華");
 		hotelNew1.setStartDate("2022-12-16");
@@ -280,10 +307,9 @@ public class CreateSqlController {
 				+ "1.文中標記 #(帳號須公開)\r\n"
 				+ "2.追蹤官方Instagram帳號@即可抽「下午茶兩客」\r\n"
 				+ "我們將於2023/1/06(五)在臉書及Insagram公布幸運得獎者\"");
-		hotelNewsService.create(hotelNew1);
+		hotelNewsDao.save(hotelNew1);
 		
-		
-		HotelNewsDto hotelNew2 = new HotelNewsDto();
+		HotelNews hotelNew2 = new HotelNews();
 		hotelNew2.setNewsType((short) 2);
 		hotelNew2.setTitle("奢旅漫遊 超值享受");
 		hotelNew2.setStartDate("2023-01-01");
@@ -303,7 +329,125 @@ public class CreateSqlController {
 				+ "飯店保留取消與修改專案優惠的權利。\r\n"
 				+ "不適用日期:2022/1/31-2/5\r\n"
 				+ "早餐、下午茶及雞尾酒時光場域需視當日住房率而定\"");
-		hotelNewsService.create(hotelNew2);
+		hotelNewsDao.save(hotelNew2);
+	}
+
+	@PostMapping("/permissions")
+	private void permissions() {
+		Permissions permissions1 = new Permissions();
+		permissions1.setPermission("member_manage");
+		permissions1.setNote("會員管理");
+		permissionsDao.save(permissions1);
+		
+		Permissions permissions2 = new Permissions();
+		permissions2.setPermission("employee_manage");
+		permissions2.setNote("員工管理");
+		permissionsDao.save(permissions2);
+		
+		Permissions permissions3 = new Permissions();
+		permissions3.setPermission("room_manage");
+		permissions3.setNote("房間管理");
+		permissionsDao.save(permissions3);
+		
+		Permissions permissions4 = new Permissions();
+		permissions4.setPermission("roomtype_manage");
+		permissions4.setNote("房型管理");
+		permissionsDao.save(permissions4);
+		
+		Permissions permissions5 = new Permissions();
+		permissions5.setPermission("news_manage");
+		permissions5.setNote("消息管理");
+		permissionsDao.save(permissions5);
+		
+		Permissions permissions6 = new Permissions();
+		permissions6.setPermission("customer_service");
+		permissions6.setNote("客服");
+		permissionsDao.save(permissions6);
+		
+		Permissions permissions7 = new Permissions();
+		permissions7.setPermission("manager");
+		permissions7.setNote("管理者");
+		permissionsDao.save(permissions7);
+	}
+	
+	@PostMapping("/room")
+	private void room() {
+		for (int i = 11; i <= 20; i++) {
+			if (i <=16) {
+				Room room1 = new Room();
+				room1.setRoomNum(i + "01");
+				room1.setRoomFloor(i);
+				room1.setRoomStatus((short)1);
+				room1.setRoomType(roomType1);
+				room1.setNote(null);
+				roomDao.save(room1);
+					
+				Room room2 = new Room();
+				room2.setRoomNum(i + "02");
+				room2.setRoomFloor(i);
+				room2.setRoomStatus((short)1);
+				room2.setRoomType(roomType2);
+				room2.setNote(null);
+				roomDao.save(room2);
+					
+				Room room3 = new Room();
+				room3.setRoomNum(i + "03");
+				room3.setRoomFloor(i);
+				room3.setRoomStatus((short)1);
+				room3.setRoomType(roomType3);
+				room3.setNote(null);
+				roomDao.save(room3);
+					
+				Room room4 = new Room();
+				room4.setRoomNum(i + "04");
+				room4.setRoomFloor(i);
+				room4.setRoomStatus((short)1);
+				room4.setRoomType(roomType4);
+				room4.setNote(null);
+				roomDao.save(room4);
+					
+				Room room5 = new Room();
+				room5.setRoomNum(i + "05");
+				room5.setRoomFloor(i);
+				room5.setRoomStatus((short)1);
+				room5.setRoomType(roomType5);
+				room5.setNote(null);
+				roomDao.save(room5);
+					
+				Room room6 = new Room();
+				room6.setRoomNum(i + "06");
+				room6.setRoomFloor(i);
+				room6.setRoomStatus((short)1);
+				room6.setRoomType(roomType6);
+				room6.setNote(null);
+				roomDao.save(room6);
+					
+				Room room7 = new Room();
+				room7.setRoomNum(i + "07");
+				room7.setRoomFloor(i);
+				room7.setRoomStatus((short)1);
+				room7.setRoomType(roomType7);
+				room7.setNote(null);
+				roomDao.save(room7);
+					
+				Room room8 = new Room();
+				room8.setRoomNum(i + "08");
+				room8.setRoomFloor(i);
+				room8.setRoomStatus((short)1);
+				room8.setRoomType(roomType8);
+				room8.setNote(null);
+				roomDao.save(room8);
+			}
+			if (i > 16) {
+				Room room9 = new Room();
+				room9.setRoomNum(i + "VIP");
+				room9.setRoomFloor(i);
+				room9.setRoomStatus((short)1);
+				room9.setRoomType(roomType9);
+				room9.setNote(null);
+				roomDao.save(room9);
+			}
+		}
 		
 	}
 }
