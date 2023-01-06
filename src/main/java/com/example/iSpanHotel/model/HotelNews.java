@@ -30,7 +30,7 @@ public class HotelNews {
 	@Column(name = "pic")
 	private String pic;
 	
-	@Column(name = "content")
+	@Column(name = "content", length = 1000)
 	private String content;
 
 	public Long getId() {
