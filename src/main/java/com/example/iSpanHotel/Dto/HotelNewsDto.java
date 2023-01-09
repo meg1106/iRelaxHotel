@@ -2,7 +2,7 @@ package com.example.iSpanHotel.Dto;
 
 public class HotelNewsDto {
 	private Long id;
-	private short newsType;
+	private Short newsType;
 	private String title;
 	private String startDate;
 	private String endDate;
@@ -18,7 +18,7 @@ public class HotelNewsDto {
 	public short getNewsType() {
 		return newsType;
 	}
-	public void setNewsType(short newsType) {
+	public void setNewsType(Short newsType) {
 		this.newsType = newsType;
 	}
 	public String getTitle() {
