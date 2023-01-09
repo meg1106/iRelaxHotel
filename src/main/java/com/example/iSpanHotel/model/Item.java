@@ -30,7 +30,7 @@ public class Item {
 	private String checkinDate;
 	
 	@Column(name = "checkout_date", nullable = false)
-	private String checjoutDate;
+	private String checkoutDate;
 	
 	@Column(name = "status", nullable = false)
 	private Short status;
@@ -67,12 +67,12 @@ public class Item {
 		this.checkinDate = checkinDate;
 	}
 
-	public String getChecjoutDate() {
-		return checjoutDate;
+	public String getCheckoutDate() {
+		return checkoutDate;
 	}
 
-	public void setChecjoutDate(String checjoutDate) {
-		this.checjoutDate = checjoutDate;
+	public void setChecjoutDate(String checkoutDate) {
+		this.checkoutDate = checkoutDate;
 	}
 
 	public Short getStatus() {
