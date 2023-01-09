@@ -18,9 +18,9 @@ public class RoomTypeServiceImpl implements RoomTypeService{
 		
 		try {
 			RoomType roomType = new RoomType();
-			roomType.setRoomtype(roomTypeDto.getRoomType());
-			roomType.setRoomprice(roomTypeDto.getRoomPrice());
-			roomType.setRoompic(roomTypeDto.getRoomPic());
+			roomType.setRoomType(roomTypeDto.getRoomType());
+			roomType.setRoomPrice(roomTypeDto.getRoomPrice());
+			roomType.setRoomPic(roomTypeDto.getRoomPic());
 			roomType.setContent(roomTypeDto.getContent());
 			roomTypeDao.save(roomType);
 			return "房型創建成功";
