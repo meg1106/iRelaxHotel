@@ -1,4 +1,4 @@
-package com.example.iSpanHotel.Service;
+package com.example.iSpanHotel.Service.Impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Dao.EmployeeDao;
 import com.example.iSpanHotel.Dto.EmployeeDto;
+import com.example.iSpanHotel.Service.EmployeeService;
 import com.example.iSpanHotel.model.Employee;
 
 import jakarta.servlet.http.HttpSession;
@@ -29,7 +30,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 				employee.setAccount(employeeDto.getAccount());
 				employee.setPasswd(employeeDto.getPasswd());
 				employee.setRealName(employeeDto.getRealName());
-				employee.setPermissions(employeeDto.getPermissions());
 				employeeDao.save(employee);
 				return "註冊成功";
 			} catch (Exception e) {

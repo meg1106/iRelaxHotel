@@ -1,4 +1,4 @@
-package com.example.iSpanHotel.Service;
+package com.example.iSpanHotel.Service.Impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Dao.MemberDao;
 import com.example.iSpanHotel.Dto.MemberDto;
+import com.example.iSpanHotel.Service.MemberService;
 import com.example.iSpanHotel.model.Employee;
 import com.example.iSpanHotel.model.Member;
 

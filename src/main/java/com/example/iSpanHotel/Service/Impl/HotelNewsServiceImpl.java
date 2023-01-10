@@ -1,10 +1,11 @@
-package com.example.iSpanHotel.Service;
+package com.example.iSpanHotel.Service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Dao.HotelNewsDao;
 import com.example.iSpanHotel.Dto.HotelNewsDto;
+import com.example.iSpanHotel.Service.HotelNewsService;
 import com.example.iSpanHotel.model.HotelNews;
 
 @Service
