@@ -159,7 +159,7 @@
                           </th> -->
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="employee">
                         <tr>
                           <th scope="row">1</th>
                           <td>張美美</td>
@@ -228,6 +228,44 @@
         gtag("js", new Date());
         gtag("config", "G-P7JSYB1CSP");
       }
+
+      $.ajax({
+        method:"GET",
+        url:"employee/"
+      })
+        .done(function (msg) {
+          console.log(msg);
+          msg.forEach(element => {
+            console.log(element);
+            $('#employee').append(
+              `
+              <tr>
+                          <th scope="row">${element.id}</th>
+                          <td>${element.name}</td>
+                          <td>${element.account}</td>
+                          <td>
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              style="background-color: chocolate"
+                            >
+                              修改
+                            </button>
+
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              style="background-color: grey"
+                            >
+                              刪除
+                            </button>
+                          </td>
+                        </tr>
+              `
+            )
+          });
+          
+        })
     </script>
     <svg
       id="SvgjsSvg1001"
