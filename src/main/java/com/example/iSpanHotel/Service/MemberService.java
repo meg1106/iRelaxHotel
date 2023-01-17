@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 import com.example.iSpanHotel.Dto.MemberDto;
 import com.example.iSpanHotel.model.Member;
 
-import jakarta.servlet.http.HttpSession;
-
 @Service
 public interface MemberService {
 
@@ -27,7 +25,10 @@ public interface MemberService {
 	// 根據id查詢會員帳號
 	Member findById(Long id);
 
-	// 會員帳號登入
-	String login(HttpSession session, String username, String password);
+	// 登入token驗證
+	Boolean checkLogin(String token);
+	
+	// 登入驗證
+	String login(String username, String password);
 
 }

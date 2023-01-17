@@ -18,8 +18,6 @@ import com.example.iSpanHotel.Dto.MemberDto;
 import com.example.iSpanHotel.Service.MemberService;
 import com.example.iSpanHotel.model.Member;
 
-import jakarta.servlet.http.HttpSession;
-
 @RestController
 @RequestMapping("/member")
 public class MemberController {
@@ -57,8 +55,17 @@ public class MemberController {
 		return new ResponseEntity<>(member,HttpStatus.OK);
 	}
 	
+	@GetMapping("/checkLogin")
+	private Boolean checkLogin(String token) {
+		Boolean request = memberService.checkLogin(token);
+		return request;
+	}
+	
 	@PostMapping("/login")
-	private void login(HttpSession session) {
-		
+	private String login(String account, String passwd) {
+		System.out.println("有連到api");
+		String check = memberService.login(account, passwd);
+		System.out.println(check);
+		return check;
 	}
 }

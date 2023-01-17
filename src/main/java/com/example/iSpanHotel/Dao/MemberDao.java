@@ -10,4 +10,6 @@ public interface MemberDao extends JpaRepository<Member, Long>{
 	
 	Integer countByEmail(String email);
 	
+	Member findByAccount(String account);
+	
 }

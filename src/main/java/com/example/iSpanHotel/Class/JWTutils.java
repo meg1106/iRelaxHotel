@@ -52,7 +52,7 @@ public class JWTutils {
 		Key secretKey = generalKey();
 
 		JwtBuilder builder = Jwts.builder().setId(id).setSubject(subject) // 主題可以是json數據
-				.setIssuer("yen") // 簽名
+				.setIssuer("iRelaxHotel") // 簽名
 				.setIssuedAt(now) // 簽發時間
 				.signWith(secretKey, signatureAlgorithm)
 				// .signWith(signatureAlgorithm,secretKey) //(jwt 0.9.0)使用ES256演算法簽名，第二個參數為密鑰
