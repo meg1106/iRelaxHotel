@@ -1,5 +1,8 @@
 package com.example.iSpanHotel.Service.Impl;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +34,47 @@ public class RoomTypeServiceImpl implements RoomTypeService{
 			return "發生未知錯誤";
 		}
 		
+	}
+
+	@Override
+	public String delete(Long id) {
+		try {
+			roomTypeDao.deleteById(id);
+			return "刪除成功";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "發生未知錯誤";
+		}
+		
+	}
+
+	@Override
+	public String update(Long id, RoomTypeDto roomTypeDto) {
+		try {
+			RoomType roomType = new RoomType();
+			roomType.setId(id);
+			roomType.setRoomType(roomTypeDto.getRoomType());
+			roomType.setRoomPrice(roomTypeDto.getRoomPrice());
+			roomType.setRoomPerson(roomTypeDto.getRoomPerson());
+			roomType.setRoomPic(roomTypeDto.getRoomPic());
+			roomType.setContent(roomTypeDto.getContent());
+			roomTypeDao.save(roomType);
+			return "修改成功";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "發生未知錯誤";
+		}
+	}
+
+	@Override
+	public List<RoomType> findAll() {
+		List<RoomType> roomTypes = roomTypeDao.findAll();
+		return roomTypes;
+	}
+
+	@Override
+	public RoomType findById(Long id) {
+		Optional<RoomType> roomType = roomTypeDao.findById(id);
+		return roomType.get();
 	}
 }
