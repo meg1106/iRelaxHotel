@@ -92,102 +92,54 @@
                   class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns"
                 >
                   <div class="dataTable-top">
-                    <div class="dataTable-dropdown">
-                      <label
-                        ><select class="dataTable-selector">
-                          <option value="5">5</option>
-                          <option value="10" selected="">10</option>
-                          <option value="15">15</option>
-                          <option value="20">20</option>
-                          <option value="25">25</option>
-                        </select>
-                        顯示列數</label
-                      >
-                    </div>
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"></h5>
 
-                    <div class="dataTable-search">
-                      <input
-                        class="dataTable-input"
-                        placeholder="查詢帳號"
-                        type="text"
-                      />
-                      <!-- 尚無方法 -->
-                      <button class="btn btn-primary" type="submit">
-                        查詢
-                      </button>
-                    </div>
-                  </div>
-
-                  <div class="dataTable-container">
-                    <table class="table datatable dataTable-table">
-                      <thead>
-                        <tr>
-                          <th
-                            scope="col"
-                            data-sortable=""
-                            style="width: 5.6713%"
-                          >
-                            <a href="#" class="dataTable-sorter">編號</a>
-                          </th>
-                          <th
-                            scope="col"
-                            data-sortable=""
-                            style="width: 28.0093%"
-                          >
-                            <a href="#" class="dataTable-sorter">姓名</a>
-                          </th>
-                          <th
-                            scope="col"
-                            data-sortable=""
-                            style="width: 37.7315%"
-                          >
-                            <a href="#" class="dataTable-sorter">帳號</a>
-                          </th>
-                          <th
-                            scope="col"
-                            data-sortable=""
-                            style="width: 30.25926%"
-                          >
-                            <a href="#" class="dataTable-sorter">操作</a>
-                          </th>
-                          <!-- <th
-                            scope="col"
-                            data-sortable=""
-                            style="width: 19.3287%"
-                          >
-                            <a href="#" class="dataTable-sorter">Start Date</a>
-                          </th> -->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>張美美</td>
-                          <td>admin</td>
-                          <td>
-                            <button
-                              type="button"
-                              class="btn btn-secondary"
-                              style="background-color: chocolate"
+                        <!-- Vertical Form -->
+                        <form class="row g-3">
+                          <div class="col-12">
+                            <label for="inputNanme4" class="form-label"
+                              >姓名</label
                             >
-                              修改
-                            </button>
-
-                            <button
-                              type="button"
-                              class="btn btn-secondary"
-                              style="background-color: grey"
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="inputNanme4"
+                            />
+                          </div>
+                          <div class="col-12">
+                            <label for="inputaccount" class="form-label"
+                              >帳號</label
                             >
-                              刪除
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="inputaccount"
+                            />
+                          </div>
+                          <div class="col-12">
+                            <label for="inputPassword4" class="form-label"
+                              >密碼</label
+                            >
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="inputPassword4"
+                            />
+                          </div>
+                          <div class="col-12"></div>
+                          <div class="text-center">
+                            <button type="submit" class="btn btn-primary">
+                              新增
                             </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="dataTable-bottom">
-                    <div class="dataTable-info">
-                      <!-- Showing 1 to 5 of 5 entries -->
+                            <button type="reset" class="btn btn-secondary">
+                              取消
+                            </button>
+                          </div>
+                        </form>
+                        <!-- Vertical Form -->
+                      </div>
                     </div>
                     <nav class="dataTable-pagination">
                       <ul class="dataTable-pagination-list"></ul>
