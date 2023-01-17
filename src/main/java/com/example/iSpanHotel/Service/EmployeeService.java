@@ -23,7 +23,7 @@ public interface EmployeeService {
 	// 查詢所有員工帳號
 	List<Employee> findAll();
 	
-	// 根據id查詢員工
+	// 根據姓名查詢員工
 	Employee findByName(String name);
 	
 	// 員工帳號登入 

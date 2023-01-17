@@ -30,7 +30,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 				Employee employee = new Employee();
 				employee.setAccount(employeeDto.getAccount());
 				employee.setPasswd(BCrypt.hashpw(employeeDto.getPasswd(), BCrypt.gensalt()));
-				employee.setName(employeeDto.getRealName());
+				employee.setName(employeeDto.getName());
 				employeeDao.save(employee);
 				return "註冊成功";
 			} catch (Exception e) {
@@ -62,7 +62,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 			employee.setId(id);
 			employee.setAccount(employeeDto.getAccount());
 			employee.setPasswd(BCrypt.hashpw(employeeDto.getPasswd(), BCrypt.gensalt()));
-			employee.setName(employeeDto.getRealName());
+			employee.setName(employeeDto.getName());
 			employeeDao.save(employee);
 			return "修改成功";
 		} catch (Exception e) {

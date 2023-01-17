@@ -35,7 +35,7 @@ public class EmployeeController {
 	@PostMapping("/")
 	private ResponseEntity<String> create(@RequestBody EmployeeDto employeeDto) {
 		employeeService.create(employeeDto);
-		return ResponseEntity.ok("創建成功");
+		return ResponseEntity.ok("員工帳號創建成功");
 	}
 	
 	@GetMapping("/{name}")
@@ -47,13 +47,13 @@ public class EmployeeController {
 	@PutMapping("/{id}")
 	private ResponseEntity<String> update(@PathVariable Long id, @RequestBody EmployeeDto employeeDto) {
 		employeeService.update(id, employeeDto);
-		return ResponseEntity.ok("修改成功");
+		return ResponseEntity.ok("員工帳號修改成功");
 	}
 	
 	@DeleteMapping("/{id}")
 	private ResponseEntity<String> delete(@PathVariable Long id) {
 		employeeService.delete(id);
-		return ResponseEntity.ok("刪除成功");
+		return ResponseEntity.ok("員工帳號刪除成功");
 	}
 	
 	@PostMapping("/login")

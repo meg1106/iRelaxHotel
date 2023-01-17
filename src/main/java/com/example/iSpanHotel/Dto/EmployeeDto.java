@@ -4,7 +4,7 @@ public class EmployeeDto {
 	private Long id;
 	private String account;
 	private String passwd;
-	private String realName;
+	private String name;
 	private Short permissions;
 	
 	public Long getId() {
@@ -25,11 +25,11 @@ public class EmployeeDto {
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
-	public String getRealName() {
-		return realName;
+	public String getName() {
+		return name;
 	}
-	public void setRealName(String realName) {
-		this.realName = realName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public Short getPermissions() {
@@ -40,7 +40,7 @@ public class EmployeeDto {
 	}
 	@Override
 	public String toString() {
-		return "EmployeeDto [id=" + id + ", account=" + account + ", passwd=" + passwd + ", realName=" + realName
+		return "EmployeeDto [id=" + id + ", account=" + account + ", passwd=" + passwd + ", realName=" + name
 				+ ", permissions=" + permissions + "]";
 	}
 
