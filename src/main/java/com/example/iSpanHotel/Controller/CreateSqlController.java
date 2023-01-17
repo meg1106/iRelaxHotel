@@ -8,17 +8,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.iSpanHotel.Class.BCrypt;
+import com.example.iSpanHotel.Class.JWTutils;
+import com.example.iSpanHotel.Class.Weather;
 import com.example.iSpanHotel.Dao.HotelNewsDao;
 import com.example.iSpanHotel.Dao.MemberDao;
 import com.example.iSpanHotel.Dao.PermissionsDao;
 import com.example.iSpanHotel.Dao.RoomDao;
 import com.example.iSpanHotel.Dao.RoomTypeDao;
-import com.example.iSpanHotel.api.BCrypt;
 import com.example.iSpanHotel.model.HotelNews;
 import com.example.iSpanHotel.model.Member;
 import com.example.iSpanHotel.model.Permissions;
 import com.example.iSpanHotel.model.Room;
 import com.example.iSpanHotel.model.RoomType;
+
+import io.jsonwebtoken.Claims;
 
 @RestController
 @RequestMapping("/createSql")
@@ -449,5 +453,25 @@ public class CreateSqlController {
 			}
 		}
 		
+	}
+
+	@PostMapping("/testJWT")
+	private void testJWT() {
+		// 生成
+		String token = JWTutils.creatJWT("測試", null);
+		System.out.println("生成token=:" + token);
+		// 解析
+		try {
+			Claims claims = JWTutils.parseJWT(token);
+			System.out.println("解析成功" + claims.getSubject());
+		} catch (Exception exception) {
+			System.out.println("解析失敗:");
+			exception.printStackTrace();
+		}
+	}
+	
+	@PostMapping("/weather")
+	private void weather() {
+		Weather.getWeather();
 	}
 }
