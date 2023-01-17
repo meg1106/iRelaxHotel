@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.iSpanHotel.Class.BCrypt;
 import com.example.iSpanHotel.Dao.MemberDao;
 import com.example.iSpanHotel.Dto.MemberDto;
 import com.example.iSpanHotel.Service.MemberService;
@@ -30,7 +31,7 @@ public class MemberServiceImpl implements MemberService {
 				try {
 					Member member = new Member();
 					member.setAccount(memberDto.getAccount());
-					member.setPasswd(memberDto.getPasswd());
+					member.setPasswd(BCrypt.hashpw(memberDto.getPasswd(), BCrypt.gensalt()));
 					member.setRealName(memberDto.getRealName());
 					member.setEmail(memberDto.getEmail());
 					member.setTel(memberDto.getTel());
@@ -65,7 +66,7 @@ public class MemberServiceImpl implements MemberService {
 			Member member = new Member();
 			member.setId(id);
 			member.setAccount(memberDto.getAccount());
-			member.setPasswd(memberDto.getPasswd());
+			member.setPasswd(BCrypt.hashpw(memberDto.getPasswd(), BCrypt.gensalt()));
 			member.setRealName(memberDto.getRealName());
 			member.setEmail(memberDto.getEmail());
 			member.setTel(memberDto.getTel());
