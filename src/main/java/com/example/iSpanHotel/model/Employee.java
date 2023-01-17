@@ -21,9 +21,9 @@ public class Employee {
 	@Column(name = "passwd", nullable = false)
 	private String passwd;
 	
-	@Column(name = "realname", nullable = false)
-	private String realName;
-
+	@Column(name = "name", nullable = false)
+	private String name;
+	
 	public Long getId() {
 		return id;
 	}
@@ -48,12 +48,12 @@ public class Employee {
 		this.passwd = passwd;
 	}
 
-	public String getRealName() {
-		return realName;
+	public String getName() {
+		return name;
 	}
 
-	public void setRealName(String realName) {
-		this.realName = realName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

@@ -2,15 +2,16 @@ package com.example.iSpanHotel.Service.Impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.iSpanHotel.Class.BCrypt;
 import com.example.iSpanHotel.Dao.EmployeeDao;
 import com.example.iSpanHotel.Dto.EmployeeDto;
 import com.example.iSpanHotel.Service.EmployeeService;
 import com.example.iSpanHotel.model.Employee;
-
 import jakarta.servlet.http.HttpSession;
 
 
@@ -28,8 +29,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 			try {
 				Employee employee = new Employee();
 				employee.setAccount(employeeDto.getAccount());
-				employee.setPasswd(employeeDto.getPasswd());
-				employee.setRealName(employeeDto.getRealName());
+				employee.setPasswd(BCrypt.hashpw(employeeDto.getPasswd(), BCrypt.gensalt()));
+				employee.setName(employeeDto.getRealName());
 				employeeDao.save(employee);
 				return "註冊成功";
 			} catch (Exception e) {
@@ -43,9 +44,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public String delete(EmployeeDto employeeDto) {
+	public String delete(Long id) {
 		try {
-			employeeDao.deleteById(employeeDto.getId());
+			employeeDao.deleteById(id);
 			return "帳號刪除成功";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -55,13 +56,13 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public String update(EmployeeDto employeeDto) {
+	public String update(Long id, EmployeeDto employeeDto) {
 		try {
 			Employee employee = new Employee();
-			employee.setId(employeeDto.getId());
+			employee.setId(id);
 			employee.setAccount(employeeDto.getAccount());
-			employee.setPasswd(employeeDto.getPasswd());
-			employee.setRealName(employeeDto.getRealName());
+			employee.setPasswd(BCrypt.hashpw(employeeDto.getPasswd(), BCrypt.gensalt()));
+			employee.setName(employeeDto.getRealName());
 			employeeDao.save(employee);
 			return "修改成功";
 		} catch (Exception e) {
@@ -71,17 +72,25 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public String findAll(EmployeeDto employeeDto) {
+	public List<Employee> findAll() {
 		// TODO Auto-generated method stub
 		List<Employee> employees = new ArrayList<>();
-		employeeDao.findAll();
-		return null;
+		employees = employeeDao.findAll();
+		return employees;
 	}
-
+	
+	@Override
+	public Employee findByName(String name) {
+		Optional<Employee> employee = employeeDao.findByName(name);
+		return employee.get();
+	}
+	
 	@Override
 	public String login(HttpSession session, String username, String password) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }
