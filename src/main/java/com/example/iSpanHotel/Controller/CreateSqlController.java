@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.iSpanHotel.Class.BCrypt;
 import com.example.iSpanHotel.Class.JWTutils;
 import com.example.iSpanHotel.Class.Weather;
+import com.example.iSpanHotel.Dao.EmployeeDao;
 import com.example.iSpanHotel.Dao.HotelNewsDao;
 import com.example.iSpanHotel.Dao.MemberDao;
 import com.example.iSpanHotel.Dao.PermissionsDao;
 import com.example.iSpanHotel.Dao.RoomDao;
 import com.example.iSpanHotel.Dao.RoomTypeDao;
+import com.example.iSpanHotel.model.Employee;
 import com.example.iSpanHotel.model.HotelNews;
 import com.example.iSpanHotel.model.Member;
 import com.example.iSpanHotel.model.Permissions;
@@ -48,12 +50,14 @@ public class CreateSqlController {
 	private HotelNewsDao hotelNewsDao;
 	@Autowired
 	private RoomDao roomDao;
+	@Autowired
+	private EmployeeDao employeeDao;
 	
 	@PostMapping("/member")
 	private void member() {
 		Member member1 = new Member();
 		member1.setAccount("Twithe");
-		member1.setPasswd(BCrypt.hashpw("Eibaiyexoh9I", BCrypt.gensalt()) );
+		member1.setPasswd(BCrypt.hashpw("Eibaiyexoh9I", BCrypt.gensalt()));
 		member1.setRealName("周杰倫");
 		member1.setEmail("KarenRJennings@dayrep.com");
 		member1.setTel("0962275261");
@@ -473,5 +477,38 @@ public class CreateSqlController {
 	@PostMapping("/weather")
 	private void weather() {
 		Weather.getWeather();
+	}
+	
+	@PostMapping("/employee")
+	private void employee() {
+		Employee employee1 = new Employee();
+		employee1.setAccount("ispan001");
+		employee1.setPasswd(BCrypt.hashpw("ispan001", BCrypt.gensalt()));
+		employee1.setName("熊仔");
+		employeeDao.save(employee1);
+		
+		Employee employee2 = new Employee();
+		employee2.setAccount("ispan002");
+		employee2.setPasswd(BCrypt.hashpw("ispan002", BCrypt.gensalt()));
+		employee2.setName("瘦子");
+		employeeDao.save(employee2);
+		
+		Employee employee3 = new Employee();
+		employee3.setAccount("ispan003");
+		employee3.setPasswd(BCrypt.hashpw("ispan003", BCrypt.gensalt()));
+		employee3.setName("小春");
+		employeeDao.save(employee3);
+		
+		Employee employee4 = new Employee();
+		employee4.setAccount("ispan004");
+		employee4.setPasswd(BCrypt.hashpw("ispan004", BCrypt.gensalt()));
+		employee4.setName("熱狗");
+		employeeDao.save(employee4);
+		
+		Employee employee5 = new Employee();
+		employee5.setAccount("ispan005");
+		employee5.setPasswd(BCrypt.hashpw("ispan005", BCrypt.gensalt()));
+		employee5.setName("張震嶽");
+		employeeDao.save(employee5);
 	}
 }
