@@ -8,4 +8,6 @@ public interface MemberDao extends JpaRepository<Member, Long>{
 	
 	Integer countByAccount(String account);
 	
+	Integer countByEmail(String email);
+	
 }

@@ -2,6 +2,7 @@ package com.example.iSpanHotel.Service.Impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.example.iSpanHotel.Dao.MemberDao;
 import com.example.iSpanHotel.Dto.MemberDto;
 import com.example.iSpanHotel.Service.MemberService;
-import com.example.iSpanHotel.model.Employee;
 import com.example.iSpanHotel.model.Member;
 
 import jakarta.servlet.http.HttpSession;
@@ -23,21 +23,25 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String create(MemberDto memberDto) {
 		int checkAccount = memberDao.countByAccount(memberDto.getAccount());
+		int checkEmail = memberDao.countByEmail(memberDto.getEmail());
 
 		if (checkAccount == 0) {
-			try {
-				Member member = new Member();
-				member.setAccount(memberDto.getAccount());
-				member.setPasswd(memberDto.getPasswd());
-				member.setRealName(memberDto.getRealName());
-				member.setEmail(memberDto.getEmail());
-				member.setTel(memberDto.getTel());
-				memberDao.save(member);
-				return "註冊成功";
-			} catch (Exception e) {
-				e.printStackTrace();
-//				throw new RuntimeException(e.getMessage());
-				return "發生未知的錯誤";
+			if (checkEmail == 0) {
+				try {
+					Member member = new Member();
+					member.setAccount(memberDto.getAccount());
+					member.setPasswd(memberDto.getPasswd());
+					member.setRealName(memberDto.getRealName());
+					member.setEmail(memberDto.getEmail());
+					member.setTel(memberDto.getTel());
+					memberDao.save(member);
+					return "註冊成功";
+				} catch (Exception e) {
+					e.printStackTrace();
+					return "發生未知的錯誤";
+				}
+			}else {
+				return "此信箱已有人使用";
 			}
 		} else {
 			return "此帳號已有人使用";
@@ -45,22 +49,21 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String delete(MemberDto memberDto) {
+	public String delete(Long id) {
 		try {
-			memberDao.deleteById(memberDto.getId());
-			return "帳號刪除成功";
+			memberDao.deleteById(id);
+			return "刪除成功";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "發生未知的錯誤";
-//			throw new RuntimeException(e.getMessage());
 		}
 	}
 
 	@Override
-	public String update(MemberDto memberDto) {
+	public String update(Long id, MemberDto memberDto) {
 		try {
 			Member member = new Member();
-			member.setId(memberDto.getId());
+			member.setId(id);
 			member.setAccount(memberDto.getAccount());
 			member.setPasswd(memberDto.getPasswd());
 			member.setRealName(memberDto.getRealName());
@@ -75,10 +78,16 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String findAll(MemberDto memberDto) {
-		List<Employee> members = new ArrayList<>();
-		memberDao.findAll();
-		return null;
+	public List<Member> findAll() {
+		List<Member> members = new ArrayList<>();
+		members = memberDao.findAll();
+		return members;
+	}
+	
+	@Override
+	public Member findById(Long id) {
+		Optional<Member> member = memberDao.findById(id);
+		return member.get();
 	}
 
 	@Override
@@ -86,5 +95,5 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 }
