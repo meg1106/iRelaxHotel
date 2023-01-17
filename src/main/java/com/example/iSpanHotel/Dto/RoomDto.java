@@ -1,14 +1,12 @@
 package com.example.iSpanHotel.Dto;
 
-import com.example.iSpanHotel.model.RoomType;
-
 public class RoomDto {
 	private Long id;
 	private String roomNum;
 	private Integer roomFloor;
 	private Short roomStatus;
 	private String note;
-	private RoomType roomType;
+	private Long roomType;
 	public Long getId() {
 		return id;
 	}
@@ -39,16 +37,11 @@ public class RoomDto {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	public RoomType getRoomType() {
+	public Long getRoomType() {
 		return roomType;
 	}
-	public void setRoomType(RoomType roomType) {
-		this.roomType = roomType;
-	}
-	@Override
-	public String toString() {
-		return "RoomDto [id=" + id + ", roomNum=" + roomNum + ", roomFloor=" + roomFloor + ", roomStatus=" + roomStatus
-				+ ", note=" + note + ", roomType=" + roomType + "]";
+	public void setRoomType(Long id) {
+		this.roomType = id;
 	}
 	
 }
