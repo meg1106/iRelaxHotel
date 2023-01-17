@@ -8,12 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Class.BCrypt;
+import com.example.iSpanHotel.Class.JWTutils;
 import com.example.iSpanHotel.Dao.MemberDao;
 import com.example.iSpanHotel.Dto.MemberDto;
 import com.example.iSpanHotel.Service.MemberService;
 import com.example.iSpanHotel.model.Member;
 
-import jakarta.servlet.http.HttpSession;
+import io.jsonwebtoken.Claims;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -92,9 +93,37 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String login(HttpSession session, String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean checkLogin(String token) {
+		// 解析JWT
+		try {
+			Claims claims = JWTutils.parseJWT(token);
+			System.out.println("解析成功" + claims.getSubject());
+			return true;
+		} catch (Exception exception) {
+			System.out.println("解析失敗:");
+			exception.printStackTrace();
+			return false;
+		}
 	}
-	
+
+	@Override
+	public String login(String account, String password) {
+		if(memberDao.findByAccount(account) != null) {
+			Member member = memberDao.findByAccount(account);
+			String pswd = member.getPasswd();
+			if (BCrypt.checkpw(password,pswd)) {
+				// 生成JWT
+				String token = JWTutils.creatJWT(member.getId().toString(),member.toString(), null);
+				System.out.println("生成token=:" + token);
+				return token;
+			}else {
+				System.out.println("找不到密碼");
+				return "帳號或密碼錯誤";
+			}
+		}else {
+			System.out.println("找不到帳號");
+			return "帳號或密碼錯誤";
+		}	
+	}
+
 }

@@ -79,4 +79,11 @@ public class Member {
 		this.tel = tel;
 	}
 
+	@Override
+	public String toString() {
+		return "{id=" + id + ", account=" + account + ", realName=" + realName + ", email=" + email + ", tel="
+				+ tel + "}";
+	}
+
+
 }
