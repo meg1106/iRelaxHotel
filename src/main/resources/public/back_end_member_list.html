@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script id="youtube-hd-fjdmkanbdloodhegphphhklnjfngoffa">
+    var ythdlog = () => {};
+    var ythderror = () => {};
+  </script>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>iRelaxHotel 後台管理系統 - 會員管理</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet" />
+    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet" />
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <style shopback-extension-v7-2-1="" data-styled-version="4.2.0"></style>
+
+    <!-- 靜態html導入：先加入jquery再script 靜態網頁 -->
+    <!-- javascripts -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- 頂端欄 -->
+    <script type="text/javascript">
+      $.get("back_end_header.html", function (data) {
+        $("#header").html(data);
+      });
+    </script>
+
+    <!-- 側邊欄 -->
+    <script type="text/javascript">
+      $.get("back_end_aside.html", function (data) {
+        $("#aside").html(data);
+      });
+    </script>
+
+    <!-- 底欄 -->
+    <script type="text/javascript">
+      $.get("back_end_footer.html", function (data) {
+        $("#footer").html(data);
+      });
+    </script>
+  </head>
+  <!-- ======= Header ======= -->
+  <div id="header"></div>
+  <!-- End Header -->
+  <body>
+    <!-- ======= Sidebar ======= -->
+    <div id="aside"></div>
+    <!-- End Sidebar-->
+    <main id="main" class="main">
+      <div class="pagetitle">
+        <h1>會員管理</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="back_end_index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item">會員管理</li>
+            <!-- <li class="breadcrumb-item active">Data</li> -->
+          </ol>
+        </nav>
+      </div>
+      <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p></p>
+                <div
+                  class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns"
+                >
+                  <div class="dataTable-top">
+                    <div class="dataTable-dropdown">
+                      <label
+                        ><select class="dataTable-selector">
+                          <option value="5">5</option>
+                          <option value="10" selected="">10</option>
+                          <option value="15">15</option>
+                          <option value="20">20</option>
+                          <option value="25">25</option>
+                        </select>
+                        顯示列數</label
+                      >
+                    </div>
+                    <div class="dataTable-search">
+                      <input
+                        class="dataTable-input"
+                        placeholder="Search..."
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="dataTable-container">
+                    <table class="table datatable dataTable-table">
+                      <thead>
+                        <tr>
+                          <th
+                            scope="col"
+                            data-sortable=""
+                            style="width: 5.6713%"
+                          >
+                            <a href="#" class="dataTable-sorter">編號</a>
+                          </th>
+                          <th
+                            scope="col"
+                            data-sortable=""
+                            style="width: 15.0093%"
+                          >
+                            <a href="#" class="dataTable-sorter">姓名</a>
+                          </th>
+                          <th
+                            scope="col"
+                            data-sortable=""
+                            style="width: 20.7315%"
+                          >
+                            <a href="#" class="dataTable-sorter">帳號</a>
+                          </th>
+                          <th
+                            scope="col"
+                            data-sortable=""
+                            style="width: 20.3287%"
+                          >
+                            <a href="#" class="dataTable-sorter">信箱</a>
+                          </th>
+                          <th
+                            scope="col"
+                            data-sortable=""
+                            style="width: 19.3287%"
+                          >
+                            <a href="#" class="dataTable-sorter">電話</a>
+                          </th>
+                          <th
+                            scope="col"
+                            data-sortable=""
+                            style="width: 30.25926%"
+                          >
+                            <a href="#" class="dataTable-sorter">操作</a>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>王小明</td>
+                          <td>user</td>
+                          <td>user@gmail.com</td>
+                          <td>0912-123456</td>
+                          <td>
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              style="background-color: chocolate"
+                            >
+                              修改
+                            </button>
+
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              style="background-color: grey"
+                            >
+                              刪除
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="dataTable-bottom">
+                    <div class="dataTable-info">
+                      <!-- Showing 1 to 5 of 5 entries -->
+                    </div>
+                    <nav class="dataTable-pagination">
+                      <ul class="dataTable-pagination-list"></ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="footer" class="footer"></footer>
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="assets/vendor/echarts/echarts.min.js"></script>
+    <script src="assets/vendor/quill/quill.min.js"></script>
+    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script
+      async=""
+      src="https://www.googletagmanager.com/gtag/js?id=G-P7JSYB1CSP"
+    ></script>
+    <script>
+      if (window.self == window.top) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-P7JSYB1CSP");
+      }
+    </script>
+    <svg
+      id="SvgjsSvg1001"
+      width="2"
+      height="0"
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:svgjs="http://svgjs.dev"
+      style="
+        overflow: hidden;
+        top: -100%;
+        left: -100%;
+        position: absolute;
+        opacity: 0;
+      "
+    >
+      <defs id="SvgjsDefs1002"></defs>
+      <polyline id="SvgjsPolyline1003" points="0,0"></polyline>
+      <path id="SvgjsPath1004" d="M0 0 "></path>
+    </svg>
+    <div id="trend_notification_app" class="trend_notification_app_outer">
+      <div id="trend_notification">
+        <div id="trend_notification_con" class="clearfix"></div>
+      </div>
+    </div>
+    <div
+      id="UMS_TOOLTIP"
+      style="
+        position: absolute;
+        cursor: pointer;
+        z-index: 2147483647;
+        background: transparent;
+        top: -100000px;
+        left: -100000px;
+      "
+    ></div>
+  </body>
+  <umsdataelement
+    id="UMSSendDataEventElement"
+    data="https://github.com/fiduswriter/Simple-DataTables"
+    docguid="null"
+  ></umsdataelement>
+  <div id="tmtoolbar_manual_rating_injected" style="display: none">init</div>
+  <div
+    id="shopback-app"
+    style="z-index: 2147483647 !important; display: block !important"
+  >
+    <div id="DisableNotifier"></div>
+    <div id="PermissionNotifier"></div>
+  </div>
+</html>

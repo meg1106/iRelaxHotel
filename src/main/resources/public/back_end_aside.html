@@ -2,7 +2,7 @@
 <aside id="sidebar" class="sidebar">
   <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="/back_end-v2/index.html">
+      <a class="nav-link" href="index.html">
         <i class="bi bi-grid"></i>
         <span>首頁</span>
       </a>
@@ -14,12 +14,30 @@
         class="nav-link collapsed"
         data-bs-target="#components-nav"
         data-bs-toggle="collapse"
-        href="/back_end-v2/employee/employee.html"
+        href="#"
       >
-        <i class="bx bxs-user"></i><span>員工管理</span>
+        <i class="bx bxs-user"></i><span>員工管理</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
-      <!-- End Components Nav -->
-    </li>
+      <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="back_end_employee_list.html">
+            <i class='bx bx-spreadsheet' ></i><span>員工總覽</span>
+          </a>
+        </li>
+        <li>
+          <a href="back_end_employee_add.html">
+            <i class='bx bx-list-plus'></i><span>新增員工</span>
+          </a>
+        </li>
+        <li>
+          <a href="back_end_employee_permissions.html">
+            <i class='bx bx-lock' ></i><span>員工權限管理</span>
+          </a>
+        </li>
+      </li>
+    </ul>
+      </li><!-- End Components Nav -->
+    
 
     <li class="nav-item">
       <a
