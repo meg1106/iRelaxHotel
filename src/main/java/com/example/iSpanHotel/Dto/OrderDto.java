@@ -1,10 +1,8 @@
 package com.example.iSpanHotel.Dto;
 
-import com.example.iSpanHotel.model.Member;
-
 public class OrderDto {
 	private Long id;
-	private Member member;
+	private Long member_id;
 	private String orderDate;
 	public Long getId() {
 		return id;
@@ -12,11 +10,11 @@ public class OrderDto {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Member getMember() {
-		return member;
+	public Long getMember() {
+		return member_id;
 	}
-	public void setMember(Member member) {
-		this.member = member;
+	public void setMember(Long member_id) {
+		this.member_id = member_id;
 	}
 	public String getOrderDate() {
 		return orderDate;
@@ -26,7 +24,7 @@ public class OrderDto {
 	}
 	@Override
 	public String toString() {
-		return "OrderDto [id=" + id + ", member=" + member + ", orderDate=" + orderDate + "]";
+		return "OrderDto [id=" + id + ", member_id=" + member_id + ", orderDate=" + orderDate + "]";
 	}
 	
 }
