@@ -19,7 +19,7 @@ import com.example.iSpanHotel.Service.HotelNewsService;
 import com.example.iSpanHotel.model.HotelNews;
 
 @RestController
-@RequestMapping("/hotelnews")
+@RequestMapping("/hotelNews")
 public class HotelNewsController {
 	@Autowired
 	private HotelNewsService hotelNewsService;
