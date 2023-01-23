@@ -1,10 +1,14 @@
 package com.example.iSpanHotel.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,6 +33,9 @@ public class Member {
 	
 	@Column(name = "tel", nullable = false)
 	private String tel;
+	
+	@OneToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE}, mappedBy = "member")
+	private List<Order> orders;
 	
 	public Long getId() {
 		return id;
@@ -77,6 +84,14 @@ public class Member {
 
 	public void setTel(String tel) {
 		this.tel = tel;
+	}
+	
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 	@Override

@@ -18,13 +18,13 @@ public class Item {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-//	@ManyToOne(cascade = CascadeType.PERSIST)
-//	@JoinColumn(name = "order_id", nullable = false)
-//	private Order order;
-//	
-//	@ManyToOne(cascade = CascadeType.PERSIST)
-//	@JoinColumn(name = "room_id", nullable = false)
-//	private Room room;
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name = "order_id", nullable = false)
+	private Order order;
+	
+	@ManyToOne
+	@JoinColumn(name = "room_id", nullable = false)
+	private Room room;
 	
 	@Column(name = "checkin_date", nullable = false)
 	private String checkinDate;
@@ -33,7 +33,7 @@ public class Item {
 	private String checkoutDate;
 	
 	@Column(name = "status", nullable = false)
-	private Short status;
+	private Short status = 1;
 
 	public Long getId() {
 		return id;
@@ -43,21 +43,21 @@ public class Item {
 		this.id = id;
 	}
 
-//	public Order getOrder() {
-//		return order;
-//	}
-//
-//	public void setOrder(Order order) {
-//		this.order = order;
-//	}
-//
-//	public Room getRoom() {
-//		return room;
-//	}
-//
-//	public void setRoom(Room room) {
-//		this.room = room;
-//	}
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
 
 	public String getCheckinDate() {
 		return checkinDate;

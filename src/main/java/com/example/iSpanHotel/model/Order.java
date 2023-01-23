@@ -1,5 +1,7 @@
 package com.example.iSpanHotel.model;
 
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,12 +21,15 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name = "member_id")
 	private Member member;
 	
 	@Column(name = "order_date")
 	private String orderDate;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+	private List<Item> items;
 
 	public Long getId() {
 		return id;
@@ -48,11 +54,14 @@ public class Order {
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
-
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", member=" + member + ", orderDate=" + orderDate + "]";
+	
+	
+	public List<Item> getItems() {
+		return items;
 	}
-	
-	
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
+
 }
