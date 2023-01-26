@@ -1,0 +1,283 @@
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <a href="#" class="sidebar-brand">
+      i
+      <span>Relax Hotel</span>
+    </a>
+    <div class="sidebar-toggler not-active">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div class="sidebar-body">
+    <ul class="nav">
+      <li class="nav-item nav-category">後台</li>
+      <li class="nav-item">
+        <a href="/back_end-v6/index.html" class="nav-link">
+          <i class="link-icon" data-feather="box"></i>
+          <span class="link-title">首頁</span>
+        </a>
+      </li>
+
+      <li class="nav-item nav-category">員工</li>
+      <!-- 員工管理 -->
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          data-toggle="collapse"
+          href="#employee"
+          role="button"
+          aria-expanded="false"
+          aria-controls="employee"
+        >
+          <i class="link-icon" data-feather="users"></i>
+          <span class="link-title">員工管理</span>
+          <i class="link-arrow" data-feather="chevron-down"></i>
+        </a>
+        <div class="collapse" id="employee">
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a
+                href="/back_end-v6/pages/employee/employee_list.html"
+                class="nav-link"
+              >
+                員工總覽
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="/back_end-v6/pages/employee/employee_add.html"
+                class="nav-link"
+              >
+                新增員工
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="/back_end-v6/pages/employee/employee_per.html"
+                class="nav-link"
+              >
+                員工權限管理
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <!-- 員工管理  end-->
+
+      <li class="nav-item nav-category">會員及訂單</li>
+      <!-- 會員管理 -->
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          data-toggle="collapse"
+          href="#member"
+          role="button"
+          aria-expanded="false"
+          aria-controls="member"
+        >
+          <i class="link-icon" data-feather="feather"></i>
+          <span class="link-title">會員管理</span>
+          <i class="link-arrow" data-feather="chevron-down"></i>
+        </a>
+        <div class="collapse" id="member">
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a
+                href="/back_end-v6/pages/member/member_list.html"
+                class="nav-link"
+              >
+                會員總覽
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <!-- 會員管理 end -->
+
+      <!-- 訂單管理 -->
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          data-toggle="collapse"
+          href="#order"
+          role="button"
+          aria-expanded="false"
+          aria-controls="order"
+        >
+          <i class="link-icon" data-feather="file-text"></i>
+          <span class="link-title">訂單管理</span>
+          <i class="link-arrow" data-feather="chevron-down"></i>
+        </a>
+        <div class="collapse" id="order">
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a
+                href="/back_end-v6/pages/order/order_list.html"
+                class="nav-link"
+              >
+                訂單總覽
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <!-- 訂單管理 end -->
+
+      <li class="nav-item nav-category">房型及房務</li>
+      <!-- 房型管理 -->
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          data-toggle="collapse"
+          href="#roomtype"
+          role="button"
+          aria-expanded="false"
+          aria-controls="roomtype"
+        >
+          <i class="link-icon" data-feather="hard-drive"></i>
+          <span class="link-title">房型管理</span>
+          <i class="link-arrow" data-feather="chevron-down"></i>
+        </a>
+        <div class="collapse" id="roomtype">
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a
+                href="/back_end-v6/pages/roomtype/roomtype_list.html"
+                class="nav-link"
+              >
+                房型總覽
+              </a>
+            </li>
+          </ul>
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a
+                href="/back_end-v6/pages/roomtype/roomtype_add.html"
+                class="nav-link"
+              >
+                新增房型
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <!-- 房型管理 end -->
+
+      <!-- 房務管理 -->
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          data-toggle="collapse"
+          href="#room"
+          role="button"
+          aria-expanded="false"
+          aria-controls="room"
+        >
+          <i class="link-icon" data-feather="folder-minus"></i>
+          <span class="link-title">房務管理</span>
+          <i class="link-arrow" data-feather="chevron-down"></i>
+        </a>
+        <div class="collapse" id="room">
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a href="/back_end-v6/pages/room/room_list.html" class="nav-link">
+                房務總覽
+              </a>
+            </li>
+          </ul>
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a href="/back_end-v6/pages/room/room_add.html" class="nav-link">
+                新增房務
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <!-- 房務管理 end -->
+
+      <li class="nav-item nav-category">最新消息與活動</li>
+      <!-- 最新消息與活動管理 -->
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          data-toggle="collapse"
+          href="#news"
+          role="button"
+          aria-expanded="false"
+          aria-controls="news"
+        >
+          <i class="link-icon" data-feather="message-square"></i>
+          <span class="link-title">最新消息與活動管理</span>
+          <i class="link-arrow" data-feather="chevron-down"></i>
+        </a>
+        <div class="collapse" id="news">
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a href="/back_end-v6/pages/news/news_list.html" class="nav-link">
+                消息與活動總覽
+              </a>
+            </li>
+          </ul>
+          <ul class="nav sub-menu">
+            <li class="nav-item">
+              <a href="/back_end-v6/pages/news/news_add.html" class="nav-link">
+                新增消息與活動
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <!-- 最新消息與活動管理 end -->
+
+      <li class="nav-item nav-category">其他</li>
+    </ul>
+  </div>
+</nav>
+<!-- <nav class="settings-sidebar">
+  <div class="sidebar-body">
+    <a href="#" class="settings-sidebar-toggler">
+      <i data-feather="settings"></i>
+    </a>
+    <h6 class="text-muted">主題顏色:</h6>
+    <div class="form-group border-bottom">
+      <div class="form-check form-check-inline">
+        <label class="form-check-label">
+          <input
+            type="radio"
+            class="form-check-input"
+            name="sidebarThemeSettings"
+            id="sidebarLight"
+            value="sidebar-light"
+            checked
+          />
+          Light
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label">
+          <input
+            type="radio"
+            class="form-check-input"
+            name="sidebarThemeSettings"
+            id="sidebarDark"
+            value="sidebar-dark"
+          />
+          Dark
+        </label>
+      </div>
+    </div>
+    <div class="theme-wrapper">
+      <h6 class="text-muted mb-2">Light Theme:</h6>
+      <a class="theme-item active" href="../demo_1/dashboard-one.html">
+        <img src="../assets/images/screenshots/light.jpg" alt="light theme" />
+      </a>
+      <h6 class="text-muted mb-2">Dark Theme:</h6>
+      <a class="theme-item" href="../demo_2/dashboard-one.html">
+        <img src="../assets/images/screenshots/dark.jpg" alt="light theme" />
+      </a>
+    </div>
+  </div>
+</nav> -->
