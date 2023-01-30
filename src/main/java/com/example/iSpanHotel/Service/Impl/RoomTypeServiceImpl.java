@@ -75,6 +75,7 @@ public class RoomTypeServiceImpl implements RoomTypeService{
 	@Override
 	public RoomType findById(Long id) {
 		Optional<RoomType> roomType = roomTypeDao.findById(id);
-		return roomType.get();
+		RoomType roomType2 = roomType.get();
+		return roomType2;
 	}
 }

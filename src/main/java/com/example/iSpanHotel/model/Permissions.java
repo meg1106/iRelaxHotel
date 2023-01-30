@@ -2,6 +2,7 @@ package com.example.iSpanHotel.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,7 +25,7 @@ public class Permissions {
 	@Column(name = "note")
 	private String note;
 	
-	@ManyToMany(mappedBy = "permissions")
+	@ManyToMany(mappedBy = "permissions", cascade = CascadeType.PERSIST)
 	List<Employee> employees;
 
 	public Long getId() {
@@ -49,6 +50,19 @@ public class Permissions {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
+
+	@Override
+	public String toString() {
+		return "Permissions [id=" + id + ", permission=" + permission + ", note=" + note + "]";
 	}
 	
 }

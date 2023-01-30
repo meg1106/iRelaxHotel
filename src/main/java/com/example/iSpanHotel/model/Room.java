@@ -2,6 +2,8 @@ package com.example.iSpanHotel.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,6 +35,7 @@ public class Room {
 	@Column(name = "note")
 	private String note;
 	
+	@JsonIgnoreProperties({"rooms"})
 	@ManyToOne
 	@JoinColumn(name = "roomtype_id", nullable = false)
 	private RoomType roomType;

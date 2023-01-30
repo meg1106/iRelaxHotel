@@ -2,6 +2,8 @@ package com.example.iSpanHotel.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,6 +36,7 @@ public class RoomType {
 	@Column(name = "content")
 	private String content;
 	
+	@JsonIgnoreProperties({"roomType"})
 	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "roomType")
 	private List<Room> rooms;
 
@@ -83,6 +86,14 @@ public class RoomType {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public List<Room> getRooms() {
+		return rooms;
+	}
+
+	public void setRooms(List<Room> rooms) {
+		this.rooms = rooms;
 	}
 
 }

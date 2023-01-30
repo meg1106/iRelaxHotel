@@ -73,7 +73,7 @@
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.11.2</version>
 		</dependency>
-<<<<<<< Updated upstream
+
 		<!--mail-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -85,8 +85,6 @@
 			<version>2.0.1</version>
 		</dependency>
 		
-=======
-		
 		<!--lombok-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -94,7 +92,7 @@
 			<scope>provided</scope>
 		</dependency>
 
->>>>>>> Stashed changes
+
 	</dependencies>
 
 	<build>

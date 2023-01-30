@@ -2,9 +2,12 @@ package com.example.iSpanHotel.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,12 +33,13 @@ public class Employee {
 	@Column(name = "name", nullable = false)
 	private String name;
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JsonIgnoreProperties({"employees"})
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
 	@JoinTable(name = "employees_permission",
 		joinColumns = {
-				@JoinColumn(name = "permission_id", nullable = false)},
+				@JoinColumn(name = "employee_id", nullable = false, referencedColumnName = "id")},
 		inverseJoinColumns = {
-				@JoinColumn(name = "employee_id", nullable = false)}
+				@JoinColumn(name = "permission_id", nullable = false, referencedColumnName = "id")}
 			)
 	List<Permissions> permissions;
 	
@@ -69,6 +73,14 @@ public class Employee {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Permissions> getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(List<Permissions> permissions) {
+		this.permissions = permissions;
 	}
 	
 }

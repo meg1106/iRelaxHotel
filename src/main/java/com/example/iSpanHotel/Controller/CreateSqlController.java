@@ -1,7 +1,9 @@
 package com.example.iSpanHotel.Controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -482,33 +484,58 @@ public class CreateSqlController {
 	@PostMapping("/employee")
 	private void employee() {
 		Employee employee1 = new Employee();
+
+		Set<Long> id1 = new HashSet<>();
+		id1.add((long)3);
+		id1.add((long)4);
+		Iterable<Long> ids1 = (Iterable<Long>)id1;
+
 		employee1.setAccount("ispan001");
 		employee1.setPasswd(BCrypt.hashpw("ispan001", BCrypt.gensalt()));
 		employee1.setName("熊仔");
+		employee1.setPermissions(permissionsDao.findAllById(ids1));
 		employeeDao.save(employee1);
 		
 		Employee employee2 = new Employee();
+		Set<Long> id2 = new HashSet<>();
+		id2.add((long)2);
+		id2.add((long)3);
+		Iterable<Long> ids2 = (Iterable<Long>)id2;
 		employee2.setAccount("ispan002");
 		employee2.setPasswd(BCrypt.hashpw("ispan002", BCrypt.gensalt()));
 		employee2.setName("瘦子");
+		employee2.setPermissions(permissionsDao.findAllById(ids2));
 		employeeDao.save(employee2);
 		
 		Employee employee3 = new Employee();
+		Set<Long> id3 = new HashSet<>();
+		id3.add((long)5);
+		Iterable<Long> ids3 = (Iterable<Long>)id3;
 		employee3.setAccount("ispan003");
 		employee3.setPasswd(BCrypt.hashpw("ispan003", BCrypt.gensalt()));
 		employee3.setName("小春");
+		employee3.setPermissions(permissionsDao.findAllById(ids3));
 		employeeDao.save(employee3);
 		
 		Employee employee4 = new Employee();
+		Set<Long> id4 = new HashSet<>();
+		id4.add((long)6);
+		id4.add((long)7);
+		Iterable<Long> ids4 = (Iterable<Long>)id4;
 		employee4.setAccount("ispan004");
 		employee4.setPasswd(BCrypt.hashpw("ispan004", BCrypt.gensalt()));
 		employee4.setName("熱狗");
+		employee4.setPermissions(permissionsDao.findAllById(ids4));
 		employeeDao.save(employee4);
 		
 		Employee employee5 = new Employee();
+		Set<Long> id5 = new HashSet<>();
+		id5.add((long)1);
+		Iterable<Long> ids5 = (Iterable<Long>)id5;
 		employee5.setAccount("ispan005");
 		employee5.setPasswd(BCrypt.hashpw("ispan005", BCrypt.gensalt()));
 		employee5.setName("張震嶽");
+		employee5.setPermissions(permissionsDao.findAllById(ids5));
 		employeeDao.save(employee5);
 	}
 }
