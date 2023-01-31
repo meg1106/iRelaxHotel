@@ -40,6 +40,7 @@ public class Room {
 	@JoinColumn(name = "roomtype_id", nullable = false)
 	private RoomType roomType;
 	
+	@JsonIgnoreProperties({"room"})
 	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "room")
 	private List<Item> items;
 

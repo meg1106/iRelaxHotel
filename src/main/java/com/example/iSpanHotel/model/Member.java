@@ -2,6 +2,8 @@ package com.example.iSpanHotel.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,6 +36,7 @@ public class Member {
 	@Column(name = "tel", nullable = false)
 	private String tel;
 	
+	@JsonIgnoreProperties({"member"})
 	@OneToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE}, mappedBy = "member")
 	private List<Order> orders;
 	
