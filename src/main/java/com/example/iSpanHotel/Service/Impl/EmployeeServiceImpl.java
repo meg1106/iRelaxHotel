@@ -8,11 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Class.BCrypt;
+import com.example.iSpanHotel.Class.JWTutils;
 import com.example.iSpanHotel.Dao.EmployeeDao;
 import com.example.iSpanHotel.Dto.EmployeeDto;
 import com.example.iSpanHotel.Service.EmployeeService;
 import com.example.iSpanHotel.model.Employee;
-import jakarta.servlet.http.HttpSession;
+import io.jsonwebtoken.Claims;
 
 
 @Service
@@ -84,11 +85,38 @@ public class EmployeeServiceImpl implements EmployeeService{
 		Optional<Employee> employee = employeeDao.findByName(name);
 		return employee.get();
 	}
-	
+
 	@Override
-	public String login(HttpSession session, String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean checkLogin(String token) {
+		try {
+			Claims claims = JWTutils.parseJWT(token);
+			System.out.println("解析成功" + claims.getSubject());
+			return true;
+		} catch (Exception exception) {
+			System.out.println("解析失敗:");
+			exception.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public String login(String account, String password) {
+		if(employeeDao.findByAccount(account) != null) {
+			Employee employee = employeeDao.findByAccount(account);
+			String pswd = employee.getPasswd();
+			if (BCrypt.checkpw(password,pswd)) {
+				// 生成JWT
+				String token = JWTutils.creatJWT(employee.getId().toString(),employee.toString(), null);
+				System.out.println("生成token=:" + token);
+				return token;
+			}else {
+				System.out.println("找不到密碼");
+				return "帳號或密碼錯誤";
+			}
+		}else {
+			System.out.println("找不到帳號");
+			return "帳號或密碼錯誤";
+		}
 	}
 
 	
