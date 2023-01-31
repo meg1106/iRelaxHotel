@@ -1,5 +1,7 @@
 package com.example.iSpanHotel.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,10 +20,12 @@ public class Item {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@JsonIgnoreProperties({"items"})
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name = "order_id", nullable = false)
 	private Order order;
 	
+	@JsonIgnoreProperties({"items"})
 	@ManyToOne
 	@JoinColumn(name = "room_id", nullable = false)
 	private Room room;
