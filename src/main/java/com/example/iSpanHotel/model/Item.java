@@ -71,7 +71,7 @@ public class Item {
 		return checkoutDate;
 	}
 
-	public void setChecjoutDate(String checkoutDate) {
+	public void setCheckoutDate(String checkoutDate) {
 		this.checkoutDate = checkoutDate;
 	}
 

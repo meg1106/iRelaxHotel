@@ -15,13 +15,17 @@ import com.example.iSpanHotel.Class.JWTutils;
 import com.example.iSpanHotel.Class.Weather;
 import com.example.iSpanHotel.Dao.EmployeeDao;
 import com.example.iSpanHotel.Dao.HotelNewsDao;
+import com.example.iSpanHotel.Dao.ItemDao;
 import com.example.iSpanHotel.Dao.MemberDao;
+import com.example.iSpanHotel.Dao.OrderDao;
 import com.example.iSpanHotel.Dao.PermissionsDao;
 import com.example.iSpanHotel.Dao.RoomDao;
 import com.example.iSpanHotel.Dao.RoomTypeDao;
 import com.example.iSpanHotel.model.Employee;
 import com.example.iSpanHotel.model.HotelNews;
+import com.example.iSpanHotel.model.Item;
 import com.example.iSpanHotel.model.Member;
+import com.example.iSpanHotel.model.Order;
 import com.example.iSpanHotel.model.Permissions;
 import com.example.iSpanHotel.model.Room;
 import com.example.iSpanHotel.model.RoomType;
@@ -54,6 +58,21 @@ public class CreateSqlController {
 	private RoomDao roomDao;
 	@Autowired
 	private EmployeeDao employeeDao;
+	@Autowired
+	private OrderDao orderDao;
+	@Autowired
+	private ItemDao itemDao;
+	
+	@PostMapping("/createAll")
+	private void createAll() {
+		member();
+		permissions();
+		employee();
+		roomType();
+		room();
+		hotelNews();
+		order();
+	}
 	
 	@PostMapping("/member")
 	private void member() {
@@ -461,26 +480,6 @@ public class CreateSqlController {
 		
 	}
 
-	@PostMapping("/testJWT")
-	private void testJWT() {
-		// 生成
-		String token = JWTutils.creatJWT("測試", null);
-		System.out.println("生成token=:" + token);
-		// 解析
-		try {
-			Claims claims = JWTutils.parseJWT(token);
-			System.out.println("解析成功" + claims.getSubject());
-		} catch (Exception exception) {
-			System.out.println("解析失敗:");
-			exception.printStackTrace();
-		}
-	}
-	
-	@PostMapping("/weather")
-	private void weather() {
-		Weather.getWeather();
-	}
-	
 	@PostMapping("/employee")
 	private void employee() {
 		Employee employee1 = new Employee();
@@ -538,4 +537,61 @@ public class CreateSqlController {
 		employee5.setPermissions(permissionsDao.findAllById(ids5));
 		employeeDao.save(employee5);
 	}
+	
+	@PostMapping("/order")
+	private void order() {
+		Order order1 = new Order();
+		Item item1 = new Item();
+		order1.setMember(memberDao.findById((long)1).get());
+		order1.setOrderDate("2023-01-01");
+		item1.setCheckinDate("2023-01-03");
+		item1.setCheckoutDate("2023-01-05");
+		item1.setRoom(roomDao.findById((long)10).get());
+		item1.setOrder(order1);
+		orderDao.save(order1);
+		itemDao.save(item1);
+		
+		Order order2 = new Order();
+		Item item2 = new Item();
+		order2.setMember(memberDao.findById((long)4).get());
+		order2.setOrderDate("2023-01-16");
+		item2.setCheckinDate("2023-01-20");
+		item2.setCheckoutDate("2023-01-25");
+		item2.setRoom(roomDao.findById((long)52).get());
+		item2.setOrder(order2);
+		orderDao.save(order2);
+		itemDao.save(item2);
+		
+		Order order3 = new Order();
+		Item item3 = new Item();
+		order3.setMember(memberDao.findById((long)2).get());
+		order3.setOrderDate("2023-01-31");
+		item3.setCheckinDate("2023-02-15");
+		item3.setCheckoutDate("2023-02-18");
+		item3.setRoom(roomDao.findById((long)45).get());
+		item3.setOrder(order3);
+		orderDao.save(order3);
+		itemDao.save(item3);
+	}
+	
+	@PostMapping("/testJWT")
+	private void testJWT() {
+		// 生成
+		String token = JWTutils.creatJWT("測試", null);
+		System.out.println("生成token=:" + token);
+		// 解析
+		try {
+			Claims claims = JWTutils.parseJWT(token);
+			System.out.println("解析成功" + claims.getSubject());
+		} catch (Exception exception) {
+			System.out.println("解析失敗:");
+			exception.printStackTrace();
+		}
+	}
+	
+	@PostMapping("/weather")
+	private void weather() {
+		Weather.getWeather();
+	}
+	
 }
