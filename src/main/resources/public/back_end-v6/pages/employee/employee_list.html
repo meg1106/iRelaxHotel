@@ -47,6 +47,34 @@
         $("#sidebar").html(data);
       });
     </script>
+
+    <!-- 取得後端資料 -->
+    <script>
+      function loadEmployees() {
+        $.ajax({
+          url: "/employee/",
+          method: "GET",
+        }).done(function (msg) {
+          console.log(msg);
+          msg.forEach((element) => {
+            console.log(element);
+            $("#employees").append(`
+                <tr>
+                  <td>${element.id}</td>
+                  <td>${element.name}</td>
+                  <td>${element.account}</td>
+                  <td>
+                    <button name="${element.id}" class="btn btn-success editBtn">修改</button>
+                    <button name="${element.id}" class="btn btn-secondary deleteBtn">刪除</button>
+                </td>
+              </tr>
+              `);
+          });
+        });
+      }
+
+      loadEmployees();
+    </script>
   </head>
   <body class="sidebar-dark">
     <div class="main-wrapper">
@@ -79,52 +107,53 @@
               <div class="card">
                 <div class="card-body">
                   <h6 class="card-title">員工總覽</h6>
-                  <p class="card-description"></p>
-                  <div class="table-responsive">
-                    <table id="" class="table" style="text-align: center">
-                      <thead>
-                        <tr>
-                          <th style="width: 10%">編號</th>
-                          <th style="width: 30%">姓名</th>
-                          <th style="width: 30%">帳號</th>
-                          <th style="width: 30%">操作</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>
-                            <form method="post" action="">
-                              <!-- 修改 -->
-                              <input
-                                class="btn btn-success"
-                                type="submit"
-                                value="修改"
-                                style="margin-right: 20px"
-                              />
-                              <input type="hidden" name="id" value="" />
-                              <input type="hidden" name="action" value="" />
 
-                              <!-- 刪除 -->
-                              <input
-                                class="btn btn-secondary"
-                                type="submit"
-                                value="刪除"
-                              />
-                              <input type="hidden" name="id" value="" />
-                              <input
-                                type="hidden"
-                                name="action"
-                                value="delete"
-                              />
-                            </form>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                  <p class="card-description"></p>
+                  <!-- <div class="table-responsive"> -->
+                  <table id="" class="table" style="text-align: center">
+                    <thead>
+                      <tr>
+                        <th style="width: 10%">編號</th>
+                        <th style="width: 30%">姓名</th>
+                        <th style="width: 30%">帳號</th>
+                        <th style="width: 30%">操作</th>
+                      </tr>
+                    </thead>
+                    <tbody id="employees">
+                      <!--                         <tr> -->
+                      <!--                           <td>1</td> -->
+                      <!--                           <td>System Architect</td> -->
+                      <!--                           <td>Edinburgh</td> -->
+                      <!--                           <td> -->
+                      <!--                             <form method="post" action=""> -->
+                      <!--                               修改 -->
+                      <!--                               <input -->
+                      <!--                                 class="btn btn-success" -->
+                      <!--                                 type="submit" -->
+                      <!--                                 value="修改" -->
+                      <!--                                 style="margin-right: 20px" -->
+                      <!--                               /> -->
+                      <!--                               <input type="hidden" name="id" value="" /> -->
+                      <!--                               <input type="hidden" name="action" value="" /> -->
+
+                      <!--                               刪除 -->
+                      <!--                               <input -->
+                      <!--                                 class="btn btn-secondary" -->
+                      <!--                                 type="submit" -->
+                      <!--                                 value="刪除" -->
+                      <!--                               /> -->
+                      <!--                               <input type="hidden" name="id" value="" /> -->
+                      <!--                               <input -->
+                      <!--                                 type="hidden" -->
+                      <!--                                 name="action" -->
+                      <!--                                 value="delete" -->
+                      <!--                               /> -->
+                      <!--                             </form> -->
+                      <!--                           </td> -->
+                      <!--                         </tr> -->
+                    </tbody>
+                  </table>
+                  <!-- </div> -->
                 </div>
               </div>
             </div>
@@ -147,36 +176,51 @@
     <!-- custom js for this page -->
     <!-- <script src="../../../assets/js/data-table.js"></script> -->
     <script>
-      $(function () {
-        "use strict";
-
-        $(function () {
-          $("#dataTableExample").DataTable({
-            aLengthMenu: [
-              [10, 30, 50, -1],
-              [10, 30, 50, "All"],
-            ],
-            iDisplayLength: 10,
-            language: {
-              search: "",
-            },
+      $("#employees").on("click", ".deleteBtn", function () {
+        console.log("apple", this.name);
+        $.ajax({
+          url: "/employee/" + this.name,
+          type: "DELETE",
+        })
+          .done(function () {
+            $("#employees").children().remove();
+            console.log("123");
+          })
+          .done(function () {
+            loadEmployees();
           });
-          $("#dataTableExample").each(function () {
-            var datatable = $(this);
-            // SEARCH - Add the placeholder for Search and Turn this into in-line form control
-            var search_input = datatable
-              .closest(".dataTables_wrapper")
-              .find("div[id$=_filter] input");
-            search_input.attr("placeholder", "查詢");
-            search_input.removeClass("form-control-sm");
-            // LENGTH - Inline-Form control
-            var length_sel = datatable
-              .closest(".dataTables_wrapper")
-              .find("div[id$=_length] select");
-            length_sel.removeClass("form-control-sm");
-          });
-        });
       });
+
+      // $(function () {
+      //   "use strict";
+
+      //   $(function () {
+      //     $("#employees").DataTable({
+      //       aLengthMenu: [
+      //         [5, 10, -1],
+      //         [5, 10, "All"],
+      //       ],
+      //       iDisplayLength: 10,
+      //       language: {
+      //         search: "",
+      //       },
+      //     });
+      //     $("#dataTableExample").each(function () {
+      //       var datatable = $(this);
+      //       // SEARCH - Add the placeholder for Search and Turn this into in-line form control
+      //       var search_input = datatable
+      //         .closest(".dataTables_wrapper")
+      //         .find("div[id$=_filter] input");
+      //       search_input.attr("placeholder", "查詢");
+      //       search_input.removeClass("form-control-sm");
+      //       // LENGTH - Inline-Form control
+      //       var length_sel = datatable
+      //         .closest(".dataTables_wrapper")
+      //         .find("div[id$=_length] select");
+      //       length_sel.removeClass("form-control-sm");
+      //     });
+      //   });
+      // });
     </script>
     <!-- end custom js for this page -->
   </body>

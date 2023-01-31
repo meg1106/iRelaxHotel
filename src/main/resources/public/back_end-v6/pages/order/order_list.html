@@ -47,6 +47,37 @@
         $("#sidebar").html(data);
       });
     </script>
+    
+        <!-- 取得後端資料 -->
+  <script>
+    function loadOrders() {
+      $.ajax({
+      url: "/order/",
+      method: "GET"
+    })
+      .done(function (msg) {
+        console.log(msg);
+        msg.forEach(element => {
+          console.log(element);
+          $('#orders').append(`
+                <tr>
+                  <td>${element.id}</td>
+                  
+                  <td>${element.member.account}</td>
+                  <td>${element.items[0].checkinDate}</td>
+                  <td>${element.items[0].checkoutDate}</td>
+                  <td>${element.items[0].status}</td>
+                  <td>
+                    <button name="${element.id}" class="btn btn-secondary deleteBtn">刪除</button>
+                </td>
+              </tr>
+              `);
+        });
+      });
+    }
+    
+    loadOrders();
+  </script>
   </head>
   <body class="sidebar-dark">
     <div class="main-wrapper">
@@ -84,7 +115,7 @@
                     <table id="" class="table" style="text-align: center">
                       <thead>
                         <tr>
-                          <th style="width: 5%">編號</th>
+                          
                           <th style="width: 10%">訂單編號</th>
                           <th style="width: 15%">會員帳號</th>
                           <th style="width: 15%">入住日期</th>
@@ -93,41 +124,41 @@
                           <th style="width: 20%">操作</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>Edinburgh</td>
-                          <td>Edinburgh</td>
-                          <td>Edinburgh</td>
-                          <td>
-                            <form method="post" action="">
-                              <!-- 修改 -->
-                              <input
-                                class="btn btn-success"
-                                type="submit"
-                                value="修改"
-                                style="margin-right: 20px"
-                              />
-                              <input type="hidden" name="id" value="" />
-                              <input type="hidden" name="action" value="" />
+                      <tbody id="orders">
+<!--                         <tr> -->
+<!--                           <td>1</td> -->
+<!--                           <td>System Architect</td> -->
+<!--                           <td>Edinburgh</td> -->
+<!--                           <td>Edinburgh</td> -->
+<!--                           <td>Edinburgh</td> -->
+<!--                           <td>Edinburgh</td> -->
+<!--                           <td> -->
+<!--                             <form method="post" action=""> -->
+<!--                               修改 -->
+<!--                               <input -->
+<!--                                 class="btn btn-success" -->
+<!--                                 type="submit" -->
+<!--                                 value="修改" -->
+<!--                                 style="margin-right: 20px" -->
+<!--                               /> -->
+<!--                               <input type="hidden" name="id" value="" /> -->
+<!--                               <input type="hidden" name="action" value="" /> -->
 
-                              <!-- 刪除 -->
-                              <input
-                                class="btn btn-secondary"
-                                type="submit"
-                                value="刪除"
-                              />
-                              <input type="hidden" name="id" value="" />
-                              <input
-                                type="hidden"
-                                name="action"
-                                value="delete"
-                              />
-                            </form>
-                          </td>
-                        </tr>
+<!--                               刪除 -->
+<!--                               <input -->
+<!--                                 class="btn btn-secondary" -->
+<!--                                 type="submit" -->
+<!--                                 value="刪除" -->
+<!--                               /> -->
+<!--                               <input type="hidden" name="id" value="" /> -->
+<!--                               <input -->
+<!--                                 type="hidden" -->
+<!--                                 name="action" -->
+<!--                                 value="delete" -->
+<!--                               /> -->
+<!--                             </form> -->
+<!--                           </td> -->
+<!--                         </tr> -->
                       </tbody>
                     </table>
                   </div>
@@ -153,6 +184,23 @@
     <!-- custom js for this page -->
     <!-- <script src="../../../assets/js/data-table.js"></script> -->
     <script>
+    
+    $('#orders').on('click','.deleteBtn',function () {
+        console.log('apple' ,this.name);
+        $.ajax({
+          url:"/order/"+this.name,
+          type:"DELETE"
+        })
+        .done(function () {
+          $('#orders').children().remove();
+          console.log('123');
+        })
+        .done(function () {
+          loadOrders();
+        })
+      })
+    
+    
       $(function () {
         "use strict";
 

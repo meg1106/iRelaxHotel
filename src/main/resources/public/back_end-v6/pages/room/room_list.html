@@ -47,6 +47,39 @@
         $("#sidebar").html(data);
       });
     </script>
+    
+            <!-- 取得後端資料 -->
+  <script>
+    function loadRooms() {
+      $.ajax({
+      url: "/room/",
+      method: "GET"
+    })
+      .done(function (msg) {
+        console.log(msg);
+        msg.forEach(element => {
+          console.log(element);
+          $('#rooms').append(`
+                <tr>
+                  <td>${element.id}</td>
+                  <td>${element.roomType}</td>
+                  <td>${element.roomStatus}</td>
+                  <td>${element.roomNum}</td>
+                  <td>${element.roomFloor}</td>
+                  <td>
+                 	 <button name="${element.id}" class="btn btn-success editBtn">修改</button>
+                    <button name="${element.id}" class="btn btn-secondary deleteBtn">刪除</button>
+                </td>
+              </tr>
+              `)
+        });
+      });
+    }
+    
+    loadRooms();
+  </script>
+    
+    
   </head>
   <body class="sidebar-dark">
     <div class="main-wrapper">
@@ -92,40 +125,40 @@
                           <th style="width: 20%">操作</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>Edinburgh</td>
-                          <td>Edinburgh</td>
-                          <td>
-                            <form method="post" action="">
-                              <!-- 修改 -->
-                              <input
-                                class="btn btn-success"
-                                type="submit"
-                                value="修改"
-                                style="margin-right: 20px"
-                              />
-                              <input type="hidden" name="id" value="" />
-                              <input type="hidden" name="action" value="" />
+                      <tbody id="rooms">
+<!--                         <tr> -->
+<!--                           <td>1</td> -->
+<!--                           <td>System Architect</td> -->
+<!--                           <td>Edinburgh</td> -->
+<!--                           <td>Edinburgh</td> -->
+<!--                           <td>Edinburgh</td> -->
+<!--                           <td> -->
+<!--                             <form method="post" action=""> -->
+<!--                               修改 -->
+<!--                               <input -->
+<!--                                 class="btn btn-success" -->
+<!--                                 type="submit" -->
+<!--                                 value="修改" -->
+<!--                                 style="margin-right: 20px" -->
+<!--                               /> -->
+<!--                               <input type="hidden" name="id" value="" /> -->
+<!--                               <input type="hidden" name="action" value="" /> -->
 
-                              <!-- 刪除 -->
-                              <input
-                                class="btn btn-secondary"
-                                type="submit"
-                                value="刪除"
-                              />
-                              <input type="hidden" name="id" value="" />
-                              <input
-                                type="hidden"
-                                name="action"
-                                value="delete"
-                              />
-                            </form>
-                          </td>
-                        </tr>
+<!--                               刪除 -->
+<!--                               <input -->
+<!--                                 class="btn btn-secondary" -->
+<!--                                 type="submit" -->
+<!--                                 value="刪除" -->
+<!--                               /> -->
+<!--                               <input type="hidden" name="id" value="" /> -->
+<!--                               <input -->
+<!--                                 type="hidden" -->
+<!--                                 name="action" -->
+<!--                                 value="delete" -->
+<!--                               /> -->
+<!--                             </form> -->
+<!--                           </td> -->
+<!--                         </tr> -->
                       </tbody>
                     </table>
                   </div>
@@ -151,6 +184,23 @@
     <!-- custom js for this page -->
     <!-- <script src="../../../assets/js/data-table.js"></script> -->
     <script>
+    
+    $('#rooms').on('click','.deleteBtn',function () {
+        console.log('apple' ,this.name);
+        $.ajax({
+          url:"/room/"+this.name,
+          type:"DELETE"
+        })
+        .done(function () {
+          $('#rooms').children().remove();
+          console.log('123');
+        })
+        .done(function () {
+          loadRooms();
+        })
+      })
+    
+    
       $(function () {
         "use strict";
 
