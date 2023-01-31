@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html lang="">
+
+<head>
+  <title>iRelax Hotel | 聯絡我們 </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+  <style>
+    .gender {
+      width: 100px;
+      display: inline-block;
+      padding: 0;
+      margin: 0
+    }
+  </style>
+</head>
+
+
+<body id="top">
+  <!-- ################################################################################################ -->
+  <!-- Top Background Image Wrapper -->
+  <div class="bgded overlay padtop" style="background-image:url('../images/backgrounds/01.png');">
+    <!-- ################################################################################################ -->
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left">
+        <!-- ################################################################################################ -->
+        <a href="../index.html">
+          <div style="width: 220px; height: 70px;">
+            <img src="../images/logo/logo2.png">
+          </div>
+        </a>
+        <!-- <h1><a href="../index.html" style="display:inline-block;">iRelax Hotel</a></h1> -->
+
+        <!-- ################################################################################################ -->
+      </div>
+
+      <nav id="mainav" class="fl_right">
+        <!-- ################################################################################################ -->
+        <ul class="clear">
+          <li><a href="../index.html">首頁</a></li>
+          <li><a class="drop" href="#aboutUs">關於我們</a>
+            <ul>
+              <li><a href="intro.html">簡介</a></li>
+              <li><a href="traffic.html">交通資訊</a></li>
+              <li><a href="notic.html">注意事項</a></li>
+            </ul>
+          </li>
+
+          <li><a class="drop">最新消息</a>
+            <ul>
+              <li><a href="news.html">活動情報</a></li>
+          </li>
+          <li><a href="discount.html">住房優惠</a></li>
+        </ul>
+        </li>
+
+        <li><a href="#">瀏覽房型</a></li>
+
+
+        <li><a href="facility.html">活動設施</a></li>
+        <ul>
+        </ul>
+        <li><a class="drop" href="#">當地探索</a>
+          <ul>
+            <li><a href="#">自然景點</a></li>
+            <li><a href="#">藝術文化</a></li>
+            <li><a href="#">美食購物</a></li>
+          </ul>
+        </li>
+        </li>
+
+        <li class="active"><a>聯絡我們</a></li>
+
+        </ul>
+      </nav>
+    </header>
+
+    <div style="margin-top: 10%; font-size: 250%; display: flex; justify-content: center;">
+      <span>聯絡我們</span>
+    </div>
+    <br>
+    <div id="breadcrumb" class="hoc clear"
+      style="display: flex;font-size: 150%; justify-content: space-evenly; flex-direction: row; margin: 0.5% 30% 0.5% 30%;">
+      <p><a href="#" class="active">Contact</a></p>
+    </div>
+  </div>
+
+  <div class="wrapper row3">
+    <main class="hoc container clear">
+      <!-- main body -->
+      <!-- ################################################################################################ -->
+      <div class="content" style="display: flex; flex-direction: column;">
+        <div id="comments">
+          <h2>Contact</h2>
+          <form action="要建立資料庫.php" method="post">
+            <div class="one_third first" style="display:flex;">
+              <label for="name">姓名<span>*</span></label>
+              <fieldset>
+                <div class="gender" style="display: inline; white-space: nowrap; display: flex;">
+                  <input name="sex" id="men" type="radio" value="0" checked="checked">
+                  <label for="men">先生</label>
+
+                  <input name="sex" id="women" type="radio" value="1">
+                  <label for="women">小姐</label>
+                </div>
+              </fieldset>
+            </div>
+            <input type="text" placeholder="請輸入姓名" onfocus="this.placeholder='請輸入姓名'" name="name" id="name" size="22"
+                required><br>
+            
+            <div class="one_third first" >
+              <label for="email">電子郵件<span>*</span></label>
+            </div>
+            <input type="email" placeholder="請輸入電子郵件" onfocus="this.placeholder='請輸入電子郵件'" name="email" id="email" size="22" required><br>
+
+            <div class="one_third first" >
+              <label for="tel">聯絡電話<span>*</span></label>
+            </div>
+            <input type="tel" pattern="09\d{2}-\d{6}|09\d{8}|09\d{2}-\d{3}-\d{3}" placeholder="請輸入聯絡電話"
+              onfocus="this.placeholder='請輸入聯絡電話'" name="tel" id="tel" size="22" required>
+            <span id="uidt" style="margin-left: 100px"></span>
+
+            <div class="block clear">
+              <label for="comment">內容</label>
+              <textarea placeholder="請輸入問題或內容" onfocus="this.placeholder='請輸入問題或內容'" name="comment" id="comment" cols="25" rows="10"></textarea>
+            </div>
+            <div>
+              <input type="submit" name="submit" value="提交">
+              &nbsp;
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- ################################################################################################ -->
+      <!-- / main body -->
+      <div class="clear"></div>
+    </main>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row4">
+    <footer id="footer" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <a href="../index.html">
+        <div style="width: 220px; height: 70px;">
+          <img src="../images/logo/logo2.png">
+        </div>
+      </a>
+      <br>
+      <div class="two_third first">
+        <li>
+          訂房專線 /
+          <a href="tel:+886-4-23265860">2326-5860</a>
+        </li>
+        <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
+        <li>
+          客服信箱 /
+          <a href="lakesidemystery@gmail.com ">lakesidemystery@gmail.com </a>
+        </li>
+        <br><br>
+
+        <ul class="faico clear">
+          <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+          <li><a class="faicon-line" href="#"><i class="fab fa-line"></i></a></li>
+          <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row5">
+    <div id="copyright" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
+      <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/"
+          title="Free Website Templates">OS Templates</a></p>
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+  <!-- ################################################################################################ -->
+  <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+  <!-- JAVASCRIPTS -->
+  <script src="../layout/scripts/jquery.min.js"></script>
+  <script src="../layout/scripts/jquery.backtotop.js"></script>
+  <script src="../layout/scripts/jquery.mobilemenu.js"></script>
+</body>
+
+</html>
