@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.iSpanHotel.Dto.EmailDto;
 import com.example.iSpanHotel.Service.EmailService;
-import com.example.iSpanHotel.model.EmailDetails;
 
 @RestController
 @RequestMapping("/email")
@@ -16,23 +16,23 @@ public class EmailController {
 	private EmailService emailService;
 	
 	// Sending a simple Email
-    @PostMapping("/send")
-    public String
-    sendMail(@RequestBody EmailDetails details)
-    {
-        String status
-            = emailService.sendSimpleMail(details);
- 
-        return status;
-    }
+//    @PostMapping("/send")
+//    public String
+//    sendMail(@RequestBody EmailDto emailDto)
+//    {
+//        String status
+//            = emailService.sendSimpleMail(emailDto);
+// 
+//        return status;
+//    }
  
     // Sending email with attachment
     @PostMapping("/sendWithAttachment")
     public String sendMailWithAttachment(
-        @RequestBody EmailDetails details)
+        @RequestBody EmailDto emailDto)
     {
         String status
-            = emailService.sendMailWithAttachment(details);
+            = emailService.sendMailWithAttachment(emailDto);
  
         return status;
     }

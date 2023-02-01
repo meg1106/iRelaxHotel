@@ -2,6 +2,8 @@ package com.example.iSpanHotel.Dto;
 
 public class ItemDto {
 	private Long id;
+	private Long order_id;
+	private Long room_id;
 	private String checkinDate;
 	private String checkoutDate;
 	private Short status;
@@ -29,10 +31,22 @@ public class ItemDto {
 	public void setStatus(Short status) {
 		this.status = status;
 	}
+	public Long getOrder_id() {
+		return order_id;
+	}
+	public void setOrder_id(Long order_id) {
+		this.order_id = order_id;
+	}
+	public Long getRoom_id() {
+		return room_id;
+	}
+	public void setRoom_id(Long room_id) {
+		this.room_id = room_id;
+	}
 	@Override
 	public String toString() {
-		return "ItemDto [id=" + id + ", checkinDate=" + checkinDate + ", checkoutDate=" + checkoutDate + ", status="
-				+ status + "]";
+		return "ItemDto [id=" + id + ", order_id=" + order_id + ", room_id=" + room_id + ", checkinDate=" + checkinDate
+				+ ", checkoutDate=" + checkoutDate + ", status=" + status + "]";
 	}
 	
 }

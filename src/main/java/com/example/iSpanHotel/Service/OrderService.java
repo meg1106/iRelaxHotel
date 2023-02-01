@@ -12,7 +12,7 @@ import com.example.iSpanHotel.model.Order;
 public interface OrderService {
 	
 	// 創建訂單
-	String create(OrderDto orderDto);
+	Order create(OrderDto orderDto);
 	
 	// 刪除訂單
 	String delete(Long id);
@@ -23,6 +23,9 @@ public interface OrderService {
 	// 查詢所有訂單
 	List<Order> findAll();
 	
-	// 根據會員id查詢訂單
+	// 根據訂單id查詢訂單
 	Order findById(Long id);
+	
+	// 根據會員id查詢訂單
+	Order findByMemberId(Long id);
 }
