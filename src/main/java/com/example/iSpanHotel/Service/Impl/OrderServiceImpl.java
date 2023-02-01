@@ -23,17 +23,16 @@ public class OrderServiceImpl implements OrderService{
 	private MemberDao memberDao;
 	
 	@Override
-	public String create(OrderDto orderDto) {
+	public Order create(OrderDto orderDto) {
 		try {
 			Order order = new Order();
-			order.setId(orderDto.getId());
 			order.setMember(memberDao.findById(orderDto.getMember()).get());
 			order.setOrderDate(orderDto.getOrderDate());
 			orderDao.save(order);
-			return "訂單創建成功";
+			return order;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "發生未知的錯誤";
+			return null;
 		}
 	}
 
@@ -73,6 +72,12 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public Order findById(Long id) {
 		Optional<Order> order = orderDao.findById(id);
+		return order.get();
+	}
+
+	@Override
+	public Order findByMemberId(Long id) {
+		Optional<Order> order = orderDao.findByMemberId(id);
 		return order.get();
 	}
 	

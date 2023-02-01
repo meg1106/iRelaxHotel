@@ -80,7 +80,7 @@ public class CreateSqlController {
 		member1.setAccount("Twithe");
 		member1.setPasswd(BCrypt.hashpw("Eibaiyexoh9I", BCrypt.gensalt()));
 		member1.setRealName("周杰倫");
-		member1.setEmail("KarenRJennings@dayrep.com");
+		member1.setEmail("nienfxxq@gmail.com");
 		member1.setTel("0962275261");
 		memberDao.save(member1);
 		

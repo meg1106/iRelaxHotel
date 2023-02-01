@@ -1,22 +1,21 @@
-package com.example.iSpanHotel.model;
+package com.example.iSpanHotel.Dto;
 
 import java.util.Objects;
 
-public class EmailDetails {
+public class EmailDto {
 	private String recipient;
     private String msgBody;
     private String subject;
     private String attachment;
     
-	public EmailDetails(String recipient, String msgBody, String subject, String attachment) {
-		super();
+	public EmailDto(String recipient, String msgBody, String subject, String attachment) {
 		this.recipient = recipient;
 		this.msgBody = msgBody;
 		this.subject = subject;
 		this.attachment = attachment;
 	}
 
-	public EmailDetails() {
+	public EmailDto() {
 		
 	}
 
@@ -71,7 +70,7 @@ public class EmailDetails {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		EmailDetails other = (EmailDetails) obj;
+		EmailDto other = (EmailDto) obj;
 		return Objects.equals(attachment, other.attachment) && Objects.equals(msgBody, other.msgBody)
 				&& Objects.equals(recipient, other.recipient) && Objects.equals(subject, other.subject);
 	}
