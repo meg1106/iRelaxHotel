@@ -2,6 +2,7 @@ package com.example.iSpanHotel.Service;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Dto.MemberDto;
@@ -26,7 +27,7 @@ public interface MemberService {
 	Member findById(Long id);
 
 	// 登入token驗證
-	Boolean checkLogin(String token);
+	JSONObject checkLogin(String token) throws Exception;
 	
 	// 登入驗證
 	String login(String username, String password);
