@@ -14,8 +14,8 @@ public interface MemberDao extends JpaRepository<Member, Long>{
 	Member findByAccount(String account);
 	
 	@Query("SELECT c FROM Member c WHERE c.email = ?1")
-    public Member findByEmail(String email); 
+    Member findByEmail(String email); 
     
 	@Query("SELECT c FROM Member c WHERE c.resetPasswordToken = ?1")
-    public Member findByResetPasswordToken(String token);
+    Member findByResetPasswordToken(String token);
 }
