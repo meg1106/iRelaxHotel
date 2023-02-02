@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -30,8 +31,9 @@ public class RoomType {
 	@Column(name = "roomperson", nullable = false)
 	private Integer roomPerson;
 	
-	@Column(name = "roompic")
-	private String roomPic;
+	@Lob
+	@Column(name = "roompic", columnDefinition = "LONGBLOB")
+	private byte[] roomPic;
 	
 	@Column(name = "content")
 	private String content;
@@ -72,11 +74,11 @@ public class RoomType {
 		this.roomPerson = roomPerson;
 	}
 
-	public String getRoomPic() {
+	public byte[] getRoomPic() {
 		return roomPic;
 	}
 
-	public void setRoomPic(String roomPic) {
+	public void setRoomPic(byte[] roomPic) {
 		this.roomPic = roomPic;
 	}
 

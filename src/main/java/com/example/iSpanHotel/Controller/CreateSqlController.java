@@ -1,10 +1,14 @@
 package com.example.iSpanHotel.Controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -159,10 +163,18 @@ public class CreateSqlController {
 	
 	@PostMapping("/roomType")
 	private void roomType() {
+		File file1 = new File("./roomImg/1.png");
+		InputStream inputStream1;
+		try {
+			inputStream1 = new FileInputStream(file1);
+			roomType1.setRoomPic(IOUtils.toByteArray(inputStream1));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		roomType1.setRoomType("經濟雙人房");
 		roomType1.setRoomPrice(2500);
 		roomType1.setRoomPerson(2);
-		roomType1.setRoomPic("https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+//		roomType1.setRoomPic("https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType1.setContent("房間面積為36平方米/383平方英尺。\r\n"
 				+ "\r\n"
 				+ "調高設計和超大窗戶使得房間充滿柔和的自然光線。\r\n"
@@ -171,10 +183,18 @@ public class CreateSqlController {
 		roomTypes.add(roomType1);
 		roomTypeDao.save(roomType1);
 		
+		File file2 = new File("./roomImg/2.png");
+		InputStream inputStream2;
+		try {
+			inputStream2 = new FileInputStream(file2);
+			roomType2.setRoomPic(IOUtils.toByteArray(inputStream2));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		roomType2.setRoomType("經濟四人房");
 		roomType2.setRoomPrice(4500);
 		roomType2.setRoomPerson(4);
-		roomType2.setRoomPic("https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+//		roomType2.setRoomPic("https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType2.setContent("房間面積為60平方米/646平方英尺。\r\n"
 				+ "\r\n"
 				+ "調高設計和超大窗戶使得房間充滿柔和的自然光線。\r\n"
@@ -183,10 +203,18 @@ public class CreateSqlController {
 		roomTypes.add(roomType2);
 		roomTypeDao.save(roomType2);
 		
+		File file3 = new File("./roomImg/3.png");
+		InputStream inputStream3;
+		try {
+			inputStream3 = new FileInputStream(file3);
+			roomType3.setRoomPic(IOUtils.toByteArray(inputStream3));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		roomType3.setRoomType("景觀雙人房");
 		roomType3.setRoomPrice(3000);
 		roomType3.setRoomPerson(2);
-		roomType3.setRoomPic("https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+//		roomType3.setRoomPic("https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType3.setContent("房間面積為40平方米/349平方英尺。\r\n"
 				+ "\r\n"
 				+ "可飽覽壯麗的臺北101景觀或城市風光。\r\n"
@@ -199,10 +227,18 @@ public class CreateSqlController {
 		roomTypes.add(roomType3);
 		roomTypeDao.save(roomType3);
 		
+		File file4 = new File("./roomImg/4.png");
+		InputStream inputStream4;
+		try {
+			inputStream4 = new FileInputStream(file4);
+			roomType4.setRoomPic(IOUtils.toByteArray(inputStream4));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		roomType4.setRoomType("景觀四人房");
 		roomType4.setRoomPrice(5500);
 		roomType4.setRoomPerson(4);
-		roomType4.setRoomPic("https://images.pexels.com/photos/279746/pexels-photo-279746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+//		roomType4.setRoomPic("https://images.pexels.com/photos/279746/pexels-photo-279746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType4.setContent("房間面積為60平方米/646平方英尺。\r\n"
 				+ "\r\n"
 				+ "可飽覽壯麗的臺北101景觀或城市風光。\r\n"
@@ -215,10 +251,18 @@ public class CreateSqlController {
 		roomTypes.add(roomType4);
 		roomTypeDao.save(roomType4);
 		
+		File file5 = new File("./roomImg/5.png");
+		InputStream inputStream5;
+		try {
+			inputStream5 = new FileInputStream(file5);
+			roomType5.setRoomPic(IOUtils.toByteArray(inputStream5));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		roomType5.setRoomType("豪華雙人房");
 		roomType5.setRoomPrice(3500);
 		roomType5.setRoomPerson(2);
-		roomType5.setRoomPic("https://images.pexels.com/photos/1743229/pexels-photo-1743229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+//		roomType5.setRoomPic("https://images.pexels.com/photos/1743229/pexels-photo-1743229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType5.setContent("飽覽迷人的城市景觀。\r\n"
 				+ "\r\n"
 				+ "享受無線上網服務。\r\n"
@@ -237,10 +281,18 @@ public class CreateSqlController {
 		roomTypes.add(roomType5);
 		roomTypeDao.save(roomType5);
 		
+		File file6 = new File("./roomImg/6.png");
+		InputStream inputStream6;
+		try {
+			inputStream6 = new FileInputStream(file6);
+			roomType6.setRoomPic(IOUtils.toByteArray(inputStream6));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		roomType6.setRoomType("豪華四人房");
 		roomType6.setRoomPrice(6500);
 		roomType6.setRoomPerson(4);
-		roomType6.setRoomPic("https://images.pexels.com/photos/172872/pexels-photo-172872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+//		roomType6.setRoomPic("https://images.pexels.com/photos/172872/pexels-photo-172872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType6.setContent("飽覽迷人的城市景觀。\r\n"
 				+ "\r\n"
 				+ "享受無線上網服務。\r\n"
@@ -259,10 +311,18 @@ public class CreateSqlController {
 		roomTypes.add(roomType6);
 		roomTypeDao.save(roomType6);
 		
+		File file7 = new File("./roomImg/7.png");
+		InputStream inputStream7;
+		try {
+			inputStream7 = new FileInputStream(file7);
+			roomType7.setRoomPic(IOUtils.toByteArray(inputStream7));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		roomType7.setRoomType("尊榮雙人房");
 		roomType7.setRoomPrice(6000);
 		roomType7.setRoomPerson(2);
-		roomType7.setRoomPic("https://images.pexels.com/photos/97083/pexels-photo-97083.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+//		roomType7.setRoomPic("https://images.pexels.com/photos/97083/pexels-photo-97083.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType7.setContent("房間面積為72平方米/802平方英尺。\r\n"
 				+ "\r\n"
 				+ "飽覽臺北市的迷人全景。\r\n"
@@ -277,10 +337,18 @@ public class CreateSqlController {
 		roomTypes.add(roomType7);
 		roomTypeDao.save(roomType7);
 		
+		File file8 = new File("./roomImg/8.png");
+		InputStream inputStream8;
+		try {
+			inputStream8 = new FileInputStream(file8);
+			roomType8.setRoomPic(IOUtils.toByteArray(inputStream8));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		roomType8.setRoomType("尊榮四人房");
 		roomType8.setRoomPrice(11000);
 		roomType8.setRoomPerson(4);
-		roomType8.setRoomPic("https://images.pexels.com/photos/271672/pexels-photo-271672.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+//		roomType8.setRoomPic("https://images.pexels.com/photos/271672/pexels-photo-271672.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType8.setContent("房間面積為136平方米/1,463平方英尺。\r\n"
 				+ "\r\n"
 				+ "飽覽臺北市的迷人全景。\r\n"
@@ -295,10 +363,18 @@ public class CreateSqlController {
 		roomTypes.add(roomType8);
 		roomTypeDao.save(roomType8);
 		
+		File file9 = new File("./roomImg/9.png");
+		InputStream inputStream9;
+		try {
+			inputStream9 = new FileInputStream(file9);
+			roomType9.setRoomPic(IOUtils.toByteArray(inputStream9));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		roomType9.setRoomType("總統套房");
 		roomType9.setRoomPrice(20000);
 		roomType9.setRoomPerson(4);
-		roomType9.setRoomPic("https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+//		roomType9.setRoomPic("https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		roomType9.setContent("房間面積為226平方米/2,432平方英尺。\r\n"
 				+ "\r\n"
 				+ "寬敞飄窗可飽覽臺北美妙絕倫的都市風光。\r\n"

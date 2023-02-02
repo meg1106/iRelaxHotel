@@ -21,7 +21,7 @@ public class JWTutils {
 	 */
 
 	// 過期時間，15分鐘
-	private static final long EXPIRE_TIME = 15 * 60 * 1000;
+	private static final long EXPIRE_TIME = 30 * 24 * 60 * 60 * 1000L;
 	// 私鑰
 	// private static final String TOKEN_SECRET = "privateKey";
 	private static final String TOKEN_SECRET = "cuAihCz53DZRjZwbsGcZJ2Ai6At+T142uphtJMsk7iQ=";

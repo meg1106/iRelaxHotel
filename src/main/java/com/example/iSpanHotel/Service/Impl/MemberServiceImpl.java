@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -94,17 +95,21 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Boolean checkLogin(String token) {
+	public JSONObject checkLogin(String token) throws Exception {
+		JSONObject object = new JSONObject();
 		// 解析JWT
 		try {
 			Claims claims = JWTutils.parseJWT(token);
-			System.out.println("解析成功" + claims.getSubject());
-			return true;
+			String userMsg = claims.getSubject();
+			object.put("status", "success");
+			object.put("userMsg", userMsg);
 		} catch (Exception exception) {
 			System.out.println("解析失敗:");
-			exception.printStackTrace();
-			return false;
+//			exception.printStackTrace();
+			object.put("status", "error");
+			object.put("userMsg", "");
 		}
+		return object;
 	}
 
 	@Override
@@ -119,11 +124,11 @@ public class MemberServiceImpl implements MemberService {
 				return token;
 			}else {
 				System.out.println("找不到密碼");
-				return "帳號或密碼錯誤";
+				return "err";
 			}
 		}else {
 			System.out.println("找不到帳號");
-			return "帳號或密碼錯誤";
+			return "err";
 		}	
 	}
 	

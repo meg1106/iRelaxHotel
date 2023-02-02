@@ -2,12 +2,14 @@ package com.example.iSpanHotel.Controller;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.iSpanHotel.Class.Cookies;
 import com.example.iSpanHotel.Dto.MemberDto;
 import com.example.iSpanHotel.Service.EmailService;
 import com.example.iSpanHotel.Service.MemberService;
@@ -24,6 +27,7 @@ import com.example.iSpanHotel.model.Member;
 
 import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/member")
@@ -69,17 +73,44 @@ public class MemberController {
 	}
 
 	@GetMapping("/checkLogin")
-	private Boolean checkLogin(String token) {
-		Boolean request = memberService.checkLogin(token);
-		return request;
+	private ResponseEntity<String> checkLogin(@CookieValue(value = "UID", defaultValue = "Atta")String token) {
+		JSONObject jsonObject = new JSONObject();
+		String object;
+		try {
+			jsonObject = memberService.checkLogin(token);
+			object = jsonObject.toString();
+		} catch (Exception e) {
+			jsonObject.append("status", "error");
+			jsonObject.append("userMsg", null);
+			object = jsonObject.toString();
+		}		
+		return ResponseEntity.ok(object);
 	}
 
 	@PostMapping("/login")
-	private String login(String account, String passwd) {
-		System.out.println("有連到api");
-		String check = memberService.login(account, passwd);
-		System.out.println(check);
-		return check;
+	private ResponseEntity<String> login(String account, String passwd, HttpServletResponse response) {
+		try {
+			String token = memberService.login(account, passwd);
+			System.out.println(token);
+			if (token != "err") {
+				Cookies.setCookies(token, response);
+				return ResponseEntity.ok(token);
+			}
+			return ResponseEntity.ok("帳號或密碼錯誤");
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+		
+	}
+	
+	@PostMapping("/logout")
+	private ResponseEntity<String> logout(@CookieValue(value = "UID")String token, HttpServletResponse response) {
+		try {
+			Cookies.removeCookies(response);
+			return ResponseEntity.ok("登出成功");
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
 	}
 
 	@PostMapping("/forgot_password")

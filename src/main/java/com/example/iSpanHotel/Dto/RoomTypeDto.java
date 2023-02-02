@@ -1,10 +1,12 @@
 package com.example.iSpanHotel.Dto;
 
+import java.io.File;
+
 public class RoomTypeDto {
 	private Long id;
 	private String roomType;
 	private Integer roomPrice;
-	private String roomPic;
+	private File roomPic;
 	private String content;
 	private Integer roomPerson; 
 	public Long getId() {
@@ -25,10 +27,10 @@ public class RoomTypeDto {
 	public void setRoomPrice(Integer roomPrice) {
 		this.roomPrice = roomPrice;
 	}
-	public String getRoomPic() {
+	public File getRoomPic() {
 		return roomPic;
 	}
-	public void setRoomPic(String roomPic) {
+	public void setRoomPic(File roomPic) {
 		this.roomPic = roomPic;
 	}
 	public String getContent() {
