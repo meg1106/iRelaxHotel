@@ -43,7 +43,7 @@ public class OrderController {
 	private ResponseEntity<String> create(@RequestBody OrderDto orderDto) {
 		Order order = orderService.create(orderDto);
 		Item item = itemService.create(orderDto, order);
-		emailService.sendSimpleMail(orderDto, item);
+		emailService.sendOrderDetail(orderDto, item);
 		return ResponseEntity.ok("訂單創建成功");
 	}
 	
