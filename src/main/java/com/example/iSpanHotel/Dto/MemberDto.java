@@ -7,6 +7,7 @@ public class MemberDto {
 	private String realName;
 	private String email;
 	private String tel;
+	private String resetPasswordToken;
 	
 	public Long getId() {
 		return id;
@@ -44,10 +45,16 @@ public class MemberDto {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
+	}
 	@Override
 	public String toString() {
 		return "MemberDto [id=" + id + ", account=" + account + ", passwd=" + passwd + ", realName=" + realName
-				+ ", email=" + email + ", tel=" + tel + "]";
+				+ ", email=" + email + ", tel=" + tel + ", resetPasswordToken=" + resetPasswordToken + "]";
 	}
 	
 	

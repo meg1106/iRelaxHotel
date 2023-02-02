@@ -36,6 +36,9 @@ public class Member {
 	@Column(name = "tel", nullable = false)
 	private String tel;
 	
+	@Column(name = "reset_password_token")
+    private String resetPasswordToken;
+	
 	@JsonIgnoreProperties({"member"})
 	@OneToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE}, mappedBy = "member")
 	private List<Order> orders;
@@ -95,6 +98,14 @@ public class Member {
 
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
+	}
+
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
 	}
 
 	@Override

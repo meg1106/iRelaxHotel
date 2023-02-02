@@ -15,6 +15,7 @@ import com.example.iSpanHotel.Service.MemberService;
 import com.example.iSpanHotel.model.Member;
 
 import io.jsonwebtoken.Claims;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -124,6 +125,27 @@ public class MemberServiceImpl implements MemberService {
 			System.out.println("找不到帳號");
 			return "帳號或密碼錯誤";
 		}	
+	}
+	
+	@Override
+	public Member getByResetPasswordToken(String token) {
+		return memberDao.findByResetPasswordToken(token);
+	}
+
+	@Override
+	public String processResetPassword(HttpServletRequest request, MemberDto memberDto) {
+		String token = request.getParameter("token");
+	    String passwd = memberDto.getPasswd();
+	    System.out.println(passwd);
+	    Member member = memberDao.findByResetPasswordToken(token);
+	    if (member == null) {
+	        return "驗證碼錯誤";
+	    } else {           
+	    	member.setPasswd(BCrypt.hashpw(passwd, BCrypt.gensalt()));
+	    	member.setResetPasswordToken(null);
+	    	memberDao.save(member);
+	    	return "密碼修改成功，請重新登入！";
+	    }
 	}
 
 }
