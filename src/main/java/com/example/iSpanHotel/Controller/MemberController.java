@@ -119,31 +119,6 @@ public class MemberController {
 		return ResponseEntity.ok(result);
 	}
 
-	public void sendEmail(String recipient, String link)
-	        throws Exception {
-	    MimeMessage message = mailSender.createMimeMessage();              
-	    MimeMessageHelper helper = new MimeMessageHelper(message);
-	     
-	    helper.setFrom("nienfxxq@gmail.com", "iRelaxHotel");
-	    helper.setTo(recipient);
-	     
-	    String subject = "Here's the link to reset your password";
-	     
-	    String content = "<p>Hello,</p>"
-	            + "<p>You have requested to reset your password.</p>"
-	            + "<p>Click the link below to change your password:</p>"
-	            + "<p><a href=\"" + link + "\">Change my password</a></p>"
-	            + "<br>"
-	            + "<p>Ignore this email if you do remember your password, "
-	            + "or you have not made the request.</p>";
-	     
-	    helper.setSubject(subject);
-	     
-	    helper.setText(content, true);
-	     
-	    mailSender.send(message);
-	}
-	
 	@GetMapping("/reset_password")
 	public ResponseEntity<String> showResetPasswordForm(@Param(value = "token") String token) {
 	    Member member = memberService.getByResetPasswordToken(token);
