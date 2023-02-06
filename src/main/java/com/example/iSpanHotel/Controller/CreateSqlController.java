@@ -623,6 +623,7 @@ public class CreateSqlController {
 		order1.setMember(memberDao.findById((long)1).get());
 		try {
 			order1.setOrderDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-01"));
+			System.out.println(order1.getOrderDate());
 			item1.setCheckinDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-03"));
 			item1.setCheckoutDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-05"));
 		} catch (ParseException e) {
