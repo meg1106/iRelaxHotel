@@ -21,6 +21,9 @@ public interface EmployeeService {
 
 	// 查詢所有員工帳號
 	List<Employee> findAll();
+	
+	// 分頁查詢
+	List<Employee> findByPaging(int page, int rows);
 
 	// 根據姓名查詢員工
 	Employee findByName(String name);

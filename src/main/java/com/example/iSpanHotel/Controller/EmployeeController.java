@@ -30,6 +30,12 @@ public class EmployeeController {
 		List<Employee> employees = employeeService.findAll();
 		return employees;
 	}
+	
+	@GetMapping("/{page}/{rows}")
+	private List<Employee> findAll(@PathVariable int page, @PathVariable int rows) {
+		List<Employee> employees = employeeService.findByPaging(page, rows);
+		return employees;
+	}
 
 	@PostMapping("/")
 	private ResponseEntity<String> create(@RequestBody EmployeeDto employeeDto) {

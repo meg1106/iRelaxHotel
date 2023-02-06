@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Class.BCrypt;
@@ -74,9 +77,16 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	@Override
 	public List<Employee> findAll() {
-		// TODO Auto-generated method stub
 		List<Employee> employees = new ArrayList<>();
 		employees = employeeDao.findAll();
+		return employees;
+	}
+	
+	@Override
+	public List<Employee> findByPaging(int page, int rows) {
+		List<Employee> employees = new ArrayList<>();
+		Page<Employee> pageResult = employeeDao.findAll(PageRequest.of(page, rows,Sort.by("id")));
+		employees = pageResult.getContent();
 		return employees;
 	}
 	
@@ -118,7 +128,5 @@ public class EmployeeServiceImpl implements EmployeeService{
 			return "帳號或密碼錯誤";
 		}
 	}
-
-	
 
 }
