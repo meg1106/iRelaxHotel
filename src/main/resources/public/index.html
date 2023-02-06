@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
-<<<<<<< Updated upstream:src/main/resources/index.html
           integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
           crossorigin="anonymous">
   </script>
@@ -30,13 +29,20 @@
     h6 {
      font-size: 25px;
     }
+    limit_news {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 479px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
   </style>
-=======
-    integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
-    crossorigin="anonymous"></script>
-  <script src="/assets/js/jquery.js"></script>
->>>>>>> Stashed changes:src/main/resources/public/index.html
-
+  <script src="assets/js/jquery.js"></script>
 
   <script>
     $.ajax({
@@ -49,12 +55,12 @@
           if (index % 3 == 0) {
             $('#latest').append(
               `
-        <li class="one_third first">
+        <li class="limit_news" class="one_third first">
             <article>
               <figure><a class="imgover" href="#"><img src="images/348x261.png" alt=""></a>
                 <figcaption>
                   <ul class="nospace meta clear">
-                    <li><i class="fas fa-user"></i> <a href="#">Admin</a></li>
+                    <li><i class="fas fa-user"></i> <a href="#"></a></li>
                     <li>
                       <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
                     </li>
@@ -89,7 +95,6 @@
         `
             )
           }
-
         })
       });
   </script>
@@ -122,10 +127,6 @@
               <li><a href="pages/intro.html">簡介</a></li>
               <li><a href="pages/traffic.html">交通資訊</a></li>
               <li><a href="pages/notic.html">注意事項</a></li>
-<<<<<<< Updated upstream:src/main/resources/index.html
-=======
-
->>>>>>> Stashed changes:src/main/resources/public/index.html
             </ul>
           </li>
           <li><a class="drop">最新消息</a>
@@ -245,10 +246,9 @@
           </li>
           <li class="one_third">
             <article>
-              <figure><a class="imgover" href="#"><img src="images/348x261.png" alt=""></a>
+              <figure>
                 <figcaption>
                   <ul class="nospace meta clear">
-                    <li><i class="fas fa-user"></i> <a href="#">Admin</a></li>
                     <li>
                       <time datetime="2045-04-04T08:15+00:00">04 Apr 2045</time>
                     </li>
@@ -380,13 +380,8 @@
       <div class="two_third first">
         <li>
           訂房專線 /
-<<<<<<< Updated upstream:src/main/resources/index.html
           <a href="tel:+886-4-23265860">2326-5860</a> 
         </li><br>
-=======
-          <a href="tel:+886-4-23265860">2326-5860</a>
-        </li>
->>>>>>> Stashed changes:src/main/resources/public/index.html
         <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
         <li>
           客服信箱 /
