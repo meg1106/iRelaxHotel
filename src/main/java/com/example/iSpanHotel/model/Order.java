@@ -1,5 +1,6 @@
 package com.example.iSpanHotel.model;
 
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -29,7 +30,7 @@ public class Order {
 	private Member member;
 	
 	@Column(name = "order_date")
-	private String orderDate;
+	private Date orderDate;
 	
 	@JsonIgnoreProperties({"order"})
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
@@ -51,11 +52,11 @@ public class Order {
 		this.member = member;
 	}
 
-	public String getOrderDate() {
+	public Date getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(String orderDate) {
+	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
 	

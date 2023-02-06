@@ -43,8 +43,8 @@ public class EmailServiceImpl implements EmailService {
 	public String sendOrderDetail(OrderDto orderDto, Item item) {
 
 		String name = memberDao.findById(orderDto.getMember()).get().getRealName();
-		String checkin = item.getCheckinDate();
-		String checkout = item.getCheckoutDate();
+		String checkin = item.getCheckinDate().toString();
+		String checkout = item.getCheckoutDate().toString();
 		// Try block to check for exceptions
 		try {
 

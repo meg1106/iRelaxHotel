@@ -1,5 +1,6 @@
 package com.example.iSpanHotel.Service.Impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +28,7 @@ public class OrderServiceImpl implements OrderService{
 		try {
 			Order order = new Order();
 			order.setMember(memberDao.findById(orderDto.getMember()).get());
-			order.setOrderDate(orderDto.getOrderDate());
+			order.setOrderDate(new SimpleDateFormat("yyyy-MM-dd").parse(orderDto.getOrderDate()));
 			orderDao.save(order);
 			return order;
 		} catch (Exception e) {
@@ -53,7 +54,7 @@ public class OrderServiceImpl implements OrderService{
 			Order order = new Order();
 			order.setId(id);
 			order.setMember(memberDao.findById(orderDto.getMember()).get());
-			order.setOrderDate(orderDto.getOrderDate());
+			order.setOrderDate(new SimpleDateFormat("yyyy-MM-dd").parse(orderDto.getOrderDate()));
 			orderDao.save(order);
 			return "訂單修改成功";
 		} catch (Exception e) {

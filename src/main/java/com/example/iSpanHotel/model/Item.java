@@ -1,5 +1,7 @@
 package com.example.iSpanHotel.model;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -31,10 +33,10 @@ public class Item {
 	private Room room;
 	
 	@Column(name = "checkin_date", nullable = false)
-	private String checkinDate;
+	private Date checkinDate;
 	
 	@Column(name = "checkout_date", nullable = false)
-	private String checkoutDate;
+	private Date checkoutDate;
 	
 	@Column(name = "status", nullable = false)
 	private Short status = 1;
@@ -63,19 +65,19 @@ public class Item {
 		this.room = room;
 	}
 
-	public String getCheckinDate() {
+	public Date getCheckinDate() {
 		return checkinDate;
 	}
 
-	public void setCheckinDate(String checkinDate) {
+	public void setCheckinDate(Date checkinDate) {
 		this.checkinDate = checkinDate;
 	}
 
-	public String getCheckoutDate() {
+	public Date getCheckoutDate() {
 		return checkoutDate;
 	}
 
-	public void setCheckoutDate(String checkoutDate) {
+	public void setCheckoutDate(Date checkoutDate) {
 		this.checkoutDate = checkoutDate;
 	}
 

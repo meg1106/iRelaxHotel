@@ -3,6 +3,8 @@ package com.example.iSpanHotel.Controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -619,9 +621,13 @@ public class CreateSqlController {
 		Order order1 = new Order();
 		Item item1 = new Item();
 		order1.setMember(memberDao.findById((long)1).get());
-		order1.setOrderDate("2023-01-01");
-		item1.setCheckinDate("2023-01-03");
-		item1.setCheckoutDate("2023-01-05");
+		try {
+			order1.setOrderDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-01"));
+			item1.setCheckinDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-03"));
+			item1.setCheckoutDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-05"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		item1.setRoom(roomDao.findById((long)10).get());
 		item1.setOrder(order1);
 		orderDao.save(order1);
@@ -630,9 +636,13 @@ public class CreateSqlController {
 		Order order2 = new Order();
 		Item item2 = new Item();
 		order2.setMember(memberDao.findById((long)4).get());
-		order2.setOrderDate("2023-01-16");
-		item2.setCheckinDate("2023-01-20");
-		item2.setCheckoutDate("2023-01-25");
+		try {
+			order2.setOrderDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-16"));
+			item2.setCheckinDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-20"));
+			item2.setCheckoutDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-25"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		item2.setRoom(roomDao.findById((long)52).get());
 		item2.setOrder(order2);
 		orderDao.save(order2);
@@ -641,9 +651,13 @@ public class CreateSqlController {
 		Order order3 = new Order();
 		Item item3 = new Item();
 		order3.setMember(memberDao.findById((long)2).get());
-		order3.setOrderDate("2023-01-31");
-		item3.setCheckinDate("2023-02-15");
-		item3.setCheckoutDate("2023-02-18");
+		try {
+			order3.setOrderDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-31"));
+			item3.setCheckinDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-02-15"));
+			item3.setCheckoutDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-02-18"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		item3.setRoom(roomDao.findById((long)45).get());
 		item3.setOrder(order3);
 		orderDao.save(order3);
