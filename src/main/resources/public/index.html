@@ -29,18 +29,13 @@
     h6 {
      font-size: 25px;
     }
-    limit_news {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 479px;
+    .limit_news {
       display: -webkit-box;
-      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
       overflow: hidden;
-      text-overflow: ellipsis;
     }
-    
+
   </style>
   <script src="assets/js/jquery.js"></script>
 
@@ -54,49 +49,57 @@
         msg.forEach(function (element, index) {
           if (index % 3 == 0) {
             $('#latest').append(
-              `
-        <li class="limit_news" class="one_third first">
-            <article>
-              <figure><a class="imgover" href="#"><img src="images/348x261.png" alt=""></a>
-                <figcaption>
-                  <ul class="nospace meta clear">
-                    <li><i class="fas fa-user"></i> <a href="#"></a></li>
-                    <li>
-                      <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
-                    </li>
-                  </ul>
-                  <h6 class="heading"><a href="#">${element.title}</a></h6>
-                </figcaption>
-              </figure>
-              <p>${element.content}</p>
-            </article>
-          </li>
-        `
+            `
+              <li class="one_third first">
+                <article>
+                  <figure>
+                    <figcaption>
+                      <ul class="nospace meta clear">
+                        <li><i class="fas fa-bullhorn"></i><a href="#"></a></li>
+                        <li>
+                          <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
+                        </li>
+                      </ul>
+                      <h6 class="heading"><a href="#">${element.title}</a></h6>
+                    </figcaption>
+                  </figure>
+                  <p class="limit_news">${element.content}</p>
+                  <footer><a href="#">More Details &raquo;</a></footer>
+                </article>
+              </li>
+            `
             )
           } else {
             $('#latest').append(
-              `
-        <li class="one_third">
-            <article>
-              <figure><a class="imgover" href="#"><img src="images/348x261.png" alt=""></a>
-                <figcaption>
-                  <ul class="nospace meta clear">
-                    <li><i class="fas fa-user"></i> <a href="#">Admin</a></li>
-                    <li>
-                      <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
-                    </li>
-                  </ul>
-                  <h6 class="heading"><a href="#">${element.title}</a></h6>
-                </figcaption>
-              </figure>
-              <p>${element.content}</p>
-            </article>
-          </li>
-        `
+            `
+              <li class="one_third">
+                <article>
+                  <figure>
+                    <figcaption>
+                      <ul class="nospace meta clear">
+                        <li><i class="fas fa-bullhorn"></i><a href="#"></a></li>
+                        <li>
+                          <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
+                        </li>
+                      </ul>
+                      <h6 class="heading"><a href="#">${element.title}</a></h6>
+                    </figcaption>
+                  </figure>
+                  <p class="limit_news">${element.content}</p>
+                  <footer><a href="#">More Details &raquo;</a></footer>
+                </article>
+              </li>
+            `
             )
-          }
+          } 
         })
       });
+  </script>
+  <script>
+    $.ajax({
+      url: '//',
+      type: 'GET'
+    })
   </script>
 </head>
 
@@ -212,12 +215,12 @@
           <p class="nospace font-xs">LATEST NEWS</p>
         </div>
         <ul id="latest" class="nospace group sd-third">
-          <li class="one_third first">
+          <!-- <li class="one_third first">
             <article>
-              <figure><a class="imgover" href="#"><img src="images/348x261.png" alt=""></a>
+              <figure>
                 <figcaption>
                   <ul class="nospace meta clear">
-                    <li><i class="fas fa-user"></i> <a href="#">Admin</a></li>
+                    <li><i class="fas fa-bullhorn"></i> <a href="#"></a></li>
                     <li>
                       <time datetime="2045-04-06T08:15+00:00">06 Apr 2045</time>
                     </li>
@@ -225,15 +228,15 @@
                   <h6 class="heading"><a href="#">兔年行大運 | 2023 新春福袋</a></h6>
                 </figcaption>
               </figure>
-              <p>1/15起開放「線上限量預購」免排隊！加碼再抽iRich會員點數！還有最大獎Gogoro電動車等你來抽喔！</p>
+              <p class="limit_news">1/15起開放「線上限量預購」免排隊！加碼再抽iRich會員點數！還有最大獎Gogoro電動車等你來抽喔！1/15起開放「線上限量預購」免排隊！加碼再抽iRich會員點數！還有最大獎Gogoro電動車等你來抽喔！1/15起開放「線上限量預購」免排隊！加碼再抽iRich會員點數！還有最大獎Gogoro電動車等你來抽喔！</p>
             </article>
           </li>
           <li class="one_third">
             <article>
-              <figure><a class="imgover" href="#"><img src="images/348x261.png" alt=""></a>
+              <figure>
                 <figcaption>
                   <ul class="nospace meta clear">
-                    <li><i class="fas fa-user"></i> <a href="#">Admin</a></li>
+                    <li><i class="fas fa-bullhorn"></i> <a href="#"></a></li>
                     <li>
                       <time datetime="2045-04-05T08:15+00:00">05 Apr 2045</time>
                     </li>
@@ -249,6 +252,7 @@
               <figure>
                 <figcaption>
                   <ul class="nospace meta clear">
+                    <li><i class="fas fa-bullhorn"></i><a href="#"></a></li>
                     <li>
                       <time datetime="2045-04-04T08:15+00:00">04 Apr 2045</time>
                     </li>
@@ -256,9 +260,9 @@
                   <h6 class="heading"><a href="#">iRelax山景包棟2.0</a></h6>
                 </figcaption>
               </figure>
-              <p>iRelax民宿包棟活動即將開始。歡迎帶著家中長輩、孩子、親戚朋友一同來體驗泡湯放鬆身心靈啊!</p>
+              <p>iRelax溫泉堅持不加熱、不稀釋，高純度碳酸氫鈉泉水與您共享，戶外露天大眾區設有獨立的個人小湯池，歡迎選購！iRelax溫泉堅持不加熱、不稀釋，高純度碳酸氫鈉泉水與您共享，戶外露天大眾區設有獨立的個人小湯池，歡迎選購！iRelax民宿包棟活動即將開始。歡迎帶著家中長輩、孩子、親戚朋友一同來體驗泡湯放鬆身心靈啊!</p>
             </article>
-          </li>
+          </li> -->
         </ul>
         <br><br>
         <div class="sectiontitle">
