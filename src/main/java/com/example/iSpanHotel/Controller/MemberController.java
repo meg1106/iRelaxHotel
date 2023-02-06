@@ -110,6 +110,7 @@ public class MemberController {
 	@PostMapping("/forgot_password")
 	private ResponseEntity<String> processForgotPassword(HttpServletRequest request, @RequestBody MemberDto memberDto) {
 		String result = emailService.processForgotPassword(request, memberDto);
+		System.out.println(result);
 		return ResponseEntity.ok(result);
 	}
 
