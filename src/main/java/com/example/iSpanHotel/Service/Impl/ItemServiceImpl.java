@@ -1,9 +1,6 @@
 package com.example.iSpanHotel.Service.Impl;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,18 +69,5 @@ public class ItemServiceImpl implements ItemService{
 		}
 	}
 
-	@Override
-	public List<Item> findByDate() {
-		try {
-			Date expiryDate = new SimpleDateFormat("yyyy-MM-dd").parse("2023-02-01");
-			System.out.println(expiryDate);
-			List<Item> items = itemDao.findAllBycheckinDateAfter(expiryDate);
-//			System.out.println(items.get(0).toString());
-			return items;
-		} catch (ParseException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
 
 }

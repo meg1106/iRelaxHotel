@@ -32,10 +32,10 @@ public class Item {
 	@JoinColumn(name = "room_id", nullable = false)
 	private Room room;
 	
-	@Column(name = "checkin_date", nullable = false)
+	@Column(name = "checkin_date", nullable = false, columnDefinition = "DATE")
 	private Date checkinDate;
 	
-	@Column(name = "checkout_date", nullable = false)
+	@Column(name = "checkout_date", nullable = false, columnDefinition = "DATE")
 	private Date checkoutDate;
 	
 	@Column(name = "status", nullable = false)

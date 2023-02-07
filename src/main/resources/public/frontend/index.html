@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+
+<head>
+  <title>iRelax Hotel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
+          integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
+          crossorigin="anonymous">
+  </script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+    rel="stylesheet" />
+
+  <style>
+    form {
+      width: 50%;
+      margin: 20px auto;
+    }
+
+    a {
+      color: #f3bf07;
+      text-decoration: none;
+    }
+    h6 {
+     font-size: 25px;
+    }
+    .limit_news {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+    }
+
+  </style>
+
+    <!-- 靜態html導入：先加入jquery再script 靜態網頁 -->
+    <!-- javascripts -->
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- memberlogin -->
+    <script type="text/javascript">
+      $.get("_memberlogin.html", function (data) {
+        $("#memberlogin").html(data);
+      });
+    </script>
+
+    <!-- header -->
+    <script type="text/javascript">
+      $.get("_header.html", function (data) {
+        $("#header").html(data);
+      });
+    </script>
+
+  <script>
+    $.ajax({
+      url: '/hotelNews/',
+      type: 'GET'
+    })
+      .done(function (msg) {
+        console.log(msg);
+        msg.forEach(function (element, index) {
+          if (index % 3 == 0) {
+            $('#latest').append(
+            `
+              <li class="one_third first">
+                <article>
+                  <figure>
+                    <figcaption>
+                      <ul class="nospace meta clear">
+                        <li><i class="fas fa-bullhorn"></i><a href="#"></a></li>
+                        <li>
+                          <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
+                        </li>
+                      </ul>
+                      <h6 class="heading"><a href="#">${element.title}</a></h6>
+                    </figcaption>
+                  </figure>
+                  <p class="limit_news">${element.content}</p>
+                  <footer><a href="#">More Details &raquo;</a></footer>
+                </article>
+              </li>
+            `
+            )
+          } else {
+            $('#latest').append(
+            `
+              <li class="one_third">
+                <article>
+                  <figure>
+                    <figcaption>
+                      <ul class="nospace meta clear">
+                        <li><i class="fas fa-bullhorn"></i><a href="#"></a></li>
+                        <li>
+                          <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
+                        </li>
+                      </ul>
+                      <h6 class="heading"><a href="#">${element.title}</a></h6>
+                    </figcaption>
+                  </figure>
+                  <p class="limit_news">${element.content}</p>
+                  <footer><a href="#">More Details &raquo;</a></footer>
+                </article>
+              </li>
+            `
+            )
+          } 
+        })
+      });
+  </script>
+  
+</head>
+
+<body id="top">
+  <!-- Top Background Image Wrapper -->
+  <div class="bgded overlay padtop" style="background-image:url('images/backgrounds/01.png');">
+
+    <!-- memberlogin 開始 -->
+    <div id="memberlogin"></div>
+    <!-- memberlogin 結束 -->
+
+    <!-- header 開始 -->
+    <div id="header"></div>
+    <!-- header 結束 -->
+
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <div id="pageintro" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <article>
+        <h3 class="heading">Love to Relax</h3>
+        <p>看見大自然的呼吸，聽見放鬆的聲音</p>
+        <footer>
+          <ul class="nospace inline pushright">
+            <li><a class="btn" href="pages/booking.html">立即訂房</a></li>
+            <li><a class="btn inverse" href="#">加入會員</a></li>
+          </ul>
+        </footer>
+      </article>
+      <!-- ################################################################################################ -->
+    </div>
+    <!-- ################################################################################################ -->
+  </div>
+  <!-- End Top Background Image Wrapper -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row1">
+    <section id="ctdetails" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <ul class="nospace clear">
+        <li class="one_quarter first">
+          <div class="block clear"><a href="#"><i class="fas fa-phone"></i></a> <span><strong>聯絡電話：</strong> +00 (123)
+              456 7890</span></div>
+        </li>
+        <li class="one_quarter">
+          <div class="block clear"><a href="#"><i class="fas fa-envelope"></i></a> <span><strong>郵件信箱：</strong>
+              support@domain.com</span></div>
+        </li>
+        <li class="one_quarter">
+          <div class="block clear"><a href="#"><i class="fas fa-clock"></i></a> <span><strong> 星期一 ～ 星期六:</strong>
+              08.00am - 18.00pm</span></div>
+        </li>
+        <li class="one_quarter">
+          <div class="block clear"><a href="#"><i class="fas fa-map-marker-alt"></i></a> <span><strong>通訊地址：</strong>
+              Directions to <a href="#">our location</a></span></div>
+        </li>
+      </ul>
+      <!-- ################################################################################################ -->
+    </section>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row3">
+    <main class="hoc container clear">
+      <!-- main body -->
+      <!-- ################################################################################################ -->
+      <section id="services">
+        <div class="sectiontitle">
+          <h6 class="">最新消息</h6>
+          <p class="nospace font-xs">LATEST NEWS</p>
+        </div>
+        <ul id="latest" class="nospace group sd-third">
+          <!-- <li class="one_third first">
+            <article>
+              <figure>
+                <figcaption>
+                  <ul class="nospace meta clear">
+                    <li><i class="fas fa-bullhorn"></i> <a href="#"></a></li>
+                    <li>
+                      <time datetime="2045-04-06T08:15+00:00">06 Apr 2045</time>
+                    </li>
+                  </ul>
+                  <h6 class="heading"><a href="#">兔年行大運 | 2023 新春福袋</a></h6>
+                </figcaption>
+              </figure>
+              <p class="limit_news">1/15起開放「線上限量預購」免排隊！加碼再抽iRich會員點數！還有最大獎Gogoro電動車等你來抽喔！1/15起開放「線上限量預購」免排隊！加碼再抽iRich會員點數！還有最大獎Gogoro電動車等你來抽喔！1/15起開放「線上限量預購」免排隊！加碼再抽iRich會員點數！還有最大獎Gogoro電動車等你來抽喔！</p>
+            </article>
+          </li>
+          <li class="one_third">
+            <article>
+              <figure>
+                <figcaption>
+                  <ul class="nospace meta clear">
+                    <li><i class="fas fa-bullhorn"></i> <a href="#"></a></li>
+                    <li>
+                      <time datetime="2045-04-05T08:15+00:00">05 Apr 2045</time>
+                    </li>
+                  </ul>
+                  <h6 class="heading"><a href="#">泡湯券特價熱賣中</a></h6>
+                </figcaption>
+              </figure>
+              <p>iRelax溫泉堅持不加熱、不稀釋，高純度碳酸氫鈉泉水與您共享，戶外露天大眾區設有獨立的個人小湯池，歡迎選購！</p>
+            </article>
+          </li>
+          <li class="one_third">
+            <article>
+              <figure>
+                <figcaption>
+                  <ul class="nospace meta clear">
+                    <li><i class="fas fa-bullhorn"></i><a href="#"></a></li>
+                    <li>
+                      <time datetime="2045-04-04T08:15+00:00">04 Apr 2045</time>
+                    </li>
+                  </ul>
+                  <h6 class="heading"><a href="#">iRelax山景包棟2.0</a></h6>
+                </figcaption>
+              </figure>
+              <p>iRelax溫泉堅持不加熱、不稀釋，高純度碳酸氫鈉泉水與您共享，戶外露天大眾區設有獨立的個人小湯池，歡迎選購！iRelax溫泉堅持不加熱、不稀釋，高純度碳酸氫鈉泉水與您共享，戶外露天大眾區設有獨立的個人小湯池，歡迎選購！iRelax民宿包棟活動即將開始。歡迎帶著家中長輩、孩子、親戚朋友一同來體驗泡湯放鬆身心靈啊!</p>
+            </article>
+          </li> -->
+        </ul>
+        <br><br>
+        <div class="sectiontitle">
+          <h6 class="">搶手房型</h6>
+          <p class="nospace font-xs">HOT ROOM</p>
+        </div>
+        <ul class="nospace group grid-3">
+          <li class="one_third">
+            <article><a href="#"><i class="fas fa-dolly-flatbed"></i></a>
+              <h6 class="heading">景觀雙人房</h6>
+              <img src="images/room/景觀雙人房.jpg" alt="logo" width="202" height="42" title="logo">
+              <footer><a href="#">More Details &raquo;</a></footer>
+            </article>
+          </li>
+          <li class="one_third">
+            <article><a href="#"><i class="fas fa-dolly-flatbed"></i></a>
+              <h6 class="heading">豪華雙人房</h6>
+              <img src="images/room/豪華雙人房.jpg" alt="logo" width="202" height="42" title="logo">
+              <footer><a href="#">More Details &raquo;</a></footer>
+            </article>
+          </li>
+          <li class="one_third">
+            <article><a href="#"><i class="fas fa-dolly-flatbed"></i></a>
+              <h6 class="heading">尊榮雙人房</h6>
+              <img src="images/room/尊榮雙人房.jpg" alt="logo" width="202" height="42" title="logo">
+              <footer><a href="#">More Details &raquo;</a></footer>
+            </article>
+          </li>
+        </ul><br><br>
+  
+      <!-- / main body -->
+  <!-- ################################################################################################ -->
+      <div style="background-color: #01546B; font-size: 14px;">
+        <br>
+        <form action=""
+          style="display: flex; flex-wrap: nowrap; flex-direction: row; justify-content: center; justify-content: space-between;">
+          <div class="">
+            <input style="width:200px;height:40px;" type="text" name="datefilter" class="form-control"
+              placeholder="入住時間 ～ 退房時間" />
+          </div>
+
+          <select style="width:150px;height:40px;">
+            <option>房型選擇</option>
+            <option>經濟房</option>
+            <option>景觀房</option>
+            <option>豪華房</option>
+            <option>尊榮房</option>
+            <option>總統套房</option>
+          </select>
+          <select style="width:150px;height:40px;">
+            <option>房間樓層</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+          </select>
+          <select style="width:150px;height:40px;">
+            <option>入住人數</option>
+            <option>2（成人數）</option>
+            <option>3（成人數）</option>
+            <option>4（成人數）</option>
+          </select>
+
+          <button style="width:120px;height:40px; background-color: #f3bf07;">現在預訂</button>
+        </form>
+        <p align="center" style="color: aliceblue;">13歲以上同成人收費</p>
+          </tr><br>
+      </div>
+
+      </section>
+      <div class="clear"></div>
+    </main>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div id="aboutUs" class="bgded overlay" style="background-image:url('images/backgrounds/01.png');">
+    <section class="hoc container clear">
+      <!-- ################################################################################################ -->
+      <div class="sectiontitle">
+        <h6 class="">關於我們</h6>
+        <p class="nospace font-xs">ABOUT US</p>
+      </div>
+      <article id="points" class="group">
+        <div class="two_third first">
+          <h6 class="heading">關於 iRelax Hotel...</h6>
+          <p>湖畔之清風，與山間之明月，造物者之無盡藏。跟我們一起愛上放鬆時間！</p>
+          <p>隱於山谷綠林中的碧湖幽境，鄰湖露天湯區及木屋庭園輝映波光粼粼，交織扶疏林木倒影泛泛漣漪舞動，
+            <br>
+            櫻花、楓葉、桐花落雪宛如桃源詩境。
+          </p>
+          <p>
+            探訪螢火蟲、聆聽鳥叫蛙鳴、觀星、遠眺馬拉邦山，四季晨昏變化分明。
+            靜謐山水芬多精中，讓1569m美人湯溫泉滑潤肌膚，使您徹底放鬆心曠神怡！</p>
+          <ul class="nospace pushright">
+            <li><a class="btn" href="#">了解更多</a></li>
+          </ul>
+        </div>
+        <div class="one_third last"><a class="imgover" href="#"><img src="images/348x394.png" alt=""></a></div>
+      </article>
+      <!-- ################################################################################################ -->
+    </section>
+  </div>
+  <!-- ################################################################################################ -->
+
+  <!-- ################################################################################################ -->
+  <div class="wrapper row4">
+    <footer id="footer" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <a href="index.html">
+        <div style="width: 220px; height: 70px;">
+          <img src="images/logo/logo2.png">
+        </div>
+      </a>
+      <br>
+      <div class="two_third first">
+        <li>
+          訂房專線 /
+          <a href="tel:+886-4-23265860">2326-5860</a> 
+        </li><br>
+        <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
+        <li>
+          客服信箱 /
+          <a href="lakesidemystery@gmail.com ">lakesidemystery@gmail.com </a>
+        </li>
+        <br><br>
+
+        <ul class="faico clear">
+          <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+          <li><a class="faicon-line" href="#"><i class="fab fa-line"></i></a></li>
+          <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row5">
+    <div id="copyright" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
+      <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/"
+          title="Free Website Templates">OS Templates</a></p>
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+  <!-- JAVASCRIPTS -->
+  <script src="layout/scripts/jquery.min.js"></script>
+  <script src="layout/scripts/jquery.backtotop.js"></script>
+  <script src="layout/scripts/jquery.mobilemenu.js"></script>
+
+  <!-- 日期 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('input[name="datefilter"]').daterangepicker({
+          autoUpdateInput: false,
+          locale: {
+            cancelLabel: 'Clear'
+          }
+        });
+        $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+          $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        });
+        $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
+          $(this).val('');
+        });
+      });
+    </script>
+    <script>
+      $('#date1').datetimepicker({
+        date: null,
+        format: 'YYYY-MM-DD',
+        locale: moment.locale('zh-tw'),
+        daysOfWeekDisabled: [0, 6],
+        minDate: moment().add(1, 'days'),
+        maxDate: moment().add(30, 'days'),
+        disabledDates: [
+          moment().add(1, 'days'),
+          moment().add(2, 'days'),
+          '2021-10-10',
+          '2021-12-25'
+        ],
+        disabledDates(time) {
+          return time.getTime() < Date.now() - 3600 * 1000 * 24;
+        }
+      });
+    </script>
+</body>
+
+</html>

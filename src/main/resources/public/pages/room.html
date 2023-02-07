@@ -16,10 +16,11 @@
       width: 300px;
       float: left;
       /* 圖片在左邊 */
-      width:200px; 
-      line-height:50px; /*DIV區塊高度*/
-      padding:1px;
-      margin-right:10px;
+      width: 200px;
+      line-height: 50px;
+      /*DIV區塊高度*/
+      padding: 1px;
+      margin-right: 10px;
     }
 
     .room img {
@@ -28,17 +29,75 @@
     }
 
     .roomText {
-      float: right; /* 文字在右邊 */
+      float: right;
+      /* 文字在右邊 */
       width: 500px;
       height: 400px;
       font-size: larger;
-      padding:15px 30px;
+      padding: 15px 30px;
     }
+
     .flex_cell_inner {
-    display: block;
-    position: relative;
+      display: block;
+      position: relative;
     }
   </style>
+
+  <script src="../assets/js/jquery.js"></script>
+  <script>
+    $.ajax({
+      url: '/roomtype/',
+      type: 'GET',
+      // success: res => {
+      //   console.log(res)
+      // },
+      // error: err => {
+      //   console.log(err)
+      // },
+    })
+      .done(function (room_msg) {
+        console.log(room_msg);
+        room_msg.forEach(function (element, index) {
+          console.log(element.roomPic)
+          $('#room_content').append(
+          `
+          <div class="room" style="width: 600px;">
+            <img src="data:image/jpeg;base64,${element.roomPic}" alt="圖片無法載入" style="width: 1200px;" />
+          </div>
+          <div class=".flex_cell_inner">
+            <div class="roomText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
+              <h1>${element.roomType}</h1>
+              <p>${element.content}</p>
+              <p>${element.roomPrice}</p>
+              <br>
+            </div>
+          </div>
+          `
+          )
+        })
+      });
+  </script>
+  <!-- <script>
+    var xmlhttp;
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "http://10.10.0.62:10001/api/charge/admin/v1/image/code", true);
+    xmlhttp.responseType = "blob";
+    xmlhttp.onload = function () {
+      console.log(this);
+      if (this.status == 200) {
+        var blob = this.response;
+        var img = document.createElement("img");
+        img.onload = function (e) {
+          window.URL.revokeObjectURL(img.src);
+        };
+        img.src = window.URL.createObjectURL(blob);
+        document.body.appendChild(img);
+      }
+    }
+    xmlhttp.send();
+
+  </script> -->
+
 </head>
 
 <body id="top">
@@ -73,7 +132,7 @@
           </li>
           <li class="active"><a class="drop" href="room.html">瀏覽房型</a>
             <ul>
-              <li><a href="room.html">房型一覽</a></li>
+              <li class="active"><a href="room.html">房型一覽</a></li>
               <li><a href="booking.html">立即訂房</a></li>
             </ul>
           </li>
@@ -96,50 +155,18 @@
     <br>
     <div id="breadcrumb" class="hoc clear"
       style="display: flex;font-size: 150%; justify-content: space-evenly; flex-direction: row; margin: 0.5% 30% 0.5% 30%;">
-      <p><a href="#" class="active">房型ㄧ覽</a></p>
+      <p><a class="active" href="#">房型ㄧ覽</a></p>
       <p>|</p>
       <p><a href="booking.html">立即訂房</a></p>
     </div>
   </div>
 
-  <div class="wrapper row3" >
+  <div class="wrapper row3">
     <main class="hoc container clear">
       <!-- main body -->
       <!-- ################################################################################################ -->
-      <!-- <div style="background-color: #01546B; font-size: 14px;">
-
-        <br>
-        <form action=""
-          style="display: flex; flex-wrap: nowrap; flex-direction: row; justify-content: center; justify-content: space-between;">
-          <div class="">
-            <input style="width:200px;height:40px;" type="text" name="datefilter" class="form-control"
-              placeholder="入住時間 ～ 退房時間" />
-          </div>
-
-          <select style="width:150px;height:40px;">
-            <option>房型選擇</option>
-            <option>經濟房</option>
-            <option>景觀房</option>
-            <option>豪華房</option>
-            <option>尊榮房</option>
-            <option>總統套房</option>
-          </select>
-          <select style="width:150px;height:40px;">
-            <option>入住人數</option>
-            <option>2（成人數）</option>
-            <option>3（成人數）</option>
-            <option>4（成人數）</option>
-          </select>
-
-          <button style="width:120px;height:40px; background-color: #f3bf07;">現在預訂</button>
-        </form>
-        <p align="center" style="color: aliceblue;">13歲以上同成人收費</ㄋ>
-          </tr><br>
-      </div> -->
-    
-
-      <div style="display: flex; flex-wrap:nowrap;justify-content:flex-start">
-        <div class="room" style="width: 600px;">
+      <div id="room_content" style="" >
+        <!-- <div class="room" style="width: 600px;">
           <img src="../images/room/豪華雙人房.jpg" alt="經濟雙人房" style="width: 1200px;" />
         </div>
         <div class=".flex_cell_inner">
@@ -153,153 +180,10 @@
               <li>二單床 (120*200cm)</li>
             </ul>
           </div>
-        </div>   
+        </div>    -->
       </div>
-      <br><br><br><br>
+      
 
-      <div style="display: flex; flex-wrap:nowrap;justify-content:flex-start">
-        <div class="room" style="width: 600px;">
-          <img src="../images/room/豪華雙人房.jpg" alt="經濟雙人房" style="width: 1200px;" />
-        </div>
-        <div class=".flex_cell_inner">
-          <div class="roomText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
-            <h1>經濟四人房</h1>
-            <p>進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。</p>
-            <ul>
-              <li>10坪</li>
-              <li>一大床 (200*200cm)</li>
-              <li>二單床 (120*200cm)</li>
-            </ul>
-          </div>
-        </div>   
-      </div>
-      <br><br><br><br>
-
-      <div style="display: flex; flex-wrap:nowrap;justify-content:flex-start">
-        <div class="room" style="width: 600px;">
-          <img src="../images/room/豪華雙人房.jpg" alt="經濟雙人房" style="width: 1200px;" />
-        </div>
-        <div class=".flex_cell_inner">
-          <div class="roomText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
-            <h1>景觀雙人房</h1>
-            <p>進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。</p>
-            <ul>
-              <li>10坪</li>
-              <li>一大床 (200*200cm)</li>
-              <li>二單床 (120*200cm)</li>
-            </ul>
-          </div>
-        </div>   
-      </div>
-      <br><br><br><br>
-
-      <div style="display: flex; flex-wrap:nowrap;justify-content:flex-start">
-        <div class="room" style="width: 600px;">
-          <img src="../images/room/豪華雙人房.jpg" alt="經濟雙人房" style="width: 1200px;" />
-        </div>
-        <div class=".flex_cell_inner">
-          <div class="roomText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
-            <h1>景觀四人房</h1>
-            <p>進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。</p>
-            <ul>
-              <li>10坪</li>
-              <li>一大床 (200*200cm)</li>
-              <li>二單床 (120*200cm)</li>
-            </ul>
-          </div>
-        </div>   
-      </div>
-      <br><br><br><br>
-
-      <div style="display: flex; flex-wrap:nowrap;justify-content:flex-start">
-        <div class="room" style="width: 600px;">
-          <img src="../images/room/豪華雙人房.jpg" alt="經濟雙人房" style="width: 1200px;" />
-        </div>
-        <div class=".flex_cell_inner">
-          <div class="roomText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
-            <h1>豪華雙人房</h1>
-            <p>進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。</p>
-            <ul>
-              <li>10坪</li>
-              <li>一大床 (200*200cm)</li>
-              <li>二單床 (120*200cm)</li>
-            </ul>
-          </div>
-        </div>   
-      </div>
-      <br><br><br><br>
-
-      <div style="display: flex; flex-wrap:nowrap;justify-content:flex-start">
-        <div class="room" style="width: 600px;">
-          <img src="../images/room/豪華雙人房.jpg" alt="經濟雙人房" style="width: 1200px;" />
-        </div>
-        <div class=".flex_cell_inner">
-          <div class="roomText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
-            <h1>豪華四人房</h1>
-            <p>進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。</p>
-            <ul>
-              <li>10坪</li>
-              <li>一大床 (200*200cm)</li>
-              <li>二單床 (120*200cm)</li>
-            </ul>
-          </div>
-        </div>   
-      </div>
-      <br><br><br><br>
-
-      <div style="display: flex; flex-wrap:nowrap;justify-content:flex-start">
-        <div class="room" style="width: 600px;">
-          <img src="../images/room/豪華雙人房.jpg" alt="經濟雙人房" style="width: 1200px;" />
-        </div>
-        <div class=".flex_cell_inner">
-          <div class="roomText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
-            <h1>尊榮雙人房</h1>
-            <p>進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。</p>
-            <ul>
-              <li>10坪</li>
-              <li>一大床 (200*200cm)</li>
-              <li>二單床 (120*200cm)</li>
-            </ul>
-          </div>
-        </div>   
-      </div>
-      <br><br><br><br>
-
-      <div style="display: flex; flex-wrap:nowrap;justify-content:flex-start">
-        <div class="room" style="width: 600px;">
-          <img src="../images/room/豪華雙人房.jpg" alt="經濟雙人房" style="width: 1200px;" />
-        </div>
-        <div class=".flex_cell_inner">
-          <div class="roomText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
-            <h1>尊榮四人房</h1>
-            <p>進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。</p>
-            <ul>
-              <li>10坪</li>
-              <li>一大床 (200*200cm)</li>
-              <li>二單床 (120*200cm)</li>
-            </ul>
-          </div>
-        </div>   
-      </div>
-      <br><br><br><br>
-
-      <div style="display: flex; flex-wrap:nowrap;justify-content:flex-start">
-        <div class="room" style="width: 600px;">
-          <img src="../images/room/豪華雙人房.jpg" alt="經濟雙人房" style="width: 1200px;" />
-        </div>
-        <div class=".flex_cell_inner">
-          <div class="roomText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
-            <h1>總統套房</h1>
-            <p>進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。</p>
-            <ul>
-              <li>10坪</li>
-              <li>一大床 (200*200cm)</li>
-              <li>二單床 (120*200cm)</li>
-            </ul>
-          </div>
-        </div>   
-      </div>
-      <br><br><br><br>
 
       <!-- ################################################################################################ -->
       <!-- ################################################################################################ -->
