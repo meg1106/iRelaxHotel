@@ -14,27 +14,27 @@
   <style>
     .room {
       width: 300px;
-      float: left;
+      float:left;
       /* 圖片在左邊 */
       width: 200px;
       line-height: 50px;
       /*DIV區塊高度*/
-      padding: 1px;
-      margin-right: 10px;
+      padding: 25px;
+      margin-right: 5px;
     }
 
-    .room img {
+    .room_img {
       display: block;
       width: 100%;
     }
 
     .roomText {
       float: right;
-      /* 文字在右邊 */
       width: 500px;
       height: 400px;
       font-size: larger;
-      padding: 15px 30px;
+      padding: 20px 30px;
+      line-height: 30px;
     }
 
     .flex_cell_inner {
@@ -48,12 +48,6 @@
     $.ajax({
       url: '/roomtype/',
       type: 'GET',
-      // success: res => {
-      //   console.log(res)
-      // },
-      // error: err => {
-      //   console.log(err)
-      // },
     })
       .done(function (room_msg) {
         console.log(room_msg);
@@ -62,13 +56,13 @@
           $('#room_content').append(
           `
           <div class="room" style="width: 600px;">
-            <img src="data:image/jpeg;base64,${element.roomPic}" alt="圖片無法載入" style="width: 1200px;" />
+            <img src="data:image/jpeg;base64,${element.roomPic}" alt="圖片無法載入" style="width: 1200px;" class="room_img"/>
           </div>
           <div class=".flex_cell_inner">
             <div class="roomText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
-              <h1>${element.roomType}</h1>
+              <h1>${element.roomType}</h1><br>
               <p>${element.content}</p>
-              <p>${element.roomPrice}</p>
+              <p>價錢：${element.roomPrice}</p>
               <br>
             </div>
           </div>
@@ -77,37 +71,12 @@
         })
       });
   </script>
-  <!-- <script>
-    var xmlhttp;
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "http://10.10.0.62:10001/api/charge/admin/v1/image/code", true);
-    xmlhttp.responseType = "blob";
-    xmlhttp.onload = function () {
-      console.log(this);
-      if (this.status == 200) {
-        var blob = this.response;
-        var img = document.createElement("img");
-        img.onload = function (e) {
-          window.URL.revokeObjectURL(img.src);
-        };
-        img.src = window.URL.createObjectURL(blob);
-        document.body.appendChild(img);
-      }
-    }
-    xmlhttp.send();
-
-  </script> -->
-
 </head>
 
 <body id="top">
-  <!-- ################################################################################################ -->
-  <!-- Top Background Image Wrapper -->
   <div class="bgded overlay padtop" style="background-image:url('../images/backgrounds/01.png');">
-    <!-- ################################################################################################ -->
     <header id="header" class="hoc clear">
       <div id="logo" class="fl_left">
-        <!-- ################################################################################################ -->
         <a href="../index.html">
           <div style="width: 220px; height: 70px;">
             <img src="../images/logo/logo2.png">
@@ -137,18 +106,10 @@
             </ul>
           </li>
           <li><a href="facility.html">活動設施</a></li>
-          <li><a class="drop" href="#">當地探索</a>
-            <ul>
-              <li><a href="#">自然景點</a></li>
-              <li><a href="#">藝術文化</a></li>
-              <li><a href="#">美食購物</a></li>
-            </ul>
-          </li>
           <li><a href="contactUS.html">聯絡我們</a></li>
         </ul>
       </nav>
     </header>
-
     <div style="margin-top: 10%; font-size: 250%; display: flex; justify-content: center;">
       <span>瀏覽房型</span>
     </div>
@@ -160,40 +121,13 @@
       <p><a href="booking.html">立即訂房</a></p>
     </div>
   </div>
-
+    <!-- ################################################################################################ -->
   <div class="wrapper row3">
     <main class="hoc container clear">
       <!-- main body -->
-      <!-- ################################################################################################ -->
-      <div id="room_content" style="" >
-        <!-- <div class="room" style="width: 600px;">
-          <img src="../images/room/豪華雙人房.jpg" alt="經濟雙人房" style="width: 1200px;" />
-        </div>
-        <div class=".flex_cell_inner">
-          <div class="roomText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
-            <h1>經濟雙人房</h1>
-            <p>進入客房，映入眼簾的是蔚藍海岸的地毯及船艙造型的圓形海魚掛畫，浴室內獨特的圓形大鏡面及乾濕分離的衛浴設計，讓人沉浸在海底船艙的冒險遐想之中。</p>
-            <br>
-            <ul>
-              <li>10坪</li>
-              <li>一大床 (200*200cm)</li>
-              <li>二單床 (120*200cm)</li>
-            </ul>
-          </div>
-        </div>    -->
-      </div>
-      
-
-
-      <!-- ################################################################################################ -->
-      <!-- ################################################################################################ -->
-      <!-- / main body -->
+      <div id="room_content" style="" ></div> 
       <div class="clear"></div>
     </main>
-
-
-    <!-- ################################################################################################ -->
-
     <!-- ################################################################################################ -->
     <div class="wrapper row4">
       <footer id="footer" class="hoc clear">
@@ -226,7 +160,6 @@
       </footer>
     </div>
     <!-- ################################################################################################ -->
-    <!-- ################################################################################################ -->
     <div class="wrapper row5">
       <div id="copyright" class="hoc clear">
         <!-- ################################################################################################ -->
@@ -237,52 +170,11 @@
       </div>
     </div>
     <!-- ################################################################################################ -->
-    <!-- ################################################################################################ -->
-    <!-- ################################################################################################ -->
     <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
     <!-- JAVASCRIPTS -->
     <script src="../layout/scripts/jquery.min.js"></script>
     <script src="../layout/scripts/jquery.backtotop.js"></script>
     <script src="../layout/scripts/jquery.mobilemenu.js"></script>
-    <!-- 日期 -->
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script type="text/javascript">
-      $(function () {
-        $('input[name="datefilter"]').daterangepicker({
-          autoUpdateInput: false,
-          locale: {
-            cancelLabel: 'Clear'
-          }
-        });
-        $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
-          $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-        });
-        $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-          $(this).val('');
-        });
-      });
-    </script>
-    <script>
-      $('#date1').datetimepicker({
-        date: null,
-        format: 'YYYY-MM-DD',
-        locale: moment.locale('zh-tw'),
-        daysOfWeekDisabled: [0, 6],
-        minDate: moment().add(1, 'days'),
-        maxDate: moment().add(30, 'days'),
-        disabledDates: [
-          moment().add(1, 'days'),
-          moment().add(2, 'days'),
-          '2021-10-10',
-          '2021-12-25'
-        ],
-        disabledDates(time) {
-          return time.getTime() < Date.now() - 3600 * 1000 * 24;
-        }
-      });
-    </script> -->
 </body>
 
 </html>

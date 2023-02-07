@@ -1,169 +1,223 @@
 <!DOCTYPE html>
 
 <html lang="">
+
 <head>
-<title>iRelax Hotel | 活動設施 | 休閒設施</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+  <title>iRelax Hotel | 活動設施 | 休閒設施</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+  <style>
+    .fac {
+      width: 300px;
+      float: left;
+      /* 圖片在左邊 */
+      width: 200px;
+      line-height: 50px;
+      /*DIV區塊高度*/
+      padding: 25px;
+      margin-right: 5px;
+    }
+
+    .fac_img {
+      display: block;
+      width: 100%;
+    }
+
+    .facText {
+      float: right;
+      width: 500px;
+      height: 400px;
+      font-size: larger;
+      padding: 100px 30px;
+      line-height: 30px;
+    }
+
+    .flex_cell_inner {
+      display: block;
+      position: relative;
+    }
+  </style>
 </head>
+
 <body id="top">
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- Top Background Image Wrapper -->
-<div class="bgded overlay padtop" style="background-image:url('../images/backgrounds/01.png');"> 
   <!-- ################################################################################################ -->
+  <!-- Top Background Image Wrapper -->
+  <div class="bgded overlay padtop" style="background-image:url('../images/backgrounds/01.png');">
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left">
+        <a href="../index.html">
+          <div style="width: 220px; height: 70px;">
+            <img src="../images/logo/logo2.png">
+          </div>
+        </a>
+      </div>
+
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li><a href="../index.html">首頁</a></li>
+          <li><a class="drop">關於我們</a>
+            <ul>
+              <li><a href="intro.html">簡介</a></li>
+              <li><a href="traffic.html">交通資訊</a></li>
+              <li><a href="notic.html">注意事項</a></li>
+            </ul>
+          </li>
+          <li><a class="drop">最新消息</a>
+            <ul>
+              <li><a href="news.html">活動情報</a></li>
+              <li><a href="discount.html">住房優惠</a></li>
+            </ul>
+          </li>
+          <li><a class="drop">瀏覽房型</a>
+            <ul>
+              <li><a href="room.html">房型一覽</a></li>
+              <li><a href="booking.html">立即訂房</a></li>
+            </ul>
+          </li>
+          <li class="active"><a href="facility.html">活動設施</a></li>
+          <li><a href="contactUS.html">聯絡我們</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div style="margin-top: 10%; font-size: 250%; display: flex; justify-content: center;">
+      <span>活動設施</span>
+    </div>
+    <br>
+    <div id="breadcrumb" class="hoc clear"
+      style="display: flex;font-size: 150%; justify-content: space-evenly; flex-direction: row; margin: 0.5% 30% 0.5% 30%;">
+      <p><a href="#" class="active">休閒設施</a></p>
+
+    </div>
+  </div>
+
+  <div class="wrapper row3">
+    <main class="hoc container clear">
+      <!-- main body -->
+      <!-- ################################################################################################ -->
+      <div class="">
+        <!-- ################################################################################################ -->
+        <div>
+          <div class="fac" style="width: 600px;">
+            <img class="fac_img" src="../images/facility/gym.jpg" alt="" style="width: 1200px;">
+          </div>
+          <div class=".flex_cell_inner">
+            <div class="facText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
+              <h1>健身房</h1>
+              <p>開放時間：6:00 a.m. – 10:00 p.m</p>
+              <p>配有：跑步機，健身腳踏車，橢圓心肺訓練機，重量訓練椅（臥推椅），自由重量，瑜伽墊，美腿按摩機。</p>
+              <br>
+            </div>
+          </div>
+        </div><br><br>
+
+        <div>
+          <div class="fac" style="width: 600px;">
+            <img class="fac_img" src="../images/facility/pool.jpg" alt="" style="width: 1200px;">
+          </div>
+          <div class=".flex_cell_inner">
+            <div class="facText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
+              <h1>游泳池</h1>
+              <p>開放時間：9:00 a.m. – 10:00 p.m</p>
+              <p>熱水池、冷水池、冰水池(男)、冷療室、超氧離子亞加浴(女)、蒸氣室、烤箱</p>
+              <br>
+            </div>
+          </div>
+        </div><br><br>
+        
+        <div>
+          <div class="fac" style="width: 600px;">
+            <img class="fac_img" src="../images/facility/tabletennis.jpg" alt="" style="width: 1200px;">
+          </div>
+          <div class=".flex_cell_inner">
+            <div class="facText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
+              <h1>休閒中心</h1>
+              <p>開放時間：6:00 a.m. – 10:00 p.m</p>
+              <p>休閒中心內含：投籃機、冰球機、手足球機、桌球、撞球、SWITCH遊戲室、PS4遊戲室、兒童遊戲區、書報閱覽區…等遊憩設施。</p>
+              <br>
+            </div>
+          </div>
+        </div><br><br>
+
+        <div>
+          <div class="fac" style="width: 600px;">
+            <img class="fac_img" src="../images/facility/restaurant.jpg" alt="" style="width: 1200px;">
+          </div>
+          <div class=".flex_cell_inner">
+            <div class="facText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
+              <h1>餐廳</h1>
+              <p>開放時間：9:00 a.m. – 10:00 p.m</p>
+              <p>結合東方創意美食與西方人氣料理，採主菜單點的半自助百匯服務。</p>
+              <p>另外備有私人包廂，在明亮清爽的空間裡享受專屬聚會，讓您與好友家人共度幸福時光。</p>
+              <br>
+            </div>
+          </div>
+        </div><br><br>
+
+        <div>
+          <div class="fac" style="width: 600px;">
+            <img class="fac_img" src="../images/facility/bar.jpg" alt="" style="width: 1200px;">
+          </div>
+          <div class=".flex_cell_inner">
+            <div class="facText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
+              <h1>酒吧</h1>
+              <p>開放時間：6:00 a.m. – 10:00 p.m</p>
+              <p>iRelax酒吧的低調空間，適合夜幕低垂時來此放鬆身心，主打多樣化雞尾酒，各國威士忌與日本佳釀，獨飲或小聚都能在此放慢步調、享受寧靜與放鬆。</p>
+              <br>
+            </div>
+          </div>
+        </div><br><br>
+        
+      </div>
+      <!-- ################################################################################################ -->
+      <!-- main body -->
+      <div class="clear"></div>
+    </main>
+  </div>
   <!-- ################################################################################################ -->
-  <!-- ################################################################################################ -->
-  <header id="header" class="hoc clear">
-    <div id="logo" class="fl_left">
+  <div class="wrapper row4">
+    <footer id="footer" class="hoc clear">
       <!-- ################################################################################################ -->
       <a href="../index.html">
         <div style="width: 220px; height: 70px;">
           <img src="../images/logo/logo2.png">
         </div>
       </a>
-      <!-- <h1><a href="../index.html" style="display:inline-block;">iRelax Hotel</a></h1> -->
-
-      <!-- ################################################################################################ -->
-    </div>
-
-    <nav id="mainav" class="fl_right">
-      <ul class="clear">
-        <li><a href="../index.html">首頁</a></li>
-        <li><a class="drop" >關於我們</a>
-          <ul>
-            <li><a href="intro.html">簡介</a></li>
-            <li><a href="traffic.html">交通資訊</a></li>
-            <li><a href="notic.html">注意事項</a></li>
-          </ul>
+      <br>
+      <div class="two_third first">
+        <li>
+          訂房專線 /
+          <a href="tel:+886-4-23265860">2326-5860</a>
         </li>
-        <li><a class="drop">最新消息</a>
-          <ul>
-            <li><a href="news.html">活動情報</a></li>
-            <li><a href="discount.html">住房優惠</a></li>
-          </ul>
+        <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
+        <li>
+          客服信箱 /
+          <a href="lakesidemystery@gmail.com ">lakesidemystery@gmail.com </a>
         </li>
-        <li><a class="drop">瀏覽房型</a>
-          <ul>
-            <li><a href="room.html">房型一覽</a></li>
-            <li><a href="booking.html">立即訂房</a></li>
-          </ul>
-        </li>
-        <li class="active"><a href="facility.html">活動設施</a></li>
-        <li><a class="drop" href="#">當地探索</a>
-          <ul>
-            <li><a href="#">自然景點</a></li>
-            <li><a href="#">藝術文化</a></li>
-            <li><a href="#">美食購物</a></li>
-          </ul>
-        </li>
-        <li><a href="contactUS.html">聯絡我們</a></li>
-      </ul>
-    </nav>
-  </header>
-  
-  <div style="margin-top: 10%; font-size: 250%; display: flex; justify-content: center;">
-    <span>活動設施</span>
-  </div>
-  <br>
-  <div id="breadcrumb" class="hoc clear" style="display: flex;font-size: 150%; justify-content: space-evenly; flex-direction: row; margin: 0.5% 30% 0.5% 30%;"> 
-    <p><a href="#" class="active">休閒設施</a></p>
-    
-  </div>
-</div>
+        <br><br>
 
-<div class="wrapper row3">
-  <main class="hoc container clear"> 
-    <!-- main body -->
-    <!-- ################################################################################################ -->
-    <div class="content three_quarter first"> 
-      <!-- ################################################################################################ -->
-      
-      <h1 style="font-weight:bold;"><span style="color:#f3bf07; background-color: rgb(83, 83, 83);">健身房</span></h1>
-      <img class="imgl borderedbox inspace-5" src="../images/facility/gym.jpg" alt="">
-      <p>This is a W3C compliant free website template from <a href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a>. For full terms of use of this template please read our <a href="https://www.os-templates.com/template-terms">website template licence</a>.</p>
-      <p>You can use and modify the template for both personal and commercial use. You must keep all copyright information and credit links in the template and associated files. For more website templates visit our <a href="https://www.os-templates.com/">free website templates</a> section.</p>
-      <br><br>
-
-      <h1 style="font-weight:bold;"><span style="color:#f3bf07; background-color: rgb(83, 83, 83);">游泳池</span></h1>
-      <img class="imgl borderedbox inspace-5" src="../images/facility/pool.jpg" alt="">
-      <p>This is a W3C compliant free website template from <a href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a>. For full terms of use of this template please read our <a href="https://www.os-templates.com/template-terms">website template licence</a>.</p>
-      <p>You can use and modify the template for both personal and commercial use. You must keep all copyright information and credit links in the template and associated files. For more website templates visit our <a href="https://www.os-templates.com/">free website templates</a> section.</p>
-      <br><br>
-
-      <h1 style="font-weight:bold;"><span style="color:#f3bf07; background-color: rgb(83, 83, 83);">桌球室</span></h1>
-      <img class="imgl borderedbox inspace-5" src="../images/facility/tabletennis.jpg" alt="">
-      <p>This is a W3C compliant free website template from <a href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a>. For full terms of use of this template please read our <a href="https://www.os-templates.com/template-terms">website template licence</a>.</p>
-      <p>You can use and modify the template for both personal and commercial use. You must keep all copyright information and credit links in the template and associated files. For more website templates visit our <a href="https://www.os-templates.com/">free website templates</a> section.</p>
-      <br><br>
-
-      <h1 style="font-weight:bold;"><span style="color:#f3bf07; background-color: rgb(83, 83, 83);">餐廳</span></h1>
-      <img class="imgl borderedbox inspace-5" src="../images/facility/restaurant.jpg" alt="">
-      <p>This is a W3C compliant free website template from <a href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a>. For full terms of use of this template please read our <a href="https://www.os-templates.com/template-terms">website template licence</a>.</p>
-      <p>You can use and modify the template for both personal and commercial use. You must keep all copyright information and credit links in the template and associated files. For more website templates visit our <a href="https://www.os-templates.com/">free website templates</a> section.</p>
-      <br><br>
-
-      <h1 style="font-weight:bold;"><span style="color:#f3bf07; background-color: rgb(83, 83, 83);">酒吧</span></h1>
-      <img class="imgl borderedbox inspace-5" src="../images/facility/bar.jpg" alt="">
-      <p>This is a W3C compliant free website template from <a href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a>. For full terms of use of this template please read our <a href="https://www.os-templates.com/template-terms">website template licence</a>.</p>
-      <p>You can use and modify the template for both personal and commercial use. You must keep all copyright information and credit links in the template and associated files. For more website templates visit our <a href="https://www.os-templates.com/">free website templates</a> section.</p>
-    </div>
-    <!-- ################################################################################################ -->
-    <!-- main body -->
-    <div class="clear"></div>
-  </main>
-</div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper row4">
-  <footer id="footer" class="hoc clear">
-    <!-- ################################################################################################ -->
-    <a href="../index.html">
-      <div style="width: 220px; height: 70px;">
-        <img src="../images/logo/logo2.png">
+        <ul class="faico clear">
+          <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+          <li><a class="faicon-line" href="#"><i class="fab fa-line"></i></a></li>
+          <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+        </ul>
       </div>
-    </a>
-    <br>
-    <div class="two_third first">
-      <li> 
-        訂房專線 /  
-            <a href="tel:+886-4-23265860">2326-5860</a> 
-      </li>
-      <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
-      <li> 
-        客服信箱 /  
-            <a href="lakesidemystery@gmail.com ">lakesidemystery@gmail.com </a> 
-      </li>
-      <br><br>
-
-      <ul class="faico clear">
-        <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
-        <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
-        <li><a class="faicon-line" href="#"><i class="fab fa-line"></i></a></li>
-        <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-      </ul>
-    </div>
-  </footer>
-</div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper row5">
-  <div id="copyright" class="hoc clear"> 
-    <!-- ################################################################################################ -->
-    <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
-    <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
-    <!-- ################################################################################################ -->
+    </footer>
   </div>
-</div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
-<!-- JAVASCRIPTS -->
-<script src="../layout/scripts/jquery.min.js"></script>
-<script src="../layout/scripts/jquery.backtotop.js"></script>
-<script src="../layout/scripts/jquery.mobilemenu.js"></script>
+  <div class="wrapper row5">
+    <div id="copyright" class="hoc clear">
+      <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
+      <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/"
+          title="Free Website Templates">OS Templates</a></p>
+    </div>
+  </div>
+  <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+  <!-- JAVASCRIPTS -->
+  <script src="../layout/scripts/jquery.min.js"></script>
+  <script src="../layout/scripts/jquery.backtotop.js"></script>
+  <script src="../layout/scripts/jquery.mobilemenu.js"></script>
 </body>
+
 </html>
