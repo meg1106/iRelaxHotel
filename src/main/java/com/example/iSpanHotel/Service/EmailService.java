@@ -15,9 +15,8 @@ public interface EmailService {
 	// 發送訂房資訊信件
     String sendOrderDetail(OrderDto orderDto, Item item);
  
-    // Method
-    // To send an email with attachment
-    String sendMailWithAttachment(EmailDto details);
+    // 發送聯絡我們信件
+    String sendContactUs(EmailDto emailDto);
     
     // 發送重置密碼信件
     String processForgotPassword(HttpServletRequest request, MemberDto memberDto);

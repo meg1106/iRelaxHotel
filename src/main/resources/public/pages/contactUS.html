@@ -39,7 +39,7 @@
       <nav id="mainav" class="fl_right">
         <ul class="clear">
           <li><a href="../index.html">首頁</a></li>
-          <li><a class="drop" >關於我們</a>
+          <li><a class="drop">關於我們</a>
             <ul>
               <li><a href="intro.html">簡介</a></li>
               <li><a href="traffic.html">交通資訊</a></li>
@@ -81,7 +81,7 @@
       <div class="content" style="display: flex; flex-direction: column;">
         <div id="comments">
           <h2>Contact</h2>
-          <form action="要建立資料庫.php" method="post">
+          <form id="contact_submit" action="" method="">
             <div class="one_third first" style="display:flex;">
               <label for="name">姓名<span>*</span></label>
               <fieldset>
@@ -95,14 +95,15 @@
               </fieldset>
             </div>
             <input type="text" placeholder="請輸入姓名" onfocus="this.placeholder='請輸入姓名'" name="name" id="name" size="22"
-                required><br>
-            
-            <div class="one_third first" >
+              required><br>
+
+            <div class="one_third first">
               <label for="email">電子郵件<span>*</span></label>
             </div>
-            <input type="email" placeholder="請輸入電子郵件" onfocus="this.placeholder='請輸入電子郵件'" name="email" id="email" size="22" required><br>
+            <input type="email" placeholder="請輸入電子郵件" onfocus="this.placeholder='請輸入電子郵件'" name="email" id="email"
+              size="22" required><br>
 
-            <div class="one_third first" >
+            <div class="one_third first">
               <label for="tel">聯絡電話<span>*</span></label>
             </div>
             <input type="tel" pattern="09\d{2}-\d{6}|09\d{8}|09\d{2}-\d{3}-\d{3}" placeholder="請輸入聯絡電話"
@@ -111,10 +112,11 @@
 
             <div class="block clear">
               <label for="comment">內容</label>
-              <textarea placeholder="請輸入問題或內容" onfocus="this.placeholder='請輸入問題或內容'" name="comment" id="comment" cols="25" rows="10"></textarea>
+              <textarea placeholder="請輸入問題或內容" onfocus="this.placeholder='請輸入問題或內容'" name="comment" id="comment"
+                cols="25" rows="10"></textarea>
             </div>
             <div>
-              <input type="submit" name="submit" value="提交">
+              <input type="submit" id="submit" name="submit" value="提交">
               &nbsp;
             </div>
           </form>
@@ -169,6 +171,28 @@
   <script src="../layout/scripts/jquery.min.js"></script>
   <script src="../layout/scripts/jquery.backtotop.js"></script>
   <script src="../layout/scripts/jquery.mobilemenu.js"></script>
+  <script>
+    $("#contact_submit").submit((e) => {
+      e.preventDefault();
+      var url = "/contactUs";
+      var name = $("#name").val();
+      var email = $("#email").val();
+      var tel = $("#tel").val();
+      var comment = $("#comment").val();
+      var data = '{"subject":"來自' + name + '的聯絡","msgBody":"Email: ' +
+        email + '\\nTel: ' + tel + '\\nComment: ' + comment + '"}';
+      console.log(data);
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        headers: { 'Content-Type': 'application/json;charset=utf8' }
+      }).done(function (msg) {
+        console.log(msg)
+        alert(msg);
+      });
+    });
+  </script>
 </body>
 
 </html>
