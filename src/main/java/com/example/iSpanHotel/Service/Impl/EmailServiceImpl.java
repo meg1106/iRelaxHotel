@@ -119,7 +119,7 @@ public class EmailServiceImpl implements EmailService {
             return "找不到此Email";
         }
         try {
-        	String resetPasswordLink = UrlUtility.getSiteURL(request) + "/member/reset_password?token=" + token;
+        	String resetPasswordLink = UrlUtility.getSiteURL(request) + "/frontend/change_password.html?token=" + token;
 			mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
 			mimeMessageHelper.setFrom(sender);
 			mimeMessageHelper.setTo(email);

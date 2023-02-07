@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -112,16 +111,6 @@ public class MemberController {
 		String result = emailService.processForgotPassword(request, memberDto);
 		System.out.println(result);
 		return ResponseEntity.ok(result);
-	}
-
-	@GetMapping("/reset_password")
-	public ResponseEntity<String> showResetPasswordForm(@Param(value = "token") String token) {
-	    Member member = memberService.getByResetPasswordToken(token);
-	    if (member == null) {
-	        return ResponseEntity.ok("驗證碼錯誤");
-	    }
-	     
-	    return ResponseEntity.ok("請更改密碼");
 	}
 	
 	@PostMapping("/reset_password")

@@ -142,9 +142,10 @@ public class MemberServiceImpl implements MemberService {
 		String token = request.getParameter("token");
 	    String passwd = memberDto.getPasswd();
 	    System.out.println(passwd);
+	    System.out.println(token);
 	    Member member = memberDao.findByResetPasswordToken(token);
 	    if (member == null) {
-	        return "驗證碼錯誤";
+	        return "驗證碼錯誤，請重新申請連結！";
 	    } else {           
 	    	member.setPasswd(BCrypt.hashpw(passwd, BCrypt.gensalt()));
 	    	member.setResetPasswordToken(null);

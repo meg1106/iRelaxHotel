@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService{
 	public String delete(Long id) {
 		try {
 			orderDao.deleteById(id);
-			return "消息刪除成功";
+			return "訂單刪除成功";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "發生未知的錯誤";
