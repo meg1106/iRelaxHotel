@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,8 +28,9 @@ public class HotelNews {
 	@Column(name = "end_date")
 	private String endDate;
 	
-	@Column(name = "pic")
-	private String pic;
+	@Lob
+	@Column(name = "pic", columnDefinition = "LONGBLOB")
+	private byte[] Pic;
 	
 	@Column(name = "content", length = 1000)
 	private String content;
@@ -73,20 +75,20 @@ public class HotelNews {
 		this.endDate = endDate;
 	}
 
-	public String getPic() {
-		return pic;
-	}
-
-	public void setPic(String pic) {
-		this.pic = pic;
-	}
-
 	public String getContent() {
 		return content;
 	}
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public byte[] getPic() {
+		return Pic;
+	}
+
+	public void setPic(byte[] pic) {
+		Pic = pic;
 	}
 	
 }

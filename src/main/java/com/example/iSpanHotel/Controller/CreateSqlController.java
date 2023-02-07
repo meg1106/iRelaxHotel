@@ -397,45 +397,61 @@ public class CreateSqlController {
 	@PostMapping("/hotelNews")
 	private void hotelNews() {
 		HotelNews hotelNew1 = new HotelNews();
+		File file1 = new File("./newsImg/1.png");
+		InputStream inputStream1;
+		try {
+			inputStream1 = new FileInputStream(file1);
+			hotelNew1.setPic(IOUtils.toByteArray(inputStream1));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		hotelNew1.setNewsType((short) 1);
 		hotelNew1.setTitle("溫馨聖誕嘉年華");
 		hotelNew1.setStartDate("2022-12-16");
 		hotelNew1.setEndDate("2022-12-31");
-		hotelNew1.setPic("https://tpe.fareasternhotel.com.tw/upload/catalog_news_b/twL_catalog_news_22L02_LaBnO907N3.png");
-		hotelNew1.setContent("\"誠摯地邀請您與我們共度溫馨聖誕及歡樂新年！\r\n"
-				+ "除了一系列豐富美食與慶祝活動外，在這美好的節日裡，歡迎您蒞臨\r\n"
-				+ "飯店大廳感受充滿節慶氣氛的佈置以及繽紛童趣的旋轉木馬與聖誕市\r\n"
-				+ "集，佳節期間亦特別設置了零錢捐款活動，您可選擇支持國際兒童村\r\n"
-				+ "或新北市玩具銀行，和我們一起用實際行動傳遞愛與祝福，支持台灣\r\n"
-				+ "需要幫助的團體！\r\n"
-				+ "趕快來一趟，共度溫馨聖誕及歡樂新年！\r\n"
-				+ "即日起至2023/01/03(二)\r\n"
-				+ "凡上傳您與大廳上聖誕布置的合照至Instagram，並完成以下步驟：\r\n"
-				+ "1.文中標記 #(帳號須公開)\r\n"
-				+ "2.追蹤官方Instagram帳號@即可抽「下午茶兩客」\r\n"
-				+ "我們將於2023/1/06(五)在臉書及Insagram公布幸運得獎者\"");
+//		hotelNew1.setPic("https://tpe.fareasternhotel.com.tw/upload/catalog_news_b/twL_catalog_news_22L02_LaBnO907N3.png");
+		hotelNew1.setContent("誠摯地邀請您與我們共度溫馨聖誕及歡樂新年！<br>"
+				+ "除了一系列豐富美食與慶祝活動外，在這美好的節日裡，歡迎您蒞臨"
+				+ "飯店大廳感受充滿節慶氣氛的佈置以及繽紛童趣的旋轉木馬與聖誕市"
+				+ "集，佳節期間亦特別設置了零錢捐款活動，您可選擇支持國際兒童村"
+				+ "或新北市玩具銀行，和我們一起用實際行動傳遞愛與祝福，支持台灣"
+				+ "需要幫助的團體！<br>"
+				+ "趕快來一趟，共度溫馨聖誕及歡樂新年！<br>"
+				+ "即日起至2023/01/03(二)<br>"
+				+ "凡上傳您與大廳上聖誕布置的合照至Instagram，並完成以下步驟：<br>"
+				+ "1.文中標記 #(帳號須公開)<br>"
+				+ "2.追蹤官方Instagram帳號@即可抽「下午茶兩客」<br>"
+				+ "我們將於2023/1/06(五)在臉書及Insagram公布幸運得獎者！");
 		hotelNewsDao.save(hotelNew1);
 		
 		HotelNews hotelNew2 = new HotelNews();
+		File file2 = new File("./newsImg/2.jpg");
+		InputStream inputStream2;
+		try {
+			inputStream2 = new FileInputStream(file2);
+			hotelNew2.setPic(IOUtils.toByteArray(inputStream2));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		hotelNew2.setNewsType((short) 2);
 		hotelNew2.setTitle("奢旅漫遊 超值享受");
 		hotelNew2.setStartDate("2023-01-01");
 		hotelNew2.setEndDate("2023-01-10");
-		hotelNew2.setPic("https://tpe.fareasternhotel.com.tw/upload/catalog_news_b/twL_catalog_news_21J27_E9ttWiGHON.jpg");
-		hotelNew2.setContent("\"放鬆身心的奢華五星假期，需要慢慢感受！入住兩晚以上豪華房型享\r\n"
-				+ "7折優惠；經濟套房享6折優惠！\r\n"
-				+ "專案包含： \r\n"
-				+ "入住兩晚以上豪華房型享7折優惠；經濟套房享6折優惠\r\n"
-				+ "免費使用健身俱樂部及頂樓景觀恆溫泳池 \r\n"
-				+ "含豪華禮遇，包含早餐、下午茶及雞尾酒時光\r\n"
-				+ "\r\n"
-				+ "條款及細則\r\n"
-				+ "房價需加收10%服務費及5%稅金。\r\n"
-				+ "敬請事先預訂，此優惠須視訂房時客房供應情況方可確認訂房。\r\n"
-				+ "此專案內容之優惠恕不得與其它優惠或政府旅遊補助併用。\r\n"
-				+ "飯店保留取消與修改專案優惠的權利。\r\n"
-				+ "不適用日期:2022/1/31-2/5\r\n"
-				+ "早餐、下午茶及雞尾酒時光場域需視當日住房率而定\"");
+//		hotelNew2.setPic("https://tpe.fareasternhotel.com.tw/upload/catalog_news_b/twL_catalog_news_21J27_E9ttWiGHON.jpg");
+		hotelNew2.setContent("放鬆身心的奢華五星假期，需要慢慢感受！入住兩晚以上豪華房型享"
+				+ "7折優惠；經濟套房享6折優惠！<br>"
+				+ "專案包含：<br>"
+				+ "入住兩晚以上豪華房型享7折優惠；經濟套房享6折優惠<br>"
+				+ "免費使用健身俱樂部及頂樓景觀恆溫泳池<br>"
+				+ "含豪華禮遇，包含早餐、下午茶及雞尾酒時光<br>"
+				+ "<br>"
+				+ "條款及細則<br>"
+				+ "房價需加收10%服務費及5%稅金。<br>"
+				+ "敬請事先預訂，此優惠須視訂房時客房供應情況方可確認訂房。<br>"
+				+ "此專案內容之優惠恕不得與其它優惠或政府旅遊補助併用。<br>"
+				+ "飯店保留取消與修改專案優惠的權利。<br>"
+				+ "不適用日期:2022/1/31-2/5<br>"
+				+ "早餐、下午茶及雞尾酒時光場域需視當日住房率而定");
 		hotelNewsDao.save(hotelNew2);
 	}
 

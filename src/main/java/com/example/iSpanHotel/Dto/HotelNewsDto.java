@@ -1,12 +1,14 @@
 package com.example.iSpanHotel.Dto;
 
+import java.io.File;
+
 public class HotelNewsDto {
 	private Long id;
 	private Short newsType;
 	private String title;
 	private String startDate;
 	private String endDate;
-	private String pic;
+	private File pic;
 	private String content;
 	
 	public Long getId() {
@@ -39,10 +41,10 @@ public class HotelNewsDto {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	public String getPic() {
+	public File getPic() {
 		return pic;
 	}
-	public void setPic(String pic) {
+	public void setPic(File pic) {
 		this.pic = pic;
 	}
 	public String getContent() {
