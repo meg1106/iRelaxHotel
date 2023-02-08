@@ -85,10 +85,9 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
-	public List<Room> searchEmptyRoom() {
+	public List<Room> searchEmptyRoom(String startDate, String endDate) {
 		try {
-			List<Room> orderJournals = orderJournalDao.findRoomBystayDateBetween(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-02"), new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-05"));
-//			List<OrderJournal> orderJournals = orderJournalDao.findRoomBystayDateBetween(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-02"), new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-05"));
+			List<Room> orderJournals = orderJournalDao.findRoomBystayDateBetween(new SimpleDateFormat("yyyy-MM-dd").parse(startDate), new SimpleDateFormat("yyyy-MM-dd").parse(endDate));
 			for (int i = 0; i < orderJournals.size(); i++) {
 				System.out.println(orderJournals.get(i));
 			}

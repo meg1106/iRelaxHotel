@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.iSpanHotel.Dto.OrderDto;
 import com.example.iSpanHotel.Dto.RoomDto;
 import com.example.iSpanHotel.Service.RoomService;
 import com.example.iSpanHotel.model.Room;
@@ -55,7 +56,9 @@ public class RoomController {
 	}
 	
 	@GetMapping("/emptyRoom")
-	private ResponseEntity<List<Room>> searchEmptyRoom() {
-		return ResponseEntity.ok(roomService.searchEmptyRoom());
+	private ResponseEntity<List<Room>> searchEmptyRoom(String checkinDate, String checkoutDate) {
+		System.out.println(checkinDate);
+		System.out.println(checkoutDate);
+		return ResponseEntity.ok(roomService.searchEmptyRoom(checkinDate,checkoutDate));
 	}
 }
