@@ -54,4 +54,8 @@ public class RoomController {
 		return ResponseEntity.ok(room);
 	}
 	
+	@GetMapping("/emptyRoom")
+	private ResponseEntity<List<Room>> searchEmptyRoom() {
+		return ResponseEntity.ok(roomService.searchEmptyRoom());
+	}
 }

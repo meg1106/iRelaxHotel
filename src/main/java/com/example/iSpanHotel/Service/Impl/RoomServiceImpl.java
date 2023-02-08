@@ -1,11 +1,14 @@
 package com.example.iSpanHotel.Service.Impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.iSpanHotel.Dao.OrderJournalDao;
 import com.example.iSpanHotel.Dao.RoomDao;
 import com.example.iSpanHotel.Dto.RoomDto;
 import com.example.iSpanHotel.Service.RoomService;
@@ -19,6 +22,8 @@ public class RoomServiceImpl implements RoomService {
 	private RoomDao roomDao;
 	@Autowired
 	private RoomTypeService roomTypeService;
+	@Autowired
+	private OrderJournalDao orderJournalDao;
 
 	@Override
 	public String create(RoomDto roomDto) {
@@ -77,6 +82,21 @@ public class RoomServiceImpl implements RoomService {
 	public Room findById(Long id) {
 		Optional<Room> room = roomDao.findById(id);
 		return room.get();
+	}
+
+	@Override
+	public List<Room> searchEmptyRoom() {
+		try {
+			List<Room> orderJournals = orderJournalDao.findRoomBystayDateBetween(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-02"), new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-05"));
+//			List<OrderJournal> orderJournals = orderJournalDao.findRoomBystayDateBetween(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-02"), new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-05"));
+			for (int i = 0; i < orderJournals.size(); i++) {
+				System.out.println(orderJournals.get(i));
+			}
+			return orderJournals;
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

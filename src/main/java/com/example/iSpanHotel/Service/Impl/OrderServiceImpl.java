@@ -2,17 +2,22 @@ package com.example.iSpanHotel.Service.Impl;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.iSpanHotel.Class.DateUtils;
 import com.example.iSpanHotel.Dao.MemberDao;
 import com.example.iSpanHotel.Dao.OrderDao;
+import com.example.iSpanHotel.Dao.OrderJournalDao;
 import com.example.iSpanHotel.Dto.OrderDto;
 import com.example.iSpanHotel.Service.OrderService;
+import com.example.iSpanHotel.model.Member;
 import com.example.iSpanHotel.model.Order;
+import com.example.iSpanHotel.model.OrderJournal;
 
 @Service
 public class OrderServiceImpl implements OrderService{
@@ -23,12 +28,24 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
 	private MemberDao memberDao;
 	
+	@Autowired
+	private OrderJournalDao orderJournalDao;
+	
 	@Override
 	public Order create(OrderDto orderDto) {
 		try {
 			Order order = new Order();
-			order.setMember(memberDao.findById(orderDto.getMember()).get());
+			Member member = memberDao.findById(orderDto.getMember()).get();
+			order.setMember(member);
 			order.setOrderDate(new SimpleDateFormat("yyyy-MM-dd").parse(orderDto.getOrderDate()));
+			List<String> dates = DateUtils.getBetweenDates(orderDto.getCheckinDate(), orderDto.getCheckoutDate(), true);
+			for (int i = 0; i < dates.size(); i++) {
+				OrderJournal orderJournal = new OrderJournal();
+				orderJournal.setMember(member);
+				orderJournal.setOrder(order);
+				orderJournal.setStayDate(new SimpleDateFormat("yyyy-MM-dd").parse(dates.get(i)));
+				orderJournalDao.save(orderJournal);
+			}
 			orderDao.save(order);
 			return order;
 		} catch (Exception e) {
@@ -51,11 +68,22 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public String update(Long id, OrderDto orderDto) {
 		try {
+			orderJournalDao.deleteByOrder(id);
 			Order order = new Order();
+			Member member = memberDao.findById(orderDto.getMember()).get();
 			order.setId(id);
-			order.setMember(memberDao.findById(orderDto.getMember()).get());
-			order.setOrderDate(new SimpleDateFormat("yyyy-MM-dd").parse(orderDto.getOrderDate()));
+			order.setMember(member);
+			order.setOrderDate(new Date());
 			orderDao.save(order);
+			List<String> dates = DateUtils.getBetweenDates(orderDto.getCheckinDate(), orderDto.getCheckoutDate(), true);
+			for (int i = 0; i < dates.size(); i++) {
+				OrderJournal orderJournal = new OrderJournal();
+				orderJournal.setMember(member);
+				orderJournal.setOrder(order);
+				orderJournal.setStayDate(new SimpleDateFormat("yyyy-MM-dd").parse(dates.get(i)));
+				orderJournalDao.save(orderJournal);
+				System.out.println(new SimpleDateFormat("yyyy-MM-dd").parse(dates.get(i)));
+			}
 			return "訂單修改成功";
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.iSpanHotel.Class.BCrypt;
+import com.example.iSpanHotel.Class.DateUtils;
 import com.example.iSpanHotel.Class.JWTutils;
 import com.example.iSpanHotel.Class.Weather;
 import com.example.iSpanHotel.Dao.EmployeeDao;
@@ -24,6 +25,7 @@ import com.example.iSpanHotel.Dao.HotelNewsDao;
 import com.example.iSpanHotel.Dao.ItemDao;
 import com.example.iSpanHotel.Dao.MemberDao;
 import com.example.iSpanHotel.Dao.OrderDao;
+import com.example.iSpanHotel.Dao.OrderJournalDao;
 import com.example.iSpanHotel.Dao.PermissionsDao;
 import com.example.iSpanHotel.Dao.RoomDao;
 import com.example.iSpanHotel.Dao.RoomTypeDao;
@@ -32,6 +34,7 @@ import com.example.iSpanHotel.model.HotelNews;
 import com.example.iSpanHotel.model.Item;
 import com.example.iSpanHotel.model.Member;
 import com.example.iSpanHotel.model.Order;
+import com.example.iSpanHotel.model.OrderJournal;
 import com.example.iSpanHotel.model.Permissions;
 import com.example.iSpanHotel.model.Room;
 import com.example.iSpanHotel.model.RoomType;
@@ -66,6 +69,8 @@ public class CreateSqlController {
 	private EmployeeDao employeeDao;
 	@Autowired
 	private OrderDao orderDao;
+	@Autowired
+	private OrderJournalDao orderJournalDao;
 	@Autowired
 	private ItemDao itemDao;
 	
@@ -675,51 +680,86 @@ public class CreateSqlController {
 	
 	@PostMapping("/order")
 	private void order() {
-		Order order1 = new Order();
-		Item item1 = new Item();
-		order1.setMember(memberDao.findById((long)1).get());
 		try {
-			order1.setOrderDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-01"));
-			System.out.println(order1.getOrderDate());
+			Order order1 = new Order();
+			Item item1 = new Item();
+			Member member1 = memberDao.findById((long)1).get();
+			Room room1 = roomDao.findById((long)10).get();
+			order1.setMember(member1);
+			order1.setOrderDate(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse("2023-01-01 08:31:50"));
 			item1.setCheckinDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-03"));
 			item1.setCheckoutDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-05"));
+			item1.setRoom(room1);
+			item1.setOrder(order1);
+			orderDao.save(order1);
+			itemDao.save(item1);
+			List<String> dates = DateUtils.getBetweenDates("2023-01-03", "2023-01-05", true);
+			for (int i = 0; i < dates.size(); i++) {
+				OrderJournal orderJournal = new OrderJournal();
+				orderJournal.setMember(member1);
+				orderJournal.setRoom(room1);
+				orderJournal.setOrder(order1);
+				orderJournal.setStayDate(new SimpleDateFormat("yyyy-MM-dd").parse(dates.get(i)));
+				orderJournalDao.save(orderJournal);
+			}
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		item1.setRoom(roomDao.findById((long)10).get());
-		item1.setOrder(order1);
-		orderDao.save(order1);
-		itemDao.save(item1);
 		
-		Order order2 = new Order();
-		Item item2 = new Item();
-		order2.setMember(memberDao.findById((long)4).get());
+		
 		try {
-			order2.setOrderDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-16"));
+			Order order2 = new Order();
+			Item item2 = new Item();
+			Member member2 = memberDao.findById((long)4).get();
+			Room room2 = roomDao.findById((long)52).get();
+			order2.setMember(member2);
+			order2.setOrderDate(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse("2023-01-16 16:40:12"));
 			item2.setCheckinDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-20"));
 			item2.setCheckoutDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-25"));
+			item2.setRoom(room2);
+			item2.setOrder(order2);
+			orderDao.save(order2);
+			itemDao.save(item2);
+			List<String> dates = DateUtils.getBetweenDates("2023-01-20", "2023-01-25", true);
+			for (int i = 0; i < dates.size(); i++) {
+				OrderJournal orderJournal = new OrderJournal();
+				orderJournal.setMember(member2);
+				orderJournal.setRoom(room2);
+				orderJournal.setOrder(order2);
+				orderJournal.setStayDate(new SimpleDateFormat("yyyy-MM-dd").parse(dates.get(i)));
+				orderJournalDao.save(orderJournal);
+			}
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		item2.setRoom(roomDao.findById((long)52).get());
-		item2.setOrder(order2);
-		orderDao.save(order2);
-		itemDao.save(item2);
 		
-		Order order3 = new Order();
-		Item item3 = new Item();
-		order3.setMember(memberDao.findById((long)2).get());
+		
 		try {
-			order3.setOrderDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-31"));
+			Order order3 = new Order();
+			Item item3 = new Item();
+			Member member3 = memberDao.findById((long)2).get();
+			Room room3 = roomDao.findById((long)45).get();
+			order3.setMember(member3);
+			order3.setOrderDate(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse("2023-01-31 23:11:28"));
 			item3.setCheckinDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-02-15"));
 			item3.setCheckoutDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-02-18"));
+			item3.setRoom(room3);
+			item3.setOrder(order3);
+			orderDao.save(order3);
+			itemDao.save(item3);
+			List<String> dates = DateUtils.getBetweenDates("2023-02-15", "2023-02-18", true);
+			for (int i = 0; i < dates.size(); i++) {
+				OrderJournal orderJournal = new OrderJournal();
+				orderJournal.setMember(member3);
+				orderJournal.setRoom(room3);
+				orderJournal.setOrder(order3);
+				orderJournal.setStayDate(new SimpleDateFormat("yyyy-MM-dd").parse(dates.get(i)));
+				orderJournalDao.save(orderJournal);
+			}
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		item3.setRoom(roomDao.findById((long)45).get());
-		item3.setOrder(order3);
-		orderDao.save(order3);
-		itemDao.save(item3);
+		
 	}
 	
 	@PostMapping("/testJWT")

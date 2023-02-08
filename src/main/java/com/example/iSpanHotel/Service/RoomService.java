@@ -22,5 +22,7 @@ public interface RoomService {
 	// 查詢單一
 	Room findById(Long id);
 	
+	// 查詢空房
+	List<Room> searchEmptyRoom();
 	
 }

@@ -29,12 +29,16 @@ public class Order {
 	@JoinColumn(name = "member_id")
 	private Member member;
 	
-	@Column(name = "order_date")
+	@Column(name = "order_date", columnDefinition = "DATETIME")
 	private Date orderDate;
 	
 	@JsonIgnoreProperties({"order"})
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+	@OneToMany(cascade = {CascadeType.ALL}, mappedBy = "order")
 	private List<Item> items;
+	
+	@JsonIgnoreProperties({"order"})
+	@OneToMany(cascade = {CascadeType.ALL}, mappedBy = "order")
+	private List<OrderJournal> orderJournalds;
 
 	public Long getId() {
 		return id;
@@ -69,4 +73,11 @@ public class Order {
 		this.items = items;
 	}
 
+	public List<OrderJournal> getOrderJournalds() {
+		return orderJournalds;
+	}
+
+	public void setOrderJournalds(List<OrderJournal> orderJournalds) {
+		this.orderJournalds = orderJournalds;
+	}
 }

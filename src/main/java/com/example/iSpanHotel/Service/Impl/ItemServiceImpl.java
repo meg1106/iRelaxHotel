@@ -56,7 +56,7 @@ public class ItemServiceImpl implements ItemService{
 		try {
 			Item item = new Item();
 			item.setId(id);
-			item.setOrder(orderDao.findById(orderDto.getOrder_id()).get());
+			item.setOrder(orderDao.findById(id).get());
 			item.setRoom(roomDao.findById(orderDto.getRoom_id()).get());
 			item.setCheckinDate(new SimpleDateFormat("yyyy-MM-dd").parse(orderDto.getCheckinDate()));
 			item.setCheckoutDate(new SimpleDateFormat("yyyy-MM-dd").parse(orderDto.getCheckoutDate()));
