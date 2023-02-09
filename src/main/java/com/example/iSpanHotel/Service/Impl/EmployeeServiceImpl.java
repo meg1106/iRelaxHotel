@@ -83,11 +83,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 	
 	@Override
-	public List<Employee> findByPaging(int page, int rows) {
-		List<Employee> employees = new ArrayList<>();
+	public Page<Employee> findByPaging(int page, int rows) {
+//		List<Employee> employees = new ArrayList<>();
 		Page<Employee> pageResult = employeeDao.findAll(PageRequest.of(page, rows,Sort.by("id")));
-		employees = pageResult.getContent();
-		return employees;
+//		employees = pageResult.getContent();
+		return pageResult;
 	}
 	
 	@Override
