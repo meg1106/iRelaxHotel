@@ -10,7 +10,7 @@ $(setInterval(function () {
     GetApiResponse();
 },10000))
 
-
+var accesstokenStr;
 
 function GetAuthorizationHeader() {    
     const parameter = {
@@ -29,7 +29,8 @@ function GetAuthorizationHeader() {
         data: parameter,
         async: false,       
         success: function(data){            
-            $("#accesstoken").text(JSON.stringify(data));                            
+            $("#accesstoken").text(JSON.stringify(data));   
+            accesstokenStr = JSON.stringify(data);                         
         },
         error: function (xhr, textStatus, thrownError) {
             
@@ -38,8 +39,6 @@ function GetAuthorizationHeader() {
 }
 
 function GetApiResponse(){    
-    let accesstokenStr = $("#accesstoken").text();    
-
     let accesstoken = JSON.parse(accesstokenStr);    
 
     if(accesstoken !=undefined){
@@ -52,7 +51,7 @@ function GetApiResponse(){
             async: false,
             success: function (Data) {
                 // $('#apireponse').text(JSON.stringify(Data));                
-                console.log('Data', Data);
+                console.log('Data', JSON.stringify(Data));
             },
             error: function (xhr, textStatus, thrownError) {
                 console.log('errorStatus:',textStatus);
