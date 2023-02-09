@@ -101,11 +101,12 @@ public class MemberServiceImpl implements MemberService {
 		try {
 			Claims claims = JWTutils.parseJWT(token);
 			String userMsg = claims.getSubject();
+			System.out.println(userMsg);
 			object.put("status", "success");
-			object.put("userMsg", userMsg);
+			object.put("userMsg", new JSONObject(userMsg));
 		} catch (Exception exception) {
 			System.out.println("解析失敗:");
-//			exception.printStackTrace();
+			exception.printStackTrace();
 			object.put("status", "error");
 			object.put("userMsg", "");
 		}

@@ -110,7 +110,7 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "{id=" + id + ", account=" + account + ", realName=" + realName + ", email=" + email + ", tel="
+		return "{id:" + id + ", account:" + account + ", realName:" + realName + ", email:" + email + ", tel:"
 				+ tel + "}";
 	}
 
