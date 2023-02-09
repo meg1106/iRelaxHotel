@@ -87,9 +87,9 @@ public class MemberController {
 			System.out.println(token);
 			if (token != "err") {
 				Cookies.setCookies(token, response);
-				return ResponseEntity.ok(token);
+				return ResponseEntity.ok("登入成功！");
 			}
-			return ResponseEntity.ok("帳號或密碼錯誤");
+			return ResponseEntity.ok("帳號或密碼錯誤，請重新輸入！");
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 		}

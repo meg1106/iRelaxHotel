@@ -121,13 +121,19 @@ public class MemberServiceImpl implements MemberService {
 			if (BCrypt.checkpw(password,pswd)) {
 				// 生成JWT
 				String token = JWTutils.creatJWT(member.getId().toString(),member.toString(), null);
+				System.out.println(account);
+				System.out.println(password);
 				System.out.println("生成token=:" + token);
 				return token;
 			}else {
+				System.out.println(account);
+				System.out.println(password);
 				System.out.println("找不到密碼");
 				return "err";
 			}
 		}else {
+			System.out.println(account);
+			System.out.println(password);
 			System.out.println("找不到帳號");
 			return "err";
 		}	
