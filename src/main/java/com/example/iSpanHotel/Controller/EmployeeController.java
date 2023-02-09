@@ -36,6 +36,11 @@ public class EmployeeController {
 		List<Employee> employees = employeeService.findByPaging(page, rows);
 		return employees;
 	}
+	
+	@GetMapping("/total")
+	private Long countTotal() {
+		return employeeService.countTotal();
+	}
 
 	@PostMapping("/")
 	private ResponseEntity<String> create(@RequestBody EmployeeDto employeeDto) {

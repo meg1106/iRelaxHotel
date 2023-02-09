@@ -91,6 +91,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 	
 	@Override
+	public Long countTotal() {
+		Long count = employeeDao.count();
+		return count;
+	}
+	
+	@Override
 	public Employee findByName(String name) {
 		Optional<Employee> employee = employeeDao.findByName(name);
 		return employee.get();
