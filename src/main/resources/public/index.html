@@ -62,6 +62,7 @@
             <ul>
               <li><a href="#" style="background-color: rgba(10,198,252);">訂單查詢</a></li>
               <li><a href="#" style="background-color: rgba(10,198,252);">會員專區</a></li>
+              <li><a href="" onclick="logout()" style="background-color: rgba(10,198,252);">登出</a></li>
             </ul>
           </li>
           `
@@ -484,6 +485,13 @@
         return time.getTime() < Date.now() - 3600 * 1000 * 24;
       }
     });
+
+    function logout() {
+      $.ajax({
+          type: "POST",
+          url: "/member/logout"
+        })
+    }
   </script>
 </body>
 
