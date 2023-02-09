@@ -478,6 +478,12 @@
           $(this).val('');
         });
       });
+      function logout() {
+      $.ajax({
+          type: "POST",
+          url: "/member/logout"
+        })
+    }
     </script>
 </body>
 
