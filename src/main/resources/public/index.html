@@ -102,28 +102,55 @@
       });
   </script>
   <script>
-
+    $.ajax({
+      url: '/member/checkLogin',
+      type: 'GET',
+      dataType: 'json'
+    }).done(function(msg){
+      console.log(msg)
+      console.log(msg.userMsg)
+      console.log(msg.status)
+      console.log(msg.userMsg.account)
+      if (msg.status == 'success') {
+        $('#loginBar').append(
+          `
+          <li><a id="account" class="drop">${msg.userMsg.realName}</a>
+            <ul>
+              <li><a href="#" style="background-color: rgba(10,198,252);">訂單查詢</a></li>
+              <li><a href="#" style="background-color: rgba(10,198,252);">會員專區</a></li>
+              <li><a href="" onclick="logout()" style="background-color: rgba(10,198,252);">登出</a></li>
+            </ul>
+          </li>
+          `
+        )
+      } else {
+        $('#loginBar').append(
+          `
+            <span><a href="/frontend/login.html" style="display: flex; flex-direction: row; flex-wrap: nowrap;">登入<span>
+          `
+        )
+      }
+    })
   </script>
-
 </head>
 
 <body id="top">
   <!-- Top Background Image Wrapper -->
   <div class="bgded overlay padtop" style="background-image:url('images/backgrounds/01.png');">
 
-    <div style="display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0px 5px;max-width: 1140px;">
+    <div style="height:78.67px; display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0px 5px;max-width: 1140px;justify-content:flex-end">
       <i class="far fa-snowflake fa-2x"></i>&emsp;
-      <i class="fas fa-user-circle fa-2x"></i>
+      <i class="fas fa-user-circle fa-2x"></i>&nbsp;
       <nav id="mainav" class="fl_right">
-        <ul class="clear">
-          <li><a class="drop">我的帳戶</a>
+        <ul id="loginBar" class="clear">
+          <!-- <li><a id="account" class="drop"></a>
             <ul>
               <li><a href="#" style="background-color: rgba(10,198,252);">訂單查詢</a></li>
               <li><a href="#" style="background-color: rgba(10,198,252);">會員專區</a></li>
             </ul>
         </ul>
       </nav>
-      </li>
+     </li> -->
     </div>
 
     <header id="header" class="hoc clear">
