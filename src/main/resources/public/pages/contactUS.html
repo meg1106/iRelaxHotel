@@ -14,6 +14,27 @@
       padding: 0;
       margin: 0
     }
+
+    div.loadingdiv {
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      z-index: 99999;
+      top: 0;
+      left: 0;
+      display: block;
+      background: #000;
+      opacity: 0.6;
+      text-align: center;
+    }
+
+    div.loadingdiv img {
+      position: relative;
+      vertical-align: middle;
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 20vh;
+    }
   </style>
 </head>
 
@@ -21,6 +42,9 @@
 <body id="top">
   <!-- ################################################################################################ -->
   <!-- Top Background Image Wrapper -->
+  <div class="loadingdiv" id="loading" style="display: none">
+    <img src="../images/loading/loading.gif" />
+  </div>
   <div class="bgded overlay padtop" style="background-image:url('../images/backgrounds/01.png');">
     <div
       style="display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0px 5px;max-width: 1140px;">
@@ -198,11 +222,18 @@
         email + '\\nTel: ' + tel + '\\nComment: ' + comment + '"}';
       console.log(data);
       $.ajax({
+        beforeSend: function () {
+          $('#loading').css("display", "");
+        },
         type: "POST",
         url: url,
         data: data,
-        headers: { 'Content-Type': 'application/json;charset=utf8' }
-      }).done(function (msg) {
+        headers: { 'Content-Type': 'application/json;charset=utf8' },
+        complete: function () {
+          $('#loading').css("display", "none");
+        }
+      })
+      .done(function (msg) {
         console.log(msg)
         alert(msg);
       });
