@@ -2,6 +2,7 @@ package com.example.iSpanHotel.Service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Dto.EmployeeDto;
@@ -23,8 +24,14 @@ public interface EmployeeService {
 	List<Employee> findAll();
 	
 	// 分頁查詢
-	List<Employee> findByPaging(int page, int rows);
+	Page<Employee> findByPaging(int page, int rows);
 
+	// 依姓名查詢
+	Page<Employee> findNameLike(int page, int rows, String name);
+	
+	// 獲取員工總數
+	Long countTotal();
+	
 	// 根據姓名查詢員工
 	Employee findByName(String name);
 
