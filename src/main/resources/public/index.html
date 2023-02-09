@@ -7,14 +7,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
-          integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
-          crossorigin="anonymous">
-  </script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
-    rel="stylesheet" />
+  <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
   <style>
     form {
@@ -34,6 +30,11 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
       overflow: hidden;
+    }
+    .fl_rightt {
+      padding-left:15px;
+      color: inherit;
+
     }
   </style>
 
@@ -103,11 +104,22 @@
 <body id="top">
   <!-- Top Background Image Wrapper -->
   <div class="bgded overlay padtop" style="background-image:url('images/backgrounds/01.png');">
-    <div class="" style="width: 1200px; height: 40px; flex-wrap:nowrap; text-align: right; padding: 5px 2px;">
-      <i class="far fa-snowflake fa-2x"></i>&emsp;
-      <i class="fas fa-user-circle fa-2x"></i>
-      <span style="font-size: 16px;color: #f3bf07; text-align:center;padding: 50px 2px;">會員中心</span>
-    </div>
+    
+      <div id="" class="" style="display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;max-width: 1140px">
+           <i class="far fa-snowflake fa-2x"></i>&emsp;
+           <i class="fas fa-user-circle fa-2x"></i>
+             <nav id="mainav" class="fl_right">
+               <ul class="clear">
+                <li><a class="drop">我的帳戶</a>
+                <ul>
+                 <li><a href="#" style="background-color: rgba(10,198,252);">訂單查詢</a></li>
+                 <li><a href="#" style="background-color: rgba(10,198,252);">會員專區</a></li>
+                 </ul>
+               </ul>
+             </nav>
+           </li>
+         </div>
+   
 
     <header id="header" class="hoc clear">
       <div id="logo" class="fl_left">
@@ -116,9 +128,7 @@
             <img src="images/logo/logo2.png">
           </div>
         </a>
-        <!-- <h1><a href="index.html" style="display:inline-block;">iRelax Hotel</a></h1> -->
       </div>
-
       <nav id="mainav" class="fl_right">
         <ul class="clear">
           <li class="active"><a href="../index.html">首頁</a></li>
