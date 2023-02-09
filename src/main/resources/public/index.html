@@ -40,44 +40,15 @@
     .fl_rightt {
       padding-left: 15px;
       color: inherit;
+
     }
   </style>
 
   <script src="assets/js/jquery.js"></script>
   <script>
     $.ajax({
-      url: '/member/checkLogin',
-      type: 'GET',
-      dataType: 'json'
-    }).done(function(msg){
-      console.log(msg)
-      console.log(msg.userMsg)
-      console.log(msg.status)
-      console.log(msg.userMsg.account)
-      if (msg.status == 'success') {
-        $('#loginBar').append(
-          `
-          <li><a id="account" class="drop">${msg.userMsg.realName}</a>
-            <ul>
-              <li><a href="#" style="background-color: rgba(10,198,252);">訂單查詢</a></li>
-              <li><a href="#" style="background-color: rgba(10,198,252);">會員專區</a></li>
-              <li><a href="" onclick="logout()" style="background-color: rgba(10,198,252);">登出</a></li>
-            </ul>
-          </li>
-          `
-        )
-      } else {
-        $('#loginBar').append(
-          `
-            <span><a href="/frontend/login.html" style="display: flex; flex-direction: row; flex-wrap: nowrap;">登入<span>
-          `
-        )
-      }
-    })
-
-    $.ajax({
       url: '/hotelNews/',
-      type: 'GET',
+      type: 'GET'
     })
       .done(function (msg) {
         console.log(msg);
@@ -140,19 +111,19 @@
   <!-- Top Background Image Wrapper -->
   <div class="bgded overlay padtop" style="background-image:url('images/backgrounds/01.png');">
 
-    <div style="height:78.67px; display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0px 5px;max-width: 1140px;justify-content:flex-end">
+    <div style="display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0px 5px;max-width: 1140px;">
       <i class="far fa-snowflake fa-2x"></i>&emsp;
-      <i class="fas fa-user-circle fa-2x"></i>&nbsp;
+      <i class="fas fa-user-circle fa-2x"></i>
       <nav id="mainav" class="fl_right">
-        <ul id="loginBar" class="clear">
-          <!-- <li><a id="account" class="drop"></a>
+        <ul class="clear">
+          <li><a class="drop">我的帳戶</a>
             <ul>
               <li><a href="#" style="background-color: rgba(10,198,252);">訂單查詢</a></li>
               <li><a href="#" style="background-color: rgba(10,198,252);">會員專區</a></li>
             </ul>
-          </li> -->
         </ul>
       </nav>
+      </li>
     </div>
 
     <header id="header" class="hoc clear">
@@ -321,7 +292,47 @@
 
         <!-- / main body -->
         <!-- ################################################################################################ -->
-      
+        <div style="background-color: #01546B; font-size: 14px;">
+          <br>
+          <form action=""
+            style="display: flex; flex-wrap: nowrap; flex-direction: row; justify-content: center; justify-content: space-between;">
+            <div class="">
+              <input style="width:200px;height:40px;" type="text" name="datefilter" class="form-control"
+                placeholder="入住時間 ～ 退房時間" />
+            </div>
+
+            <select style="width:150px;height:40px;">
+              <option>房型選擇</option>
+              <option>經濟房</option>
+              <option>景觀房</option>
+              <option>豪華房</option>
+              <option>尊榮房</option>
+              <option>總統套房</option>
+            </select>
+            <select style="width:150px;height:40px;">
+              <option>房間樓層</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+            </select>
+            <select style="width:150px;height:40px;">
+              <option>入住人數</option>
+              <option>2（成人數）</option>
+              <option>3（成人數）</option>
+              <option>4（成人數）</option>
+            </select>
+
+            <button style="width:120px;height:40px; background-color: #f3bf07;">現在預訂</button>
+          </form>
+          <p align="center" style="color: aliceblue;">13歲以上同成人收費</p>
+          </tr><br>
+        </div>
+
       </section>
       <div class="clear"></div>
     </main>
@@ -350,7 +361,7 @@
             <li><a class="btn" href="#">了解更多</a></li>
           </ul>
         </div>
-        <div class="one_third last"><a class="imgover" href="#"><img src="images/demo/348x394.png" alt=""></a></div>
+        <div class="one_third last"><a class="imgover" href="#"><img src="images/348x394.png" alt=""></a></div>
       </article>
       <!-- ################################################################################################ -->
     </section>
@@ -361,30 +372,42 @@
   <div class="wrapper row4">
     <footer id="footer" class="hoc clear">
       <!-- ################################################################################################ -->
-      <a href="index.html">
-        <div style="width: 220px; height: 70px;">
-          <img src="images/logo/logo2.png">
-        </div>
-      </a>
-      <br>
-      <div class="two_third first">
-        <li>
-          訂房專線 /
-          <a href="tel:+886-4-23265860">2326-5860</a>
-        </li><br>
-        <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
-        <li>
-          客服信箱 /
-          <a href="lakesidemystery@gmail.com ">lakesidemystery@gmail.com </a>
-        </li>
-        <br><br>
+      <div style="display: flex;">
+        <div class="one_third">
 
-        <ul class="faico clear">
-          <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
-          <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
-          <li><a class="faicon-line" href="https://line.me/R/ti/p/%40440rucgj"><i class="fab fa-line"></i></a></li>
-          <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-        </ul>
+          <div>
+            <a href="index.html">
+              <div style="width: 220px; height: 70px;">
+                <img src="images/logo/logo2.png">
+              </div>
+            </a>
+            <br>
+          </div>
+          <div>
+            <li>
+              訂房專線 /
+              <a href="tel:+886-4-23265860">2326-5860</a>
+            </li><br>
+            <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
+            <li>
+              客服信箱 /
+              <a href="lakesidemystery@gmail.com ">lakesidemystery@gmail.com </a>
+            </li>
+            <br><br><br>
+            <ul class="faico clear">
+              <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+              <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+              <li><a class="faicon-line" href="https://line.me/R/ti/p/%40440rucgj"><i class="fab fa-line"></i></a></li>
+              <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.6044320422584!2d120.64881961494096!3d24.15052618439372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d69a2dcccf1%3A0x664964d28300759b!2z6LOH5bGV5ZyL6Zqb6IKh5Lu95pyJ6ZmQ5YWs5Y-4LeS4reWNgOS4reW_gw!5e0!3m2!1szh-TW!2stw!4v1675914393514!5m2!1szh-TW!2stw" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="one_third">
+          <h4>公車資訊</h4>
+        </div>
       </div>
     </footer>
   </div>
@@ -405,32 +428,30 @@
   <script src="layout/scripts/jquery.min.js"></script>
   <script src="layout/scripts/jquery.backtotop.js"></script>
   <script src="layout/scripts/jquery.mobilemenu.js"></script>
-
-  <!-- 公車 -->
-  <script src="layout/scripts/TDXBus.js"></script>
   <!-- 天氣 -->
   <script src="layout/scripts/Weather.js"></script>
+  <!-- 公車 -->
+  <script src="layout/scripts/TDXBus.js"></script>
   <!-- 日期 -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $('input[name="datefilter"]').daterangepicker({
-        autoUpdateInput: false,
-        locale: {
-          cancelLabel: 'Clear'
-        }
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('input[name="datefilter"]').daterangepicker({
+          autoUpdateInput: false,
+          locale: {
+            cancelLabel: 'Clear'
+          }
+        });
+        $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+          $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        });
+        $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
+          $(this).val('');
+        });
       });
-      $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
-        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-      });
-      $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-        $(this).val('');
-      });
-    });
-  </script>
-
+    </script>
 </body>
 
 </html>
