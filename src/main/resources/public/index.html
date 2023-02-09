@@ -7,10 +7,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
+    integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
+    crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+  <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+    rel="stylesheet" />
 
   <style>
     form {
@@ -22,17 +25,20 @@
       color: #f3bf07;
       text-decoration: none;
     }
+
     h6 {
-     font-size: 25px;
+      font-size: 25px;
     }
+
     .limit_news {
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
       overflow: hidden;
     }
+
     .fl_rightt {
-      padding-left:15px;
+      padding-left: 15px;
       color: inherit;
 
     }
@@ -49,7 +55,7 @@
         msg.forEach(function (element, index) {
           if (index % 3 == 0) {
             $('#latest').append(
-            `
+              `
               <li class="one_third first">
                 <article>
                   <figure>
@@ -71,7 +77,7 @@
             )
           } else {
             $('#latest').append(
-            `
+              `
               <li class="one_third">
                 <article>
                   <figure>
@@ -91,35 +97,34 @@
               </li>
             `
             )
-          } 
+          }
         })
       });
   </script>
   <script>
 
   </script>
-  
+
 </head>
 
 <body id="top">
   <!-- Top Background Image Wrapper -->
   <div class="bgded overlay padtop" style="background-image:url('images/backgrounds/01.png');">
-    
-      <div id="" class="" style="display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;max-width: 1140px">
-           <i class="far fa-snowflake fa-2x"></i>&emsp;
-           <i class="fas fa-user-circle fa-2x"></i>
-             <nav id="mainav" class="fl_right">
-               <ul class="clear">
-                <li><a class="drop">我的帳戶</a>
-                <ul>
-                 <li><a href="#" style="background-color: rgba(10,198,252);">訂單查詢</a></li>
-                 <li><a href="#" style="background-color: rgba(10,198,252);">會員專區</a></li>
-                 </ul>
-               </ul>
-             </nav>
-           </li>
-         </div>
-   
+
+    <div style="display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0% 5%">
+      <i class="far fa-snowflake fa-2x"></i>&emsp;
+      <i class="fas fa-user-circle fa-2x"></i>
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li><a class="drop">我的帳戶</a>
+            <ul>
+              <li><a href="#" style="background-color: rgba(10,198,252);">訂單查詢</a></li>
+              <li><a href="#" style="background-color: rgba(10,198,252);">會員專區</a></li>
+            </ul>
+        </ul>
+      </nav>
+      </li>
+    </div>
 
     <header id="header" class="hoc clear">
       <div id="logo" class="fl_left">
@@ -132,7 +137,7 @@
       <nav id="mainav" class="fl_right">
         <ul class="clear">
           <li class="active"><a href="../index.html">首頁</a></li>
-          <li><a class="drop" >關於我們</a>
+          <li><a class="drop">關於我們</a>
             <ul>
               <li><a href="pages/intro.html">簡介</a></li>
               <li><a href="pages/traffic.html">交通資訊</a></li>
@@ -284,49 +289,49 @@
             </article>
           </li>
         </ul><br><br>
-  
-      <!-- / main body -->
-  <!-- ################################################################################################ -->
-      <div style="background-color: #01546B; font-size: 14px;">
-        <br>
-        <form action=""
-          style="display: flex; flex-wrap: nowrap; flex-direction: row; justify-content: center; justify-content: space-between;">
-          <div class="">
-            <input style="width:200px;height:40px;" type="text" name="datefilter" class="form-control"
-              placeholder="入住時間 ～ 退房時間" />
-          </div>
 
-          <select style="width:150px;height:40px;">
-            <option>房型選擇</option>
-            <option>經濟房</option>
-            <option>景觀房</option>
-            <option>豪華房</option>
-            <option>尊榮房</option>
-            <option>總統套房</option>
-          </select>
-          <select style="width:150px;height:40px;">
-            <option>房間樓層</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-          </select>
-          <select style="width:150px;height:40px;">
-            <option>入住人數</option>
-            <option>2（成人數）</option>
-            <option>3（成人數）</option>
-            <option>4（成人數）</option>
-          </select>
+        <!-- / main body -->
+        <!-- ################################################################################################ -->
+        <div style="background-color: #01546B; font-size: 14px;">
+          <br>
+          <form action=""
+            style="display: flex; flex-wrap: nowrap; flex-direction: row; justify-content: center; justify-content: space-between;">
+            <div class="">
+              <input style="width:200px;height:40px;" type="text" name="datefilter" class="form-control"
+                placeholder="入住時間 ～ 退房時間" />
+            </div>
 
-          <button style="width:120px;height:40px; background-color: #f3bf07;">現在預訂</button>
-        </form>
-        <p align="center" style="color: aliceblue;">13歲以上同成人收費</p>
+            <select style="width:150px;height:40px;">
+              <option>房型選擇</option>
+              <option>經濟房</option>
+              <option>景觀房</option>
+              <option>豪華房</option>
+              <option>尊榮房</option>
+              <option>總統套房</option>
+            </select>
+            <select style="width:150px;height:40px;">
+              <option>房間樓層</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+            </select>
+            <select style="width:150px;height:40px;">
+              <option>入住人數</option>
+              <option>2（成人數）</option>
+              <option>3（成人數）</option>
+              <option>4（成人數）</option>
+            </select>
+
+            <button style="width:120px;height:40px; background-color: #f3bf07;">現在預訂</button>
+          </form>
+          <p align="center" style="color: aliceblue;">13歲以上同成人收費</p>
           </tr><br>
-      </div>
+        </div>
 
       </section>
       <div class="clear"></div>
@@ -376,7 +381,7 @@
       <div class="two_third first">
         <li>
           訂房專線 /
-          <a href="tel:+886-4-23265860">2326-5860</a> 
+          <a href="tel:+886-4-23265860">2326-5860</a>
         </li><br>
         <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
         <li>
@@ -413,44 +418,44 @@
   <script src="layout/scripts/jquery.mobilemenu.js"></script>
 
   <!-- 日期 -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script type="text/javascript">
-      $(function () {
-        $('input[name="datefilter"]').daterangepicker({
-          autoUpdateInput: false,
-          locale: {
-            cancelLabel: 'Clear'
-          }
-        });
-        $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
-          $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-        });
-        $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-          $(this).val('');
-        });
-      });
-    </script>
-    <script>
-      $('#date1').datetimepicker({
-        date: null,
-        format: 'YYYY-MM-DD',
-        locale: moment.locale('zh-tw'),
-        daysOfWeekDisabled: [0, 6],
-        minDate: moment().add(1, 'days'),
-        maxDate: moment().add(30, 'days'),
-        disabledDates: [
-          moment().add(1, 'days'),
-          moment().add(2, 'days'),
-          '2021-10-10',
-          '2021-12-25'
-        ],
-        disabledDates(time) {
-          return time.getTime() < Date.now() - 3600 * 1000 * 24;
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $('input[name="datefilter"]').daterangepicker({
+        autoUpdateInput: false,
+        locale: {
+          cancelLabel: 'Clear'
         }
       });
-    </script>
+      $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+      });
+      $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
+        $(this).val('');
+      });
+    });
+  </script>
+  <script>
+    $('#date1').datetimepicker({
+      date: null,
+      format: 'YYYY-MM-DD',
+      locale: moment.locale('zh-tw'),
+      daysOfWeekDisabled: [0, 6],
+      minDate: moment().add(1, 'days'),
+      maxDate: moment().add(30, 'days'),
+      disabledDates: [
+        moment().add(1, 'days'),
+        moment().add(2, 'days'),
+        '2021-10-10',
+        '2021-12-25'
+      ],
+      disabledDates(time) {
+        return time.getTime() < Date.now() - 3600 * 1000 * 24;
+      }
+    });
+  </script>
 </body>
 
 </html>
