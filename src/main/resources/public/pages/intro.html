@@ -1,130 +1,200 @@
 <!DOCTYPE html>
 <html lang="">
+
 <head>
-<title>iRelax Hotel | 關於我們 | 簡介</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+  <title>iRelax Hotel | 關於我們 | 簡介</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+  <!-- 輪播CDN -->
+  <style>
+    .slideshow {
+      position: relative;
+      margin: auto;
+      overflow: hidden;
+      height: 400px;
+      width: 900px;
+    }
+
+    .slideshow .c_img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+    }
+  </style>
+
 </head>
+
 <body id="top">
-<!-- ################################################################################################ -->
-<!-- Top Background Image Wrapper -->
-<div class="bgded overlay padtop" style="background-image:url('../images/backgrounds/01.png');"> 
   <!-- ################################################################################################ -->
-  <header id="header" class="hoc clear">
-    <div id="logo" class="fl_left">
+  <!-- Top Background Image Wrapper -->
+  <div class="bgded overlay padtop" style="background-image:url('../images/backgrounds/01.png');">
+    <div
+      style="display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0px 5px;max-width: 1140px;">
+      <i class="far fa-snowflake fa-2x"></i>&emsp;
+      <i class="fas fa-user-circle fa-2x"></i>
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li><a class="drop">我的帳戶</a>
+            <ul>
+              <li><a href="#" style="background-color: rgba(10,198,252);">訂單查詢</a></li>
+              <li><a href="#" style="background-color: rgba(10,198,252);">會員專區</a></li>
+            </ul>
+        </ul>
+      </nav>
+      </li>
+    </div>
+    <!-- ################################################################################################ -->
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left">
+        <!-- ################################################################################################ -->
+        <a href="../index.html">
+          <div style="width: 220px; height: 70px;">
+            <img src="../images/logo/logo2.png">
+          </div>
+        </a>
+        <!-- ################################################################################################ -->
+      </div>
+
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li><a href="../index.html">首頁</a></li>
+          <li class="active"><a class="drop">關於我們</a>
+            <ul>
+              <li><a href="intro.html">簡介</a></li>
+              <li><a href="traffic.html">交通資訊</a></li>
+              <li><a href="notic.html">注意事項</a></li>
+            </ul>
+          </li>
+          <li><a class="drop">最新消息</a>
+            <ul>
+              <li><a href="news.html">活動情報</a></li>
+              <li><a href="discount.html">住房優惠</a></li>
+            </ul>
+          </li>
+          <li><a class="drop">瀏覽房型</a>
+            <ul>
+              <li><a href="room.html">房型一覽</a></li>
+              <li><a href="booking.html">立即訂房</a></li>
+            </ul>
+          </li>
+          <li><a href="facility.html">活動設施</a></li>
+          <li><a href="contactUS.html">聯絡我們</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div style="margin-top: 10%; font-size: 250%; display: flex; justify-content: center;">
+      <span>關於我們</span>
+    </div>
+    <br>
+    <div id="breadcrumb" class="hoc clear"
+      style="display: flex;font-size: 150%; justify-content: space-evenly; flex-direction: row; margin: 0.5% 30% 0.5% 30%;">
+      <p><a href="#" class="active" style="color: #f3bf07;">簡介</a></p>
+      <p>|</p>
+      <p><a href="traffic.html">交通資訊</a></p>
+      <p>|</p>
+      <p><a href="notic.html">注意事項</a></p>
+    </div>
+  </div>
+
+  <div class="wrapper row3">
+    <main class="hoc container clear">
+      <!-- main body -->
+      <!-- ################################################################################################ -->
+      <div class="content" style="display: flex; flex-direction: column;">
+        <div style="padding: 0% 20%;">
+          <!-- 輪播 -->
+          <!-- <div id="c_img" class="slideshow"> -->
+            <img src="../images/backgrounds/hotel_pic_01.jpg" alt="" />
+            <!-- <img src="../images/backgrounds/02.png" alt="" />
+            <img src="../images/backgrounds/03.png" alt="" />
+            <img src="../images/backgrounds/04.png" alt="" />
+          </div> -->
+        </div>
+        <div style="padding: 5% 10% 0% 10%">
+          <font>
+            飯店坐落美麗的金獅湖旁，步行至金獅湖風景區僅需150 公尺，部分客房經大面積落地窗即可欣賞金獅湖風景區美景。<br><br>
+            每日早晨由餐廳人員用心製做熱騰騰、豐盛的美味自助式早餐。位於本館2樓的餐廳準備豐富中西式佳餚，清粥小菜、中式熱炒、西點麵包、沙拉、熱湯、咖啡、果汁等自助式餐點。<br><br>
+            客房主要設計風格為典雅、溫暖又舒適的取向，並以用心與真誠的態度來服務每位客人，讓每位住客都能有賓至如歸的感受，並備有80個平面車位，熱烈期待各位貴賓的蒞臨。<br><br>
+          </font>
+        </div>
+      </div>
+      <!-- ################################################################################################ -->
+      <!-- / main body -->
+      <div class="clear"></div>
+    </main>
+  </div>
+  <!-- ################################################################################################ -->
+  <div class="wrapper row4">
+    <footer id="footer" class="hoc clear">
       <!-- ################################################################################################ -->
       <a href="../index.html">
         <div style="width: 220px; height: 70px;">
           <img src="../images/logo/logo2.png">
         </div>
       </a>
-      <!-- <h1><a href="../index.html" style="display:inline-block;">iRelax Hotel</a></h1> -->
+      <br>
+      <div class="two_third first">
+        <li>
+          訂房專線 /
+          <a href="tel:+886-4-23265860">2326-5860</a>
+        </li>
+        <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
+        <li>
+          客服信箱 /
+          <a href="lakesidemystery@gmail.com ">lakesidemystery@gmail.com </a>
+        </li>
+        <br><br>
 
+        <ul class="faico clear">
+          <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+          <li><a class="faicon-line" href="https://line.me/R/ti/p/%40440rucgj"><i class="fab fa-line"></i></a></li>
+          <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+  <!-- ################################################################################################ -->
+  <div class="wrapper row5">
+    <div id="copyright" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
+      <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/"
+          title="Free Website Templates">OS Templates</a></p>
       <!-- ################################################################################################ -->
     </div>
-
-    <nav id="mainav" class="fl_right">
-      <ul class="clear">
-        <li><a href="../index.html">首頁</a></li>
-        <li class="active"><a class="drop" >關於我們</a>
-          <ul>
-            <li><a href="intro.html">簡介</a></li>
-            <li><a href="traffic.html">交通資訊</a></li>
-            <li><a href="notic.html">注意事項</a></li>
-          </ul>
-        </li>
-        <li><a class="drop">最新消息</a>
-          <ul>
-            <li><a href="news.html">活動情報</a></li>
-            <li><a href="discount.html">住房優惠</a></li>
-          </ul>
-        </li>
-        <li><a class="drop">瀏覽房型</a>
-          <ul>
-            <li><a href="room.html">房型一覽</a></li>
-            <li><a href="booking.html">立即訂房</a></li>
-          </ul>
-        </li>
-        <li><a href="facility.html">活動設施</a></li>
-        <li><a href="contactUS.html">聯絡我們</a></li>
-      </ul>
-    </nav>
-  </header>
-  
-  <div style="margin-top: 10%; font-size: 250%; display: flex; justify-content: center;">
-    <span>關於我們</span>
   </div>
-  <br>
-  <div id="breadcrumb" class="hoc clear" style="display: flex;font-size: 150%; justify-content: space-evenly; flex-direction: row; margin: 0.5% 30% 0.5% 30%;"> 
-    <p><a href="#" class="active">簡介</a></p>
-    <p>|</p>
-    <p><a href="traffic.html">交通資訊</a></p>
-    <p>|</p>
-    <p><a href="notic.html">注意事項</a></p>
-  </div>
-</div>
+  <!-- ################################################################################################ -->
+  <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+  <!-- JAVASCRIPTS -->
+  <script src="../layout/scripts/jquery.min.js"></script>
+  <script src="../layout/scripts/jquery.backtotop.js"></script>
+  <script src="../layout/scripts/jquery.mobilemenu.js"></script>
+  <!-- 輪播js -->
+  <script>
+    $('.slideshow').each(function () {
 
-<div class="wrapper row3">
-  <main class="hoc container clear"> 
-    <!-- main body -->
-    <!-- ################################################################################################ -->
-    <div class="content" style="display: flex; flex-direction: column;">
-      <div style="padding: 0% 20%;">
-        <img src="../images/room/03.jpg" alt="">
-      </div>
-      <div style="padding: 5% 20% 0% 20%">簡介..........</div>
-    </div>
-    <!-- ################################################################################################ -->
-    <!-- / main body -->
-    <div class="clear"></div>
-  </main>
-</div>
-<!-- ################################################################################################ -->
-<div class="wrapper row4">
-  <footer id="footer" class="hoc clear">
-    <!-- ################################################################################################ -->
-    <a href="../index.html">
-      <div style="width: 220px; height: 70px;">
-        <img src="../images/logo/logo2.png">
-      </div>
-    </a>
-    <br>
-    <div class="two_third first">
-      <li> 
-        訂房專線 /  
-            <a href="tel:+886-4-23265860">2326-5860</a> 
-      </li>
-      <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
-      <li> 
-        客服信箱 /  
-            <a href="lakesidemystery@gmail.com ">lakesidemystery@gmail.com </a> 
-      </li>
-      <br><br>
+      let slideImgs = $(this).find('c_img'),
+        slideImgsCount = slideImgs.length,
+        currentIndex = 0;
 
-      <ul class="faico clear">
-        <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
-        <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
-        <li><a class="faicon-line" href="https://line.me/R/ti/p/%40440rucgj"><i class="fab fa-line"></i></a></li>
-        <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-      </ul>
-    </div>
-  </footer>
-</div>
-<!-- ################################################################################################ -->
-<div class="wrapper row5">
-  <div id="copyright" class="hoc clear"> 
-    <!-- ################################################################################################ -->
-    <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
-    <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
-    <!-- ################################################################################################ -->
-  </div>
-</div>
-<!-- ################################################################################################ -->
-<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
-<!-- JAVASCRIPTS -->
-<script src="../layout/scripts/jquery.min.js"></script>
-<script src="../layout/scripts/jquery.backtotop.js"></script>
-<script src="../layout/scripts/jquery.mobilemenu.js"></script>
+      slideImgs.eq(currentIndex).fadeIn();
+
+      setInterval(showNextSlide, 5000);
+
+      function showNextSlide() {
+        let nextIndex = (currentIndex + 1) % slideImgsCount;
+        console.log(nextIndex)
+        slideImgs.eq(currentIndex).fadeOut();
+        slideImgs.eq(nextIndex).fadeIn();
+        currentIndex = nextIndex;
+      }
+    })
+  </script>
 </body>
+
 </html>
