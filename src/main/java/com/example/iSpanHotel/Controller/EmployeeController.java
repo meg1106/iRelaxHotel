@@ -42,6 +42,12 @@ public class EmployeeController {
 	private Long countTotal() {
 		return employeeService.countTotal();
 	}
+	
+	@GetMapping("/findByName")
+	private Page<Employee> findByName(@PathVariable int page, int rows, String name) {
+		Page<Employee> employees = employeeService.findNameLike(rows, page, name);
+		return employees;
+	}
 
 	@PostMapping("/")
 	private ResponseEntity<String> create(@RequestBody EmployeeDto employeeDto) {

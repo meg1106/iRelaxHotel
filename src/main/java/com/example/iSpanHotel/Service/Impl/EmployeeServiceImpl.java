@@ -91,6 +91,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 	
 	@Override
+	public Page<Employee> findNameLike(int page, int rows, String name) {
+		Page<Employee> pageResult = employeeDao.findNameLike(name, PageRequest.of(page, rows,Sort.by("id")));
+		return pageResult;
+	}
+	
+	@Override
 	public Long countTotal() {
 		Long count = employeeDao.count();
 		return count;

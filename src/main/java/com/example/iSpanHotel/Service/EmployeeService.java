@@ -26,6 +26,9 @@ public interface EmployeeService {
 	// 分頁查詢
 	Page<Employee> findByPaging(int page, int rows);
 
+	// 依姓名查詢
+	Page<Employee> findNameLike(int page, int rows, String name);
+	
 	// 獲取員工總數
 	Long countTotal();
 	
