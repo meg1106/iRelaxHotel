@@ -106,11 +106,17 @@ public class EmailServiceImpl implements EmailService {
 		String email = memberDto.getEmail();
 		String code = CheckEmailUtils.VerifyCode(6);
 		Member member = memberDao.findByEmail(email);
+		CheckEmail McheckEmail = checkEmailDao.findByEmail(email);
 		if (member == null) {
-			CheckEmail checkEmail = new CheckEmail();
-			checkEmail.setEmail(email);
-			checkEmail.setCode(code);
-			checkEmailDao.save(checkEmail);
+			if (McheckEmail == null) {
+				CheckEmail checkEmail = new CheckEmail();
+				checkEmail.setEmail(email);
+				checkEmail.setCode(code);
+				checkEmailDao.save(checkEmail);
+			}else {
+				McheckEmail.setCode(code);
+				checkEmailDao.save(McheckEmail);
+			}
 		} else {
 			return "此信箱已使用！";
 		}

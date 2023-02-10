@@ -119,7 +119,7 @@ public class MemberServiceImpl implements MemberService {
 			object.put("userMsg", new JSONObject(userMsg));
 		} catch (Exception exception) {
 			System.out.println("解析失敗:");
-			exception.printStackTrace();
+//			exception.printStackTrace();
 			object.put("status", "error");
 			object.put("userMsg", "");
 		}

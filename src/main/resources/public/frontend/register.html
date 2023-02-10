@@ -17,6 +17,28 @@
   <link href="login_static/css/css.css" rel="stylesheet" />
   <!-- Custom CSS -->
   <link rel="stylesheet" href="login_static/css/style.css" />
+  <style>
+    div.loadingdiv {
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      z-index: 99999;
+      top: 0;
+      left: 0;
+      display: block;
+      background: #ffffff;
+      opacity: 0.7;
+      text-align: center;
+    }
+
+    div.loadingdiv img {
+      position: relative;
+      vertical-align: middle;
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 20vh;
+    }
+  </style>
 </head>
 
 <body>
@@ -29,6 +51,9 @@
         to improve your experience.
       </p>
     <![endif]-->
+  <div class="loadingdiv" id="loading" style="display: none">
+    <img src="../images/loading/loading.gif" />
+  </div>
   <div id="preloader" class="preloader">
     <div class="inner">
       <div class="line1"></div>
@@ -95,38 +120,29 @@
                 </div>
                 <div class="form-group">
                   <div class="fxt-transformY-50 fxt-transition-delay-1">
-                    <input
-                      type="email"
-                      id="email"
-                      class="form-control"
-                      name="email"
-                      placeholder="信箱"
-                      required="required"
-                      style=""
-                    
-                    />
-                    <button type="button" class="fxt-btn-fill" style="background:none;
+                    <input type="email" id="email" class="form-control" name="email" placeholder="信箱"
+                      required="required" />
+                    <a href="" onclick="getCode()" class="switcher-text2 inline-text"
+                      style="padding-left: 10px; padding-top: 2px;">
+                      寄出驗證碼
+                    </a>
+
+                    <!-- <button type="button" class="fxt-btn-fill" style="background:none;
                     border:none;
                     margin-top:5px;
                     padding:0;
                     cursor: pointer;
                     color: #fff;
                     background-color: transparent;
-                    font-size: 12px">寄出驗證碼</button>
-                    
+                    font-size: 12px">寄出驗證碼</button> -->
+
                     <!-- <button type="button" class="fxt-btn-fill" style="width: 30%; font-size: 10px; padding: 15px; margin-left: 2px ;margin-left: 20px ">寄出驗證碼</button> -->
                   </div>
                 </div>
-               
                 <div class="form-group">
                   <div class="fxt-transformY-50 fxt-transition-delay-1">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="驗證碼"
-                      placeholder="請輸入驗證碼"
-                      required="required"
-                    />
+                    <input id="code" type="text" class="form-control" name="code" placeholder="請輸入驗證碼"
+                      required="required" />
                   </div>
                 </div>
 
@@ -165,6 +181,25 @@
   <!-- Custom Js -->
   <script src="login_static/js/main.js"></script>
   <script>
+    function getCode() {
+      event.preventDefault();
+      var email = $("#email").val();
+      var data = '{"email":"' + email + '"}'
+      $.ajax({
+        beforeSend: function () {
+          $('#loading').css("display", "");
+        },
+        type: "POST",
+        url: "/member/checkEmail",
+        data: data,
+        headers: { "Content-Type": "application/json;charset=utf8" },
+        complete: function () {
+          $('#loading').css("display", "none");
+        }
+      }).done(function (msg) {
+        alert(msg);
+      })
+    }
     $("#register").submit((e) => {
       e.preventDefault();
       console.log("clicked");
@@ -174,8 +209,9 @@
       var account = $("#account").val();
       var passwd = $("#password").val();
       var tel = $("#tel").val();
+      var code = $("#code").val();
       var data = '{"email":"' + email + '","realName":"' + name + '","account":"' + account
-        + '","passwd":"' + passwd + '","tel":"' + tel + '"}';
+        + '","passwd":"' + passwd + '","tel":"' + tel + '","code":"' + code + '"}';
       console.log(data);
       $.ajax({
         type: "POST",
@@ -185,12 +221,12 @@
       }).done(function (msg) {
         alert(msg);
       }).done(function (msg) {
-          console.log(msg)
-          if (msg == "註冊成功") {
-            location.href="login.html"
-          } else {
-          }
-        });
+        console.log(msg)
+        if (msg == "註冊成功") {
+          location.href = "login.html"
+        } else {
+        }
+      });
     });
   </script>
 </body>
