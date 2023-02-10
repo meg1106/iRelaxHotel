@@ -31,6 +31,10 @@ File: Layout CSS
 #header #logo{margin: 10px 0 0 0;}
 #header #logo h1{margin:0; padding:0; font-size:2rem;color: #f3bf07;float:right;  }
 
+.weather_img {
+	max-width: 35px;
+	height: auto;
+  }
 
 /* Page Intro
 --------------------------------------------------------------------------------------------------------------- */

@@ -42,71 +42,9 @@
       color: inherit;
 
     }
-
-    .weather_img {
-      max-width: 35px;
-      height: auto;
-    }
   </style>
-
   <script src="assets/js/jquery.js"></script>
-  <script>
-    $.ajax({
-      url: '/hotelNews/',
-      type: 'GET'
-    })
-      .done(function (msg) {
-        console.log(msg);
-        msg.forEach(function (element, index) {
-          if (index % 3 == 0) {
-            $('#latest').append(
-              `
-              <li class="one_third first">
-                <article>
-                  <figure>
-                    <figcaption>
-                      <ul class="nospace meta clear">
-                        <li><i class="fas fa-bullhorn"></i><a href="#"></a></li>
-                        <li>
-                          <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
-                        </li>
-                      </ul>
-                      <h6 class="heading"><a href="#">${element.title}</a></h6>
-                    </figcaption>
-                  </figure>
-                  <p class="limit_news">${element.content}</p>
-                  <footer><a href="#">More Details &raquo;</a></footer>
-                </article>
-              </li>
-            `
-            )
-          } else {
-            $('#latest').append(
-              `
-              <li class="one_third">
-                <article>
-                  <figure>
-                    <figcaption>
-                      <ul class="nospace meta clear">
-                        <li><i class="fas fa-bullhorn"></i><a href="#"></a></li>
-                        <li>
-                          <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
-                        </li>
-                      </ul>
-                      <h6 class="heading"><a href="#">${element.title}</a></h6>
-                    </figcaption>
-                  </figure>
-                  <p class="limit_news">${element.content}</p>
-                  <footer><a href="#">More Details &raquo;</a></footer>
-                </article>
-              </li>
-            `
-            )
-          }
-        })
-      });
-  </script>
-  <script>
+  <!-- <script>
     $.ajax({
       url: '/member/checkLogin',
       type: 'GET',
@@ -136,7 +74,8 @@
         )
       }
     })
-  </script>
+  </script> -->
+  <script src="layout/scripts/CheckLogin.js"></script>
 </head>
 
 <body id="top">
@@ -145,21 +84,10 @@
     <div
       style="height:78.67px; display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0px 5px;max-width: 1140px;justify-content:flex-end">
       <div id="weather_content">
-        <!-- <span style="font-size: 16px;">台中市</span>
-        <span style="font-size: 16px; padding:0 5px;">25.2°C</span>
-        <img src="https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/01.svg" class="weather_img"/> -->
       </div>&emsp;
       <i class="fas fa-user-circle fa-2x"></i>&nbsp;
       <nav id="mainav" class="fl_right">
         <ul id="loginBar" class="clear">
-          <!-- <li><a id="account" class="drop"></a>
-            <ul>
-              <li><a href="#" style="background-color: rgba(10,198,252);">訂單查詢</a></li>
-              <li><a href="#" style="background-color: rgba(10,198,252);">會員專區</a></li>
-            </ul>
-        </ul>
-      </nav>
-     </li> -->
     </div>
 
     <header id="header" class="hoc clear">
@@ -248,54 +176,6 @@
           <p class="nospace font-xs">LATEST NEWS</p>
         </div>
         <ul id="latest" class="nospace group sd-third">
-          <!-- <li class="one_third first">
-            <article>
-              <figure>
-                <figcaption>
-                  <ul class="nospace meta clear">
-                    <li><i class="fas fa-bullhorn"></i> <a href="#"></a></li>
-                    <li>
-                      <time datetime="2045-04-06T08:15+00:00">06 Apr 2045</time>
-                    </li>
-                  </ul>
-                  <h6 class="heading"><a href="#">兔年行大運 | 2023 新春福袋</a></h6>
-                </figcaption>
-              </figure>
-              <p class="limit_news">1/15起開放「線上限量預購」免排隊！加碼再抽iRich會員點數！還有最大獎Gogoro電動車等你來抽喔！1/15起開放「線上限量預購」免排隊！加碼再抽iRich會員點數！還有最大獎Gogoro電動車等你來抽喔！1/15起開放「線上限量預購」免排隊！加碼再抽iRich會員點數！還有最大獎Gogoro電動車等你來抽喔！</p>
-            </article>
-          </li>
-          <li class="one_third">
-            <article>
-              <figure>
-                <figcaption>
-                  <ul class="nospace meta clear">
-                    <li><i class="fas fa-bullhorn"></i> <a href="#"></a></li>
-                    <li>
-                      <time datetime="2045-04-05T08:15+00:00">05 Apr 2045</time>
-                    </li>
-                  </ul>
-                  <h6 class="heading"><a href="#">泡湯券特價熱賣中</a></h6>
-                </figcaption>
-              </figure>
-              <p>iRelax溫泉堅持不加熱、不稀釋，高純度碳酸氫鈉泉水與您共享，戶外露天大眾區設有獨立的個人小湯池，歡迎選購！</p>
-            </article>
-          </li>
-          <li class="one_third">
-            <article>
-              <figure>
-                <figcaption>
-                  <ul class="nospace meta clear">
-                    <li><i class="fas fa-bullhorn"></i><a href="#"></a></li>
-                    <li>
-                      <time datetime="2045-04-04T08:15+00:00">04 Apr 2045</time>
-                    </li>
-                  </ul>
-                  <h6 class="heading"><a href="#">iRelax山景包棟2.0</a></h6>
-                </figcaption>
-              </figure>
-              <p>iRelax溫泉堅持不加熱、不稀釋，高純度碳酸氫鈉泉水與您共享，戶外露天大眾區設有獨立的個人小湯池，歡迎選購！iRelax溫泉堅持不加熱、不稀釋，高純度碳酸氫鈉泉水與您共享，戶外露天大眾區設有獨立的個人小湯池，歡迎選購！iRelax民宿包棟活動即將開始。歡迎帶著家中長輩、孩子、親戚朋友一同來體驗泡湯放鬆身心靈啊!</p>
-            </article>
-          </li> -->
         </ul>
         <br><br>
         <div class="sectiontitle">
@@ -333,7 +213,6 @@
       <div class="clear"></div>
     </main>
   </div>
-  <!-- ################################################################################################ -->
   <!-- ################################################################################################ -->
   <div id="aboutUs" class="bgded overlay" style="background-image:url('images/backgrounds/01.png');">
     <section class="hoc container clear">
@@ -456,7 +335,6 @@
     </div>
   </div>
   <!-- ################################################################################################ -->
-  <!-- ################################################################################################ -->
   <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
   <!-- JAVASCRIPTS -->
   <script src="layout/scripts/jquery.min.js"></script>
@@ -470,27 +348,61 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $('input[name="datefilter"]').daterangepicker({
-        autoUpdateInput: false,
-        locale: {
-          cancelLabel: 'Clear'
-        }
+  <script>
+    $.ajax({
+      url: '/hotelNews/',
+      type: 'GET'
+    })
+      .done(function (msg) {
+        console.log(msg);
+        msg.forEach(function (element, index) {
+          if (index % 3 == 0) {
+            $('#latest').append(
+              `
+              <li class="one_third first">
+                <article>
+                  <figure>
+                    <figcaption>
+                      <ul class="nospace meta clear">
+                        <li><i class="fas fa-bullhorn"></i><a href="#"></a></li>
+                        <li>
+                          <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
+                        </li>
+                      </ul>
+                      <h6 class="heading"><a href="#">${element.title}</a></h6>
+                    </figcaption>
+                  </figure>
+                  <p class="limit_news">${element.content}</p>
+                  <footer><a href="#">More Details &raquo;</a></footer>
+                </article>
+              </li>
+            `
+            )
+          } else {
+            $('#latest').append(
+              `
+              <li class="one_third">
+                <article>
+                  <figure>
+                    <figcaption>
+                      <ul class="nospace meta clear">
+                        <li><i class="fas fa-bullhorn"></i><a href="#"></a></li>
+                        <li>
+                          <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
+                        </li>
+                      </ul>
+                      <h6 class="heading"><a href="#">${element.title}</a></h6>
+                    </figcaption>
+                  </figure>
+                  <p class="limit_news">${element.content}</p>
+                  <footer><a href="#">More Details &raquo;</a></footer>
+                </article>
+              </li>
+            `
+            )
+          }
+        })
       });
-      $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
-        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-      });
-      $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-        $(this).val('');
-      });
-    });
-    function logout() {
-      $.ajax({
-        type: "POST",
-        url: "/member/logout"
-      })
-    }
   </script>
 </body>
 
