@@ -186,7 +186,7 @@
 
       <div style="background-color: #01546B; font-size: 14px;">
         <br>
-        <form action=""
+        <form
           style="display: flex; flex-wrap: nowrap; flex-direction: row; justify-content: center; justify-content: space-between;">
           <div class="">
             <input style="width:200px;height:40px;" type="text" name="datefilter" class="form-control"
@@ -219,7 +219,7 @@
             <option>3（成人數）</option>
             <option>4（成人數）</option>
           </select>
-          <button name="search_room" style="width:120px;height:40px; background-color: #f3bf07;">查詢空房</button>
+          <button id="abc" name="search_room" style="width:120px;height:40px; background-color: #f3bf07;">查詢空房</button>
         </form>
         <p align="center" style="color: aliceblue;">13歲以上同成人收費</ㄋ>
           </tr><br>
@@ -481,24 +481,37 @@
     </link>
 
     <script type="text/javascript">
-
+      var startDate;
+      var endDate;
       $(function () {
         $('input[name="datefilter"]').daterangepicker({
           autoUpdateInput: false,
           autoApply: true,
           locale: {
-            cancelLabel: 'Clear'
+            applyLabel: "確定",
+            cancelLabel: "取消",
+            fromLabel: "開始日期",
+            toLabel: "結束日期",
+            customRangeLabel: "自訂日期區間",
+            daysOfWeek: ["日", "一", "二", "三", "四", "五", "六"],
+            monthNames: ["1月", "2月", "3月", "4月", "5月", "6月",
+              "7月", "8月", "9月", "10月", "11月", "12月"],
+            firstDay: 1
           }
         });
         $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
           $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+          startDate = picker.startDate.format('YYYY-MM-DD');
+          endDate = picker.endDate.format('YYYY-MM-DD');
+          console.log(startDate);
+          console.log(endDate);
         });
         $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
           $(this).val('');
         });
       });
     </script>
-    <script>
+    <!-- <script>
       $('#date1').datetimepicker({
         date: null,
         format: 'YYYY-MM-DD',
@@ -516,7 +529,26 @@
           return time.getTime() < Date.now() - 3600 * 1000 * 24;
         }
       });
-
+    </script> -->
+    <script>
+      $("#abc").click(function () {
+        // e.preventDefault();
+        event.preventDefault();
+        console.log(startDate);
+        console.log(endDate);
+        $.ajax({
+          type:'GET',
+          url:`/room/emptyRoom?checkinDate=${startDate}&checkoutDate=${endDate}`,
+          // data:{
+          //   'checkinDate' : startDate,
+          //   'checkoutDate' : endDate
+          // }
+          success:function (room_msg) {
+            console.log(room_msg);
+            return false;
+          }
+        })
+      })
     </script>
 
 </body>
