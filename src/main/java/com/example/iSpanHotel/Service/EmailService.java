@@ -20,4 +20,7 @@ public interface EmailService {
     
     // 發送重置密碼信件
     String processForgotPassword(HttpServletRequest request, MemberDto memberDto);
+    
+    // 發送註冊信箱驗證碼
+    String sendCheckEmail(MemberDto memberDto);
 }

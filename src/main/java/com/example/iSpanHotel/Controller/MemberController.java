@@ -1,7 +1,6 @@
 package com.example.iSpanHotel.Controller;
 
 import java.util.List;
-
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,8 +36,8 @@ public class MemberController {
 	
 	@PostMapping("/")
 	private ResponseEntity<String> create(@RequestBody MemberDto memberDto) {
-		memberService.create(memberDto);
-		return ResponseEntity.ok("創建成功");
+		String result = memberService.create(memberDto);
+		return ResponseEntity.ok(result);
 	}
 
 	@DeleteMapping("/{id}")
@@ -117,5 +116,11 @@ public class MemberController {
 	public ResponseEntity<String> processResetPassword(HttpServletRequest request, @RequestBody MemberDto memberDto) {
 		String result = memberService.processResetPassword(request, memberDto);
 	    return ResponseEntity.ok(result);
+	}
+	
+	@PostMapping("/checkEmail")
+	private ResponseEntity<String> checkEmail(@RequestBody MemberDto memberDto) {
+		String result = emailService.sendCheckEmail(memberDto);
+		return ResponseEntity.ok(result);
 	}
 }

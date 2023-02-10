@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Class.BCrypt;
 import com.example.iSpanHotel.Class.JWTutils;
+import com.example.iSpanHotel.Dao.CheckEmailDao;
 import com.example.iSpanHotel.Dao.MemberDao;
 import com.example.iSpanHotel.Dto.MemberDto;
 import com.example.iSpanHotel.Service.MemberService;
@@ -23,28 +24,40 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberDao memberDao;
+	
+	@Autowired
+	private CheckEmailDao checkEmailDao;
 
 	@Override
 	public String create(MemberDto memberDto) {
 		int checkAccount = memberDao.countByAccount(memberDto.getAccount());
 		int checkEmail = memberDao.countByEmail(memberDto.getEmail());
-
+		String code = memberDto.getCode();
+		String email = memberDto.getEmail();
+		String ecode = checkEmailDao.findByEmail(email).getCode();
+		System.out.println(code);
+		System.out.println(ecode);
 		if (checkAccount == 0) {
 			if (checkEmail == 0) {
-				try {
-					Member member = new Member();
-					member.setAccount(memberDto.getAccount());
-					member.setPasswd(BCrypt.hashpw(memberDto.getPasswd(), BCrypt.gensalt()));
-					member.setRealName(memberDto.getRealName());
-					member.setEmail(memberDto.getEmail());
-					member.setTel(memberDto.getTel());
-					memberDao.save(member);
-					return "註冊成功";
-				} catch (Exception e) {
-					e.printStackTrace();
-					return "發生未知的錯誤";
+				if (code.equals(ecode)) {
+					try {
+						Member member = new Member();
+						member.setAccount(memberDto.getAccount());
+						member.setPasswd(BCrypt.hashpw(memberDto.getPasswd(), BCrypt.gensalt()));
+						member.setRealName(memberDto.getRealName());
+						member.setEmail(memberDto.getEmail());
+						member.setTel(memberDto.getTel());
+						memberDao.save(member);
+						checkEmailDao.deleteByEmail(email);
+						return "註冊成功";
+					} catch (Exception e) {
+						e.printStackTrace();
+						return "發生未知的錯誤";
+					}
+				} else {
+					return "信箱驗證碼錯誤";
 				}
-			}else {
+			} else {
 				return "此信箱已有人使用";
 			}
 		} else {
@@ -87,7 +100,7 @@ public class MemberServiceImpl implements MemberService {
 		members = memberDao.findAll();
 		return members;
 	}
-	
+
 	@Override
 	public Member findById(Long id) {
 		Optional<Member> member = memberDao.findById(id);
@@ -115,30 +128,30 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String login(String account, String password) {
-		if(memberDao.findByAccount(account) != null) {
+		if (memberDao.findByAccount(account) != null) {
 			Member member = memberDao.findByAccount(account);
 			String pswd = member.getPasswd();
-			if (BCrypt.checkpw(password,pswd)) {
+			if (BCrypt.checkpw(password, pswd)) {
 				// 生成JWT
-				String token = JWTutils.creatJWT(member.getId().toString(),member.toString(), null);
+				String token = JWTutils.creatJWT(member.getId().toString(), member.toString(), null);
 				System.out.println(account);
 				System.out.println(password);
 				System.out.println("生成token=:" + token);
 				return token;
-			}else {
+			} else {
 				System.out.println(account);
 				System.out.println(password);
 				System.out.println("找不到密碼");
 				return "err";
 			}
-		}else {
+		} else {
 			System.out.println(account);
 			System.out.println(password);
 			System.out.println("找不到帳號");
 			return "err";
-		}	
+		}
 	}
-	
+
 	@Override
 	public Member getByResetPasswordToken(String token) {
 		return memberDao.findByResetPasswordToken(token);
@@ -147,18 +160,18 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String processResetPassword(HttpServletRequest request, MemberDto memberDto) {
 		String token = request.getParameter("token");
-	    String passwd = memberDto.getPasswd();
-	    System.out.println(passwd);
-	    System.out.println(token);
-	    Member member = memberDao.findByResetPasswordToken(token);
-	    if (member == null) {
-	        return "驗證碼錯誤，請重新申請連結！";
-	    } else {           
-	    	member.setPasswd(BCrypt.hashpw(passwd, BCrypt.gensalt()));
-	    	member.setResetPasswordToken(null);
-	    	memberDao.save(member);
-	    	return "密碼修改成功，請重新登入！";
-	    }
+		String passwd = memberDto.getPasswd();
+		System.out.println(passwd);
+		System.out.println(token);
+		Member member = memberDao.findByResetPasswordToken(token);
+		if (member == null) {
+			return "驗證碼錯誤，請重新申請連結！";
+		} else {
+			member.setPasswd(BCrypt.hashpw(passwd, BCrypt.gensalt()));
+			member.setResetPasswordToken(null);
+			memberDao.save(member);
+			return "密碼修改成功，請重新登入！";
+		}
 	}
 
 }

@@ -8,6 +8,7 @@ public class MemberDto {
 	private String email;
 	private String tel;
 	private String resetPasswordToken;
+	private String code;
 	
 	public Long getId() {
 		return id;
@@ -50,6 +51,12 @@ public class MemberDto {
 	}
 	public void setResetPasswordToken(String resetPasswordToken) {
 		this.resetPasswordToken = resetPasswordToken;
+	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
 	}
 	@Override
 	public String toString() {
