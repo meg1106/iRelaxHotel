@@ -42,9 +42,10 @@
       color: inherit;
 
     }
-    .weather_img{
+
+    .weather_img {
       max-width: 35px;
-      height:auto;
+      height: auto;
     }
   </style>
 
@@ -110,7 +111,7 @@
       url: '/member/checkLogin',
       type: 'GET',
       dataType: 'json'
-    }).done(function(msg){
+    }).done(function (msg) {
       console.log(msg)
       console.log(msg.userMsg)
       console.log(msg.status)
@@ -141,22 +142,13 @@
 <body id="top">
   <!-- Top Background Image Wrapper -->
   <div class="bgded overlay padtop" style="background-image:url('images/backgrounds/01.png');">
-
-    <div style="height:78.67px; display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0px 5px;max-width: 1140px;justify-content:flex-end">
-      
-      <div id="">
-        <span>台中市</span>
-        <span>25.2</span>
-        <img src="https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/night/11.svg" class="weather_img"/>
-        <!-- <i class="far fa-snowflake fa-2x"></i> -->
-      </div>
-
-      &emsp;
-
-
-
-
-
+    <div
+      style="height:78.67px; display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0px 5px;max-width: 1140px;justify-content:flex-end">
+      <div id="weather_content">
+        <!-- <span style="font-size: 16px;">台中市</span>
+        <span style="font-size: 16px; padding:0 5px;">25.2°C</span>
+        <img src="https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/01.svg" class="weather_img"/> -->
+      </div>&emsp;
       <i class="fas fa-user-circle fa-2x"></i>&nbsp;
       <nav id="mainav" class="fl_right">
         <ul id="loginBar" class="clear">
@@ -405,7 +397,10 @@
           </div>
         </div>
         <div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.6044320422584!2d120.64881961494096!3d24.15052618439372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d69a2dcccf1%3A0x664964d28300759b!2z6LOH5bGV5ZyL6Zqb6IKh5Lu95pyJ6ZmQ5YWs5Y-4LeS4reWNgOS4reW_gw!5e0!3m2!1szh-TW!2stw!4v1675914393514!5m2!1szh-TW!2stw" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.6044320422584!2d120.64881961494096!3d24.15052618439372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d69a2dcccf1%3A0x664964d28300759b!2z6LOH5bGV5ZyL6Zqb6IKh5Lu95pyJ6ZmQ5YWs5Y-4LeS4reWNgOS4reW_gw!5e0!3m2!1szh-TW!2stw!4v1675914393514!5m2!1szh-TW!2stw"
+            width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <div class="one_third" style="width:400px; height:300px; display: flex;flex-direction:column;">
           <div style="display: flex; flex-wrap: nowrap;align-items: flex-start">
@@ -467,57 +462,34 @@
   <script src="layout/scripts/jquery.mobilemenu.js"></script>
   <!-- 天氣 -->
   <script src="layout/scripts/Weather.js"></script>
-  <script>
-    $.ajax({
-      url: '//',
-      type: 'GET',
-    })
-      .done(function (weather_msg) {
-        console.log(weather_msg);
-        weather_msg.forEach(function (element) {
-          $('#news_content').append(
-          `
-          <div style="padding: 0% 20%;">
-            <img src="data:image/jpeg;base64,${element.pic}" alt="圖片無法載入" />
-          </div>
-          <div style="padding: 5% 20% 0% 20%">
-            <h6 class="heading">${element.title}</h6>
-            <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
-            <p class="limit_news">${element.content}</p>
-          </div>
-          `
-          )
-        })
-      });
-  </script>
   <!-- 公車 -->
   <script src="layout/scripts/TDXBus.js"></script>
   <!-- 日期 -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script type="text/javascript">
-      $(function () {
-        $('input[name="datefilter"]').daterangepicker({
-          autoUpdateInput: false,
-          locale: {
-            cancelLabel: 'Clear'
-          }
-        });
-        $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
-          $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-        });
-        $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-          $(this).val('');
-        });
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $('input[name="datefilter"]').daterangepicker({
+        autoUpdateInput: false,
+        locale: {
+          cancelLabel: 'Clear'
+        }
       });
-      function logout() {
+      $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+      });
+      $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
+        $(this).val('');
+      });
+    });
+    function logout() {
       $.ajax({
-          type: "POST",
-          url: "/member/logout"
-        })
+        type: "POST",
+        url: "/member/logout"
+      })
     }
-    </script>
+  </script>
 </body>
 
 </html>
