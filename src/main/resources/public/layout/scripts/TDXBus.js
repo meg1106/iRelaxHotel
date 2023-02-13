@@ -60,9 +60,10 @@ function GetApiResponse() {
                                     }else {
                                         $('#27_0').text("進站中")
                                     }
+                                }else if(element.StopStatus == 3) {
+                                    $('#27_0').text("末班已過")
                                 }else {
                                     $('#27_0').text(new Date(element.NextBusTime).getHours() + " : " + new Date(element.NextBusTime).getMinutes())   
-                                    console.log(String(new Date(element.NextBusTime).getHours()) + " : " + String(new Date(element.NextBusTime).getMinutes()));
                                 }
                                 break;
                             
@@ -73,9 +74,10 @@ function GetApiResponse() {
                                     }else {
                                         $('#27_1').text("進站中")
                                     }                                    
+                                }else if(element.StopStatus == 3) {
+                                    $('#27_1').text("末班已過")
                                 }else {
                                     $('#27_1').text(String(new Date(element.NextBusTime).getHours()).padStart(2, '0') + " : " + String(new Date(element.NextBusTime).getMinutes()).padStart(2, '0'))   
-                                    console.log(String(new Date(element.NextBusTime).getHours()).padStart(2, '0') + " : " + String(new Date(element.NextBusTime).getMinutes()).padStart(2, '0'));
                                 }
                                 break;
 
@@ -92,6 +94,8 @@ function GetApiResponse() {
                                     }else {
                                         $('#72_0').text("進站中")
                                     }                                   
+                                }else if(element.StopStatus == 3) {
+                                    $('#72_0').text("末班已過")
                                 }else {
                                     $('#72_0').text(String(new Date(element.NextBusTime).getHours()).padStart(2, '0') + " : " + String(new Date(element.NextBusTime).getMinutes()).padStart(2, '0'))   
                                 }
@@ -104,6 +108,8 @@ function GetApiResponse() {
                                     }else {
                                         $('#72_1').text("進站中")
                                     }                                   
+                                }else if(element.StopStatus == 3) {
+                                    $('#72_1').text("末班已過")
                                 }else {
                                     $('#72_1').text(String(new Date(element.NextBusTime).getHours()).padStart(2, '0') + " : " + String(new Date(element.NextBusTime).getMinutes()).padStart(2, '0'))   
                                 }
@@ -122,6 +128,8 @@ function GetApiResponse() {
                                     }else {
                                         $('#81_0').text("進站中")
                                     }                   
+                                }else if(element.StopStatus == 3) {
+                                    $('#81_0').text("末班已過")
                                 }else {
                                     $('#81_0').text(String(new Date(element.NextBusTime).getHours()).padStart(2, '0') + " : " + String(new Date(element.NextBusTime).getMinutes()).padStart(2, '0'))   
                                 }
@@ -134,6 +142,8 @@ function GetApiResponse() {
                                     }else {
                                         $('#81_1').text("進站中")
                                     }                              
+                                }else if(element.StopStatus == 3) {
+                                    $('#81_1').text("末班已過")
                                 }else {
                                     $('#81_1').text(String(new Date(element.NextBusTime).getHours()).padStart(2, '0') + " : " + String(new Date(element.NextBusTime).getMinutes()).padStart(2, '0'))   
                                 }
@@ -152,6 +162,8 @@ function GetApiResponse() {
                                     }else {
                                         $('#107_0').text("進站中")
                                     }                       
+                                }else if(element.StopStatus == 3) {
+                                    $('#107_0').text("末班已過")
                                 }else {
                                     $('#107_0').text(String(new Date(element.NextBusTime).getHours()).padStart(2, '0') + " : " + String(new Date(element.NextBusTime).getMinutes()).padStart(2, '0'))   
                                 }
@@ -164,6 +176,8 @@ function GetApiResponse() {
                                     }else {
                                         $('#107_1').text("進站中")
                                     }                              
+                                }else if(element.StopStatus == 3) {
+                                    $('#107_1').text("末班已過")
                                 }else {
                                     $('#107_1').text(String(new Date(element.NextBusTime).getHours()).padStart(2, '0') + " : " + String(new Date(element.NextBusTime).getMinutes()).padStart(2, '0'))   
                                 }
