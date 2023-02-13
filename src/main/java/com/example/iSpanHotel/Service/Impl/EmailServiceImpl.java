@@ -1,12 +1,18 @@
 package com.example.iSpanHotel.Service.Impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
 import com.example.iSpanHotel.Class.CheckEmailUtils;
 import com.example.iSpanHotel.Class.UrlUtility;
 import com.example.iSpanHotel.Dao.CheckEmailDao;
 import com.example.iSpanHotel.Dao.MemberDao;
 import com.example.iSpanHotel.Dto.EmailDto;
 import com.example.iSpanHotel.Dto.MemberDto;
-import com.example.iSpanHotel.Dto.OrderDto;
 import com.example.iSpanHotel.Service.EmailService;
 import com.example.iSpanHotel.model.CheckEmail;
 import com.example.iSpanHotel.model.Item;
@@ -16,13 +22,6 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import net.bytebuddy.utility.RandomString;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Service;
 
 @Service
 public class EmailServiceImpl implements EmailService {
@@ -39,13 +38,13 @@ public class EmailServiceImpl implements EmailService {
 	@Value("${spring.mail.username}")
 	private String sender;
 
-	public String sendOrderDetail(OrderDto orderDto, Item item) {
-		String name = memberDao.findById(orderDto.getMember()).get().getRealName();
+	public String sendOrderDetail(Member member, Item item) {
+		String name = member.getRealName();
 		String checkin = item.getCheckinDate().toString();
 		String checkout = item.getCheckoutDate().toString();
 		try {
 			SimpleMailMessage mailMessage = new SimpleMailMessage();
-			mailMessage.setTo(memberDao.findById(orderDto.getMember()).get().getEmail());
+			mailMessage.setTo(member.getEmail());
 			mailMessage.setText("親愛的會員 " + name + " 先生/小姐您好，以下為您的訂房資訊：\n入住時間：" + checkin + " 下午4時\n退房時間：" + checkout
 					+ " 上午11時\n\n如有任何問題，歡迎來電：02-34567890\n\niRelax Hotel期待您的光臨！");
 			mailMessage.setSubject("訂房通知");

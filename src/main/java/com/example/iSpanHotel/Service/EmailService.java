@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Dto.EmailDto;
 import com.example.iSpanHotel.Dto.MemberDto;
-import com.example.iSpanHotel.Dto.OrderDto;
 import com.example.iSpanHotel.model.Item;
+import com.example.iSpanHotel.model.Member;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public interface EmailService {
 	
 	// 發送訂房資訊信件
-    String sendOrderDetail(OrderDto orderDto, Item item);
+    String sendOrderDetail(Member member, Item item);
  
     // 發送聯絡我們信件
     String sendContactUs(EmailDto emailDto);

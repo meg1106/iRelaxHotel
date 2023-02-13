@@ -18,6 +18,7 @@ import com.example.iSpanHotel.Service.OrderService;
 import com.example.iSpanHotel.model.Member;
 import com.example.iSpanHotel.model.Order;
 import com.example.iSpanHotel.model.OrderJournal;
+import com.example.iSpanHotel.model.Room;
 
 @Service
 public class OrderServiceImpl implements OrderService{
@@ -32,21 +33,21 @@ public class OrderServiceImpl implements OrderService{
 	private OrderJournalDao orderJournalDao;
 	
 	@Override
-	public Order create(OrderDto orderDto) {
+	public Order create(Member member, Room room, OrderDto orderDto) {
 		try {
 			Order order = new Order();
-			Member member = memberDao.findById(orderDto.getMember()).get();
 			order.setMember(member);
-			order.setOrderDate(new SimpleDateFormat("yyyy-MM-dd").parse(orderDto.getOrderDate()));
+			order.setOrderDate(new Date());
+			order = orderDao.save(order);
 			List<String> dates = DateUtils.getBetweenDates(orderDto.getCheckinDate(), orderDto.getCheckoutDate(), true);
 			for (int i = 0; i < dates.size(); i++) {
 				OrderJournal orderJournal = new OrderJournal();
 				orderJournal.setMember(member);
 				orderJournal.setOrder(order);
+				orderJournal.setRoom(room);
 				orderJournal.setStayDate(new SimpleDateFormat("yyyy-MM-dd").parse(dates.get(i)));
 				orderJournalDao.save(orderJournal);
 			}
-			orderDao.save(order);
 			return order;
 		} catch (Exception e) {
 			e.printStackTrace();

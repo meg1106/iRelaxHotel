@@ -5,14 +5,16 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Dto.OrderDto;
+import com.example.iSpanHotel.model.Member;
 import com.example.iSpanHotel.model.Order;
+import com.example.iSpanHotel.model.Room;
 
 
 @Service
 public interface OrderService {
 	
 	// 創建訂單
-	Order create(OrderDto orderDto);
+	Order create(Member member, Room room, OrderDto orderDto);
 	
 	// 刪除訂單
 	String delete(Long id);

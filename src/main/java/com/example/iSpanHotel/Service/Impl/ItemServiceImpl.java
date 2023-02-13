@@ -12,6 +12,7 @@ import com.example.iSpanHotel.Dto.OrderDto;
 import com.example.iSpanHotel.Service.ItemService;
 import com.example.iSpanHotel.model.Item;
 import com.example.iSpanHotel.model.Order;
+import com.example.iSpanHotel.model.Room;
 
 @Service
 public class ItemServiceImpl implements ItemService{
@@ -25,11 +26,11 @@ public class ItemServiceImpl implements ItemService{
 	private RoomDao roomDao;
 	
 	@Override
-	public Item create(OrderDto orderDto, Order order) {
+	public Item create(OrderDto orderDto, Order order, Room room) {
 		try {
 			Item item = new Item();
 			item.setOrder(order);
-			item.setRoom(roomDao.findById(orderDto.getRoom_id()).get());
+			item.setRoom(room);
 			item.setCheckinDate(new SimpleDateFormat("yyyy-MM-dd").parse(orderDto.getCheckinDate()));
 			item.setCheckoutDate(new SimpleDateFormat("yyyy-MM-dd").parse(orderDto.getCheckoutDate()));
 			itemDao.save(item);
