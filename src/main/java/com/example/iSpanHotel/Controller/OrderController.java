@@ -57,9 +57,7 @@ public class OrderController {
 			String mId = JWTutils.parseJWT(token).getId();
 			Member member = memberService.findById(Long.parseLong(mId));
 			Room room = roomService.findById(orderDto.getRoom_id());
-
 			Order order = orderService.create(member, room, orderDto);
-			System.out.println(3);
 			Item item = itemService.create(orderDto, order, room);
 			emailService.sendOrderDetail(member, item);
 		} catch (Exception e) {
