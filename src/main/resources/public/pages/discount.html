@@ -81,11 +81,11 @@
     <main class="hoc container clear">
       <!-- main body -->
       <!-- ################################################################################################ -->
-      <div class="content" style="display: flex; flex-direction: column;">
-        <div style="padding: 0% 20%;">
+      <div id="discount_content" class="content" style="display: flex; flex-direction: column;">
+        <!-- <div style="padding: 0% 20%;">
           <img src="../images/room/03.jpg" alt="">
         </div>
-        <div style="padding: 5% 20% 0% 20%">簡介..........</div>
+        <div style="padding: 5% 20% 0% 20%">簡介..........</div> -->
       </div>
       <!-- ################################################################################################ -->
       <!-- / main body -->
@@ -145,6 +145,32 @@
   <script src="../layout/scripts/jquery.mobilemenu.js"></script>
   <!-- 天氣 -->
   <script src="../layout/scripts/Weather.js"></script>
+  <script>
+    $.ajax({
+      url: '/hotelNews/',
+      type: 'GET',
+    })
+      .done(function (news_msg) {
+        console.log(news_msg);
+        news_msg.forEach(function (element, index) {
+          if (index > 1) {
+            $('#discount_content').append(
+              `
+          <div style="padding: 0% 20%;">
+            <img src="data:image/jpeg;base64,${element.pic}" alt="圖片無法載入" />
+          </div>
+          <div style="padding: 5% 20% 0% 20%">
+            <h6 class="heading">${element.title}</h6>
+            <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
+            <p class="limit_news">${element.content}</p>
+          </div>
+          `
+            )
+          }
+
+        })
+      });
+  </script>
 </body>
 
 </html>
