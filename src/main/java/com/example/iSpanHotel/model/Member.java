@@ -21,10 +21,10 @@ public class Member {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "account", nullable = false, unique = true)
+	@Column(name = "account", nullable = true, unique = true)
 	private String account;
 	
-	@Column(name = "passwd", nullable = false)
+	@Column(name = "passwd", nullable = true)
 	private String passwd;
 	
 	@Column(name = "realname", nullable = false)
@@ -33,11 +33,14 @@ public class Member {
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 	
-	@Column(name = "tel", nullable = false)
+	@Column(name = "tel", nullable = true)
 	private String tel;
 	
 	@Column(name = "reset_password_token")
     private String resetPasswordToken;
+	
+	@Column(name = "google_login_id")
+	private String googleLoginId;
 	
 	@JsonIgnoreProperties({"member"})
 	@OneToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE}, mappedBy = "member")
@@ -107,11 +110,18 @@ public class Member {
 	public void setResetPasswordToken(String resetPasswordToken) {
 		this.resetPasswordToken = resetPasswordToken;
 	}
+	
+	public String getGoogleLoginId() {
+		return googleLoginId;
+	}
 
+	public void setGoogleLoginId(String googleLoginId) {
+		this.googleLoginId = googleLoginId;
+	}
 	@Override
 	public String toString() {
 		return "{id:" + id + ", account:" + account + ", realName:" + realName + ", email:" + email + ", tel:"
-				+ tel + "}";
+				+ tel + ", googleLoginId:" + googleLoginId + "}";
 	}
 
 

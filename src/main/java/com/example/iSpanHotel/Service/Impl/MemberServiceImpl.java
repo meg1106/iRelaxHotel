@@ -173,5 +173,32 @@ public class MemberServiceImpl implements MemberService {
 			return "密碼修改成功，請重新登入！";
 		}
 	}
-
+	
+	@Override
+	public String googleLogin(MemberDto memberDto) {
+		String name = memberDto.getRealName();
+		String email = memberDto.getEmail();
+		String gid = memberDto.getGoogleLoginId();
+		Member member = memberDao.findByGoogleLoginId(gid);
+		Member eMember = memberDao.findByEmail(email);
+		if (eMember == null) {
+			if (member == null) {
+				Member gMember = new Member();
+				gMember.setRealName(name);
+				gMember.setEmail(email);
+				gMember.setGoogleLoginId(gid);
+				memberDao.save(gMember);
+				String token = JWTutils.creatJWT(gMember.getId().toString(), gMember.toString(), null);
+				return token;
+			}else {
+				String token = JWTutils.creatJWT(member.getId().toString(), member.toString(), null);
+				return token;
+			}
+		}else if (eMember.getAccount() == null){
+			String token = JWTutils.creatJWT(member.getId().toString(), member.toString(), null);
+			return token;
+		}else {
+			return "err";
+		}
+	}
 }

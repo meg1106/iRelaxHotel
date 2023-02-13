@@ -18,4 +18,7 @@ public interface MemberDao extends JpaRepository<Member, Long>{
     
 	@Query("SELECT c FROM Member c WHERE c.resetPasswordToken = ?1")
     Member findByResetPasswordToken(String token);
+	
+	@Query("SELECT c FROM Member c WHERE c.googleLoginId = ?1")
+	Member findByGoogleLoginId(String gid);
 }

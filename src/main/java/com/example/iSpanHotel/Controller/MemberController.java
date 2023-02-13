@@ -123,4 +123,19 @@ public class MemberController {
 		String result = emailService.sendCheckEmail(memberDto);
 		return ResponseEntity.ok(result);
 	}
+	
+	@PostMapping("/googleLogin")
+	private ResponseEntity<String> googleLogin(@RequestBody MemberDto memberDto, HttpServletResponse response){
+		try {
+			String token = memberService.googleLogin(memberDto);
+			System.out.println(token);
+			if (token != "err") {
+				Cookies.setCookies(token, response);
+				return ResponseEntity.ok("登入成功！");
+			}
+			return ResponseEntity.ok("此Google信箱已使用過，請使用一般登入！");
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+	}
 }
