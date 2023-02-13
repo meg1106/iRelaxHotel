@@ -23,7 +23,7 @@ public interface OrderJournalDao extends JpaRepository<OrderJournal, Long> {
 //	@Query(nativeQuery = true, value = "SELECT * FROM room WHERE id NOT IN(SELECT room_id FROM `order_journal` WHERE stay_date BETWEEN:startDate AND:endDate)")
 //	List<Room> findRoomBystayDateBetween(@Param("startDate")Date startDate, @Param("endDate")Date endDate);
 	
-	@Query(value = "SELECT c FROM Room c WHERE c.id NOT IN(SELECT x.room From OrderJournal x where x.stayDate BETWEEN:startDate and:endDate) AND c.roomFloor =:floor AND c.roomType IN(SELECT y.id FROM RoomType y WHERE y.roomPerson >=:person )")
+	@Query(value = "SELECT c FROM Room c WHERE c.id NOT IN(SELECT x.room From OrderJournal x where x.stayDate BETWEEN:startDate and:endDate) AND c.roomFloor =:floor AND c.roomType IN(SELECT y.id FROM RoomType y WHERE y.roomPerson =:person )")
 	List<Room> findRoomBystayDateBetween(@Param("startDate")Date startDate, @Param("endDate")Date endDate, @Param("floor")Integer floor, @Param("person")Integer person);
 	
 	
