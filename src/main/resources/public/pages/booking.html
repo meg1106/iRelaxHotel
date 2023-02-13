@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
   <!-- 日期的CSS -->
   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
@@ -103,8 +102,77 @@
       vertical-align: middle;
     }
   </style>
-  <!-- 天氣 -->
-  <script src="../layout/scripts/Weather.js"></script>
+  <style>
+    .btn-46,
+.btn-46 *,
+.btn-46 :after,
+.btn-46 :before,
+.btn-46:after,
+.btn-46:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+.btn-46 {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: #000;
+  background-image: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 0;
+}
+.btn-46:disabled {
+  cursor: default;
+}
+.btn-46:-moz-focusring {
+  outline: auto;
+}
+.btn-46 svg {
+  display: block;
+  vertical-align: middle;
+}
+.btn-46 [hidden] {
+  display: none;
+}
+.btn-46 {
+  background: #fff;
+  box-sizing: border-box;
+  color: #000;
+  display: block;
+  font-weight: 900;
+  -webkit-mask-image: none;
+  padding: 1.2rem 3rem;
+  perspective: 800px;
+  position: relative;
+  text-transform: uppercase;
+  transform: rotateX(8deg);
+  transform-style: preserve-3d;
+  transition: transform 0.2s;
+}
+.btn-46:before {
+  background: #eee;
+  content: "";
+  display: block;
+  height: 20%;
+  left: 0;
+  position: absolute;
+  top: 100%;
+  transform: rotateX(-90deg);
+  transform-origin: 0 0;
+  width: 100%;
+}
+.btn-46:hover {
+  transform: rotateX(25deg);
+}
+
+  </style>
 
 </head>
 
@@ -112,23 +180,13 @@
   <!-- ################################################################################################ -->
   <!-- Top Background Image Wrapper -->
   <div class="bgded overlay padtop" style="background-image:url('../images/backgrounds/01.png');">
-    <div style="display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0px 5px;max-width: 1140px;">
+    <div
+      style="height:78.67px; display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0px 5px;max-width: 1140px;justify-content:flex-end">
       <div id="weather_content">
-        <!-- <span style="font-size: 16px;">台中市</span>
-        <span style="font-size: 16px; padding:0 5px;">25.2°C</span>
-        <img src="https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/01.svg" class="weather_img"/> -->
       </div>&emsp;
-      <i class="fas fa-user-circle fa-2x"></i>
+      <i class="fas fa-user-circle fa-2x"></i>&nbsp;
       <nav id="mainav" class="fl_right">
-        <ul class="clear">
-          <li><a class="drop">我的帳戶</a>
-            <ul>
-              <li><a href="#" style="background-color: rgba(10,198,252);">訂單查詢</a></li>
-              <li><a href="#" style="background-color: rgba(10,198,252);">會員專區</a></li>
-            </ul>
-        </ul>
-      </nav>
-      </li>
+        <ul id="loginBar" class="clear">
     </div>
     <!-- ################################################################################################ -->
     <header id="header" class="hoc clear">
@@ -164,13 +222,6 @@
             </ul>
           </li>
           <li><a href="facility.html">活動設施</a></li>
-          <!-- <li><a class="drop" href="#">當地探索</a>
-            <ul>
-              <li><a href="#">自然景點</a></li>
-              <li><a href="#">藝術文化</a></li>
-              <li><a href="#">美食購物</a></li>
-            </ul>
-          </li> -->
           <li><a href="contactUS.html">聯絡我們</a></li>
         </ul>
       </nav>
@@ -190,43 +241,44 @@
     <main class="hoc container clear">
       <!-- main body -->
       <!-- ################################################################################################ -->
-
       <div style="background-color: #01546B; font-size: 14px;">
         <br>
         <form
-          style="display: flex; flex-wrap: nowrap; flex-direction: row; justify-content: center; justify-content: space-between;">
-          <div class="">
-            <input style="width:200px;height:40px;" type="text" name="datefilter" class="form-control"
+          style="display: flex; flex-wrap: nowrap; flex-direction: row; justify-content: center; justify-content: space-between; ">
+          <div>
+            <input style="width:200px;height:40px;margin: 0% 5px;" type="text" name="datefilter" class="form-control"
               placeholder="入住時間 ～ 退房時間">
             <!-- <i class="fa fa-calendar glyphicon glyphicon-calendar"></i> -->
             </input>
           </div>
-          <select style="width:150px;height:40px;">
+          <!-- <select id="room_search" style="width:150px;height:40px;">
             <option>房型選擇</option>
-            <option>經濟房</option>
-            <option>景觀房</option>
-            <option>豪華房</option>
-            <option>尊榮房</option>
-            <option>總統套房</option>
-          </select>
-          <select style="width:150px;height:40px;">
+            <option value="1">經濟房</option>
+            <option value="2">景觀房</option>
+            <option value="3">豪華房</option>
+            <option value="4">尊榮房</option>
+            <option value="5">總統套房</option>
+          </select> -->
+          <select id="floor" style="width:150px;height:40px;margin: 0% 5px;">
             <option>房間樓層</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+
           </select>
-          <select style="width:150px;height:40px;">
+          <select id="person" style="width:150px;height:40px;margin: 0% 5px;">
             <option>入住人數</option>
-            <option>2（成人數）</option>
-            <option>3（成人數）</option>
-            <option>4（成人數）</option>
+            <option value="2">2（成人數）</option>
+            <option value="3">3（成人數）</option>
+            <option value="4">4（成人數）</option>
           </select>
-          <button id="abc" name="search_room" style="width:120px;height:40px; background-color: #f3bf07;">查詢空房</button>
+          <button id="abc" name="search_room" class="btn-46"
+            style="width: 150px;height:40px; background-color: #f3bf07; margin: 0% 5px;">查詢空房</button>
         </form>
         <p align="center" style="color: aliceblue;">13歲以上同成人收費</ㄋ>
           </tr><br>
@@ -243,7 +295,93 @@
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr id="search_content" style="display: flex; flex-direction:column">
+              <!-- <td align="center">
+                <table id="DataList1" cellspacing="0" border="0" style="/* border-collapse:collapse; */">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div id="DataList1_ctl00_panel_DataList1">
+                          <div class="room_type_area">
+                            <table width="870" border="0" cellpadding="0" cellspacing="0">
+                              <tbody>
+                                <tr align="left">
+                                  <td colspan="2" align="left">
+                                    <div class="room_type_title">
+                                      商務客房兩小床含早餐
+                                      <span>
+                                        兩小床
+                                      </span>
+                                    </div>
+                                  </td>
+                                  <td width="174" align="center">
+                                    <input type="submit" name="DataList1$ctl01$btn_order" value="一般訂房"
+                                      id="DataList1_ctl01_btn_order" class="btn">
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td colspan="3" height="2px">
+                                    <table width="880" height="1px" border="0" cellpadding="0" cellspacing="0"
+                                      class="allroomprice_line">
+                                      <tbody>
+                                        <tr>
+                                          <td><br></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td width="260">
+                                    <div class="allroomprice_img">
+                                      <img id="DataList1_ctl01_img_Room1"
+                                        style="border-color:#E5DED9; border-width:1px; border-style:Solid; height:159px; width:240px;"
+                                        src="../images/room/尊榮雙人房.jpg">
+                                    </div>
+                                  </td>
+                                  <td width="446" align="left" valign="top">
+                                    <div class="allroomprice_room_description">房間簡介</div>
+                                    <div class="allroomprice_room_description_detail">
+                                      <div style="width: 445px; height: 145px; overflow: hidden">
+                                        <div>
+                                          房價包含稅金及服務費，含早餐餐盒。
+                                        </div>
+                                        &nbsp;
+                                        <div>＊ 全新液晶電視。</div>
+                                        <div>＊ 進口羽毛被枕。</div>
+                                        <div>＊ 中央空調系統。</div>
+                                        <br>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td class="list_price" align="center" valign="center">
+                                    <table width="140" border="0" cellpadding="0" cellspacing="5">
+                                      <tbody>
+                                        <tr>
+                                          <td align="center">
+                                            <div>
+                                              <font style="font-size: 15px">NT$</font>3500
+                                            </div>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td colspan="3"></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td> -->
+            </tr>
+            <!-- <tr>
               <td align="center">
                 <table id="DataList1" cellspacing="0" border="0" style="/* border-collapse:collapse; */">
                   <tbody>
@@ -328,93 +466,7 @@
                   </tbody>
                 </table>
               </td>
-            </tr>
-            <tr>
-              <td align="center">
-                <table id="DataList1" cellspacing="0" border="0" style="/* border-collapse:collapse; */">
-                  <tbody>
-                    <tr>
-                      <td>
-                        <div id="DataList1_ctl00_panel_DataList1">
-                          <div class="room_type_area">
-                            <table width="870" border="0" cellpadding="0" cellspacing="0">
-                              <tbody>
-                                <tr align="left">
-                                  <td colspan="2" align="left">
-                                    <div class="room_type_title">
-                                      商務客房兩小床含早餐
-                                      <span>
-                                        兩小床
-                                      </span>
-                                    </div>
-                                  </td>
-                                  <td width="174" align="center">
-                                    <input type="submit" name="DataList1$ctl01$btn_order" value="一般訂房"
-                                      id="DataList1_ctl01_btn_order" class="btn">
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td colspan="3" height="2px">
-                                    <table width="880" height="1px" border="0" cellpadding="0" cellspacing="0"
-                                      class="allroomprice_line">
-                                      <tbody>
-                                        <tr>
-                                          <td><br></td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td width="260">
-                                    <div class="allroomprice_img">
-                                      <img id="DataList1_ctl01_img_Room1"
-                                        style="border-color:#E5DED9; border-width:1px; border-style:Solid; height:159px; width:240px;"
-                                        src="../images/room/尊榮雙人房.jpg">
-                                    </div>
-                                  </td>
-                                  <td width="446" align="left" valign="top">
-                                    <div class="allroomprice_room_description">房間簡介</div>
-                                    <div class="allroomprice_room_description_detail">
-                                      <div style="width: 445px; height: 145px; overflow: hidden">
-                                        <div>
-                                          房價包含稅金及服務費，含早餐餐盒。
-                                        </div>
-                                        &nbsp;
-                                        <div>＊ 全新液晶電視。</div>
-                                        <div>＊ 進口羽毛被枕。</div>
-                                        <div>＊ 中央空調系統。</div>
-                                        <br>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td class="list_price" align="center" valign="center">
-                                    <table width="140" border="0" cellpadding="0" cellspacing="5">
-                                      <tbody>
-                                        <tr>
-                                          <td align="center">
-                                            <div>
-                                              <font style="font-size: 15px">NT$</font>3500
-                                            </div>
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td colspan="3"></td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>
@@ -477,7 +529,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <!-- 樣式載入連結 -->
+    <!-- 日期樣式載入連結 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.25/moment.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.25/daterangepicker.min.js"></script>
@@ -490,6 +542,8 @@
     <script type="text/javascript">
       var startDate;
       var endDate;
+      var floor;
+      var person;
       $(function () {
         $('input[name="datefilter"]').daterangepicker({
           autoUpdateInput: false,
@@ -507,6 +561,10 @@
           }
         });
         $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+
+          // startDate.inputView = startDatePicker
+          // changeStartDate()
+
           $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
           startDate = picker.startDate.format('YYYY-MM-DD');
           endDate = picker.endDate.format('YYYY-MM-DD');
@@ -538,25 +596,134 @@
       });
     </script> -->
     <script>
+
       $("#abc").click(function () {
         // e.preventDefault();
+        var person = $("#person").val();
+        var floor = $("#floor").val();
+        console.log(person);
+        console.log(floor);
         event.preventDefault();
         console.log(startDate);
         console.log(endDate);
         $.ajax({
-          type:'GET',
-          url:`/room/emptyRoom?checkinDate=${startDate}&checkoutDate=${endDate}`,
-          // data:{
-          //   'checkinDate' : startDate,
-          //   'checkoutDate' : endDate
-          // }
-          success:function (room_msg) {
-            console.log(room_msg);
-            return false;
+          type: 'GET',
+          // url: `/room/emptyRoom?checkinDate=${startDate}&checkoutDate=${endDate}&floor=${floor}&person=${person}`,
+          url: '/room/emptyRoom',
+          data: {
+            'checkinDate': startDate,
+            'checkoutDate': endDate,
+            'floor': floor,
+            'person': person
+          },
+          headers: { "Content-Type": "application/json;charset=utf8" },
+        }).done(function (msg) {
+          // console.log(msg);
+          // console.log(msg[2].roomType);
+          // console.log(msg[2].roomType.roomType);
+          // console.log(msg[3].roomType.roomPerson);
+          for (var i = 0; i < msg.length; i++) {
+            $('#search_content').append(
+              `
+              <td align="center">
+                    <table id="DataList1" cellspacing="0" border="0" style="/* border-collapse:collapse; */">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div id="DataList1_ctl00_panel_DataList1">
+                              <div class="room_type_area">
+                                <table width="870" border="0" cellpadding="0" cellspacing="0">
+                                  <tbody>
+                                    <tr align="left">
+                                      <td colspan="2" align="left">
+                                        <div class="room_type_title">
+                                          ${msg[i].roomType.roomType}
+                                        </div>
+                                      </td>
+                                      <td width="174" align="center">
+                                        <input type="submit" name="DataList1$ctl01$btn_order" value="一般訂房"
+                                          id="DataList1_ctl01_btn_order" class="btn">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="3" height="2px">
+                                        <table width="880" height="1px" border="0" cellpadding="0" cellspacing="0"
+                                          class="allroomprice_line">
+                                          <tbody>
+                                            <tr>
+                                              <td><br></td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td width="260">
+                                        <div class="allroomprice_img">
+                                          <img id="DataList1_ctl01_img_Room1"
+                                            style="border-color:#E5DED9; border-width:1px; border-style:Solid; height:159px; width:240px;"
+                                            src="../images/room/尊榮雙人房.jpg">
+                                        </div>
+                                      </td>
+                                      <td width="446" align="left" valign="top">
+                                        <div class="allroomprice_room_description">房間簡介</div>
+                                        <div class="allroomprice_room_description_detail">
+                                          <div style="width: 445px; height: 145px; overflow: hidden">
+                                            <div>
+                                              ${msg[i].roomType.content}
+                                            </div>
+                                            <br>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td class="list_price" align="center" valign="center">
+                                        <table width="140" border="0" cellpadding="0" cellspacing="5">
+                                          <tbody>
+                                            <tr>
+                                              <td align="center">
+                                                <div>
+                                                  <font style="font-size: 15px">NT$</font>${msg[i].roomType.roomPrice}
+                                                </div>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="3"></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+              `
+            )
           }
         })
-      })
+      });
+
+      //     success: function (room_msg) {
+      //       // room_msg.forEach(function (item, index) {
+      //       //   // console.log(user_room.value);
+      //       //   if(room_search.value == item.roomType.roomType && floor_search.value == item.roomFloor && people_search.value <= item.roomType.roomPerson){
+      //       //     console.log(item);
+      //       //   }
+      //       // });
+      //       return false;
+      //     }
+      //   })
+      // })
     </script>
+    <!-- 天氣＋會員登入 -->
+    <script src="../layout/scripts/Weather.js"></script>
+    <script src="../layout/scripts/CheckLogin.js"></script>
+
 </body>
 
 </html>
