@@ -23,3 +23,9 @@ $.ajax({
       )
     }
   })
+  function logout() {
+    $.ajax({
+        type: "POST",
+        url: "/member/logout"
+      })
+  }

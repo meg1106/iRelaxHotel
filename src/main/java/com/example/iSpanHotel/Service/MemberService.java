@@ -24,19 +24,22 @@ public interface MemberService {
 
 	// 查詢所有會員帳號
 	List<Member> findAll();
-	
+
 	// 根據id查詢會員帳號
 	Member findById(Long id);
-		
+
 	// 登入token驗證
 	JSONObject checkLogin(String token) throws Exception;
-	
+
 	// 登入驗證
 	String login(String username, String password);
-	
-	// 根據token查詢會員
+
+	// 根據email token查詢會員
 	Member getByResetPasswordToken(String token);
-	
-	// 根據token修改密碼
+
+	// 根據email token修改密碼
 	String processResetPassword(HttpServletRequest request, MemberDto memberDto);
+
+	// 使用google token登入
+	String googleLogin(MemberDto memberDto);
 }

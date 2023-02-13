@@ -9,6 +9,7 @@ public class MemberDto {
 	private String tel;
 	private String resetPasswordToken;
 	private String code;
+	private String googleLoginId;
 	
 	public Long getId() {
 		return id;
@@ -57,6 +58,12 @@ public class MemberDto {
 	}
 	public void setCode(String code) {
 		this.code = code;
+	}
+	public String getGoogleLoginId() {
+		return googleLoginId;
+	}
+	public void setGoogleLoginId(String googleLoginId) {
+		this.googleLoginId = googleLoginId;
 	}
 	@Override
 	public String toString() {
