@@ -42,6 +42,7 @@
       color: inherit;
 
     }
+
   </style>
   <script src="assets/js/jquery.js"></script>
   <script src="layout/scripts/CheckLogin.js"></script>
@@ -116,12 +117,11 @@
     <section id="ctdetails" class="hoc clear">
       <ul class="nospace clear">
         <li class="one_quarter first">
-          <div class="block clear"><a href="#"><i class="fas fa-phone"></i></a> <span><strong>聯絡電話：</strong> +00 (123)
-              456 7890</span></div>
+          <div class="block clear"><a href="#"><i class="fas fa-phone"></i></a> <span><strong>聯絡電話：</strong> (04) 2326-5860</span></div>
         </li>
         <li class="one_quarter">
           <div class="block clear"><a href="#"><i class="fas fa-envelope"></i></a> <span><strong>郵件信箱：</strong>
-              support@domain.com</span></div>
+            lakesidemystery@gmail.com</span></div>
         </li>
         <li class="one_quarter">
           <div class="block clear"><a href="#"><i class="fas fa-clock"></i></a> <span><strong> 星期一 ～ 星期六:</strong>
@@ -154,21 +154,21 @@
         <ul class="nospace group grid-3">
           <li class="one_third">
             <article><a href="#"><i class="fas fa-dolly-flatbed"></i></a>
-              <h6 class="heading">景觀雙人房</h6>
+              <h6 style="font-size: 16px;margin: 5% 0;">景觀雙人房</h6>
               <img src="images/room/景觀雙人房.jpg" alt="logo" width="202" height="42" title="logo">
               <footer><a href="./pages/room.html">More Details &raquo;</a></footer>
             </article>
           </li>
           <li class="one_third">
             <article><a href="#"><i class="fas fa-dolly-flatbed"></i></a>
-              <h6 class="heading">豪華雙人房</h6>
+              <h6 style="font-size: 16px;margin: 5% 0;">豪華雙人房</h6>
               <img src="images/room/豪華雙人房.jpg" alt="logo" width="202" height="42" title="logo">
               <footer><a href="./pages/room.html">More Details &raquo;</a></footer>
             </article>
           </li>
           <li class="one_third">
             <article><a href="#"><i class="fas fa-dolly-flatbed"></i></a>
-              <h6 class="heading">尊榮雙人房</h6>
+              <h6 style="font-size: 16px;margin: 5% 0;">尊榮雙人房</h6>
               <img src="images/room/尊榮雙人房.jpg" alt="logo" width="202" height="42" title="logo">
               <footer><a href="./pages/room.html">More Details &raquo;</a></footer>
             </article>
@@ -192,18 +192,19 @@
       </div>
       <article id="points" class="group">
         <div class="two_third first">
-          <h6 class="heading">關於 iRelax Hotel...</h6>
-          <p>湖畔之清風，與山間之明月，造物者之無盡藏。跟我們一起愛上放鬆時間！</p>
-          <p>隱於山谷綠林中的碧湖幽境，鄰湖露天湯區及木屋庭園輝映波光粼粼，交織扶疏林木倒影泛泛漣漪舞動，
-            <br>
-            櫻花、楓葉、桐花落雪宛如桃源詩境。
-          </p>
-          <p>
-            探訪螢火蟲、聆聽鳥叫蛙鳴、觀星、遠眺馬拉邦山，四季晨昏變化分明。
-            靜謐山水芬多精中，讓1569m美人湯溫泉滑潤肌膚，使您徹底放鬆心曠神怡！</p>
-          <ul class="nospace pushright">
-            <li><a class="btn" href="#">了解更多</a></li>
-          </ul>
+          <h6 class="font-family" style="font-size: 22px;">關於 iRelax Hotel...</h6><br>
+          <div style="font-size: 16px;">
+            <p>湖畔之清風，與山間之明月，造物者之無盡藏。跟我們一起愛上放鬆時間！</p><br>
+            <p>隱於山谷綠林中的碧湖幽境，鄰湖露天湯區及木屋庭園輝映波光粼粼，交織扶疏林木倒影泛泛漣漪舞動，櫻花、楓葉、桐花落雪宛如桃源詩境。</p><br>
+            <p>
+              探訪螢火蟲、聆聽鳥叫蛙鳴、觀星、遠眺馬拉邦山，四季晨昏變化分明。
+              靜謐山水芬多精中，讓1569m美人湯溫泉滑潤肌膚，使您徹底放鬆心曠神怡！</p><br>
+            <ul class="nospace pushright">
+              <li><a class="btn" href="#">了解更多</a></li>
+            </ul>
+
+          </div>
+
         </div>
         <div class="one_third last"><img style=" height: 380px;" src="images/backgrounds/lobby_img.jpg" alt=""></div>
       </article>
@@ -256,7 +257,8 @@
             <p style="font:bold; font-size: 20px;">公車資訊：</p>&ensp;<p style="color:#f3bf07; font-size: 18px;">公益大墩路口</p>
           </div>
           <div id="bus">
-            <div style="display: flex; flex-wrap: nowrap;align-items: flex-start;justify-content:space-between;align-items: baseline;">
+            <div
+              style="display: flex; flex-wrap: nowrap;align-items: flex-start;justify-content:space-between;align-items: baseline;">
               <span style="border-bottom-style: dotted">公車車次</span>
               <span style="border-bottom-style: dotted">到站 / 發車時間</span>
               <span style="border-bottom-style: dotted">到站 / 發車時間</span>
@@ -342,11 +344,11 @@
                           <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
                         </li>
                       </ul>
-                      <h6 class="heading"><a href="#">${element.title}</a></h6>
+                      <h6 style="font-size: 15px;margin: 5% 0;"><a href="#">${element.title}</a></h6>
                     </figcaption>
                   </figure>
                   <p class="limit_news">${element.content}</p>
-                  <footer><a href="#">More Details &raquo;</a></footer>
+                  <footer><a href="../pages/news.html">More Details &raquo;</a></footer>
                 </article>
               </li>
             `
@@ -364,11 +366,11 @@
                           <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
                         </li>
                       </ul>
-                      <h6 class="heading"><a href="#">${element.title}</a></h6>
+                      <h6 style="font-size: 15px;margin: 5% 0;"><a href="#">${element.title}</a></h6>
                     </figcaption>
                   </figure>
                   <p class="limit_news">${element.content}</p>
-                  <footer><a href="#">More Details &raquo;</a></footer>
+                  <footer><a href="../pages/news.html">More Details &raquo;</a></footer>
                 </article>
               </li>
             `
