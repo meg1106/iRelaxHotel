@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="">
+
 <head>
   <title>iRelax Hotel | 最新情報 | 住房優惠</title>
   <meta charset="utf-8">
@@ -82,7 +83,7 @@
     <main class="hoc container clear">
       <!-- main body -->
       <!-- ################################################################################################ -->
-      <div id="news_content" class="content" style="display: flex; flex-direction: column;">
+      <div id="news_content" class="content" style="display: flex; flex-direction: column-reverse;">
       </div>
       <!-- ################################################################################################ -->
       <!-- / main body -->
@@ -144,19 +145,23 @@
     })
       .done(function (news_msg) {
         console.log(news_msg);
-        news_msg.forEach(function (element) {
-          $('#news_content').append(
-          `
-          <div style="padding: 0% 20%;">
-            <img src="data:image/jpeg;base64,${element.pic}" alt="圖片無法載入" />
+        news_msg.forEach(function (element, index, array) {
+          if ( index <= 1) {
+            $('#news_content').append(
+              `
+          <div style="display: flex; flex-direction:column">
+            <div style="padding: 1% 20%;">
+              <img src="data:image/jpeg;base64,${element.pic}" alt="圖片無法載入" />
+            </div>
+            <div style="padding: 2% 20% ">
+              <h3 class="heading" style="font-size: 20px">${element.title}</h3>
+              <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
+              <p class="limit_news">${element.content}</p>
+            </div>
           </div>
-          <div style="padding: 5% 20% 0% 20%">
-            <h6 class="heading">${element.title}</h6>
-            <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
-            <p class="limit_news">${element.content}</p>
-          </div>
           `
-          )
+            )
+          }
         })
       });
   </script>
