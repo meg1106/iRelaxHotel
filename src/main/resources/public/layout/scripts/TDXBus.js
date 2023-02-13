@@ -50,10 +50,7 @@ function GetApiResponse() {
             },
             async: false,
             success: function (Data) {
-                // $('#apireponse').text(JSON.stringify(Data));                
-                // console.log('Data', JSON.stringify(Data));
                 Data.forEach(element => {
-                    console.log(element);
                     if (element.RouteName.Zh_tw == 27) {
                         switch (element.Direction) {
                             case 0:
@@ -176,15 +173,6 @@ function GetApiResponse() {
                                 break;
                         }
                     }
-                    // $('#bus').append(`
-                    // <div style="display: flex; flex-wrap: nowrap;align-items: flex-start;justify-content:space-around;align-items: baseline;padding: 2.5% 0;">
-                    //     <button>${}</button>
-                    //     <p>往嶺東</p>
-                    //     <button>進站中</button>
-                    //     <p>往台中車站</p>
-                    //     <button>5分鐘</button>
-                    // </div>
-                    // `)
                 });
             },
             error: function (xhr, textStatus, thrownError) {

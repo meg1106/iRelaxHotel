@@ -3,10 +3,6 @@ $.ajax({
     type: 'GET',
     dataType: 'json'
   }).done(function (msg) {
-    console.log(msg)
-    console.log(msg.userMsg)
-    console.log(msg.status)
-    console.log(msg.userMsg.account)
     if (msg.status == 'success') {
       $('#loginBar').append(
         `

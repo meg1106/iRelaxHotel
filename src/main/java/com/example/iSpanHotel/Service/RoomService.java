@@ -23,6 +23,6 @@ public interface RoomService {
 	Room findById(Long id);
 	
 	// 查詢空房
-	List<Room> searchEmptyRoom(String startDate, String endDate);
+	List<Room> searchEmptyRoom(String startDate, String endDate, Integer floor, Integer person);
 	
 }
