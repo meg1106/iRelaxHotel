@@ -26,6 +26,22 @@
       transform: translateX(-50%);
       display: none;
     }
+
+    .box-shadow {
+      box-shadow: 12px 12px 7px rgba(0, 0, 0, 0.7);
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 20px;
+      /* border: 15px solid transparent;
+    padding: 5px;
+    border-image: url(../images/backgrounds/border.png) 30 stretch;
+   */
+    }
+
+    .textA {
+      border-bottom: 1px #f3bf07 solid;
+      padding-bottom: 15px;
+    }
   </style>
   <script src="../assets/js/jquery.js"></script>
   <script src="../layout/scripts/CheckLogin.js"></script>
@@ -103,21 +119,22 @@
       <!-- main body -->
       <!-- ################################################################################################ -->
       <div class="content" style="display: flex; flex-direction: column;">
-        <div style="padding: 0% 20%;">
+        <p style="font-size: 30px;display: flex;justify-content:center;"><span class="textA">飯店簡介</span></p><br>
+        <div style="padding: 0% 15%;">
           <!-- 輪播 -->
           <!-- <div id="c_img" class="slideshow"> -->
-          <img src="../images/backgrounds/hotel_pic_01.jpg" alt="" />
+          <img src="../images/backgrounds/hotel_pic_01.jpg" class="box-shadow" />
           <!-- <img src="../images/backgrounds/02.png" alt="" />
             <img src="../images/backgrounds/03.png" alt="" />
             <img src="../images/backgrounds/04.png" alt="" />
           </div> -->
         </div>
-        <div style="padding: 5% 10% 0% 10%">
-          <font>
+        <div style="padding: 5% 10% 0% 15%;">
+          <h4>
             飯店坐落美麗的金獅湖旁，步行至金獅湖風景區僅需150 公尺，部分客房經大面積落地窗即可欣賞金獅湖風景區美景。<br><br>
             每日早晨由餐廳人員用心製做熱騰騰、豐盛的美味自助式早餐。位於本館2樓的餐廳準備豐富中西式佳餚，清粥小菜、中式熱炒、西點麵包、沙拉、熱湯、咖啡、果汁等自助式餐點。<br><br>
             客房主要設計風格為典雅、溫暖又舒適的取向，並以用心與真誠的態度來服務每位客人，讓每位住客都能有賓至如歸的感受，並備有80個平面車位，熱烈期待各位貴賓的蒞臨。<br><br>
-          </font>
+          </h4>
         </div>
       </div>
       <!-- ################################################################################################ -->

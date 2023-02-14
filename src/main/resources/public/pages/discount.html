@@ -12,6 +12,23 @@
   <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
   <script src="../assets/js/jquery.js"></script>
   <script src="../layout/scripts/CheckLogin.js"></script>
+  <style>
+    h3 {
+      border-left: 5px solid #01546B;
+    }
+
+    .box-shadow {
+      box-shadow: 12px 12px 7px rgba(0, 0, 0, 0.7);
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 20px;
+      /* border: 15px solid transparent;
+    padding: 5px;
+    border-image: url(../images/backgrounds/border.png) 30 stretch;
+   */
+    }
+  </style>
+
 </head>
 
 <body id="top">
@@ -157,10 +174,10 @@
             $('#discount_content').append(
               `
           <div style="padding: 0% 20%;">
-            <img src="data:image/jpeg;base64,${element.pic}" alt="圖片無法載入" />
+            <img class="box-shadow" src="data:image/jpeg;base64,${element.pic}" alt="圖片無法載入" />
           </div>
           <div style="padding: 5% 20% 0% 20%">
-            <h6 class="heading">${element.title}</h6>
+            <h3 class="heading"> &ensp; ${element.title}</h3>
             <time datetime="2045-04-06T08:15+00:00">${element.startDate} 至 ${element.endDate}</time>
             <p class="limit_news">${element.content}</p>
           </div>
