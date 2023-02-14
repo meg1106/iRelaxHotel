@@ -1,11 +1,13 @@
 package com.example.iSpanHotel.Service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Dto.OrderDto;
 import com.example.iSpanHotel.model.Member;
+import com.example.iSpanHotel.Dto.PaymentDto;
 import com.example.iSpanHotel.model.Order;
 import com.example.iSpanHotel.model.Room;
 
@@ -30,4 +32,7 @@ public interface OrderService {
 	
 	// 根據會員id查詢訂單
 	Order findByMemberId(Long id);
+	
+	// 創建付費表單
+	String createPaymentForm(PaymentDto paymentDto) throws UnsupportedEncodingException;
 }

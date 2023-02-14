@@ -1,5 +1,6 @@
 package com.example.iSpanHotel.Service.Impl;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,11 +15,15 @@ import com.example.iSpanHotel.Dao.MemberDao;
 import com.example.iSpanHotel.Dao.OrderDao;
 import com.example.iSpanHotel.Dao.OrderJournalDao;
 import com.example.iSpanHotel.Dto.OrderDto;
+import com.example.iSpanHotel.Dto.PaymentDto;
 import com.example.iSpanHotel.Service.OrderService;
 import com.example.iSpanHotel.model.Member;
 import com.example.iSpanHotel.model.Order;
 import com.example.iSpanHotel.model.OrderJournal;
 import com.example.iSpanHotel.model.Room;
+
+import ecpay.payment.integration.AllInOne;
+import ecpay.payment.integration.domain.AioCheckOutALL;
 
 @Service
 public class OrderServiceImpl implements OrderService{
@@ -109,6 +114,26 @@ public class OrderServiceImpl implements OrderService{
 	public Order findByMemberId(Long id) {
 		Optional<Order> order = orderDao.findByMemberId(id);
 		return order.get();
+	}
+
+	@Override
+	public String createPaymentForm(PaymentDto paymentDto) throws UnsupportedEncodingException {
+		AllInOne all = new AllInOne("");
+		AioCheckOutALL obj = new AioCheckOutALL();
+		Order order = orderDao.findById(paymentDto.getOrder_id()).get();
+		System.out.println(paymentDto.getOrder_id());
+		//填入必要的資料
+		obj.setMerchantTradeNo("iRelaxHotel21110" + order.getId());
+		obj.setMerchantTradeDate("2023/02/13 20:30:00");
+		obj.setTotalAmount(paymentDto.getTotalAmount());
+		obj.setTradeDesc(paymentDto.getTradeDesc());
+		obj.setItemName(paymentDto.getItemName());
+		obj.setReturnURL("http://localhost:8080/frontend/paymentForm.html");
+		obj.setNeedExtraPaidInfo("N");
+
+		//回傳form表單的資料
+		String form = all.aioCheckOut(obj, null);
+		return form;
 	}
 	
 }

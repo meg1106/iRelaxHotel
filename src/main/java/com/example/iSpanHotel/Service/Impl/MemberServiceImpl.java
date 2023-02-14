@@ -24,7 +24,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberDao memberDao;
-	
+
 	@Autowired
 	private CheckEmailDao checkEmailDao;
 
@@ -172,7 +172,7 @@ public class MemberServiceImpl implements MemberService {
 			return "密碼修改成功，請重新登入！";
 		}
 	}
-	
+
 	@Override
 	public String googleLogin(MemberDto memberDto) {
 		String name = memberDto.getRealName();
@@ -188,10 +188,10 @@ public class MemberServiceImpl implements MemberService {
 			memberDao.save(gMember);
 			String token = JWTutils.creatJWT(gMember.getId().toString(), gMember.toString(), null);
 			return token;
-		}else if (eMember.getAccount() == null){
+		} else if (eMember.getAccount() == null) {
 			String token = JWTutils.creatJWT(member.getId().toString(), member.toString(), null);
 			return token;
-		}else {
+		} else {
 			return "err";
 		}
 	}

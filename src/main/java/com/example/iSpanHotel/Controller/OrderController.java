@@ -1,5 +1,6 @@
 package com.example.iSpanHotel.Controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.iSpanHotel.Class.JWTutils;
 import com.example.iSpanHotel.Dto.OrderDto;
+import com.example.iSpanHotel.Dto.PaymentDto;
 import com.example.iSpanHotel.Service.EmailService;
 import com.example.iSpanHotel.Service.ItemService;
 import com.example.iSpanHotel.Service.MemberService;
@@ -92,4 +94,9 @@ public class OrderController {
 		return ResponseEntity.ok("訂單刪除成功");
 	}
 	
+	@PostMapping("/payment")
+	private ResponseEntity<String> createPaymentForm(@RequestBody PaymentDto paymentDto) throws UnsupportedEncodingException {
+		String form = orderService.createPaymentForm(paymentDto);
+		return ResponseEntity.ok(form);
+	} 
 }

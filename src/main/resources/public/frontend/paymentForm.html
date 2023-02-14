@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="login_static/js/jquery-3.5.0.min.js"></script>
+</head>
+
+<body id="form">
+    <script>
+        var order_id = sessionStorage.getItem('order_id');
+        var totalAmount = sessionStorage.getItem('totalAmount');
+        var tradeDesc = sessionStorage.getItem('tradeDesc');
+        var itemName = sessionStorage.getItem('itemName');
+        console.log(order_id);
+        console.log(totalAmount);
+        console.log(tradeDesc);
+        console.log(itemName);
+        $.ajax({
+            type: 'POST',
+            url: '/order/payment',
+            data: JSON.stringify({
+                'order_id': order_id,
+                'totalAmount': totalAmount,
+                'tradeDesc': tradeDesc,
+                'itemName': itemName
+            }),
+            headers: { "Content-Type": "application/json;charset=utf8" },
+        }).done(function (msg) {
+            console.log(msg);
+            $('#form').html(msg)
+        })
+    </script>
+</body>
+
+</html>
