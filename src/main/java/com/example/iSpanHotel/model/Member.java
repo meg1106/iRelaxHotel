@@ -30,8 +30,8 @@ public class Member {
 	@Column(name = "realname", nullable = false)
 	private String realName;
 	
-	@Column(name = "email", nullable = false, unique = true)
-	private String email;
+//	@Column(name = "email", nullable = false, unique = true)
+//	private String email;
 	
 	@Column(name = "tel", nullable = true)
 	private String tel;
@@ -79,13 +79,13 @@ public class Member {
 	}
 	
 	
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+//	public String getEmail() {
+//		return email;
+//	}
+//
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
 
 	public String getTel() {
 		return tel;
@@ -120,7 +120,7 @@ public class Member {
 	}
 	@Override
 	public String toString() {
-		return "{id:" + id + ", account:" + account + ", realName:" + realName + ", email:" + email + ", tel:"
+		return "{id:" + id + ", account:" + account + ", realName:" + realName + ", tel:"
 				+ tel + ", googleLoginId:" + googleLoginId + "}";
 	}
 

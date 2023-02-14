@@ -136,11 +136,11 @@
       const data = parseJwt(response.credential);
       console.log("Encoded JWT ID token: " + response.credential);
       console.log(data.name);
-      var email = data.email;
+      var account = data.email;
       var realName = data.name;
       var gid = data.sub;
       var url = "/member/googleLogin";
-      var Jdata = '{"email":"' + email + '","realName":"' + realName + '","googleLoginId":"' + gid + '"}';
+      var Jdata = '{"account":"' + account + '","realName":"' + realName + '","googleLoginId":"' + gid + '"}';
       $.ajax({
         type: "POST",
         url: url,

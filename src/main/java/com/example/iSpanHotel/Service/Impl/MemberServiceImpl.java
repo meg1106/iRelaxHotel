@@ -31,24 +31,24 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String create(MemberDto memberDto) {
 		int checkAccount = memberDao.countByAccount(memberDto.getAccount());
-		int checkEmail = memberDao.countByEmail(memberDto.getEmail());
+//		int checkEmail = memberDao.countByEmail(memberDto.getEmail());
 		String code = memberDto.getCode();
-		String email = memberDto.getEmail();
-		String ecode = checkEmailDao.findByEmail(email).getCode();
+		String account = memberDto.getAccount();
+		String ecode = checkEmailDao.findByEmail(account).getCode();
 		System.out.println(code);
 		System.out.println(ecode);
 		if (checkAccount == 0) {
-			if (checkEmail == 0) {
+//			if (checkEmail == 0) {
 				if (code.equals(ecode)) {
 					try {
 						Member member = new Member();
 						member.setAccount(memberDto.getAccount());
 						member.setPasswd(BCrypt.hashpw(memberDto.getPasswd(), BCrypt.gensalt()));
 						member.setRealName(memberDto.getRealName());
-						member.setEmail(memberDto.getEmail());
+//						member.setEmail(memberDto.getEmail());
 						member.setTel(memberDto.getTel());
 						memberDao.save(member);
-						checkEmailDao.deleteByEmail(email);
+						checkEmailDao.deleteByEmail(account);
 						return "註冊成功";
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -60,9 +60,7 @@ public class MemberServiceImpl implements MemberService {
 			} else {
 				return "此信箱已有人使用";
 			}
-		} else {
-			return "此帳號已有人使用";
-		}
+		 
 	}
 
 	@Override
@@ -84,7 +82,7 @@ public class MemberServiceImpl implements MemberService {
 			member.setAccount(memberDto.getAccount());
 			member.setPasswd(BCrypt.hashpw(memberDto.getPasswd(), BCrypt.gensalt()));
 			member.setRealName(memberDto.getRealName());
-			member.setEmail(memberDto.getEmail());
+//			member.setEmail(memberDto.getEmail());
 			member.setTel(memberDto.getTel());
 			memberDao.save(member);
 			return "修改成功";
@@ -176,23 +174,24 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String googleLogin(MemberDto memberDto) {
 		String name = memberDto.getRealName();
-		String email = memberDto.getEmail();
+		String account = memberDto.getAccount();
 		String gid = memberDto.getGoogleLoginId();
-		Member member = memberDao.findByGoogleLoginId(gid);
-		Member eMember = memberDao.findByEmail(email);
-		if (eMember == null) {
+//		Member member = memberDao.findByGoogleLoginId(gid);
+		Member member = memberDao.findByEmail(account);
+		System.out.println(name);
+		System.out.println(account);
+		System.out.println(gid);
+		if (member == null) {
 			Member gMember = new Member();
 			gMember.setRealName(name);
-			gMember.setEmail(email);
+			gMember.setAccount(account);
 			gMember.setGoogleLoginId(gid);
 			memberDao.save(gMember);
 			String token = JWTutils.creatJWT(gMember.getId().toString(), gMember.toString(), null);
 			return token;
-		} else if (eMember.getAccount() == null) {
+		} else {
 			String token = JWTutils.creatJWT(member.getId().toString(), member.toString(), null);
 			return token;
-		} else {
-			return "err";
-		}
+		} 
 	}
 }

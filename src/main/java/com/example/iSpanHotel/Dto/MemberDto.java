@@ -5,7 +5,7 @@ public class MemberDto {
 	private String account;
 	private String passwd;
 	private String realName;
-	private String email;
+//	private String email;
 	private String tel;
 	private String resetPasswordToken;
 	private String code;
@@ -35,12 +35,12 @@ public class MemberDto {
 	public void setRealName(String realName) {
 		this.realName = realName;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+//	public String getEmail() {
+//		return email;
+//	}
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
 	public String getTel() {
 		return tel;
 	}
@@ -65,11 +65,5 @@ public class MemberDto {
 	public void setGoogleLoginId(String googleLoginId) {
 		this.googleLoginId = googleLoginId;
 	}
-	@Override
-	public String toString() {
-		return "MemberDto [id=" + id + ", account=" + account + ", passwd=" + passwd + ", realName=" + realName
-				+ ", email=" + email + ", tel=" + tel + ", resetPasswordToken=" + resetPasswordToken + "]";
-	}
-	
 	
 }
