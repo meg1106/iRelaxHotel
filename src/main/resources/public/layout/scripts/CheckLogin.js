@@ -8,8 +8,8 @@ $.ajax({
         `
         <li><a id="account" class="drop">${msg.userMsg.realName}</a>
           <ul>
-            <li><a href="#" style="background-color: rgba(10,198,252);">訂單查詢</a></li>
-            <li><a href="#" style="background-color: rgba(10,198,252);">會員專區</a></li>
+            <li><a href="localhost:8080/frontend/myorder" style="background-color: rgba(10,198,252);">訂單查詢</a></li>
+            <li><a href="localhost:8080/frontend/person" style="background-color: rgba(10,198,252);">會員專區</a></li>
             <li><a href="" onclick="logout()" style="background-color: rgba(10,198,252);">登出</a></li>
           </ul>
         </li>
