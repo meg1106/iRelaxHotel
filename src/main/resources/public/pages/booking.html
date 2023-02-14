@@ -333,10 +333,12 @@
             daysOfWeek: ["日", "一", "二", "三", "四", "五", "六"],
             monthNames: ["1月", "2月", "3月", "4月", "5月", "6月",
               "7月", "8月", "9月", "10月", "11月", "12月"],
-            firstDay: 1
+            firstDay: 1,
           }
         });
-        // $("input[name=begintime],input[name=endtime],input[name=Arrivedate]").datepicker({ dateFormat: "yy-mm-dd", minDate: new Date() });
+        $('input[name="startDate"]'), $('input[name="endDate"]'), $('input[name="datefilter"]').daterangepicker({ 
+          dateFormat: "YYYY-MM-DD", minDate: new Date() 
+        });
         $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
           $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
           startDate = picker.startDate.format('YYYY-MM-DD');
@@ -366,7 +368,6 @@
           headers: { "Content-Type": "application/json;charset=utf8" },
         }).done(function (msg) {
           // console.log(msg);
-
           $('#search_content').empty();
           for (var i = 0; i < msg.length; i++) {
             $('#search_content').append(
