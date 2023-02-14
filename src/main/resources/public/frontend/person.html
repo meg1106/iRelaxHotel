@@ -7,184 +7,106 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
+  integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
+  crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
     rel="stylesheet" />
+  <style>
+    table,
+    th,
+    td,
+    #comments .avatar,
+    #comments input,
+    #comments textarea {
+      border-style: hidden
+    }
 
-    <style>
-      table,
-      th,
-      td,
-      #comments .avatar,
-      #comments input,
-      #comments textarea {
-        border-style: hidden
-      }
-  
-      form {
-        width: 50%;
-        margin: 20px auto;
-      }
-  
-      a {
-        color: #f3bf07;
-        text-decoration: none;
-      }
-  
-      .room_type_title {
-        font-size: 24px;
-        font-family: 微軟正黑體, Microsoft JhengHei, Verdana;
-        color: #333333;
-        height: 40px;
-        line-height: 40px;
-      }
-  
-      .room_type_area {
-        width: 880px;
-        margin: 0 auto;
-        background: #ffffff;
-        padding: 20px;
-        margin-bottom: 10px;
-        border-bottom: 2px solid #d5d5d5;
-      }
-  
-      .allroomprice_line {
-        width: 880px;
-        border-top: 1px solid #d5d5d5;
-      }
-  
-      body:nth-of-type(1) .allroomprice_img img {
-        padding: 5px;
-        border: 1px solid #e5ded9;
-        margin-left: 0px;
-      }
-  
-      .allroomprice_title {
-        height: 40px;
-        font-size: 19px;
-        font-weight: normal;
-        font-family: 微軟正黑體, Microsoft JhengHei, Verdana;
-        color: #333333;
-        padding-left: 50px;
-        padding-top: 15px;
-        /* text-shadow: 1px 1px 1px #f1f1f1; */
-        border-bottom: 2px solid #999999;
-        padding-right: 10px;
-      }
-  
-      .allroomprice_room_description {
-        color: #333333;
-        font-weight: bold;
-        font-family: "微軟正黑體", "Microsoft JhengHei UI", "新細明體", Arial, HelveticaNeue, sans-serif;
-        font-size: 19px;
-        padding-left: 15px;
-      }
-  
-      .allroomprice_room_description_detail {
-        width: 440px;
-        color: #4d443f;
-        font-weight: normal;
-        font-family: "微軟正黑體", "Microsoft JhengHei UI", "新細明體", Arial, HelveticaNeue, sans-serif;
-        font-size: 16px;
-        line-height: 24px;
-        margin-left: 15px;
-        margin-right: 15px;
-      }
-  
-      .list_price {
-        color: #ff5100;
-        font-weight: bold;
-        font-family: Arial;
-        font-size: 22px;
-        letter-spacing: 1px;
-        text-align: -webkit-center;
-        vertical-align: middle;
-      }
-    </style>
+    form {
+      width: 50%;
+      margin: 20px auto;
+    }
 
-    <!-- 靜態html導入：先加入jquery再script 靜態網頁 -->
-    <!-- javascripts -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
+    a {
+      color: #f3bf07;
+      text-decoration: none;
+    }
 
-    <!-- memberlogin -->
-    <script type="text/javascript">
-      $.get("_memberlogin.html", function (data) {
-        $("#memberlogin").html(data);
-      });
-    </script>
+    .room_type_title {
+      font-size: 24px;
+      font-family: 微軟正黑體, Microsoft JhengHei, Verdana;
+      color: #333333;
+      height: 40px;
+      line-height: 40px;
+    }
 
-    <!-- header -->
-    <script type="text/javascript">
-      $.get("_header.html", function (data) {
-        $("#header").html(data);
-      });
-    </script>
+    .room_type_area {
+      width: 880px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 20px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #d5d5d5;
+    }
 
-    <!-- 載入後端資料 -->
-      <!-- <script>
-        $.ajax({
-          url: '/member/',
-          type: 'GET',
-          // success: res => {
-          //   console.log(res)
-          // },
-          // error: err => {
-          //   console.log(err)
-          // },
-        })
-          .done(function (person_msg) {
-            console.log(person_msg);
-            room_msg.forEach(function (element, index) {
-              console.log(element.roomPic)
-              $('#person').append(
-              `
-              <div class="room" style="width: 600px;">
-                <img src="data:image/jpeg;base64,${element.roomPic}" alt="圖片無法載入" style="width: 1200px;" />
-              </div>
-              <div class=".flex_cell_inner">
-                <div class="roomText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
-                  <h1>${element.roomType}</h1>
-                  <p>${element.content}</p>
-                  <p>${element.roomPrice}</p>
-                  <br>
-                </div>
-              </div>
-              `
-              )
-            })
-          });
-      </script> -->
-      <script>
-        function loadperson() {
-          $.ajax({
-            url: "/member/{id}",
-            method: "GET",
-          }).done(function (msg) {
-            console.log(msg);
-            msg.forEach((element) => {
-              console.log(element);
-              $("#person").append(`
-                  <tr>
-                    <td>${element.id}</td>
-                    <td>${element.roomType}</td>
-                    <td>${element.roomPrice}</td>
-                    <td>${element.roomPerson}</td>
-                    <td>${element.roomPic}</td>
-                    <td>
-                      <button name="${element.id}" class="btn btn-success editBtn">修改</button>
-                      <button name="${element.id}" class="btn btn-secondary deleteBtn">刪除</button>
-                  </td>
-                </tr>
-                `);
-            });
-          });
-        }
-  
-        loadperson();
-      </script>
+    .allroomprice_line {
+      width: 880px;
+      border-top: 1px solid #d5d5d5;
+    }
 
+    body:nth-of-type(1) .allroomprice_img img {
+      padding: 5px;
+      border: 1px solid #e5ded9;
+      margin-left: 0px;
+    }
+
+    .allroomprice_title {
+      height: 40px;
+      font-size: 19px;
+      font-weight: normal;
+      font-family: 微軟正黑體, Microsoft JhengHei, Verdana;
+      color: #333333;
+      padding-left: 50px;
+      padding-top: 15px;
+      /* text-shadow: 1px 1px 1px #f1f1f1; */
+      border-bottom: 2px solid #999999;
+      padding-right: 10px;
+    }
+
+    .allroomprice_room_description {
+      color: #333333;
+      font-weight: bold;
+      font-family: "微軟正黑體", "Microsoft JhengHei UI", "新細明體", Arial, HelveticaNeue, sans-serif;
+      font-size: 19px;
+      padding-left: 15px;
+    }
+
+    .allroomprice_room_description_detail {
+      width: 440px;
+      color: #4d443f;
+      font-weight: normal;
+      font-family: "微軟正黑體", "Microsoft JhengHei UI", "新細明體", Arial, HelveticaNeue, sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+
+    .list_price {
+      color: #ff5100;
+      font-weight: bold;
+      font-family: Arial;
+      font-size: 22px;
+      letter-spacing: 1px;
+      text-align: -webkit-center;
+      vertical-align: middle;
+    }
+  </style>
+  <script src="../assets/js/jquery.js"></script>
+  <script src="../layout/scripts/CheckLogin.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
 </head>
 
 <body id="top">
@@ -192,16 +114,50 @@
   <!-- Top Background Image Wrapper -->
   <div class="bgded overlay padtop" style="background-image:url('../images/backgrounds/01.png');">
     <!-- ################################################################################################ -->
-    
-    <!-- memberlogin 開始 -->
-    <div id="memberlogin"></div>
-    <!-- memberlogin 結束 -->
+    <div
+      style="height:78.67px; display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0px 5px;max-width: 1140px;justify-content:flex-end">
+      <div id="weather_content">
+      </div>&emsp;
+      <i class="fas fa-user-circle fa-2x"></i>&nbsp;
+      <nav id="mainav" class="fl_right">
+        <ul id="loginBar" class="clear">
+    </div>
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left">
+        <a href="index.html">
+          <div style="width: 220px; height: 70px;">
+            <img src="images/logo/logo2.png">
+          </div>
+        </a>
+      </div>
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li class="active"><a href="../index.html">首頁</a></li>
+          <li><a class="drop">關於我們</a>
+            <ul>
+              <li><a href="pages/intro.html">簡介</a></li>
+              <li><a href="pages/traffic.html">交通資訊</a></li>
+              <li><a href="pages/notic.html">注意事項</a></li>
+            </ul>
+          </li>
+          <li><a class="drop">最新消息</a>
+            <ul>
+              <li><a href="pages/news.html">活動情報</a></li>
+              <li><a href="pages/discount.html">住房優惠</a></li>
+            </ul>
+          </li>
+          <li><a class="drop">瀏覽房型</a>
+            <ul>
+              <li><a href="pages/room.html">房型一覽</a></li>
+              <li><a href="pages/booking.html">立即訂房</a></li>
+            </ul>
+          </li>
+          <li><a href="pages/facility.html">活動設施</a></li>
+          <li><a href="pages/contactUS.html">聯絡我們</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <!-- header 開始 -->
-    <div id="header"></div>
-    <!-- header 結束 -->
-    
-    
     <div style="margin-top: 10%; font-size: 250%; display: flex; justify-content: center;">
       <span>會員中心</span>
     </div>
@@ -233,9 +189,10 @@
                     <tr>
                       <td>
                         <div id="DataList1_ctl00_panel_DataList1">
-                          <div class="room_type_area" >
+                          <div class="room_type_area">
                             <table style="border-collapse:separate; border-spacing:0px 10px;">
-                              <tbody width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:0" class="room_type_title">
+                              <tbody width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:0"
+                                class="room_type_title">
                                 <!-- 姓名 -->
                                 <tr align="left" style="margin: 10px 0;">
                                   <td align="center" style="width: 40%;">
@@ -243,59 +200,47 @@
                                       姓名
                                     </div>
                                   </td>
-                                  <td align="center" style="width: 60%;">
-                                  姓名
+                                  <td class="realName" align="center" style="width: 60%;">
+                                    姓名
                                   </td>
                                 </tr>
                                 <!-- 帳號 -->
                                 <tr align="left" style="margin: 10px 0;">
                                   <td align="center" style="width: 40%;">
-                                    <div >
+                                    <div>
                                       帳號
                                     </div>
                                   </td>
-                                  <td align="center" style="width: 60%;">
-                                   帳號
+                                  <td class="acc" align="center" style="width: 60%;">
+                                    帳號
+                                <!-- 連絡電話 -->
+                                <tr align="left" style="margin: 10px 0;">
+                                  <td align="center" style="width: 40%;">
+                                    <div>
+                                      連絡電話
+                                    </div>
+                                  </td>
+                                  <td class="tel" align="center" style="width: 60%;">
+                                    連絡電話
                                   </td>
                                 </tr>
-                                      <!-- 密碼 -->
-                                      <tr align="left" style="margin: 10px 0;">
-                                        <td align="center" style="width: 40%;">
-                                          <div>
-                                            密碼
-                                          </div>
-                                        </td>
-                                        <td align="center" style="width: 60%;">
-                                        密碼
-                                        </td>
-                                      </tr>
-                                              <!-- 連絡電話 -->
-                                              <tr align="left" style="margin: 10px 0;">
-                                                <td align="center" style="width: 40%;">
-                                                  <div>
-                                                    連絡電話
-                                                  </div>
-                                                </td>
-                                                <td align="center" style="width: 60%;">
-                                                 連絡電話
-                                                </td>
-                                              </tr>
-                                                      <!-- 信箱 -->
-                                      <tr align="left" style="margin: 10px 0;">
-                                        <td align="center" style="width: 40%;">
-                                          <div>
-                                            信箱
-                                          </div>
-                                        </td>
-                                        <td align="center" style="width: 60%;">
-                                          信箱
-                                        </td>
-                                      </tr>
+                                <!-- 信箱 -->
+                                <tr align="left" style="margin: 10px 0;">
+                                  <td align="center" style="width: 40%;">
+                                    <div>
+                                      信箱
+                                    </div>
+                                  </td>
+                                  <td class="email" align="center" style="width: 60%;">
+                                    信箱
+                                  </td>
+                                </tr>
                               </tbody>
                             </table>
                             <div width="174" align="center">
                               <!--bootstrap实现弹出模态框-->
-                              <button type="submit" data-target="#myModal" data-toggle="modal" class="btn btn-lg" style="width:120px;height:40px;font-size: 19px;">
+                              <button type="submit" data-target="#myModal" data-toggle="modal" class="btn btn-lg"
+                                style="width:120px;height:40px;font-size: 19px;">
                                 修 改
                               </button>
                             </div>
@@ -315,145 +260,153 @@
       <!-- / main body -->
       <div class="clear"></div>
 
-      
-<!-- 修改視窗 -->
-<!--fade 淡入淡出-->
-<div class="modal fade"  id="myModal" aria-labelledby="myModallabel" aria-hidden="true" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-          <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h5 class="modal-title" id="myModallabel">修改基本資料</h5>
-        </div>
-        <form id="formData" class="form-horizontal" style="width:80%">
-          <div class="modal-body">
-            <div class="form-group">
-              <label class="control-label col-lg-2" style="width: 100px">帳號：</label>
-              <div class="col-lg-9" style="width:350px">
-                <input type="text" value="" name="account" class="form-control"></br>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-lg-2" style="width: 100px">密碼：</label>
-              <div class="col-lg-9" style="width:350px">
-                <input type="password" value="" name="passwd" class="form-control"></br>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-lg-2" style="width: 100px">連絡電話：</label>
-              <div class="col-lg-9" style="width:350px">
-                <input type="tel" value="" name="tel" class="form-control"></br>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-lg-2" style="width: 100px">信箱：</label>
-              <div class="col-lg-9" style="width:350px">
-                <input type="email" value="" name="email" class="form-control"></br>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="modal-footer">
-          <button class="btn btn-default" type="button" data-dismiss="modal">取消</button>
-          <button class="btn btn-success" type="button" onclick="">儲存</button>
-        </div>
-      </form>
-    </div>
-</div>
-</div>
-<!-- 修改視窗 結束-->
 
-</main>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-    <div class="wrapper row4">
-      <footer id="footer" class="hoc clear">
-        <!-- ################################################################################################ -->
-        <a href="../index.html">
-          <div style="width: 220px; height: 70px;">
-            <img src="../images/logo/logo2.png">
+      <!-- 修改視窗 -->
+      <!--fade 淡入淡出-->
+      <div class="modal fade" id="myModal" aria-labelledby="myModallabel" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h5 class="modal-title" id="myModallabel">修改基本資料</h5>
+            </div>
+            <form id="formData" class="form-horizontal" style="width:80%">
+              <div class="modal-body">
+                <div class="form-group" hidden>
+                  <label class="control-label col-lg-2" style="width: 100px">編號：</label>
+                  <div class="col-lg-9" style="width:350px">
+                    <input type="text" value="" name="mId" class="form-control mId" readOnly="true"></br>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-lg-2" style="width: 100px">姓名：</label>
+                  <div class="col-lg-9" style="width:350px">
+                    <input type="text" name="account" class="form-control realName" readOnly="true"></br>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-lg-2" style="width: 100px">帳號：</label>
+                  <div class="col-lg-9" style="width:350px">
+                    <input type="text" name="account" class="form-control acc" readOnly="true"></br>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-lg-2" style="width: 100px">信箱：</label>
+                  <div class="col-lg-9" style="width:350px">
+                    <input type="email" value="" name="email" class="form-control email"></br>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-lg-2" style="width: 100px">密碼：</label>
+                  <div class="col-lg-9" style="width:350px">
+                    <input type="password" value="" name="passwd" class="form-control passwd"></br>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-lg-2" style="width: 100px">連絡電話：</label>
+                  <div class="col-lg-9" style="width:350px">
+                    <input type="tel" value="" name="tel" class="form-control tel"></br>
+                  </div>
+                </div>
+              </div>
           </div>
-        </a>
-        <br>
-        <div class="two_third first">
-          <li>
-            訂房專線 /
-            <a href="tel:+886-4-23265860">2326-5860</a>
-          </li><br>
-          <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
-          <li>
-            客服信箱 /
-            <a href="lakesidemystery@gmail.com ">lakesidemystery@gmail.com</a>
-          </li>
-          <br><br>
 
-          <ul class="faico clear">
-            <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
-            <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
-            <li><a class="faicon-line" href="#"><i class="fab fa-line"></i></a></li>
-            <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-          </ul>
+          <div class="modal-footer">
+            <button class="btn btn-default" type="button" data-dismiss="modal">取消</button>
+            <button class="btn btn-success" type="button" onclick="save()">儲存</button>
+          </div>
+          </form>
         </div>
-      </footer>
-    </div>
-    <!-- ################################################################################################ -->
-    <!-- ################################################################################################ -->
-    <div class="wrapper row5">
-      <div id="copyright" class="hoc clear">
-        <!-- ################################################################################################ -->
-        <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
-        <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/"
-            title="Free Website Templates">OS Templates</a></p>
-        <!-- ################################################################################################ -->
       </div>
+  </div>
+  <!-- 修改視窗 結束-->
+
+  </main>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row4">
+    <footer id="footer" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <a href="../index.html">
+        <div style="width: 220px; height: 70px;">
+          <img src="../images/logo/logo2.png">
+        </div>
+      </a>
+      <br>
+      <div class="two_third first">
+        <li>
+          訂房專線 /
+          <a href="tel:+886-4-23265860">2326-5860</a>
+        </li><br>
+        <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
+        <li>
+          客服信箱 /
+          <a href="lakesidemystery@gmail.com ">lakesidemystery@gmail.com</a>
+        </li>
+        <br><br>
+
+        <ul class="faico clear">
+          <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+          <li><a class="faicon-line" href="#"><i class="fab fa-line"></i></a></li>
+          <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row5">
+    <div id="copyright" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
+      <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/"
+          title="Free Website Templates">OS Templates</a></p>
+      <!-- ################################################################################################ -->
     </div>
-    <!-- ################################################################################################ -->
-    <!-- ################################################################################################ -->
-    <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
-    <!-- JAVASCRIPTS -->
-    <script src="../layout/scripts/jquery.min.js"></script>
-    <script src="../layout/scripts/jquery.backtotop.js"></script>
-    <script src="../layout/scripts/jquery.mobilemenu.js"></script>
-    <!-- 日期 -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script type="text/javascript">
-      $(function () {
-        $('input[name="datefilter"]').daterangepicker({
-          autoUpdateInput: false,
-          locale: {
-            cancelLabel: 'Clear'
-          }
-        });
-        $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
-          $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-        });
-        $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-          $(this).val('');
-        });
-      });
-    </script>
-    <script>
-      $('#date1').datetimepicker({
-        date: null,
-        format: 'YYYY-MM-DD',
-        locale: moment.locale('zh-tw'),
-        daysOfWeekDisabled: [0, 6],
-        minDate: moment().add(1, 'days'),
-        maxDate: moment().add(30, 'days'),
-        disabledDates: [
-          moment().add(1, 'days'),
-          moment().add(2, 'days'),
-          '2021-10-10',
-          '2021-12-25'
-        ],
-        disabledDates(time) {
-          return time.getTime() < Date.now() - 3600 * 1000 * 24;
-        }
-      });
-    </script>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+  <!-- JAVASCRIPTS -->
+  <script src="../layout/scripts/jquery.min.js"></script>
+  <script src="../layout/scripts/jquery.backtotop.js"></script>
+  <script src="../layout/scripts/jquery.mobilemenu.js"></script>
+  <!-- 日期 -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <!-- 天氣 -->
+  <script src="../layout/scripts/Weather.js"></script>
+  <!-- 公車 -->
+  <script src="../layout/scripts/TDXBus.js"></script>
+  <script>
+    function save() {
+      var mId = $('.form-control.mId').val()
+      var realName = $('.form-control.realName').val()
+      var account = $('.form-control.acc').val()
+      var passwd = $('.form-control.passwd').val()
+      var tel = $('.form-control.tel').val()
+      var email = $('.form-control.email').val()
+      console.log(mId);
+      console.log(account);
+      console.log(passwd);
+      console.log(tel);
+      console.log(email);
+      $.ajax({
+        url: `/member/${mId}`,
+        type: 'PUT',
+        contentType: 'application/json;charset=utf8',
+        data: JSON.stringify({
+          'realName': realName,
+          'account': account,
+          'passwd': passwd,
+          'tel': tel,
+          'email': email 
+        })
+      })
+    }
+  </script>
 </body>
 
 </html>
