@@ -34,27 +34,27 @@ $.ajax({
             <tr>
                 <td>
                     <div class="guest-bx">
-                        <img class="me-3" src="data:image/jpeg;base64,${value.items[index].room.roomType.roomPic}" alt="">
+                        <img class="me-3" src="data:image/jpeg;base64,${value.items[0].room.roomType.roomPic}" alt="">
                     </div>
                 </td>
                 <td>
                     <div>
-                        ${value.items[index].room.roomType.roomType}
+                        ${value.items[0].room.roomType.roomType}
                     </div>
                 </td>
                 <td>
                     <div>
-                        ${value.items[index].room.roomFloor}
+                        ${value.items[0].room.roomFloor}
                     </div>
                 </td>
                 <td>
                     <div>
-                        ${value.items[index].room.roomNum}
+                        ${value.items[0].room.roomNum}
                     </div>
                 </td>
                 <td>
                     <div>
-                        ${value.items[index].status}
+                        ${value.items[0].status}
                     </div>
                 </td>
                 <td>
