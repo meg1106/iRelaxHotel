@@ -124,7 +124,7 @@
     </div>
     <header id="header" class="hoc clear">
       <div id="logo" class="fl_left">
-        <a href="index.html">
+        <a href="../index.html">
           <div style="width: 220px; height: 70px;">
             <img src="images/logo/logo2.png">
           </div>
@@ -135,25 +135,25 @@
           <li class="active"><a href="../index.html">首頁</a></li>
           <li><a class="drop">關於我們</a>
             <ul>
-              <li><a href="pages/intro.html">簡介</a></li>
-              <li><a href="pages/traffic.html">交通資訊</a></li>
-              <li><a href="pages/notic.html">注意事項</a></li>
+              <li><a href="/pages/intro.html">簡介</a></li>
+              <li><a href="/pages/traffic.html">交通資訊</a></li>
+              <li><a href="/pages/notic.html">注意事項</a></li>
             </ul>
           </li>
           <li><a class="drop">最新消息</a>
             <ul>
-              <li><a href="pages/news.html">活動情報</a></li>
-              <li><a href="pages/discount.html">住房優惠</a></li>
+              <li><a href="/pages/news.html">活動情報</a></li>
+              <li><a href="/pages/discount.html">住房優惠</a></li>
             </ul>
           </li>
           <li><a class="drop">瀏覽房型</a>
             <ul>
-              <li><a href="pages/room.html">房型一覽</a></li>
-              <li><a href="pages/booking.html">立即訂房</a></li>
+              <li><a href="/pages/room.html">房型一覽</a></li>
+              <li><a href="/pages/booking.html">立即訂房</a></li>
             </ul>
           </li>
-          <li><a href="pages/facility.html">活動設施</a></li>
-          <li><a href="pages/contactUS.html">聯絡我們</a></li>
+          <li><a href="/pages/facility.html">活動設施</a></li>
+          <li><a href="/pages/contactUS.html">聯絡我們</a></li>
         </ul>
       </nav>
     </header>
@@ -225,7 +225,7 @@
                                   </td>
                                 </tr>
                                 <!-- 信箱 -->
-                                <tr align="left" style="margin: 10px 0;">
+                                <!-- <tr align="left" style="margin: 10px 0;">
                                   <td align="center" style="width: 40%;">
                                     <div>
                                       信箱
@@ -234,7 +234,7 @@
                                   <td class="email" align="center" style="width: 60%;">
                                     信箱
                                   </td>
-                                </tr>
+                                </tr> -->
                               </tbody>
                             </table>
                             <div width="174" align="center">
@@ -290,12 +290,12 @@
                     <input type="text" name="account" class="form-control acc" readOnly="true"></br>
                   </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label class="control-label col-lg-2" style="width: 100px">信箱：</label>
                   <div class="col-lg-9" style="width:350px">
                     <input type="email" value="" name="email" class="form-control email"></br>
                   </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                   <label class="control-label col-lg-2" style="width: 100px">密碼：</label>
                   <div class="col-lg-9" style="width:350px">
@@ -387,12 +387,12 @@
       var account = $('.form-control.acc').val()
       var passwd = $('.form-control.passwd').val()
       var tel = $('.form-control.tel').val()
-      var email = $('.form-control.email').val()
+      // var email = $('.form-control.email').val()
       console.log(mId);
       console.log(account);
       console.log(passwd);
       console.log(tel);
-      console.log(email);
+      // console.log(email);
       $.ajax({
         url: `/member/${mId}`,
         type: 'PUT',
@@ -401,9 +401,12 @@
           'realName': realName,
           'account': account,
           'passwd': passwd,
-          'tel': tel,
-          'email': email 
+          'tel': tel
         })
+      }).done(function (msg) {
+        alert(msg);
+      }).done(function(){
+        location.href = ""
       })
     }
   </script>
