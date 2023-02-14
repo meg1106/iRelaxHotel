@@ -61,12 +61,12 @@ public class OrderController {
 			Room room = roomService.findById(orderDto.getRoom_id());
 			Order order = orderService.create(member, room, orderDto);
 			Item item = itemService.create(orderDto, order, room);
-			emailService.sendOrderDetail(member, item);
+//			emailService.sendOrderDetail(member, item);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e);
 		}
-		return ResponseEntity.ok("訂單創建成功");
+		return ResponseEntity.ok("下訂完成！將跳轉到訂單頁面，請盡快付款，謝謝！");
 	}
 	
 	@GetMapping("/o{id}")
