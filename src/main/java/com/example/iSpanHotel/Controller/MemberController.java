@@ -67,14 +67,14 @@ public class MemberController {
 	@GetMapping("/checkLogin")
 	private ResponseEntity<String> checkLogin(@CookieValue(value = "UID", defaultValue = "Atta")String token) {
 		JSONObject jsonObject = new JSONObject();
-		String object = null;
+		String jsonString = null;
 			try {
 				jsonObject = memberService.checkLogin(token);
-				object = jsonObject.toString();
+				jsonString = jsonObject.toString();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		return ResponseEntity.ok(object);
+		return ResponseEntity.ok(jsonString);
 	}
 
 	@PostMapping("/login")
