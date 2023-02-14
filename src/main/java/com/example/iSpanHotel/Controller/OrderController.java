@@ -61,7 +61,7 @@ public class OrderController {
 			Room room = roomService.findById(orderDto.getRoom_id());
 			Order order = orderService.create(member, room, orderDto);
 			Item item = itemService.create(orderDto, order, room);
-//			emailService.sendOrderDetail(member, item);
+			emailService.sendOrderDetail(member, item);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e);

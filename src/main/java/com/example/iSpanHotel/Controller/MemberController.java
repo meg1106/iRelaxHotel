@@ -133,6 +133,7 @@ public class MemberController {
 			}
 			return ResponseEntity.ok("此Google信箱已使用過，請使用一般登入！");
 		} catch (Exception e) {
+			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 		}
 	}

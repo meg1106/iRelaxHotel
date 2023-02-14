@@ -371,6 +371,7 @@
           // console.log(msg);
           $('#search_content').empty();
           for (var i = 0; i < msg.length; i++) {
+            console.log(msg[i].id);
             $('#search_content').append(
               `
               <td align="center">
@@ -390,7 +391,7 @@
                                       </td>
                                       <td width="174" align="center" style="background-color:#F7F7F7">
                                         <input type="button" name="DataList1$ctl01$btn_order" value="一般訂房"
-                                          id="${msg[i].roomType.id}" class="btn booking"  >
+                                          id="${msg[i].id}" class="btn booking"  >
                                       </td>
                                     </tr>
                                     <tr>

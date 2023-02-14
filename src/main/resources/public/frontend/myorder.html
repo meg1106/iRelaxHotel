@@ -7,191 +7,106 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
+    integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
+    crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
     rel="stylesheet" />
+  <style>
+    table,
+    th,
+    td,
+    #comments .avatar,
+    #comments input,
+    #comments textarea {
+      border-style: hidden
+    }
 
-<!-- moban5672_v7 樣式 -->
-<link href="static/css/nice-select.css" rel="stylesheet">
-<link href="static/css/jquery.dataTables.min.css" rel="stylesheet">
-<!-- Style css -->
-<link href="static/css/style.css" rel="stylesheet">
-<!-- moban5672_v7 樣式 結束-->
+    form {
+      width: 50%;
+      margin: 20px auto;
+    }
 
-    <style>
-      table,
-      th,
-      td,
-      #comments .avatar,
-      #comments input,
-      #comments textarea {
-        border-style: hidden
-      }
-  
-      form {
-        width: 50%;
-        margin: 20px auto;
-      }
-  
-      a {
-        color: #f3bf07;
-        text-decoration: none;
-      }
-  
-      .room_type_title {
-        font-size: 24px;
-        font-family: 微軟正黑體, Microsoft JhengHei, Verdana;
-        color: #333333;
-        height: 40px;
-        line-height: 40px;
-      }
-  
-      .room_type_area {
-        width: 880px;
-        margin: 0 auto;
-        background: #ffffff;
-        padding: 20px;
-        margin-bottom: 10px;
-        border-bottom: 2px solid #d5d5d5;
-      }
-  
-      .allroomprice_line {
-        width: 880px;
-        border-top: 1px solid #d5d5d5;
-      }
-  
-      body:nth-of-type(1) .allroomprice_img img {
-        padding: 5px;
-        border: 1px solid #e5ded9;
-        margin-left: 0px;
-      }
-  
-      .allroomprice_title {
-        height: 40px;
-        font-size: 19px;
-        font-weight: normal;
-        font-family: 微軟正黑體, Microsoft JhengHei, Verdana;
-        color: #333333;
-        padding-left: 50px;
-        padding-top: 15px;
-        /* text-shadow: 1px 1px 1px #f1f1f1; */
-        border-bottom: 2px solid #999999;
-        padding-right: 10px;
-      }
-  
-      .allroomprice_room_description {
-        color: #333333;
-        font-weight: bold;
-        font-family: "微軟正黑體", "Microsoft JhengHei UI", "新細明體", Arial, HelveticaNeue, sans-serif;
-        font-size: 19px;
-        padding-left: 15px;
-      }
-  
-      .allroomprice_room_description_detail {
-        width: 440px;
-        color: #4d443f;
-        font-weight: normal;
-        font-family: "微軟正黑體", "Microsoft JhengHei UI", "新細明體", Arial, HelveticaNeue, sans-serif;
-        font-size: 16px;
-        line-height: 24px;
-        margin-left: 15px;
-        margin-right: 15px;
-      }
-  
-      .list_price {
-        color: #ff5100;
-        font-weight: bold;
-        font-family: Arial;
-        font-size: 22px;
-        letter-spacing: 1px;
-        text-align: -webkit-center;
-        vertical-align: middle;
-      }
-    </style>
+    a {
+      color: #f3bf07;
+      text-decoration: none;
+    }
 
-    <!-- 靜態html導入：先加入jquery再script 靜態網頁 -->
-    <!-- javascripts -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
+    .room_type_title {
+      font-size: 24px;
+      font-family: 微軟正黑體, Microsoft JhengHei, Verdana;
+      color: #333333;
+      height: 40px;
+      line-height: 40px;
+    }
 
-    <!-- memberlogin -->
-    <script type="text/javascript">
-      $.get("_memberlogin.html", function (data) {
-        $("#memberlogin").html(data);
-      });
-    </script>
+    .room_type_area {
+      width: 880px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 20px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #d5d5d5;
+    }
 
-    <!-- header -->
-    <script type="text/javascript">
-      $.get("_header.html", function (data) {
-        $("#header").html(data);
-      });
-    </script>
+    .allroomprice_line {
+      width: 880px;
+      border-top: 1px solid #d5d5d5;
+    }
 
-    <!-- 載入後端資料 -->
-      <!-- <script>
-        $.ajax({
-          url: '/member/',
-          type: 'GET',
-          // success: res => {
-          //   console.log(res)
-          // },
-          // error: err => {
-          //   console.log(err)
-          // },
-        })
-          .done(function (person_msg) {
-            console.log(person_msg);
-            room_msg.forEach(function (element, index) {
-              console.log(element.roomPic)
-              $('#person').append(
-              `
-              <div class="room" style="width: 600px;">
-                <img src="data:image/jpeg;base64,${element.roomPic}" alt="圖片無法載入" style="width: 1200px;" />
-              </div>
-              <div class=".flex_cell_inner">
-                <div class="roomText" style="margin-top:0px;margin-bottom:0px;border-radius:0px;">
-                  <h1>${element.roomType}</h1>
-                  <p>${element.content}</p>
-                  <p>${element.roomPrice}</p>
-                  <br>
-                </div>
-              </div>
-              `
-              )
-            })
-          });
-      </script> -->
-      <script>
-        function loadperson() {
-          $.ajax({
-            url: "/member/{id}",
-            method: "GET",
-          }).done(function (msg) {
-            console.log(msg);
-            msg.forEach((element) => {
-              console.log(element);
-              $("#person").append(`
-                  <tr>
-                    <td>${element.id}</td>
-                    <td>${element.roomType}</td>
-                    <td>${element.roomPrice}</td>
-                    <td>${element.roomPerson}</td>
-                    <td>${element.roomPic}</td>
-                    <td>
-                      <button name="${element.id}" class="btn btn-success editBtn">修改</button>
-                      <button name="${element.id}" class="btn btn-secondary deleteBtn">刪除</button>
-                  </td>
-                </tr>
-                `);
-            });
-          });
-        }
-  
-        loadperson();
-      </script>
+    body:nth-of-type(1) .allroomprice_img img {
+      padding: 5px;
+      border: 1px solid #e5ded9;
+      margin-left: 0px;
+    }
 
+    .allroomprice_title {
+      height: 40px;
+      font-size: 19px;
+      font-weight: normal;
+      font-family: 微軟正黑體, Microsoft JhengHei, Verdana;
+      color: #333333;
+      padding-left: 50px;
+      padding-top: 15px;
+      /* text-shadow: 1px 1px 1px #f1f1f1; */
+      border-bottom: 2px solid #999999;
+      padding-right: 10px;
+    }
+
+    .allroomprice_room_description {
+      color: #333333;
+      font-weight: bold;
+      font-family: "微軟正黑體", "Microsoft JhengHei UI", "新細明體", Arial, HelveticaNeue, sans-serif;
+      font-size: 19px;
+      padding-left: 15px;
+    }
+
+    .allroomprice_room_description_detail {
+      width: 440px;
+      color: #4d443f;
+      font-weight: normal;
+      font-family: "微軟正黑體", "Microsoft JhengHei UI", "新細明體", Arial, HelveticaNeue, sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+
+    .list_price {
+      color: #ff5100;
+      font-weight: bold;
+      font-family: Arial;
+      font-size: 22px;
+      letter-spacing: 1px;
+      text-align: -webkit-center;
+      vertical-align: middle;
+    }
+  </style>
+  <script src="../assets/js/jquery.js"></script>
+  <script src="../layout/scripts/MyOrder.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
 </head>
 
 <body id="top">
@@ -199,16 +114,50 @@
   <!-- Top Background Image Wrapper -->
   <div class="bgded overlay padtop" style="background-image:url('../images/backgrounds/01.png');">
     <!-- ################################################################################################ -->
-    
-    <!-- memberlogin 開始 -->
-    <div id="memberlogin"></div>
-    <!-- memberlogin 結束 -->
+    <div
+      style="height:78.67px; display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0px 5px;max-width: 1140px;justify-content:flex-end">
+      <div id="weather_content">
+      </div>&emsp;
+      <i class="fas fa-user-circle fa-2x"></i>&nbsp;
+      <nav id="mainav" class="fl_right">
+        <ul id="loginBar" class="clear">
+    </div>
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left">
+        <a href="index.html">
+          <div style="width: 220px; height: 70px;">
+            <img src="images/logo/logo2.png">
+          </div>
+        </a>
+      </div>
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li class="active"><a href="../index.html">首頁</a></li>
+          <li><a class="drop">關於我們</a>
+            <ul>
+              <li><a href="pages/intro.html">簡介</a></li>
+              <li><a href="pages/traffic.html">交通資訊</a></li>
+              <li><a href="pages/notic.html">注意事項</a></li>
+            </ul>
+          </li>
+          <li><a class="drop">最新消息</a>
+            <ul>
+              <li><a href="pages/news.html">活動情報</a></li>
+              <li><a href="pages/discount.html">住房優惠</a></li>
+            </ul>
+          </li>
+          <li><a class="drop">瀏覽房型</a>
+            <ul>
+              <li><a href="pages/room.html">房型一覽</a></li>
+              <li><a href="pages/booking.html">立即訂房</a></li>
+            </ul>
+          </li>
+          <li><a href="pages/facility.html">活動設施</a></li>
+          <li><a href="pages/contactUS.html">聯絡我們</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <!-- header 開始 -->
-    <div id="header"></div>
-    <!-- header 結束 -->
-    
-    
     <div style="margin-top: 10%; font-size: 250%; display: flex; justify-content: center;">
       <span>我的訂單</span>
     </div>
@@ -244,103 +193,91 @@
 
                             <!-- 樣式 -->
 
-                            <div class="tab-content">	
-                                <div class="tab-pane active show" id="All">
-                                    <div class="table-responsive" style="width:860px">
-                                        <table class="table card-table  display mb-4 dataTablesCard booking-table room-list-tbl table-responsive-lg " id="guestTable-all" style="text-align:center;">
-                                            <thead style="color:#4d443f;">
-                                                <tr style="color: #333333;">
-                                                    <th style="color: #333333; font-weight: bold; width:150px">房型</th>
-                                                    <th style="color: #333333; font-weight: bold;">房型名稱</th>
-                                                    <th style="color: #333333; font-weight: bold;">樓層</th>
-                                                    <th style="color: #333333; font-weight: bold;">房號</th>
-                                                    <th style="color: #333333; font-weight: bold;">狀態</th>
-                                                    <th style="color: #333333; font-weight: bold;">操作</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                             
-                                                    <td>
-                                                        <div class="guest-bx">
-                                                            <img class="me-3" src="static/picture/pic111.jpg" alt="">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>
-                                                            Single Bed
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>
-                                                            Floor G-05
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>
-                                                            AC
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div>
-                                                            <span class="badge light badge-success">Booked
-                                                                <!-- <span class="badge light badge-warning"> -->
-                                                                    <!-- <span class="badge light badge-danger"></span> -->
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <a class="btn" href="./orderdt/orderdt.html" role="button">查看</a>
-                                                                                      <!-- bootstrap实现弹出模态框
-                                                                                      <button type="submit" data-target="#myOrder" data-toggle="modal" class="btn" style="border:none">
-                                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                                                                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"></path>
-                                                                                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"></path>
-                                                                                          </svg>
-                                                                                          查看
-                                                                                     </button> -->
-                                             
-                                                   
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                            <div class="tab-content">
+                              <div class="tab-pane active show" id="All">
+                                <div class="table-responsive" style="width:860px">
+                                  <table
+                                    class="table card-table  display mb-4 dataTablesCard booking-table room-list-tbl table-responsive-lg "
+                                    id="guestTable-all" style="text-align:center;">
+                                    <thead style="color:#4d443f;">
+                                      <tr style="color: #333333;">
+                                        <th style="color: white; font-weight: bold; width:150px;text-align: center;">房型</th>
+                                        <th style="color: white; font-weight: bold;text-align: center;">房型名稱</th>
+                                        <th style="color: white; font-weight: bold;text-align: center;">樓層</th>
+                                        <th style="color: white; font-weight: bold;text-align: center;">房號</th>
+                                        <th style="color: white; font-weight: bold;text-align: center;">狀態</th>
+                                        <th style="color: white; font-weight: bold;text-align: center;">操作</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id="order">
+                                      <tr>
+                                        <td>
+                                          <div class="guest-bx">
+                                            <img class="me-3" src="static/picture/pic111.jpg" alt="">
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div>
+                                            Single Bed
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div>
+                                            Floor G-05
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div>
+                                            AC
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div>
+                                            <span class="badge light badge-success">Booked
+                                              <!-- <span class="badge light badge-warning"> -->
+                                              <!-- <span class="badge light badge-danger"></span> -->
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <a class="btn" href="./orderdt/orderdt.html" role="button">查看</a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
                                 </div>
+                              </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--**********************************
-                Content body end
-            ***********************************-->
-                            <!-- 樣式 結束 -->
-
-
-                         
                           </div>
                         </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </div>
-      <!-- ################################################################################################ -->
-      <!-- ################################################################################################ -->
-      <!-- / main body -->
-      <div class="clear"></div>
+  </div>
+  <!--**********************************
+                Content body end
+            ***********************************-->
+  <!-- 樣式 結束 -->
+  </div>
+  </div>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- / main body -->
+  <div class="clear"></div>
 
-      
-<!-- 訂單明細視窗 -->
-<!--fade 淡入淡出-->
-<div class="modal fade"  id="myOrder" aria-labelledby="myModallabel" aria-hidden="true" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+
+  <!-- 訂單明細視窗 -->
+  <!--fade 淡入淡出-->
+  <div class="modal fade" id="myOrder" aria-labelledby="myModallabel" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
           <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h5 class="modal-title" id="">訂單明細</h5>
         </div>
@@ -371,108 +308,78 @@
               </div>
             </div>
           </div>
-        </div>
-        
-        <div class="modal-footer">
-          <button class="btn btn-default" type="button" data-dismiss="modal">退出</button>
-          <!-- <button class="btn btn-success" type="button" onclick="">儲存</button> -->
-        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-default" type="button" data-dismiss="modal">退出</button>
+        <!-- <button class="btn btn-success" type="button" onclick="">儲存</button> -->
+      </div>
       </form>
     </div>
-</div>
-</div>
-<!-- 修改視窗 結束-->
+  </div>
+  </div>
+  <!-- 修改視窗 結束-->
 
-</main>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-    <div class="wrapper row4">
-      <footer id="footer" class="hoc clear">
-        <!-- ################################################################################################ -->
-        <a href="../index.html">
-          <div style="width: 220px; height: 70px;">
-            <img src="../images/logo/logo2.png">
-          </div>
-        </a>
-        <br>
-        <div class="two_third first">
-          <li>
-            訂房專線 /
-            <a href="tel:+886-4-23265860">2326-5860</a>
-          </li><br>
-          <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
-          <li>
-            客服信箱 /
-            <a href="lakesidemystery@gmail.com ">lakesidemystery@gmail.com</a>
-          </li>
-          <br><br>
-
-          <ul class="faico clear">
-            <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
-            <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
-            <li><a class="faicon-line" href="#"><i class="fab fa-line"></i></a></li>
-            <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-          </ul>
+  </main>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row4">
+    <footer id="footer" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <a href="../index.html">
+        <div style="width: 220px; height: 70px;">
+          <img src="../images/logo/logo2.png">
         </div>
-      </footer>
-    </div>
-    <!-- ################################################################################################ -->
-    <!-- ################################################################################################ -->
-    <div class="wrapper row5">
-      <div id="copyright" class="hoc clear">
-        <!-- ################################################################################################ -->
-        <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
-        <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/"
-            title="Free Website Templates">OS Templates</a></p>
-        <!-- ################################################################################################ -->
+      </a>
+      <br>
+      <div class="two_third first">
+        <li>
+          訂房專線 /
+          <a href="tel:+886-4-23265860">2326-5860</a>
+        </li><br>
+        <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
+        <li>
+          客服信箱 /
+          <a href="lakesidemystery@gmail.com ">lakesidemystery@gmail.com</a>
+        </li>
+        <br><br>
+
+        <ul class="faico clear">
+          <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+          <li><a class="faicon-line" href="#"><i class="fab fa-line"></i></a></li>
+          <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+        </ul>
       </div>
+    </footer>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row5">
+    <div id="copyright" class="hoc clear">
+      <!-- ################################################################################################ -->
+      <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
+      <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/"
+          title="Free Website Templates">OS Templates</a></p>
+      <!-- ################################################################################################ -->
     </div>
-    <!-- ################################################################################################ -->
-    <!-- ################################################################################################ -->
-    <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
-    <!-- JAVASCRIPTS -->
-    <script src="../layout/scripts/jquery.min.js"></script>
-    <script src="../layout/scripts/jquery.backtotop.js"></script>
-    <script src="../layout/scripts/jquery.mobilemenu.js"></script>
-    <!-- 日期 -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script type="text/javascript">
-      $(function () {
-        $('input[name="datefilter"]').daterangepicker({
-          autoUpdateInput: false,
-          locale: {
-            cancelLabel: 'Clear'
-          }
-        });
-        $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
-          $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-        });
-        $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
-          $(this).val('');
-        });
-      });
-    </script>
-    <script>
-      $('#date1').datetimepicker({
-        date: null,
-        format: 'YYYY-MM-DD',
-        locale: moment.locale('zh-tw'),
-        daysOfWeekDisabled: [0, 6],
-        minDate: moment().add(1, 'days'),
-        maxDate: moment().add(30, 'days'),
-        disabledDates: [
-          moment().add(1, 'days'),
-          moment().add(2, 'days'),
-          '2021-10-10',
-          '2021-12-25'
-        ],
-        disabledDates(time) {
-          return time.getTime() < Date.now() - 3600 * 1000 * 24;
-        }
-      });
-    </script>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+  <!-- JAVASCRIPTS -->
+  <script src="../layout/scripts/jquery.min.js"></script>
+  <script src="../layout/scripts/jquery.backtotop.js"></script>
+  <script src="../layout/scripts/jquery.mobilemenu.js"></script>
+  <!-- 日期 -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <!-- 天氣 -->
+  <script src="../layout/scripts/Weather.js"></script>
+  <!-- 公車 -->
+  <script src="../layout/scripts/TDXBus.js"></script>
+
 </body>
 
 </html>
