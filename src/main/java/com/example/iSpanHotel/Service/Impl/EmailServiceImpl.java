@@ -1,5 +1,6 @@
 package com.example.iSpanHotel.Service.Impl;
 
+import java.text.SimpleDateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -39,12 +40,13 @@ public class EmailServiceImpl implements EmailService {
 	private String sender;
 
 	public String sendOrderDetail(Member member, Item item) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日"); 
 		String name = member.getRealName();
-		String checkin = item.getCheckinDate().toString();
-		String checkout = item.getCheckoutDate().toString();
+		String checkin = sdf.format(item.getCheckinDate());
+		String checkout = sdf.format(item.getCheckoutDate());
 		try {
 			SimpleMailMessage mailMessage = new SimpleMailMessage();
-			mailMessage.setTo(member.getEmail());
+			mailMessage.setTo(member.getAccount());
 			mailMessage.setText("親愛的會員 " + name + " 先生/小姐您好，以下為您的訂房資訊：\n入住時間：" + checkin + " 下午4時\n退房時間：" + checkout
 					+ " 上午11時\n\n如有任何問題，歡迎來電：02-34567890\n\niRelax Hotel期待您的光臨！");
 			mailMessage.setSubject("訂房通知");
@@ -73,9 +75,9 @@ public class EmailServiceImpl implements EmailService {
 	public String processForgotPassword(HttpServletRequest request, MemberDto memberDto) {
 		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 		MimeMessageHelper mimeMessageHelper;
-		String email = memberDto.getEmail();
+		String account = memberDto.getAccount();
 		String token = RandomString.make(30);
-		Member member = memberDao.findByEmail(email);
+		Member member = memberDao.findByEmail(account);
 		if (member != null) {
 			member.setResetPasswordToken(token);
 			memberDao.save(member);
@@ -86,7 +88,7 @@ public class EmailServiceImpl implements EmailService {
 			String resetPasswordLink = UrlUtility.getSiteURL(request) + "/frontend/change_password.html?token=" + token;
 			mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
 			mimeMessageHelper.setFrom(sender);
-			mimeMessageHelper.setTo(email);
+			mimeMessageHelper.setTo(account);
 			mimeMessageHelper.setText("<p>您好</p>" + "<p>您申請了忘記密碼服務</p>" + "<p>請點擊下方的連結以更改密碼：</p>" + "<p><a href=\""
 					+ resetPasswordLink + "\">更改我的密碼</a></p>" + "<br>" + "<p>如您沒有申請此服務或是已想起密碼，請忽略本信件，謝謝。</p>"
 					+ "<p>iRelax Hotel</p>", true);
@@ -102,7 +104,7 @@ public class EmailServiceImpl implements EmailService {
 	public String sendCheckEmail(MemberDto memberDto) {
 		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 		MimeMessageHelper mimeMessageHelper;
-		String email = memberDto.getEmail();
+		String email = memberDto.getAccount();
 		String code = CheckEmailUtils.VerifyCode(6);
 		Member member = memberDao.findByEmail(email);
 		CheckEmail McheckEmail = checkEmailDao.findByEmail(email);

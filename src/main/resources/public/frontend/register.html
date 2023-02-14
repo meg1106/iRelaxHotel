@@ -102,13 +102,17 @@
                 </div>
                 <div class="form-group">
                   <div class="fxt-transformY-50 fxt-transition-delay-1">
-                    <input type="account" id="account" class="form-control" name="account" placeholder="帳號"
+                    <input type="account" id="account" class="form-control" name="account" placeholder="帳號信箱"
                       required="required" />
+                    <a href="" onclick="getCode()" class="switcher-text2 inline-text"
+                      style="padding-left: 10px; padding-top: 2px;">
+                      寄出驗證碼
+                    </a>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="fxt-transformY-50 fxt-transition-delay-2">
-                    <input id="password" type="password" class="form-control" name="password" placeholder="********"
+                    <input id="password" type="password" class="form-control" name="password" placeholder="密碼"
                       required="required" />
                     <i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
                   </div>
@@ -118,27 +122,13 @@
                     <input type="tel" id="tel" class="form-control" name="tel" placeholder="手機" required="required" />
                   </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <div class="fxt-transformY-50 fxt-transition-delay-1">
                     <input type="email" id="email" class="form-control" name="email" placeholder="信箱"
                       required="required" />
-                    <a href="" onclick="getCode()" class="switcher-text2 inline-text"
-                      style="padding-left: 10px; padding-top: 2px;">
-                      寄出驗證碼
-                    </a>
 
-                    <!-- <button type="button" class="fxt-btn-fill" style="background:none;
-                    border:none;
-                    margin-top:5px;
-                    padding:0;
-                    cursor: pointer;
-                    color: #fff;
-                    background-color: transparent;
-                    font-size: 12px">寄出驗證碼</button> -->
-
-                    <!-- <button type="button" class="fxt-btn-fill" style="width: 30%; font-size: 10px; padding: 15px; margin-left: 2px ;margin-left: 20px ">寄出驗證碼</button> -->
                   </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                   <div class="fxt-transformY-50 fxt-transition-delay-1">
                     <input id="code" type="text" class="form-control" name="code" placeholder="請輸入驗證碼"
@@ -183,8 +173,8 @@
   <script>
     function getCode() {
       event.preventDefault();
-      var email = $("#email").val();
-      var data = '{"email":"' + email + '"}'
+      var account = $("#account").val();
+      var data = '{"account":"' + account + '"}'
       $.ajax({
         beforeSend: function () {
           $('#loading').css("display", "");
