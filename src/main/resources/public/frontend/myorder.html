@@ -8,8 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
-  integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
-  crossorigin="anonymous"></script>
+    integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
+    crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
@@ -105,7 +105,7 @@
     }
   </style>
   <script src="../assets/js/jquery.js"></script>
-  <script src="../layout/scripts/CheckLogin.js"></script>
+  <script src="../layout/scripts/MyOrder.js"></script>
   <script src="../assets/js/bootstrap.min.js"></script>
 </head>
 
@@ -201,17 +201,16 @@
                                     id="guestTable-all" style="text-align:center;">
                                     <thead style="color:#4d443f;">
                                       <tr style="color: #333333;">
-                                        <th style="color: #333333; font-weight: bold; width:150px">房型</th>
-                                        <th style="color: #333333; font-weight: bold;">房型名稱</th>
-                                        <th style="color: #333333; font-weight: bold;">樓層</th>
-                                        <th style="color: #333333; font-weight: bold;">房號</th>
-                                        <th style="color: #333333; font-weight: bold;">狀態</th>
-                                        <th style="color: #333333; font-weight: bold;">操作</th>
+                                        <th style="color: white; font-weight: bold; width:150px;text-align: center;">房型</th>
+                                        <th style="color: white; font-weight: bold;text-align: center;">房型名稱</th>
+                                        <th style="color: white; font-weight: bold;text-align: center;">樓層</th>
+                                        <th style="color: white; font-weight: bold;text-align: center;">房號</th>
+                                        <th style="color: white; font-weight: bold;text-align: center;">狀態</th>
+                                        <th style="color: white; font-weight: bold;text-align: center;">操作</th>
                                       </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="order">
                                       <tr>
-
                                         <td>
                                           <div class="guest-bx">
                                             <img class="me-3" src="static/picture/pic111.jpg" alt="">
