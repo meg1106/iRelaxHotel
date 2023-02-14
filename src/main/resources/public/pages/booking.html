@@ -133,7 +133,7 @@
   <div class="bgded overlay padtop" style="background-image:url('../images/backgrounds/01.png');">
     <div
       style="height:78.67px; display: flex;flex-direction: row;flex-wrap: nowrap;justify-content:flex-end;align-items:center;margin:0 auto; padding: 0px 5px;max-width: 1140px;justify-content:flex-end">
-      <div id="weather_content">
+      <div id="weather_content" style="display:flex; flex-wrap: nowrap;">
       </div>&emsp;
       <i class="fas fa-user-circle fa-2x"></i>&nbsp;
       <nav id="mainav" class="fl_right">
@@ -218,8 +218,7 @@
             <option value="14">14</option>
             <option value="15">15</option>
             <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
+            <option value="17">總統套房</option>
 
           </select>
           <select id="person" style="width:150px;height:40px;margin: 0% 5px;border-radius: 4px;">
@@ -337,6 +336,7 @@
             firstDay: 1
           }
         });
+        // $("input[name=begintime],input[name=endtime],input[name=Arrivedate]").datepicker({ dateFormat: "yy-mm-dd", minDate: new Date() });
         $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
           $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
           startDate = picker.startDate.format('YYYY-MM-DD');
