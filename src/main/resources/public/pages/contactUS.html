@@ -285,6 +285,8 @@
   <script src="../layout/scripts/Weather.js"></script>
   <!-- 公車 -->
   <script src="../layout/scripts/TDXBus.js"></script>
+  <!-- sweet alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script>
     $("#contact_submit").submit((e) => {
       e.preventDefault();
@@ -309,9 +311,8 @@
         }
       })
         .done(function (msg) {
-          console.log(msg)
-          alert(msg);
-        });
+          swal.fire('', msg, 'success')
+        })
     });
   </script>
 </body>
