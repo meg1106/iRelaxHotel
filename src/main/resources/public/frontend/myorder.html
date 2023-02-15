@@ -105,7 +105,17 @@
     }
   </style>
   <script src="../assets/js/jquery.js"></script>
-  <script src="../layout/scripts/MyOrder.js"></script>
+  <script>
+    $.ajax({
+        url: '/member/checkLogin',
+        type: 'GET',
+        dataType: 'json'
+      }).done(function (msg) {
+        if (msg.status != 'success') {
+          location.href = 'login.html';
+        }
+      })
+  </script>
   <script src="../assets/js/bootstrap.min.js"></script>
 </head>
 
@@ -347,7 +357,8 @@
   <script src="../layout/scripts/Weather.js"></script>
   <!-- 公車 -->
   <script src="../layout/scripts/TDXBus.js"></script>
-
+  
+  <script src="../layout/scripts/MyOrder.js"></script>
 </body>
 
 </html>

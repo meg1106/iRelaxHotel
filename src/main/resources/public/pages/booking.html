@@ -337,8 +337,8 @@
             firstDay: 1,
           }
         });
-        $('input[name="startDate"]'), $('input[name="endDate"]'), $('input[name="datefilter"]').daterangepicker({ 
-          dateFormat: "YYYY-MM-DD", minDate: new Date() 
+        $('input[name="startDate"]'), $('input[name="endDate"]'), $('input[name="datefilter"]').daterangepicker({
+          dateFormat: "YYYY-MM-DD", minDate: new Date()
         });
         $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
           $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
@@ -460,21 +460,32 @@
     <script>
       $('#search_content').on('click', '.booking', function () {
         $.ajax({
-          type: 'POST',
-          url: '/order/',
-          contentType: 'application/json;charset=utf8',
-          data: JSON.stringify({
-            'checkinDate': startDate,
-            'checkoutDate': endDate,
-            'room_id': this.id
-          })
+          url: '/member/checkLogin',
+          type: 'GET',
+          dataType: 'json'
         }).done(function (msg) {
-          alert(msg);
-        }).done(function (msg) {
-          console.log(msg)
-          if (msg == "下訂完成！將跳轉到訂單頁面，請盡快付款，謝謝！") {
-            location.href = "../frontend/myorder.html"
+          if (msg.status == 'success') {
+            $.ajax({
+              type: 'POST',
+              url: '/order/',
+              contentType: 'application/json;charset=utf8',
+              data: JSON.stringify({
+                'checkinDate': startDate,
+                'checkoutDate': endDate,
+                'room_id': this.id
+              }).done(function (msg) {
+                alert(msg);
+              })
+            }).done(function (msg) {
+              console.log(msg)
+              if (msg == "下訂完成！將跳轉到訂單頁面，請盡快付款，謝謝！") {
+                location.href = "../frontend/myorder.html"
+              } else {
+              }
+            })
           } else {
+            alert('請先登入')
+            location.href = '../frontend/login.html';
           }
         })
       })

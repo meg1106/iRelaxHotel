@@ -49,7 +49,19 @@
       crossorigin="anonymous"
     />
     <script src="./js/jquery.js"></script>
-    <script src="./js/myOrderdt.js"></script>
+    <script>
+      $.ajax({
+        url: '/member/checkLogin',
+        type: 'GET',
+        dataType: 'json'
+      }).done(function (msg) {
+        if (msg.status != 'success') {
+          alert(123)
+        }
+      }).done(function (msg) {
+        location.href = '../login.html';
+      })
+      </script>
   </head>
 
   <body>
@@ -77,5 +89,6 @@
       });
     </script>
     <!-- //Calendar Js -->
+    <script src="./js/myOrderdt.js"></script>
   </body>
 </html>

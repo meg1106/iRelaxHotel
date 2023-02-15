@@ -157,7 +157,7 @@ $.ajax({
             <div class="radio-section">
               <h6>訂單日期：</h6>
               <ul class="radio-buttons-w3-agileits">
-                <label for="a-option">${msg.orderDate}</label>
+                <label for="a-option">${orderDate}</label>
               </ul>
             </div>
           </div>
@@ -167,7 +167,7 @@ $.ajax({
             <div class="radio-section">
               <h6>入住日期：</h6>
               <ul class="radio-buttons-w3-agileits">
-                <label for="a-option">${msg.items[0].checkinDate}</label>
+                <label for="a-option">${checkinDate}</label>
               </ul>
             </div>
           </div>
@@ -175,7 +175,7 @@ $.ajax({
             <div class="radio-section">
               <h6>退房日期：</h6>
               <ul class="radio-buttons-w3-agileits">
-                <label for="a-option">${msg.items[0].checkoutDate}</label>
+                <label for="a-option">${checkoutDate}</label>
               </ul>
             </div>
           </div>
@@ -217,6 +217,14 @@ $.ajax({
         </div>
         <h3 class="sub-heading-agileits">iRelax 預訂者</h3>
         <div class="main-flex-w3ls-sectns">
+        <div class="field-agileinfo-spc form-w3-agile-text2">
+            <div class="radio-section">
+              <h6>會員帳號：</h6>
+              <ul class="radio-buttons-w3-agileits">
+                <label for="a-option">${msg.member.account}</label>
+              </ul>
+            </div>
+          </div>
           <div class="field-agileinfo-spc form-w3-agile-text1">
             <div class="radio-section">
               <h6>會員名稱：</h6>
@@ -225,14 +233,7 @@ $.ajax({
               </ul>
             </div>
           </div>
-          <div class="field-agileinfo-spc form-w3-agile-text2">
-            <div class="radio-section">
-              <h6>會員帳號：</h6>
-              <ul class="radio-buttons-w3-agileits">
-                <label for="a-option">${msg.member.account}</label>
-              </ul>
-            </div>
-          </div>
+          
         </div>
         <div class="field-agileinfo-spc form-w3-agile-text">
           <div class="radio-section">
@@ -242,18 +243,6 @@ $.ajax({
             </ul>
           </div>
         </div>
-
-        <div class="main-flex-w3ls-sectns">
-          <div class="field-agileinfo-spc form-w3-agile-text1">
-            <div class="radio-section">
-              <h6>信　　箱：</h6>
-              <ul class="radio-buttons-w3-agileits">
-                <label for="a-option">gavinlin123@yahoo.com.tw</label>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="clear"></div>
         <a class="btn btn-warning btn-lg" href="../myorder.html" role="button">
           返回
         </a>
