@@ -25,12 +25,12 @@ public class Item {
 	
 	@JsonIgnore
 	@JsonIgnoreProperties({"items"})
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@ManyToOne(cascade = {CascadeType.MERGE})
 	@JoinColumn(name = "order_id", nullable = false)
 	private Order order;
 	
 	@JsonIgnoreProperties({"items"})
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.MERGE})
 	@JoinColumn(name = "room_id", nullable = false)
 	private Room room;
 	

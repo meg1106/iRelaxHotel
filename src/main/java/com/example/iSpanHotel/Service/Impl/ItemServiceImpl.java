@@ -1,7 +1,6 @@
 package com.example.iSpanHotel.Service.Impl;
 
 import java.text.SimpleDateFormat;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +8,7 @@ import com.example.iSpanHotel.Dao.ItemDao;
 import com.example.iSpanHotel.Dao.OrderDao;
 import com.example.iSpanHotel.Dao.RoomDao;
 import com.example.iSpanHotel.Dto.OrderDto;
+import com.example.iSpanHotel.Dto.PaymentDto;
 import com.example.iSpanHotel.Service.ItemService;
 import com.example.iSpanHotel.model.Item;
 import com.example.iSpanHotel.model.Order;
@@ -70,5 +70,24 @@ public class ItemServiceImpl implements ItemService{
 		}
 	}
 
-
+	@Override
+	public String paySuccess(PaymentDto paymentDto) {
+		String tradeNo = paymentDto.getMerchantTradeNo();
+		Long oid = Long.parseLong(tradeNo.substring(16));
+		if (paymentDto.getRtnMsg().equals("Succeeded")) {
+			System.out.println("OK");
+			Item item = new Item();
+			item.setId(oid);
+			item.setOrder(orderDao.findById(oid).get());
+			item.setRoom(itemDao.findById(oid).get().getRoom());
+			item.setCheckinDate(itemDao.findById(oid).get().getCheckinDate());
+			item.setCheckoutDate(itemDao.findById(oid).get().getCheckoutDate());
+			item.setStatus((short)2);
+			itemDao.save(item);
+		}else{
+			System.out.println("NO");
+			return "付款失敗！";
+		}
+		return "訂單狀態修改成功";
+	}
 }
