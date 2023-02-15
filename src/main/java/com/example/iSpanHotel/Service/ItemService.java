@@ -3,6 +3,7 @@ package com.example.iSpanHotel.Service;
 import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Dto.OrderDto;
+import com.example.iSpanHotel.Dto.PaymentDto;
 import com.example.iSpanHotel.model.Item;
 import com.example.iSpanHotel.model.Order;
 import com.example.iSpanHotel.model.Room;
@@ -18,5 +19,6 @@ public interface ItemService {
 
 	// 修改訂單細節
 	String update(Long id, OrderDto orderDto);
-
+	
+	String paySuccess(PaymentDto paymentDto);
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.iSpanHotel.Class.JWTutils;
 import com.example.iSpanHotel.Dto.OrderDto;
@@ -24,7 +25,6 @@ import com.example.iSpanHotel.Service.ItemService;
 import com.example.iSpanHotel.Service.MemberService;
 import com.example.iSpanHotel.Service.OrderService;
 import com.example.iSpanHotel.Service.RoomService;
-import com.example.iSpanHotel.model.Item;
 import com.example.iSpanHotel.model.Member;
 import com.example.iSpanHotel.model.Order;
 import com.example.iSpanHotel.model.Room;
@@ -60,8 +60,7 @@ public class OrderController {
 			Member member = memberService.findById(Long.parseLong(mId));
 			Room room = roomService.findById(orderDto.getRoom_id());
 			Order order = orderService.create(member, room, orderDto);
-			Item item = itemService.create(orderDto, order, room);
-			emailService.sendOrderDetail(member, item);
+			itemService.create(orderDto, order, room);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e);
@@ -98,5 +97,15 @@ public class OrderController {
 	private ResponseEntity<String> createPaymentForm(@RequestBody PaymentDto paymentDto) throws UnsupportedEncodingException {
 		String form = orderService.createPaymentForm(paymentDto);
 		return ResponseEntity.ok(form);
-	} 
+	}
+	
+	@PostMapping("/paySuccess")
+	private RedirectView paySuccess(PaymentDto paymentDto) {
+		System.out.println(paymentDto.getRtnMsg());
+		System.out.println(paymentDto.getMerchantTradeNo());
+		itemService.paySuccess(paymentDto);
+		emailService.sendOrderDetail(paymentDto);
+		return new RedirectView("http://localhost/frontend/orderdt/paymentSuccess.html");
+	}
+	
 }

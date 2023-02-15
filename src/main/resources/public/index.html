@@ -41,7 +41,6 @@
       color: inherit;
 
     }
-
   </style>
   <script src="assets/js/jquery.js"></script>
   <script src="layout/scripts/CheckLogin.js"></script>
@@ -103,7 +102,7 @@
         <footer>
           <ul class="nospace inline pushright">
             <li><a class="btn" href="pages/booking.html">立即訂房</a></li>
-            <li><a class="btn inverse" href="../frontend/register.html">加入會員</a></li>
+            <li><a class="btn inverse" onclick="sign()">加入會員</a></li>
           </ul>
         </footer>
       </article>
@@ -116,11 +115,12 @@
     <section id="ctdetails" class="hoc clear">
       <ul class="nospace clear">
         <li class="one_quarter first">
-          <div class="block clear"><a href="#"><i class="fas fa-phone"></i></a> <span><strong>聯絡電話：</strong> (04) 2326-5860</span></div>
+          <div class="block clear"><a href="#"><i class="fas fa-phone"></i></a> <span><strong>聯絡電話：</strong> (04)
+              2326-5860</span></div>
         </li>
         <li class="one_quarter">
           <div class="block clear"><a href="#"><i class="fas fa-envelope"></i></a> <span><strong>郵件信箱：</strong>
-            lakesidemystery@gmail.com</span></div>
+              lakesidemystery@gmail.com</span></div>
         </li>
         <li class="one_quarter">
           <div class="block clear"><a href="#"><i class="fas fa-clock"></i></a> <span><strong> 星期一 ～ 星期六:</strong>
@@ -377,6 +377,20 @@
           }
         })
       });
+
+    function sign() {
+      $.ajax({
+        url: '/member/checkLogin',
+        type: 'GET',
+        dataType: 'json'
+      }).done(function (msg) {
+        if (msg.status == 'success') {
+          location.href = 'frontend/person.html';
+        } else {
+          location.href = 'frontend/register.html';
+        }
+      })
+    }
   </script>
 </body>
 

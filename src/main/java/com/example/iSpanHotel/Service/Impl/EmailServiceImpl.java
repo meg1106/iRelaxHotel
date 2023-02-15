@@ -11,12 +11,14 @@ import org.springframework.stereotype.Service;
 import com.example.iSpanHotel.Class.CheckEmailUtils;
 import com.example.iSpanHotel.Class.UrlUtility;
 import com.example.iSpanHotel.Dao.CheckEmailDao;
+import com.example.iSpanHotel.Dao.ItemDao;
 import com.example.iSpanHotel.Dao.MemberDao;
+import com.example.iSpanHotel.Dao.OrderDao;
 import com.example.iSpanHotel.Dto.EmailDto;
 import com.example.iSpanHotel.Dto.MemberDto;
+import com.example.iSpanHotel.Dto.PaymentDto;
 import com.example.iSpanHotel.Service.EmailService;
 import com.example.iSpanHotel.model.CheckEmail;
-import com.example.iSpanHotel.model.Item;
 import com.example.iSpanHotel.model.Member;
 
 import jakarta.mail.MessagingException;
@@ -36,19 +38,31 @@ public class EmailServiceImpl implements EmailService {
 	@Autowired
 	private CheckEmailDao checkEmailDao;
 	
+	@Autowired
+	private OrderDao orderDao;
+	
+	@Autowired
+	private ItemDao itemDao;
+	
 	@Value("${spring.mail.username}")
 	private String sender;
 
-	public String sendOrderDetail(Member member, Item item) {
+	public String sendOrderDetail(PaymentDto paymentDto) {
+		String tradeNo = paymentDto.getMerchantTradeNo();
+		Long oid = Long.parseLong(tradeNo.substring(16));
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日"); 
-		String name = member.getRealName();
-		String checkin = sdf.format(item.getCheckinDate());
-		String checkout = sdf.format(item.getCheckoutDate());
+		String name = orderDao.findById(oid).get().getMember().getRealName();
+		String email = orderDao.findById(oid).get().getMember().getAccount();
+		String checkin = sdf.format(itemDao.findById(oid).get().getCheckinDate());
+		String checkout = sdf.format(itemDao.findById(oid).get().getCheckoutDate());
+		String roomType = itemDao.findById(oid).get().getRoom().getRoomType().getRoomType();
+		Integer floor = itemDao.findById(oid).get().getRoom().getRoomFloor();
+		String roomNum = itemDao.findById(oid).get().getRoom().getRoomNum();
 		try {
 			SimpleMailMessage mailMessage = new SimpleMailMessage();
-			mailMessage.setTo(member.getAccount());
+			mailMessage.setTo(email);
 			mailMessage.setText("親愛的會員 " + name + " 先生/小姐您好，以下為您的訂房資訊：\n入住時間：" + checkin + " 下午4時\n退房時間：" + checkout
-					+ " 上午11時\n\n如有任何問題，歡迎來電：02-34567890\n\niRelax Hotel期待您的光臨！");
+					+ " 上午11時\n房型：" + roomType + "\n樓層及房號：" + floor + "樓 " + roomNum + "號房\n\n如有任何問題，歡迎來電：02-34567890\n\niRelax Hotel期待您的光臨！");
 			mailMessage.setSubject("訂房通知");
 			javaMailSender.send(mailMessage);
 			return "信件發送成功";

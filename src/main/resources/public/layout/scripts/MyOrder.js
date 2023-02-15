@@ -28,9 +28,10 @@ $.ajax({
         type: 'GET',
         dataType: 'json'
     }).done(function (msg) {
-        msg.orders.forEach(function(value, index) {
+        msg.orders.forEach(function (value, index) {
             console.log(msg);
-            $('#order').append(`
+            if (value.items[0].status == 1) {
+                $('#order').append(`
             <tr>
                 <td>
                     <div class="guest-bx">
@@ -54,7 +55,40 @@ $.ajax({
                 </td>
                 <td>
                     <div>
-                        ${value.items[0].status}
+                        未付款
+                    </div>
+                </td>
+                <td>
+                    <a class="btn" onclick="getOrderdt(${value.id})" role="button">付款</a>
+                </td>
+            </tr>
+            `)
+            } else if (value.items[0].status == 2) {
+                $('#order').append(`
+            <tr>
+                <td>
+                    <div class="guest-bx">
+                        <img class="me-3" src="data:image/jpeg;base64,${value.items[0].room.roomType.roomPic}" alt="">
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        ${value.items[0].room.roomType.roomType}
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        ${value.items[0].room.roomFloor}
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        ${value.items[0].room.roomNum}
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        已付款
                     </div>
                 </td>
                 <td>
@@ -62,6 +96,73 @@ $.ajax({
                 </td>
             </tr>
             `)
+            }else if(value.items[0].status == 3){
+                $('#order').append(`
+            <tr>
+                <td>
+                    <div class="guest-bx">
+                        <img class="me-3" src="data:image/jpeg;base64,${value.items[0].room.roomType.roomPic}" alt="">
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        ${value.items[0].room.roomType.roomType}
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        ${value.items[0].room.roomFloor}
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        ${value.items[0].room.roomNum}
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        已入住
+                    </div>
+                </td>
+                <td>
+                    <a class="btn" onclick="getOrderdt(${value.id})" role="button">查看</a>
+                </td>
+            </tr>
+            `)
+            }else {
+                $('#order').append(`
+            <tr>
+                <td>
+                    <div class="guest-bx">
+                        <img class="me-3" src="data:image/jpeg;base64,${value.items[0].room.roomType.roomPic}" alt="">
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        ${value.items[0].room.roomType.roomType}
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        ${value.items[0].room.roomFloor}
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        ${value.items[0].room.roomNum}
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        已取消
+                    </div>
+                </td>
+                <td>
+                    <a class="btn" onclick="getOrderdt(${value.id})" role="button">查看</a>
+                </td>
+            </tr>
+            `)
+            }
         });
 
     })
