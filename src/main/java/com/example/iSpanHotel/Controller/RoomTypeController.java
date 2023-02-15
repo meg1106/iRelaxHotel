@@ -25,7 +25,7 @@ public class RoomTypeController {
 	private RoomTypeService roomTypeService;
 	
 	@PostMapping("/")
-	private ResponseEntity<String> create(@RequestBody RoomTypeDto roomTypeDto) {
+	private ResponseEntity<String> create(RoomTypeDto roomTypeDto) {
 		String message = roomTypeService.create(roomTypeDto);
 		return ResponseEntity.ok(message);
 	}
@@ -37,7 +37,7 @@ public class RoomTypeController {
 	}
 	
 	@PutMapping("/{id}")
-	private ResponseEntity<String> update(@PathVariable Long id, @RequestBody RoomTypeDto roomTypeDto) {
+	private ResponseEntity<String> update(@PathVariable Long id, RoomTypeDto roomTypeDto) {
 		String message = roomTypeService.update(id, roomTypeDto);
 		return ResponseEntity.ok(message);
 	}

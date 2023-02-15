@@ -1,12 +1,12 @@
 package com.example.iSpanHotel.Dto;
 
-import java.io.File;
+import org.springframework.web.multipart.MultipartFile;
 
 public class RoomTypeDto {
 	private Long id;
 	private String roomType;
 	private Integer roomPrice;
-	private File roomPic;
+	private MultipartFile roomPic;
 	private String content;
 	private Integer roomPerson; 
 	public Long getId() {
@@ -27,10 +27,10 @@ public class RoomTypeDto {
 	public void setRoomPrice(Integer roomPrice) {
 		this.roomPrice = roomPrice;
 	}
-	public File getRoomPic() {
+	public MultipartFile getRoomPic() {
 		return roomPic;
 	}
-	public void setRoomPic(File roomPic) {
+	public void setRoomPic(MultipartFile roomPic) {
 		this.roomPic = roomPic;
 	}
 	public String getContent() {
