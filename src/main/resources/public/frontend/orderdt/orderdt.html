@@ -56,10 +56,9 @@
         dataType: 'json'
       }).done(function (msg) {
         if (msg.status != 'success') {
-          alert(123)
+          alert('請先登入')
+          location.href = '../login.html';
         }
-      }).done(function (msg) {
-        location.href = '../login.html';
       })
       </script>
   </head>
