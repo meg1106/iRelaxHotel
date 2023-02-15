@@ -1,6 +1,6 @@
 package com.example.iSpanHotel.Dto;
 
-import java.io.File;
+import org.springframework.web.multipart.MultipartFile;
 
 public class HotelNewsDto {
 	private Long id;
@@ -8,7 +8,7 @@ public class HotelNewsDto {
 	private String title;
 	private String startDate;
 	private String endDate;
-	private File pic;
+	private MultipartFile pic;
 	private String content;
 	
 	public Long getId() {
@@ -41,10 +41,10 @@ public class HotelNewsDto {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	public File getPic() {
+	public MultipartFile getPic() {
 		return pic;
 	}
-	public void setPic(File pic) {
+	public void setPic(MultipartFile pic) {
 		this.pic = pic;
 	}
 	public String getContent() {

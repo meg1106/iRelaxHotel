@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +30,7 @@ public class HotelNewsController {
 	}
 	
 	@PostMapping("/")
-	private ResponseEntity<String> create(@RequestBody HotelNewsDto hotelNewsDto) {
+	private ResponseEntity<String> create(HotelNewsDto hotelNewsDto) {
 		hotelNewsService.create(hotelNewsDto);
 		return ResponseEntity.ok("消息創建成功");
 	}
@@ -43,7 +42,7 @@ public class HotelNewsController {
 	}
 	
 	@PutMapping("/{id}")
-	private ResponseEntity<String> update(@PathVariable Long id, @RequestBody HotelNewsDto hotelNewsDto) {
+	private ResponseEntity<String> update(@PathVariable Long id, HotelNewsDto hotelNewsDto) {
 		hotelNewsService.update(id, hotelNewsDto);
 		return ResponseEntity.ok("消息修改成功");
 	}

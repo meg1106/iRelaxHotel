@@ -1,12 +1,9 @@
 package com.example.iSpanHotel.Service.Impl;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,13 +22,12 @@ public class HotelNewsServiceImpl implements HotelNewsService{
 	public String create(HotelNewsDto hotelNewsDto) {
 		try {
 			HotelNews hotelNews = new HotelNews();
-			InputStream is = new FileInputStream(hotelNewsDto.getPic());
 			hotelNews.setId(hotelNewsDto.getId());
 			hotelNews.setNewsType(hotelNewsDto.getNewsType());
 			hotelNews.setTitle(hotelNewsDto.getTitle());
 			hotelNews.setStartDate(hotelNewsDto.getStartDate());
 			hotelNews.setEndDate(hotelNewsDto.getEndDate());
-			hotelNews.setPic(IOUtils.toByteArray(is));
+			hotelNews.setPic(hotelNewsDto.getPic().getBytes());
 			hotelNews.setContent(hotelNewsDto.getContent());
 			hotelNewsDao.save(hotelNews);
 			return "消息發佈成功";
@@ -56,13 +52,12 @@ public class HotelNewsServiceImpl implements HotelNewsService{
 	public String update(Long id, HotelNewsDto hotelNewsDto) {
 		try {
 			HotelNews hotelNews = new HotelNews();
-			InputStream is = new FileInputStream(hotelNewsDto.getPic());
 			hotelNews.setId(id);
 			hotelNews.setNewsType(hotelNewsDto.getNewsType());
 			hotelNews.setTitle(hotelNewsDto.getTitle());
 			hotelNews.setStartDate(hotelNewsDto.getStartDate());
 			hotelNews.setEndDate(hotelNewsDto.getEndDate());
-			hotelNews.setPic(IOUtils.toByteArray(is));
+			hotelNews.setPic(hotelNewsDto.getPic().getBytes());
 			hotelNews.setContent(hotelNewsDto.getContent());
 			hotelNewsDao.save(hotelNews);
 			return "消息修改成功";
