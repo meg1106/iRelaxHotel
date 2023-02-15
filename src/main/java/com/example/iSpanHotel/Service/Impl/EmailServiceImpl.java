@@ -55,11 +55,14 @@ public class EmailServiceImpl implements EmailService {
 		String email = orderDao.findById(oid).get().getMember().getAccount();
 		String checkin = sdf.format(itemDao.findById(oid).get().getCheckinDate());
 		String checkout = sdf.format(itemDao.findById(oid).get().getCheckoutDate());
+		String roomType = itemDao.findById(oid).get().getRoom().getRoomType().getRoomType();
+		Integer floor = itemDao.findById(oid).get().getRoom().getRoomFloor();
+		String roomNum = itemDao.findById(oid).get().getRoom().getRoomNum();
 		try {
 			SimpleMailMessage mailMessage = new SimpleMailMessage();
 			mailMessage.setTo(email);
 			mailMessage.setText("親愛的會員 " + name + " 先生/小姐您好，以下為您的訂房資訊：\n入住時間：" + checkin + " 下午4時\n退房時間：" + checkout
-					+ " 上午11時\n\n如有任何問題，歡迎來電：02-34567890\n\niRelax Hotel期待您的光臨！");
+					+ " 上午11時\n房型：" + roomType + "\n樓層及房號：" + floor + "樓 " + roomNum + "號房\n\n如有任何問題，歡迎來電：02-34567890\n\niRelax Hotel期待您的光臨！");
 			mailMessage.setSubject("訂房通知");
 			javaMailSender.send(mailMessage);
 			return "信件發送成功";
