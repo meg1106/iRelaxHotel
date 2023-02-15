@@ -14,6 +14,7 @@ import com.example.iSpanHotel.Class.DateUtils;
 import com.example.iSpanHotel.Dao.MemberDao;
 import com.example.iSpanHotel.Dao.OrderDao;
 import com.example.iSpanHotel.Dao.OrderJournalDao;
+import com.example.iSpanHotel.Dao.RoomDao;
 import com.example.iSpanHotel.Dto.OrderDto;
 import com.example.iSpanHotel.Dto.PaymentDto;
 import com.example.iSpanHotel.Service.OrderService;
@@ -33,6 +34,9 @@ public class OrderServiceImpl implements OrderService{
 	
 	@Autowired
 	private MemberDao memberDao;
+	
+	@Autowired
+	private RoomDao roomDao;
 	
 	@Autowired
 	private OrderJournalDao orderJournalDao;
@@ -77,6 +81,7 @@ public class OrderServiceImpl implements OrderService{
 			orderJournalDao.deleteByOrder(id);
 			Order order = new Order();
 			Member member = memberDao.findById(orderDto.getMember()).get();
+			Room room = roomDao.findById(orderDto.getRoom_id()).get();
 			order.setId(id);
 			order.setMember(member);
 			order.setOrderDate(new Date());
@@ -86,6 +91,7 @@ public class OrderServiceImpl implements OrderService{
 				OrderJournal orderJournal = new OrderJournal();
 				orderJournal.setMember(member);
 				orderJournal.setOrder(order);
+				orderJournal.setRoom(room);
 				orderJournal.setStayDate(new SimpleDateFormat("yyyy-MM-dd").parse(dates.get(i)));
 				orderJournalDao.save(orderJournal);
 				System.out.println(new SimpleDateFormat("yyyy-MM-dd").parse(dates.get(i)));
