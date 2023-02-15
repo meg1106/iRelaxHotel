@@ -459,6 +459,7 @@
     </script>
     <script>
       $('#search_content').on('click', '.booking', function () {
+        var room_id = this.id
         $.ajax({
           url: '/member/checkLogin',
           type: 'GET',
@@ -472,7 +473,7 @@
               data: JSON.stringify({
                 'checkinDate': startDate,
                 'checkoutDate': endDate,
-                'room_id': this.id
+                'room_id': room_id
               })
             }).done(function (msg) {
               alert(msg);
