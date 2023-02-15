@@ -41,6 +41,16 @@
       color: inherit;
 
     }
+<<<<<<< Updated upstream
+=======
+
+    .btnSize {
+      font: inherit;
+      padding: 10px 15px 12px;
+      font-size: 1rem;
+      white-space:nowrap;
+    }
+>>>>>>> Stashed changes
   </style>
   <script src="assets/js/jquery.js"></script>
   <script src="layout/scripts/CheckLogin.js"></script>
@@ -54,11 +64,12 @@
       <div id="weather_content">
       </div>&emsp;
       <i class="fas fa-user-circle fa-2x"></i>&nbsp;
-      <nav id="mainav" class="fl_right">
-        <ul id="loginBar" class="clear">
+      <nav id="mainav" class="fl_right" style="font-size:17px;">
+        <ul id="loginBar" class="clear"></ul>
+      </nav>
     </div>
 
-    <header id="header" class="hoc clear">
+    <header id="header" class="hoc clear" style="font-size: 17px;">
       <div id="logo" class="fl_left">
         <a href="index.html">
           <div style="width: 220px; height: 70px;">
@@ -97,8 +108,8 @@
     <div id="pageintro" class="hoc clear">
       <!-- ################################################################################################ -->
       <article>
-        <h3 class="heading">Love to Relax</h3>
-        <p>看見大自然的呼吸，聽見放鬆的聲音</p>
+        <h3 class="heading" style="font-size: 32px;">Love to Relax</h3>
+        <p style="font-size: 17px;">看見大自然的呼吸，聽見放鬆的聲音。</p>
         <footer>
           <ul class="nospace inline pushright">
             <li><a class="btn" href="pages/booking.html">立即訂房</a></li>
@@ -140,14 +151,14 @@
       <!-- ################################################################################################ -->
       <section id="services">
         <div class="sectiontitle">
-          <h6 class="">最新消息</h6>
+          <h6 class="heading" style="font-size: 28px;">最新消息</h6>
           <p class="nospace font-xs">LATEST NEWS</p>
         </div>
         <ul id="latest" class="nospace group sd-third">
         </ul>
         <br><br>
         <div class="sectiontitle">
-          <h6 class="">搶手房型</h6>
+          <h6 class="heading" style="font-size: 28px;">搶手房型</h6>
           <p class="nospace font-xs">HOT ROOM</p>
         </div>
         <ul class="nospace group grid-3">
@@ -173,10 +184,8 @@
             </article>
           </li>
         </ul><br><br>
-
         <!-- / main body -->
         <!-- ################################################################################################ -->
-
       </section>
       <div class="clear"></div>
     </main>
@@ -186,12 +195,12 @@
     <section class="hoc container clear">
       <!-- ################################################################################################ -->
       <div class="sectiontitle">
-        <h6 class="">關於我們</h6>
+        <h6 class="heading" style="font-size: 28px;">關於我們</h6>
         <p class="nospace font-xs">ABOUT US</p>
       </div>
       <article id="points" class="group">
         <div class="two_third first">
-          <h6 class="font-family" style="font-size: 22px;">關於 iRelax Hotel...</h6><br>
+          <h6 class="heading" style="font-size: 22px;">關於 iRelax Hotel...</h6><br>
           <div style="font-size: 16px;">
             <p>湖畔之清風，與山間之明月，造物者之無盡藏。跟我們一起愛上放鬆時間！</p><br>
             <p>隱於山谷綠林中的碧湖幽境，鄰湖露天湯區及木屋庭園輝映波光粼粼，交織扶疏林木倒影泛泛漣漪舞動，櫻花、楓葉、桐花落雪宛如桃源詩境。</p><br>
@@ -216,7 +225,6 @@
       <!-- ################################################################################################ -->
       <div style="display: flex;">
         <div class="one_third">
-
           <div>
             <a href="index.html">
               <div style="width: 220px; height: 70px;">
@@ -262,7 +270,7 @@
               <span style="border-bottom-style: dotted">到站 / 發車時間</span>
               <span style="border-bottom-style: dotted">到站 / 發車時間</span>
             </div>
-            <div
+            <div class="btnSize"
               style="display: flex; flex-wrap: nowrap;align-items: flex-start;justify-content:space-around;align-items: baseline;padding: 2.5% 0;">
               <button style="width: 53px; height: 42px;">72</button>
               <p>往潭子</p>
@@ -286,9 +294,9 @@
               <p>往台中車站</p>
               <button id="27_1" style="width:80px;height: 42px;">5分鐘</button>
             </div>
-            <div
+            <div class="btnSize"
               style="display: flex; flex-wrap: nowrap;align-items: flex-start;justify-content:space-around;align-items: baseline;padding: 2.5% 0;">
-              <button style="width: 53px; height: 42px;">107</button>
+              <button style="font-size: 1rem;width: 53px; height: 42px;">107</button>
               <p>往舊正</p>
               <button id="107_0" style="width:80px;height: 42px;">進站中</button>
               <p>往黎明新村</p>
@@ -334,7 +342,7 @@
             $('#latest').append(
               `
               <li class="one_third first">
-                <article>
+                <article style="height:253.67px;">
                   <figure>
                     <figcaption>
                       <ul class="nospace meta clear">
@@ -346,7 +354,7 @@
                       <h6 style="font-size: 15px;margin: 5% 0;"><a href="#">${element.title}</a></h6>
                     </figcaption>
                   </figure>
-                  <p class="limit_news">${element.content}</p>
+                  <p class="limit_news" >${element.content}</p>
                   <footer><a href="../pages/news.html">More Details &raquo;</a></footer>
                 </article>
               </li>
@@ -356,7 +364,7 @@
             $('#latest').append(
               `
               <li class="one_third">
-                <article>
+                <article style="height:253.67px;">
                   <figure>
                     <figcaption>
                       <ul class="nospace meta clear">
