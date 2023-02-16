@@ -39,27 +39,27 @@ $.ajax({
                     </div>
                 </td>
                 <td>
-                    <div>
+                    <div style="margin: 20% 0;font-size:16px">
                         ${value.items[0].room.roomType.roomType}
                     </div>
                 </td>
                 <td>
-                    <div>
+                    <div style="margin: 35px 0;font-size:16px">
                         ${value.items[0].room.roomFloor}
                     </div>
                 </td>
                 <td>
-                    <div>
+                    <div style="margin: 35px 0;font-size:16px">
                         ${value.items[0].room.roomNum}
                     </div>
                 </td>
                 <td>
-                    <div>
+                    <div style="margin: 35px 0;font-size:16px ;border-radius: 150px;background-color: #FF6347;color:#fff;">
                         未付款
                     </div>
                 </td>
                 <td>
-                    <a class="btn" onclick="getOrderdt(${value.id})" role="button">付款</a>
+                    <a style="margin: 25px 0;background-color:#FFA500;" class="btn" onclick="getOrderdt(${value.id})" role="button">付款</a>
                 </td>
             </tr>
             `)
@@ -72,31 +72,31 @@ $.ajax({
                     </div>
                 </td>
                 <td>
-                    <div>
+                    <div style="margin: 20% 0;font-size:16px">
                         ${value.items[0].room.roomType.roomType}
                     </div>
                 </td>
                 <td>
-                    <div>
+                    <div style="margin: 35px 0;font-size:16px">
                         ${value.items[0].room.roomFloor}
                     </div>
                 </td>
                 <td>
-                    <div>
+                    <div style="margin: 35px 0;font-size:16px">
                         ${value.items[0].room.roomNum}
                     </div>
                 </td>
                 <td>
-                    <div>
+                    <div style="margin: 35px 0;font-size:16px ;border-radius: 150px;background-color: #40E0D0; color:#fff;">
                         已付款
                     </div>
                 </td>
                 <td>
-                    <a class="btn" onclick="getOrderdt(${value.id})" role="button">查看</a>
+                    <a style="margin: 25px 0; background-color:#B0C4DE;" class="btn" onclick="getOrderdt(${value.id})" role="button">查看</a>
                 </td>
             </tr>
             `)
-            }else if(value.items[0].status == 3){
+            } else if (value.items[0].status == 3) {
                 $('#order').append(`
             <tr>
                 <td>
@@ -105,63 +105,31 @@ $.ajax({
                     </div>
                 </td>
                 <td>
-                    <div>
+                    <div style="margin: 20% 0;font-size:16px">
                         ${value.items[0].room.roomType.roomType}
                     </div>
                 </td>
                 <td>
-                    <div>
+                    <div style="margin: 35px 0;font-size:16px">
                         ${value.items[0].room.roomFloor}
                     </div>
                 </td>
                 <td>
-                    <div>
+                    <div style="margin: 35px 0;font-size:16px">
                         ${value.items[0].room.roomNum}
                     </div>
                 </td>
                 <td>
-                    <div>
+                    <div style="margin: 35px 0;font-size:16px ;border-radius: 150px;background-color: #1E90FF; color: #fff;">
                         已入住
                     </div>
                 </td>
                 <td>
-                    <a class="btn" onclick="getOrderdt(${value.id})" role="button">查看</a>
+                    <a style="margin: 25px 0; background-color:#B0C4DE;" class="btn" onclick="getOrderdt(${value.id})" role="button">查看</a>
                 </td>
             </tr>
             `)
-            }else {
-                $('#order').append(`
-            <tr>
-                <td>
-                    <div class="guest-bx">
-                        <img class="me-3" src="data:image/jpeg;base64,${value.items[0].room.roomType.roomPic}" alt="">
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        ${value.items[0].room.roomType.roomType}
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        ${value.items[0].room.roomFloor}
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        ${value.items[0].room.roomNum}
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        已取消
-                    </div>
-                </td>
-                <td>
-                    <a class="btn" onclick="getOrderdt(${value.id})" role="button">查看</a>
-                </td>
-            </tr>
-            `)
+            } else {
             }
         });
 
