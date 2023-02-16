@@ -1,17 +1,27 @@
 <!DOCTYPE html>
+
 <html lang="">
 
 <head>
   <title>iRelax Hotel | 關於我們 | 注意事項</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
     integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
     crossorigin="anonymous"></script>
-  <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-  <script src="../assets/js/jquery.js"></script>
-  <script src="../layout/scripts/CheckLogin.js"></script>
+  <!-- 日期的CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+    rel="stylesheet" />
+  <!-- //日期的CSS -->
   <style>
+    a {
+      color: #f3bf07;
+      text-decoration: none;
+    }
+
     .busBtn {
       width: 80px;
       height: 42px;
@@ -29,15 +39,18 @@
       border-left: 5px solid #01546B;
       font-size: 28px;
     }
+
     .textA {
       border-bottom: 1px #f3bf07 solid;
       padding-bottom: 15px;
     }
+
     td {
       font-size: 16px;
       line-height: 28px;
     }
   </style>
+  <script src="../assets/js/jquery.js"></script>
 </head>
 
 <body id="top">
@@ -56,11 +69,13 @@
 
     <header id="header" class="hoc clear" style="font-size: 17px;">
       <div id="logo" class="fl_left">
+        <!-- ################################################################################################ -->
         <a href="../index.html">
           <div style="width: 220px; height: 70px;">
             <img src="../images/logo/logo2.png">
           </div>
         </a>
+        <!-- ################################################################################################ -->
       </div>
 
       <nav id="mainav" class="fl_right">
@@ -70,7 +85,7 @@
             <ul>
               <li><a href="intro.html">簡介</a></li>
               <li><a href="traffic.html">交通資訊</a></li>
-              <li class="active"><a href="notic.html">注意事項</a></li>
+              <li><a href="notic.html">注意事項</a></li>
             </ul>
           </li>
           <li><a class="drop">最新消息</a>
@@ -94,6 +109,7 @@
     <div style="margin-top: 10%; font-size: 250%; display: flex; justify-content: center;">
       <span>關於我們</span>
     </div>
+    <br>
     <div id="breadcrumb" class="hoc clear"
       style="display: flex;font-size: 150%; justify-content: space-evenly; flex-direction: row; margin: 0.5% 30% 0.5% 30%;">
       <p><a href="intro.html">簡介</a></p>
@@ -271,10 +287,11 @@
   <script src="../layout/scripts/jquery.min.js"></script>
   <script src="../layout/scripts/jquery.backtotop.js"></script>
   <script src="../layout/scripts/jquery.mobilemenu.js"></script>
+  <!-- 天氣＋會員登入 -->
+  <script src="../layout/scripts/Weather.js"></script>
+  <script src="../layout/scripts/CheckLogin.js"></script>
   <!-- 公車 -->
   <script src="../layout/scripts/TDXBus.js"></script>
-  <!-- 天氣 -->
-  <script src="../layout/scripts/Weather.js"></script>
 </body>
 
 </html>
