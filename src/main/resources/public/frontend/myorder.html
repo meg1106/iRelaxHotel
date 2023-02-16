@@ -103,18 +103,31 @@
       text-align: -webkit-center;
       vertical-align: middle;
     }
+
+    .busBtn {
+      width: 80px;
+      height: 42px;
+      font-size: 1px !important;
+    }
+
+    .busInfo {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      margin: 0 0 10px;
+    }
   </style>
   <script src="../assets/js/jquery.js"></script>
   <script>
     $.ajax({
-        url: '/member/checkLogin',
-        type: 'GET',
-        dataType: 'json'
-      }).done(function (msg) {
-        if (msg.status != 'success') {
-          location.href = 'login.html';
-        }
-      })
+      url: '/member/checkLogin',
+      type: 'GET',
+      dataType: 'json'
+    }).done(function (msg) {
+      if (msg.status != 'success') {
+        location.href = 'login.html';
+      }
+    })
   </script>
   <script src="../assets/js/bootstrap.min.js"></script>
 </head>
@@ -135,9 +148,9 @@
 
     <header id="header" class="hoc clear" style="font-size: 17px;">
       <div id="logo" class="fl_left">
-        <a href="index.html">
+        <a href="../index.html">
           <div style="width: 220px; height: 70px;">
-            <img src="images/logo/logo2.png">
+            <img src="../images/logo/logo2.png">
           </div>
         </a>
       </div>
@@ -146,25 +159,25 @@
           <li class="active"><a href="../index.html">首頁</a></li>
           <li><a class="drop">關於我們</a>
             <ul>
-              <li><a href="pages/intro.html">簡介</a></li>
-              <li><a href="pages/traffic.html">交通資訊</a></li>
-              <li><a href="pages/notic.html">注意事項</a></li>
+              <li><a href="../pages/intro.html">簡介</a></li>
+              <li><a href="../pages/traffic.html">交通資訊</a></li>
+              <li><a href="../pages/notic.html">注意事項</a></li>
             </ul>
           </li>
           <li><a class="drop">最新消息</a>
             <ul>
-              <li><a href="pages/news.html">活動情報</a></li>
-              <li><a href="pages/discount.html">住房優惠</a></li>
+              <li><a href="../pages/news.html">活動情報</a></li>
+              <li><a href="../pages/discount.html">住房優惠</a></li>
             </ul>
           </li>
           <li><a class="drop">瀏覽房型</a>
             <ul>
-              <li><a href="pages/room.html">房型一覽</a></li>
-              <li><a href="pages/booking.html">立即訂房</a></li>
+              <li><a href="../pages/room.html">房型一覽</a></li>
+              <li><a href="../pages/booking.html">立即訂房</a></li>
             </ul>
           </li>
-          <li><a href="pages/facility.html">活動設施</a></li>
-          <li><a href="pages/contactUS.html">聯絡我們</a></li>
+          <li><a href="../pages/facility.html">活動設施</a></li>
+          <li><a href="../pages/contactUS.html">聯絡我們</a></li>
         </ul>
       </nav>
     </header>
@@ -212,7 +225,8 @@
                                     id="guestTable-all" style="text-align:center;">
                                     <thead style="color:#4d443f;">
                                       <tr style="color: #333333;">
-                                        <th style="color: white; font-weight: bold; width:150px;text-align: center;">房型</th>
+                                        <th style="color: white; font-weight: bold; width:150px;text-align: center;">房型
+                                        </th>
                                         <th style="color: white; font-weight: bold;text-align: center;">房型名稱</th>
                                         <th style="color: white; font-weight: bold;text-align: center;">樓層</th>
                                         <th style="color: white; font-weight: bold;text-align: center;">房號</th>
@@ -305,30 +319,88 @@
   <div class="wrapper row4">
     <footer id="footer" class="hoc clear">
       <!-- ################################################################################################ -->
-      <a href="../index.html">
-        <div style="width: 220px; height: 70px;">
-          <img src="../images/logo/logo2.png">
+      <div style="display: flex;">
+        <div class="one_third">
+          <div>
+            <a href="../index.html">
+              <div style="width: 220px; height: 70px;">
+                <img src="../images/logo/logo2.png">
+              </div>
+            </a>
+            <br>
+          </div>
+          <div>
+            <li>
+              訂房專線 /
+              <a href="tel:+886-4-23265860">2326-5860</a>
+            </li><br>
+            <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
+            <li>
+              客服信箱 /
+              <a href="lakesidemystery@gmail.com ">lakesidemystery@gmail.com </a>
+            </li>
+            <br><br><br>
+            <ul class="faico clear">
+              <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+              <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+              <li><a class="faicon-line" href="https://line.me/R/ti/p/%40440rucgj"><i class="fab fa-line"></i></a></li>
+              <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+          </div>
         </div>
-      </a>
-      <br>
-      <div class="two_third first">
-        <li>
-          訂房專線 /
-          <a href="tel:+886-4-23265860">2326-5860</a>
-        </li><br>
-        <p> 地址 / 台中市南屯區公益路二段51號18樓</p>
-        <li>
-          客服信箱 /
-          <a href="lakesidemystery@gmail.com ">lakesidemystery@gmail.com</a>
-        </li>
-        <br><br>
-
-        <ul class="faico clear">
-          <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
-          <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
-          <li><a class="faicon-line" href="#"><i class="fab fa-line"></i></a></li>
-          <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-        </ul>
+        <div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.6044320422584!2d120.64881961494096!3d24.15052618439372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d69a2dcccf1%3A0x664964d28300759b!2z6LOH5bGV5ZyL6Zqb6IKh5Lu95pyJ6ZmQ5YWs5Y-4LeS4reWNgOS4reW_gw!5e0!3m2!1szh-TW!2stw!4v1675914393514!5m2!1szh-TW!2stw"
+            width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="one_third" style="width:400px; height:300px; display: flex;flex-direction:column;">
+          <div class="busInfo">&emsp;
+            <i class="fas fa-bus fa-2x"></i>&emsp;
+            <p style="font:bold; font-size: 20px;margin: 0 0 10px">公車資訊：</p>&ensp;
+            <p style="color:#f3bf07; font-size: 18px;margin: 0 0 10px">公益大墩路口</p>
+          </div>
+          <div id="bus">
+            <div
+              style="display: flex; flex-wrap: nowrap;align-items: flex-start;justify-content:space-between;align-items: baseline;">
+              <span style="border-bottom-style: dotted">公車車次</span>
+              <span style="border-bottom-style: dotted">到站 / 發車時間</span>
+              <span style="border-bottom-style: dotted">到站 / 發車時間</span>
+            </div>
+            <div
+              style="display: flex; flex-wrap: nowrap;align-items: flex-start;justify-content:space-around;align-items: baseline;padding: 2.5% 0;">
+              <button style="width: 53px; height: 42px;font-size: 1px;">72</button>
+              <p>往潭子</p>
+              <button id="72_0" class="busBtn">進站中</button>
+              <p>往嶺東</p>
+              <button id="72_1" class="busBtn">5分鐘</button>
+            </div>
+            <div
+              style="display: flex; flex-wrap: nowrap;align-items: flex-start;justify-content:space-around;align-items: baseline;padding: 2.5% 0;">
+              <button style="width: 53px; height: 42px;font-size: 1px;">81</button>
+              <p>往太平</p>
+              <button id="81_0" class="busBtn">進站中</button>
+              <p>往朝馬</p>
+              <button id="81_1" class="busBtn">5分鐘</button>
+            </div>
+            <div
+              style="font-size: 1px;display: flex; flex-wrap: nowrap;align-items: flex-start;justify-content:space-around;align-items: baseline;padding: 2.5% 0;">
+              <button style="width: 53px; height: 42px;font-size: 1px;">27</button>
+              <p>往嶺東</p>
+              <button id="27_0" class="busBtn">進站中</button>
+              <p>往台中車站</p>
+              <button id="27_1" class="busBtn">5分鐘</button>
+            </div>
+            <div
+              style="display: flex; flex-wrap: nowrap;align-items: flex-start;justify-content:space-around;align-items: baseline;padding: 2.5% 0;">
+              <button style="width: 53px; height: 42px;font-size: 1px;">107</button>
+              <p>往舊正</p>
+              <button id="107_0" class="busBtn">進站中</button>
+              <p>往黎明新村</p>
+              <button id="107_1" class="busBtn">5分鐘</button>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   </div>
@@ -358,7 +430,7 @@
   <script src="../layout/scripts/Weather.js"></script>
   <!-- 公車 -->
   <script src="../layout/scripts/TDXBus.js"></script>
-  
+
   <script src="../layout/scripts/MyOrder.js"></script>
 </body>
 
