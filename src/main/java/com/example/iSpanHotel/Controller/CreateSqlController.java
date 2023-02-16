@@ -710,7 +710,7 @@ public class CreateSqlController {
 		try {
 			Order order2 = new Order();
 			Item item2 = new Item();
-			Member member2 = memberDao.findById((long)4).get();
+			Member member2 = memberDao.findById((long)1).get();
 			Room room2 = roomDao.findById((long)52).get();
 			order2.setMember(member2);
 			order2.setOrderDate(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse("2023-01-16 16:40:12"));
@@ -718,6 +718,7 @@ public class CreateSqlController {
 			item2.setCheckoutDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-25"));
 			item2.setRoom(room2);
 			item2.setOrder(order2);
+			item2.setStatus((short)2);
 			orderDao.save(order2);
 			itemDao.save(item2);
 			List<String> dates = DateUtils.getBetweenDates("2023-01-20", "2023-01-25", true);
@@ -737,7 +738,7 @@ public class CreateSqlController {
 		try {
 			Order order3 = new Order();
 			Item item3 = new Item();
-			Member member3 = memberDao.findById((long)2).get();
+			Member member3 = memberDao.findById((long)1).get();
 			Room room3 = roomDao.findById((long)45).get();
 			order3.setMember(member3);
 			order3.setOrderDate(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse("2023-01-31 23:11:28"));
@@ -745,6 +746,7 @@ public class CreateSqlController {
 			item3.setCheckoutDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-02-18"));
 			item3.setRoom(room3);
 			item3.setOrder(order3);
+			item3.setStatus((short)3);
 			orderDao.save(order3);
 			itemDao.save(item3);
 			List<String> dates = DateUtils.getBetweenDates("2023-02-15", "2023-02-18", true);
@@ -759,7 +761,7 @@ public class CreateSqlController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+	
 	}
 	
 	@PostMapping("/testJWT")
