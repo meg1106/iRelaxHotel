@@ -546,7 +546,12 @@
               })
             }).done(function (msg) {
               if (msg == "下訂完成！將跳轉到訂單頁面，請盡快付款，謝謝！") {
-                Swal.fire('', msg, 'success').then(function () {
+                swal.fire({
+                  title: '',
+                  text: msg,
+                  icon: 'success',
+                  width: '50em'
+                }).then(function () {
                   location.href = "../frontend/myorder.html"
                 })
               } else {

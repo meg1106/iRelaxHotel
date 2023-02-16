@@ -131,6 +131,8 @@
   <script src="login_static/js/main.js"></script>
   <!-- google login js -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <!-- sweet alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script>
     function handleCredentialResponse(response) {
       const data = parseJwt(response.credential);
@@ -147,13 +149,14 @@
         data: Jdata,
         headers: { "Content-Type": "application/json;charset=utf8" },
       }).done(function (msg) {
-        alert(msg);
-      }).done(function (msg) {
         if (msg == "登入成功！") {
-          location.href = "../index.html"
-        } else {
-        }
-      });
+            swal.fire('', msg, 'success').then(function(){
+              location.href = "../index.html"
+            })
+          } else {
+            swal.fire('', msg, 'error')
+          }
+      })
     }
     window.onload = function () {
       google.accounts.id.initialize({
@@ -200,14 +203,13 @@
       }
 
       $.ajax(item)
-        .done(function (response) {
-          alert(response)
-        })
         .done(function (msg) {
-          console.log(msg)
           if (msg == "登入成功！") {
-            location.href = "../index.html"
+            swal.fire('', msg, 'success').then(function(){
+              location.href = "../index.html"
+            })
           } else {
+            swal.fire('', msg, 'error')
           }
         })
     }

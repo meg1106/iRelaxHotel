@@ -170,25 +170,20 @@
   <script src="login_static/js/validator.min.js"></script>
   <!-- Custom Js -->
   <script src="login_static/js/main.js"></script>
+  <!-- sweet alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script>
     function getCode() {
       event.preventDefault();
       var account = $("#account").val();
       var data = '{"account":"' + account + '"}'
       $.ajax({
-        beforeSend: function () {
-          $('#loading').css("display", "");
-        },
         type: "POST",
         url: "/member/checkEmail",
         data: data,
-        headers: { "Content-Type": "application/json;charset=utf8" },
-        complete: function () {
-          $('#loading').css("display", "none");
-        }
-      }).done(function (msg) {
-        alert(msg);
+        headers: { "Content-Type": "application/json;charset=utf8" }
       })
+      swal.fire('驗證碼已寄出', "請至信箱查看，謝謝！", 'success')
     }
     $("#register").submit((e) => {
       e.preventDefault();
@@ -209,14 +204,14 @@
         data: data,
         headers: { "Content-Type": "application/json;charset=utf8" }
       }).done(function (msg) {
-        alert(msg);
-      }).done(function (msg) {
-        console.log(msg)
         if (msg == "註冊成功") {
-          location.href = "login.html"
-        } else {
-        }
-      });
+            swal.fire('', msg, 'success').then(function(){
+              location.href = "login.html"
+            })
+          } else {
+            swal.fire('', msg, 'error')
+          }
+      })
     });
   </script>
 </body>

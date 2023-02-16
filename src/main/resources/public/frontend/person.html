@@ -8,8 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
-  integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
-  crossorigin="anonymous"></script>
+    integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
+    crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
@@ -115,8 +115,8 @@
         location.href = 'login.html';
       }
     })
-    </script>
-    <script src="../assets/js/bootstrap.min.js"></script>
+  </script>
+  <script src="../assets/js/bootstrap.min.js"></script>
 </head>
 
 <body id="top">
@@ -223,7 +223,7 @@
                                   </td>
                                   <td class="acc" align="center" style="width: 60%;">
                                     帳號
-                                <!-- 連絡電話 -->
+                                    <!-- 連絡電話 -->
                                 <tr align="left" style="margin: 10px 0;">
                                   <td align="center" style="width: 40%;">
                                     <div>
@@ -390,7 +390,9 @@
   <script src="../layout/scripts/Weather.js"></script>
   <!-- 公車 -->
   <script src="../layout/scripts/TDXBus.js"></script>
-  
+  <!-- sweet alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
   <script src="../layout/scripts/CheckLogin.js"></script>
   <script>
     function save() {
@@ -411,14 +413,14 @@
         contentType: 'application/json;charset=utf8',
         data: JSON.stringify({
           'realName': realName,
-          'account': account,
+          'account': account, 
           'passwd': passwd,
           'tel': tel
         })
       }).done(function (msg) {
-        alert(msg);
-      }).done(function(){
-        location.href = ""
+        swal.fire('', msg, 'success').then(function () {
+          location.href = ""
+        })
       })
     }
   </script>

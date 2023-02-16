@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>iRelax Hotel | 訂房明細</title>
-    <!-- Meta tags -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta
-      name="keywords"
-      content="Airline Booking Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements"
-    />
-    <script type="application/x-javascript">
+
+<head>
+  <title>iRelax Hotel | 訂房明細</title>
+  <!-- Meta tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords"
+    content="Airline Booking Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+  <script type="application/x-javascript">
       addEventListener("load", function () {
       	setTimeout(hideURLbar, 0);
       }, false);
@@ -18,76 +17,65 @@
       	window.scrollTo(0, 1);
       }
     </script>
-    <!-- //Meta tags -->
-    <!-- Stylesheet -->
-    <link
-      href="css/wickedpicker.css"
-      rel="stylesheet"
-      type="text/css"
-      media="all"
-    />
-    <link rel="stylesheet" href="css/jquery-ui.css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <!-- //Stylesheet -->
-    <!--fonts-->
-    <link
-      href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700"
-      rel="stylesheet"
-    />
-    <link
-      href="//fonts.googleapis.com/css?family=Raleway:300,400,500,600,700"
-      rel="stylesheet"
-    />
-    <link href="//fonts.googleapis.com/css?family=Megrim" rel="stylesheet" />
-    <!--//fonts-->
+  <!-- //Meta tags -->
+  <!-- Stylesheet -->
+  <link href="css/wickedpicker.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="css/jquery-ui.css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <!-- //Stylesheet -->
+  <!--fonts-->
+  <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Megrim" rel="stylesheet" />
+  <!--//fonts-->
 
-    <!-- icon -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
-    <script src="./js/jquery.js"></script>
-    <script>
-      $.ajax({
-        url: '/member/checkLogin',
-        type: 'GET',
-        dataType: 'json'
-      }).done(function (msg) {
-        if (msg.status != 'success') {
-          alert('請先登入')
-          location.href = '../login.html';
-        }
-      })
-      </script>
-  </head>
+  <!-- icon -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  <script src="./js/jquery.js"></script>
+  <!-- sweet alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script>
+    $.ajax({
+      url: '/member/checkLogin',
+      type: 'GET',
+      dataType: 'json'
+    }).done(function (msg) {
+      if (msg.status != 'success') {
+        swal.fire('', msg, 'error').then(function () {
+          location.href = "../login.html"
+        })
+      }
+    })
+  </script>
+</head>
 
-  <body>
-    <!--background-->
-    <h1>iRelax Booking Details</h1>
-    <div id="orderdt" class="booking-form-w3layouts">
-      <!-- Form starts here -->
-    
-      <!--// Form starts here -->
-    </div>
-    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-    <!-- Time Js -->
-    <script type="text/javascript" src="js/wickedpicker.js"></script>
-    <script type="text/javascript">
-      $(".timepicker,.timepicker1").wickedpicker({
-        twentyFour: false,
-      });
-    </script>
-    <!--// Time Js -->
-    <!-- Calendar Js -->
-    <script src="js/jquery-ui.js"></script>
-    <script>
-      $(function () {
-        $("#datepicker,#datepicker1,#datepicker2,#datepicker3").datepicker();
-      });
-    </script>
-    <!-- //Calendar Js -->
-    <script src="./js/myOrderdt.js"></script>
-  </body>
+<body>
+  <!--background-->
+  <h1>iRelax Booking Details</h1>
+  <div id="orderdt" class="booking-form-w3layouts">
+    <!-- Form starts here -->
+
+    <!--// Form starts here -->
+  </div>
+  <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+  <!-- Time Js -->
+  <script type="text/javascript" src="js/wickedpicker.js"></script>
+  <script type="text/javascript">
+    $(".timepicker,.timepicker1").wickedpicker({
+      twentyFour: false,
+    });
+  </script>
+  <!--// Time Js -->
+  <!-- Calendar Js -->
+  <script src="js/jquery-ui.js"></script>
+  <script>
+    $(function () {
+      $("#datepicker,#datepicker1,#datepicker2,#datepicker3").datepicker();
+    });
+  </script>
+  <!-- //Calendar Js -->
+  <script src="./js/myOrderdt.js"></script>
+</body>
+
 </html>

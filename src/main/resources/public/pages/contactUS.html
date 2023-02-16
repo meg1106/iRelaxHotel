@@ -299,20 +299,14 @@
         email + '\\nTel: ' + tel + '\\nComment: ' + comment + '"}';
       console.log(data);
       $.ajax({
-        beforeSend: function () {
-          $('#loading').css("display", "");
-        },
         type: "POST",
         url: url,
         data: data,
-        headers: { 'Content-Type': 'application/json;charset=utf8' },
-        complete: function () {
-          $('#loading').css("display", "none");
-        }
+        headers: { 'Content-Type': 'application/json;charset=utf8' }
       })
-        .done(function (msg) {
-          swal.fire('', msg, 'success')
-        })
+      swal.fire('謝謝您的來信', '我們會盡快回覆您！', 'success').then(function () {
+        location.href = ""
+      })
     });
   </script>
 </body>
