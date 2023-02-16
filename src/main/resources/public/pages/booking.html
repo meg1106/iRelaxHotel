@@ -193,8 +193,8 @@
         <form
           style="display: flex; flex-wrap: nowrap; flex-direction: row; justify-content: center; justify-content: space-between; ">
           <div>
-            <input style="width:200px;height:40px;margin: 0% 5px;font-size: 13px;" type="text" name="datefilter" class="form-control"
-              placeholder="入住時間 ～ 退房時間">
+            <input style="width:200px;height:40px;margin: 0% 5px;font-size: 13px;" type="text" name="datefilter"
+              class="form-control" placeholder="入住時間 ～ 退房時間">
             <!-- <i class="fa fa-calendar glyphicon glyphicon-calendar"></i> -->
             </input>
           </div>
@@ -379,7 +379,6 @@
       $(function () {
         $('input[name="datefilter"]').daterangepicker({
           autoUpdateInput: false,
-          autoApply: true,
           locale: {
             applyLabel: "確定",
             cancelLabel: "取消",
@@ -390,10 +389,12 @@
             monthNames: ["1月", "2月", "3月", "4月", "5月", "6月",
               "7月", "8月", "9月", "10月", "11月", "12月"],
             firstDay: 1,
-          }
+          },
         });
         $('input[name="startDate"]'), $('input[name="endDate"]'), $('input[name="datefilter"]').daterangepicker({
-          dateFormat: "YYYY-MM-DD", minDate: new Date()
+          dateFormat: "YYYY-MM-DD",
+          minDate: new Date(),
+          autoApply: true,
         });
         $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
           $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
