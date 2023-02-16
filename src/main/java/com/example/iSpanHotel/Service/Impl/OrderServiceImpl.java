@@ -10,6 +10,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.iSpanHotel.Class.CheckEmailUtils;
 import com.example.iSpanHotel.Class.DateUtils;
 import com.example.iSpanHotel.Dao.MemberDao;
 import com.example.iSpanHotel.Dao.OrderDao;
@@ -130,7 +131,7 @@ public class OrderServiceImpl implements OrderService{
 		Order order = orderDao.findById(paymentDto.getOrder_id()).get();
 //		System.out.println(paymentDto.getOrder_id());
 		//填入必要的資料
-		obj.setMerchantTradeNo("iRelaxHotel10000" + order.getId());
+		obj.setMerchantTradeNo("iRelaxHotel" + CheckEmailUtils.VerifyCode(7) + order.getId());
 		obj.setMerchantTradeDate(sdf.format(new Date()));
 		obj.setTotalAmount(paymentDto.getTotalAmount());
 		obj.setTradeDesc(paymentDto.getTradeDesc());

@@ -49,7 +49,7 @@ public class EmailServiceImpl implements EmailService {
 
 	public String sendOrderDetail(PaymentDto paymentDto) {
 		String tradeNo = paymentDto.getMerchantTradeNo();
-		Long oid = Long.parseLong(tradeNo.substring(16));
+		Long oid = Long.parseLong(tradeNo.substring(18));
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日"); 
 		String name = orderDao.findById(oid).get().getMember().getRealName();
 		String email = orderDao.findById(oid).get().getMember().getAccount();

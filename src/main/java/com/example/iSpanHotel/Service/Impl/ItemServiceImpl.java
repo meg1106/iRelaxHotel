@@ -73,7 +73,7 @@ public class ItemServiceImpl implements ItemService{
 	@Override
 	public String paySuccess(PaymentDto paymentDto) {
 		String tradeNo = paymentDto.getMerchantTradeNo();
-		Long oid = Long.parseLong(tradeNo.substring(16));
+		Long oid = Long.parseLong(tradeNo.substring(18));
 		if (paymentDto.getRtnMsg().equals("Succeeded")) {
 			System.out.println("OK");
 			Item item = new Item();
