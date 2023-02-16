@@ -2,6 +2,8 @@ package com.example.iSpanHotel.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -74,11 +76,27 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/login")
-	private String login(String account, String passwd) {
-		System.out.println("有連到api");
-		String check = employeeService.login(account, passwd);
-		System.out.println(check);
-		return check;
+	private String login(HttpSession session, String account, String passwd) {
+		String result = employeeService.login(session, account, passwd);
+		return result;
+	}
+	
+	@PostMapping("/logout")
+	private String logout(HttpSession session) {
+		session.setMaxInactiveInterval(0);
+		return "登出成功";
+	}
+	
+	@PostMapping("/checklogin")
+	private String checkLogin(HttpSession session) {
+		String result = "false";
+		if(session.getAttribute("login") == null) {
+			session.setAttribute("login", false);
+		}
+		if ((boolean) session.getAttribute("login") == true) {
+			result = (String) session.getAttribute("name");
+		}
+		return result;
 	}
 
 }

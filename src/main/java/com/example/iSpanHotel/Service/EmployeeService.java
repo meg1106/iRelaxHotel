@@ -2,6 +2,8 @@ package com.example.iSpanHotel.Service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +41,6 @@ public interface EmployeeService {
 	Boolean checkLogin(String token);
 
 	// 登入驗證
-	String login(String account, String password);
+	String login(HttpSession session, String account, String password);
 
 }

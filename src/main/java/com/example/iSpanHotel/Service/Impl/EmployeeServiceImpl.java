@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,7 +30,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	public String create(EmployeeDto employeeDto) {
 		int checkAccount = employeeDao.countByAccount(employeeDto.getAccount());
-		
 		if (checkAccount == 0) {
 			try {
 				Employee employee = new Employee();
@@ -122,21 +123,20 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public String login(String account, String password) {
+	public String login(HttpSession session, String account, String password) {
 		if(employeeDao.findByAccount(account) != null) {
 			Employee employee = employeeDao.findByAccount(account);
 			String pswd = employee.getPasswd();
 			if (BCrypt.checkpw(password,pswd)) {
-				// 生成JWT
-				String token = JWTutils.creatJWT(employee.getId().toString(),employee.toString(), null);
-				System.out.println("生成token=:" + token);
-				return token;
+				session.setAttribute("login", true);
+				session.setAttribute("id", employee.getId());
+				session.setAttribute("account", employee.getAccount());
+				session.setAttribute("name", employee.getName());		
+				return "登入成功";
 			}else {
-				System.out.println("找不到密碼");
 				return "帳號或密碼錯誤";
 			}
 		}else {
-			System.out.println("找不到帳號");
 			return "帳號或密碼錯誤";
 		}
 	}
