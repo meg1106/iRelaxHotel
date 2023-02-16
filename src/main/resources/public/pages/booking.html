@@ -117,6 +117,15 @@
       background-color: #fff;
       border: 2px #f3bf07 solid;
     }
+
+    .swal2-popup {
+      font-size: 15.75px !important;
+    }
+
+    /* 
+    .belowBtn{
+      color: pink;
+    } */
   </style>
 
 
@@ -380,9 +389,11 @@
       $(function () {
         $('input[name="datefilter"]').daterangepicker({
           autoUpdateInput: false,
+
           locale: {
             applyLabel: "確定",
             cancelLabel: "取消",
+
             fromLabel: "開始日期",
             toLabel: "結束日期",
             customRangeLabel: "自訂日期區間",
@@ -390,12 +401,13 @@
             monthNames: ["1月", "2月", "3月", "4月", "5月", "6月",
               "7月", "8月", "9月", "10月", "11月", "12月"],
             firstDay: 1,
+            // applyButtonClasses: (belowBtn),
           },
         });
         $('input[name="startDate"]'), $('input[name="endDate"]'), $('input[name="datefilter"]').daterangepicker({
           dateFormat: "YYYY-MM-DD",
           minDate: new Date(),
-          autoApply: true,
+          // autoApply: true,
         });
         $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
           $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
@@ -543,8 +555,9 @@
             })
 
           } else {
-            alert('請先登入')
-            location.href = '../frontend/login.html';
+            swal.fire('', '請先登入', 'error').then(function () {
+              location.href = '../frontend/login.html'
+            })
           }
         })
       })
