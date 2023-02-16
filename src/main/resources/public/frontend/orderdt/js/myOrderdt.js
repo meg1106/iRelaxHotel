@@ -157,7 +157,7 @@ $.ajax({
             <div class="radio-section">
               <h6>訂單日期：</h6>
               <ul class="radio-buttons-w3-agileits">
-                <label for="a-option">${orderDate}</label>
+                <label for="a-option">${msg.orderDate}</label>
               </ul>
             </div>
           </div>
@@ -167,7 +167,7 @@ $.ajax({
             <div class="radio-section">
               <h6>入住日期：</h6>
               <ul class="radio-buttons-w3-agileits">
-                <label for="a-option">${checkinDate}</label>
+                <label for="a-option">${msg.items[0].checkinDate}</label>
               </ul>
             </div>
           </div>
@@ -175,7 +175,7 @@ $.ajax({
             <div class="radio-section">
               <h6>退房日期：</h6>
               <ul class="radio-buttons-w3-agileits">
-                <label for="a-option">${checkoutDate}</label>
+                <label for="a-option">${msg.items[0].checkoutDate}</label>
               </ul>
             </div>
           </div>
