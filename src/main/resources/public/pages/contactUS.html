@@ -6,10 +6,16 @@
   <title>iRelax Hotel | 聯絡我們 </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
     integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
     crossorigin="anonymous"></script>
-  <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+  <!-- 日期的CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+    rel="stylesheet" />
+  <!-- //日期的CSS -->
   <style>
     .gender {
       width: 100px;
@@ -53,9 +59,7 @@
     }
   </style>
   <script src="../assets/js/jquery.js"></script>
-  <script src="../layout/scripts/CheckLogin.js"></script>
 </head>
-
 
 <body id="top">
   <!-- ################################################################################################ -->
@@ -281,10 +285,6 @@
   <script src="../layout/scripts/jquery.min.js"></script>
   <script src="../layout/scripts/jquery.backtotop.js"></script>
   <script src="../layout/scripts/jquery.mobilemenu.js"></script>
-  <!-- 天氣 -->
-  <script src="../layout/scripts/Weather.js"></script>
-  <!-- 公車 -->
-  <script src="../layout/scripts/TDXBus.js"></script>
   <!-- sweet alert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script>
@@ -309,6 +309,11 @@
       })
     });
   </script>
+  <!-- 天氣＋會員登入 -->
+  <script src="../layout/scripts/Weather.js"></script>
+  <script src="../layout/scripts/CheckLogin.js"></script>
+  <!-- 公車 -->
+  <script src="../layout/scripts/TDXBus.js"></script>
 </body>
 
 </html>
