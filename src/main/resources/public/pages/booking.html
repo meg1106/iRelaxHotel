@@ -372,7 +372,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.25/daterangepicker.min.css"
       rel="stylesheet">
     </link>
-
+    <!-- sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script type="text/javascript">
       var startDate;
       var endDate;
@@ -532,15 +533,15 @@
                 'room_id': room_id
               })
             }).done(function (msg) {
-              alert(msg);
-            })
-              .done(function (msg) {
-                console.log(msg)
-                if (msg == "下訂完成！將跳轉到訂單頁面，請盡快付款，謝謝！") {
+              if (msg == "下訂完成！將跳轉到訂單頁面，請盡快付款，謝謝！") {
+                Swal.fire('', msg, 'success').then(function () {
                   location.href = "../frontend/myorder.html"
-                } else {
-                }
-              })
+                })
+              } else {
+                swal.fire('', msg, 'error')
+              }
+            })
+
           } else {
             alert('請先登入')
             location.href = '../frontend/login.html';
