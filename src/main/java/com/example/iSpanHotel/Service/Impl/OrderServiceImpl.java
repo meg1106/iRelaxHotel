@@ -137,7 +137,7 @@ public class OrderServiceImpl implements OrderService{
 		obj.setTradeDesc(paymentDto.getTradeDesc());
 		obj.setItemName(paymentDto.getItemName());
 		obj.setReturnURL("http://localhost/order/test2");
-		obj.setOrderResultURL("http://localhost/order/paySuccess");
+		obj.setOrderResultURL("http://localhost:8080/order/paySuccess");
 		obj.setNeedExtraPaidInfo("N");
 		//回傳form表單的資料
 		String form = all.aioCheckOut(obj, null);

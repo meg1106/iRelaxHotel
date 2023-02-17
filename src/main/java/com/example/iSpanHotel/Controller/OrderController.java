@@ -105,7 +105,7 @@ public class OrderController {
 		System.out.println(paymentDto.getMerchantTradeNo());
 		itemService.paySuccess(paymentDto);
 		emailService.sendOrderDetail(paymentDto);
-		return new RedirectView("http://localhost/frontend/orderdt/paymentSuccess.html");
+		return new RedirectView("http://localhost:8080/frontend/orderdt/paymentSuccess.html");
 	}
 	
 }
