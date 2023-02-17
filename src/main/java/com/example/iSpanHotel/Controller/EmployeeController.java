@@ -2,8 +2,6 @@ package com.example.iSpanHotel.Controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -20,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.iSpanHotel.Dto.EmployeeDto;
 import com.example.iSpanHotel.Service.EmployeeService;
 import com.example.iSpanHotel.model.Employee;
+
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/employee")
@@ -76,8 +76,11 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/login")
-	private String login(HttpSession session, String account, String passwd) {
-		String result = employeeService.login(session, account, passwd);
+	private String login(HttpSession session,@RequestBody EmployeeDto employeeDto) {
+		System.out.println(employeeDto.getAccount());
+		System.out.println(employeeDto.getPasswd());
+		String result = employeeService.login(session, employeeDto.getAccount(), employeeDto.getPasswd());
+		System.out.println(result);
 		return result;
 	}
 	

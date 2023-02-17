@@ -2,13 +2,13 @@ package com.example.iSpanHotel.Service;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.example.iSpanHotel.Dto.EmployeeDto;
 import com.example.iSpanHotel.model.Employee;
+
+import jakarta.servlet.http.HttpSession;
 
 @Service
 public interface EmployeeService {
