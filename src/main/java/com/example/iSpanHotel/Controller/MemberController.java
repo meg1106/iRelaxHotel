@@ -49,7 +49,6 @@ public class MemberController {
 	@PutMapping("/{id}")
 	private ResponseEntity<String> update(@PathVariable Long id, @RequestBody MemberDto memberDto, HttpServletResponse response) {
 		try {
-			System.out.println(memberDto.getPasswd().isEmpty());
 			String token = memberService.update(id, memberDto);
 			if (token != "err") {
 				Cookies.setCookies(token, response);
@@ -91,7 +90,6 @@ public class MemberController {
 	private ResponseEntity<String> login(String account, String passwd, HttpServletResponse response) {
 		try {
 			String token = memberService.login(account, passwd);
-			System.out.println(token);
 			if (token != "err") {
 				Cookies.setCookies(token, response);
 				return ResponseEntity.ok("登入成功！");
@@ -116,7 +114,6 @@ public class MemberController {
 	@PostMapping("/forgot_password")
 	private ResponseEntity<String> processForgotPassword(HttpServletRequest request, @RequestBody MemberDto memberDto) {
 		String result = emailService.processForgotPassword(request, memberDto);
-		System.out.println(result);
 		return ResponseEntity.ok(result);
 	}
 	

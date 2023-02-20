@@ -31,21 +31,18 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String create(MemberDto memberDto) {
 		int checkAccount = memberDao.countByAccount(memberDto.getAccount());
-//		int checkEmail = memberDao.countByEmail(memberDto.getEmail());
 		String code = memberDto.getCode();
 		String account = memberDto.getAccount();
 		String ecode = checkEmailDao.findByEmail(account).getCode();
 		System.out.println(code);
 		System.out.println(ecode);
 		if (checkAccount == 0) {
-//			if (checkEmail == 0) {
 				if (code.equals(ecode)) {
 					try {
 						Member member = new Member();
 						member.setAccount(memberDto.getAccount());
 						member.setPasswd(BCrypt.hashpw(memberDto.getPasswd(), BCrypt.gensalt()));
 						member.setRealName(memberDto.getRealName());
-//						member.setEmail(memberDto.getEmail());
 						member.setTel(memberDto.getTel());
 						memberDao.save(member);
 						checkEmailDao.deleteByEmail(account);
@@ -78,8 +75,6 @@ public class MemberServiceImpl implements MemberService {
 	public String update(Long id, MemberDto memberDto) {
 		try {
 			Member member = memberDao.findById(id).get();
-//			member.setId(id);
-//			member.setAccount(memberDto.getAccount());
 			if (!memberDto.getPasswd().isEmpty()) {
 				member.setPasswd(BCrypt.hashpw(memberDto.getPasswd(), BCrypt.gensalt()));
 			}
@@ -118,8 +113,6 @@ public class MemberServiceImpl implements MemberService {
 			object.put("status", "success");
 			object.put("userMsg", new JSONObject(userMsg));
 		} catch (Exception exception) {
-			System.out.println("解析失敗:");
-//			exception.printStackTrace();
 			object.put("status", "error");
 		}
 		return object;
@@ -133,20 +126,11 @@ public class MemberServiceImpl implements MemberService {
 			if (BCrypt.checkpw(password, pswd)) {
 				// 生成JWT
 				String token = JWTutils.creatJWT(member.getId().toString(), member.toString(), null);
-				System.out.println(account);
-				System.out.println(password);
-				System.out.println("生成token=:" + token);
 				return token;
 			} else {
-				System.out.println(account);
-				System.out.println(password);
-				System.out.println("找不到密碼");
 				return "err";
 			}
 		} else {
-			System.out.println(account);
-			System.out.println(password);
-			System.out.println("找不到帳號");
 			return "err";
 		}
 	}
@@ -178,11 +162,7 @@ public class MemberServiceImpl implements MemberService {
 		String name = memberDto.getRealName();
 		String account = memberDto.getAccount();
 		String gid = memberDto.getGoogleLoginId();
-//		Member member = memberDao.findByGoogleLoginId(gid);
 		Member member = memberDao.findByEmail(account);
-		System.out.println(name);
-		System.out.println(account);
-		System.out.println(gid);
 		if (member == null) {
 			Member gMember = new Member();
 			gMember.setRealName(name);
