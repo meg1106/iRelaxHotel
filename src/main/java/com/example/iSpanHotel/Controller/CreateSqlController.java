@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.iSpanHotel.Class.BCrypt;
 import com.example.iSpanHotel.Class.DateUtils;
-import com.example.iSpanHotel.Class.JWTutils;
-import com.example.iSpanHotel.Class.Weather;
 import com.example.iSpanHotel.Dao.EmployeeDao;
 import com.example.iSpanHotel.Dao.HotelNewsDao;
 import com.example.iSpanHotel.Dao.ItemDao;
@@ -38,8 +36,6 @@ import com.example.iSpanHotel.model.OrderJournal;
 import com.example.iSpanHotel.model.Permissions;
 import com.example.iSpanHotel.model.Room;
 import com.example.iSpanHotel.model.RoomType;
-
-import io.jsonwebtoken.Claims;
 
 @RestController
 @RequestMapping("/createSql")
@@ -762,26 +758,6 @@ public class CreateSqlController {
 			e.printStackTrace();
 		}
 	
-	}
-	
-	@PostMapping("/testJWT")
-	private void testJWT() {
-		// 生成
-		String token = JWTutils.creatJWT("測試", null);
-		System.out.println("生成token=:" + token);
-		// 解析
-		try {
-			Claims claims = JWTutils.parseJWT(token);
-			System.out.println("解析成功" + claims.getSubject());
-		} catch (Exception exception) {
-			System.out.println("解析失敗:");
-			exception.printStackTrace();
-		}
-	}
-	
-	@PostMapping("/weather")
-	private void weather() {
-		Weather.getWeather();
 	}
 	
 }
