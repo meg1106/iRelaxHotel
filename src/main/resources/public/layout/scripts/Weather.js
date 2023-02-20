@@ -64,7 +64,7 @@ function getWeather() {
                     `
                   <span style="font-size: 16px;">${Data.records.location[0].parameter[0].parameterValue}</span>
                   <span style="font-size: 16px; padding:0 5px;">${Data.records.location[0].weatherElement[3].elementValue}°C</span>
-                  <img src="https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/05.svg" class="weather_img"></img>
+                  <img src="https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/03.svg" class="weather_img"></img>
                   `
                   )
             } 
