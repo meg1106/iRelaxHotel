@@ -16,10 +16,10 @@ function getWeather() {
             // console.log(Data);
             // console.log(Data.records.location[0].parameter[0].parameterValue)
             // $('#weather').text(JSON.stringify(Data.records.location[0].parameter[0].parameterValue + " " + Data.records.location[0].weatherElement[3].elementValue + " " + Data.records.location[0].weatherElement[20].elementValue));  
-            // console.log("天氣資訊" , Data.records.location[0].parameter[0].parameterValue + " " + Data.records.location[0].weatherElement[3].elementValue + " " + Data.records.location[0].weatherElement[20].elementValue);
+            console.log("天氣資訊" , Data.records.location[0].parameter[0].parameterValue + " " + Data.records.location[0].weatherElement[3].elementValue + " " + Data.records.location[0].weatherElement[20].elementValue);
             $('#weather_content').empty();
 
-            if(Data.records.location[0].parameter[0].parameterValue === '多雲時晴' || Data.records.location[0].parameter[0].parameterValue === '晴時多雲' || Data.records.location[0].parameter[0].parameterValue === '多雲' ){
+            if(Data.records.location[0].weatherElement[20].elementValue == '多雲時晴' || Data.records.location[0].weatherElement[20].elementValue == '晴時多雲' || Data.records.location[0].weatherElement[20].elementValue == '多雲' ){
                 $('#weather_content').append(
                     `
                   <span style="font-size: 16px;">${Data.records.location[0].parameter[0].parameterValue}</span>
@@ -27,7 +27,7 @@ function getWeather() {
                   <img src="https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/03.svg" class="weather_img"></img>
                   `
                   )
-            }else if(Data.records.location[0].parameter[0].parameterValue === '多雲時陰' || Data.records.location[0].parameter[0].parameterValue === '陰時多雲' || Data.records.location[0].parameter[0].parameterValue === '陰天'){
+            }else if(Data.records.location[0].weatherElement[20].elementValue == '多雲時陰' || Data.records.location[0].weatherElement[20].elementValue == '陰時多雲' || Data.records.location[0].weatherElement[20].elementValue == '陰'){
                 $('#weather_content').append(
                     `
                   <span style="font-size: 16px;">${Data.records.location[0].parameter[0].parameterValue}</span>
@@ -35,7 +35,7 @@ function getWeather() {
                   <img src="https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/07.svg" class="weather_img"></img>
                   `
                   )
-            }else if(Data.records.location[0].parameter[0].parameterValue === '多雲陣雨' || Data.records.location[0].parameter[0].parameterValue === '多雲短暫雨' || Data.records.location[0].parameter[0].parameterValue === '短暫陣雨' || Data.records.location[0].parameter[0].parameterValue === '雨天' || Data.records.location[0].parameter[0].parameterValue === '陰短暫雨' ){
+            }else if(Data.records.location[0].weatherElement[20].elementValue == '多雲陣雨' || Data.records.location[0].weatherElement[20].elementValue == '多雲短暫雨' || Data.records.location[0].weatherElement[20].elementValue == '短暫陣雨' || Data.records.location[0].weatherElement[20].elementValue == '雨天' || Data.records.location[0].weatherElement[20].elementValue == '陰短暫雨' ){
                 $('#weather_content').append(
                     `
                   <span style="font-size: 16px;">${Data.records.location[0].parameter[0].parameterValue}</span>
@@ -43,7 +43,7 @@ function getWeather() {
                   <img src="https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/08.svg" class="weather_img"></img>
                   `
                   )
-            }else if(Data.records.location[0].parameter[0].parameterValue === '多雲時陰有雨' || Data.records.location[0].parameter[0].parameterValue === '晴時多雲陣雨 ' || Data.records.location[0].parameter[0].parameterValue === '多雲時陰'){
+            }else if(Data.records.location[0].weatherElement[20].elementValue == '多雲時陰有雨' || Data.records.location[0].weatherElement[20].elementValue == '晴時多雲陣雨 ' || Data.records.location[0].weatherElement[20].elementValue == '多雲時陰'){
                 $('#weather_content').append(
                     `
                   <span style="font-size: 16px;">${Data.records.location[0].parameter[0].parameterValue}</span>
@@ -51,7 +51,7 @@ function getWeather() {
                   <img src="https://www.cwb.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/10.svg" class="weather_img"></img>
                   `
                   )
-            }else if(Data.records.location[0].parameter[0].parameterValue === '晴天'){
+            }else if(Data.records.location[0].weatherElement[20].elementValue == '晴'){
                 $('#weather_content').append(
                     `
                   <span style="font-size: 16px;">${Data.records.location[0].parameter[0].parameterValue}</span>
