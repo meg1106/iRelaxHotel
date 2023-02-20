@@ -47,9 +47,19 @@ public class MemberController {
 	}
 
 	@PutMapping("/{id}")
-	private ResponseEntity<String> update(@PathVariable Long id, @RequestBody MemberDto memberDto) {
-		memberService.update(id, memberDto);
-		return ResponseEntity.ok("修改成功");
+	private ResponseEntity<String> update(@PathVariable Long id, @RequestBody MemberDto memberDto, HttpServletResponse response) {
+		try {
+			System.out.println(memberDto.getPasswd().isEmpty());
+			String token = memberService.update(id, memberDto);
+			if (token != "err") {
+				Cookies.setCookies(token, response);
+				return ResponseEntity.ok("修改成功！");
+			}
+			return ResponseEntity.ok("修改失敗！");
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+		
 	}
 
 	@GetMapping("/")

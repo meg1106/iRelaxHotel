@@ -77,18 +77,20 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String update(Long id, MemberDto memberDto) {
 		try {
-			Member member = new Member();
-			member.setId(id);
-			member.setAccount(memberDto.getAccount());
-			member.setPasswd(BCrypt.hashpw(memberDto.getPasswd(), BCrypt.gensalt()));
+			Member member = memberDao.findById(id).get();
+//			member.setId(id);
+//			member.setAccount(memberDto.getAccount());
+			if (!memberDto.getPasswd().isEmpty()) {
+				member.setPasswd(BCrypt.hashpw(memberDto.getPasswd(), BCrypt.gensalt()));
+			}
 			member.setRealName(memberDto.getRealName());
-//			member.setEmail(memberDto.getEmail());
 			member.setTel(memberDto.getTel());
 			memberDao.save(member);
-			return "修改成功";
+			String token = JWTutils.creatJWT(member.getId().toString(), member.toString(), null);
+			return token;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "發生未知的錯誤";
+			return "err";
 		}
 	}
 
