@@ -94,19 +94,19 @@ $.ajax({
         </div>
         <h3 class="sub-heading-agileits">iRelax 預訂者</h3>
         <div class="main-flex-w3ls-sectns">
+          <div class="field-agileinfo-spc form-w3-agile-text2">
+              <div class="radio-section">
+                <h6>會員帳號：</h6>
+                <ul class="radio-buttons-w3-agileits">
+                  <label for="a-option">${msg.member.account}</label>
+                </ul>
+              </div>
+            </div>
           <div class="field-agileinfo-spc form-w3-agile-text1">
             <div class="radio-section">
               <h6>會員名稱：</h6>
               <ul class="radio-buttons-w3-agileits">
                 <label for="a-option">${msg.member.realName}</label>
-              </ul>
-            </div>
-          </div>
-          <div class="field-agileinfo-spc form-w3-agile-text2">
-            <div class="radio-section">
-              <h6>會員帳號：</h6>
-              <ul class="radio-buttons-w3-agileits">
-                <label for="a-option">${msg.member.account}</label>
               </ul>
             </div>
           </div>
@@ -120,16 +120,7 @@ $.ajax({
           </div>
         </div>
 
-        <div class="main-flex-w3ls-sectns">
-          <div class="field-agileinfo-spc form-w3-agile-text1">
-            <div class="radio-section">
-              <h6>信　　箱：</h6>
-              <ul class="radio-buttons-w3-agileits">
-                <label for="a-option">gavinlin123@yahoo.com.tw</label>
-              </ul>
-            </div>
-          </div>
-        </div>
+        
         <div class="clear"></div>
         <a class="btn btn-warning btn-lg" href="javascript:payment()" role="button">
           付款
