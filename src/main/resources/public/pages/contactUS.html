@@ -175,8 +175,11 @@
               <textarea placeholder="請輸入問題或內容" onfocus="this.placeholder='請輸入問題或內容'" name="comment" id="comment"
                 cols="25" rows="10"></textarea>
             </div>
+            <div class="g-recaptcha" data-sitekey="6LfjzUYkAAAAABlzNdNOksEqnMfEAUG3a8kwdyOU" data-theme="light"
+              data-size="normal" data-callback="verify" data-expired-callback="expired" data-error-callback="error">
+            </div>
             <div>
-              <input type="submit" id="submit" name="submit" value="提交">
+              <input id="verify" type="submit" id="submit" name="submit" value="提交" style="display: none;">
               &nbsp;
             </div>
           </form>
@@ -290,6 +293,9 @@
   <script src="../layout/scripts/jquery.min.js"></script>
   <script src="../layout/scripts/jquery.backtotop.js"></script>
   <script src="../layout/scripts/jquery.mobilemenu.js"></script>
+  <!-- Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script src="../layout/scripts/reCAPTCHA.js"></script>
   <!-- sweet alert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script>
