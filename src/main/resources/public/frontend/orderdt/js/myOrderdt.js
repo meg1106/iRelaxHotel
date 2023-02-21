@@ -52,7 +52,7 @@ $.ajax({
             <div class="radio-section">
               <h6>退房日期：</h6>
               <ul class="radio-buttons-w3-agileits">
-                <label for="a-option">${msg.items[0].checkoutDate}</label>
+                <label for="a-option">${msg.items[0].checkoutDate.slice(0,10)}</label>
               </ul>
             </div>
           </div>
