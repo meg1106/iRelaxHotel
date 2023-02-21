@@ -14,7 +14,7 @@ function getWeather() {
         async: false,
         success: function (Data) {
             // console.log(Data);
-            // console.log(Data.records.location[0].parameter[0].parameterValue)
+            console.log(Data.records.location[0].parameter[0].parameterValue)
             // $('#weather').text(JSON.stringify(Data.records.location[0].parameter[0].parameterValue + " " + Data.records.location[0].weatherElement[3].elementValue + " " + Data.records.location[0].weatherElement[20].elementValue));  
             console.log("天氣資訊" , Data.records.location[0].parameter[0].parameterValue + " " + Data.records.location[0].weatherElement[3].elementValue + " " + Data.records.location[0].weatherElement[20].elementValue);
             $('#weather_content').empty();
